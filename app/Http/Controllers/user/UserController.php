@@ -34,14 +34,14 @@ class UserController extends Controller
        //return view('user.page.index');
     }
     public function getsp($idcat)
-    { 
+    {
         if($idcat==null)
         {
             $products = Product::all();
             return view('user.page.loai_sp',compact('products'));
         }
         $categorys=Category::all();
-       
+
         $products=DB::table('product')->where('idcat',$idcat)->get();
         if($products==null)
         {
@@ -56,7 +56,7 @@ class UserController extends Controller
     } */
 
     public function viewCart()
-    {   
+    {
         return view('user.page.view_cart');
     }
 
@@ -66,9 +66,14 @@ class UserController extends Controller
         return view('user.page.view-product', compact('products'));
     }
 
+    public function blog()
+    {
+        return view('user.page.blog');
+    }
+
    /*  public function getCheckout(){
         return view('user.page.checkout');
-    
+
     } */
     //Thêm 1 sp vào giỏ hàng
     public function AddCart(Request $request, $id){
@@ -92,7 +97,7 @@ class UserController extends Controller
         $oldCart = Session('Cart') ? Session('Cart') : null;
         $newCart = new Cart($oldCart);
         $newCart->DeleteItemCart($id);
-        
+
         if(Count($newCart->products) > 0){
             $request->Session()->put('Cart',$newCart);
         }
@@ -108,7 +113,7 @@ class UserController extends Controller
         $oldCart = Session('Cart') ? Session('Cart') : null;
         $newCart = new Cart($oldCart);
         $newCart->DeleteItemCart($id);
-        
+
         if(Count($newCart->products) > 0){
             $request->Session()->put('Cart',$newCart);
         }
@@ -124,7 +129,7 @@ class UserController extends Controller
         $oldCart = Session('Cart') ? Session('Cart') : null;
         $newCart = new Cart($oldCart);
         $newCart->UpdateItemCart($id, $quanty);
-        
+
         $request->Session()->put('Cart',$newCart);
 
         return view('user.page.update.view-cart-update');
@@ -139,6 +144,6 @@ class UserController extends Controller
 
             $request->Session()->put('Cart',$newCart);
         }
-    }   
+    }
 
 }
