@@ -61,7 +61,7 @@
                 <div class="product-info text-left m-t-20">
                   <h3 class="name"><a href="detail.html">{{ $product->name }}</a></h3>
                   <div class="rating rateit-small"></div>
-                  <div class="product-price"> <span class="price">{{ number_format($product->price)}} VNĐ</span> <span class="price-before-discount">800.00 VNĐ</span> </div>
+                  <div class="product-price"> <span class="price"> VNĐ</span> <span class="price-before-discount">800.00 VNĐ</span> </div>
                   <!-- /.product-price --> 
                   
                 </div>
@@ -233,7 +233,7 @@
                           <h3 class="name"><a href="{{route('shopping.viewProduct', $product->id)}}">{{ $product->name }}</a></h3>
                           <div class="rating rateit-small"></div>
                           <div class="description"></div>
-                          <div class="product-price"> <span class="price"> {{ number_format($product->price) }} VNĐ</span> <span class="price-before-discount"> 800 VNĐ</span> 
+                          <div class="product-price"> <span class="price">VNĐ</span> <span class="price-before-discount"> 800 VNĐ</span>
                           </div>
                           <!-- /.product-price -->                          
                         </div>

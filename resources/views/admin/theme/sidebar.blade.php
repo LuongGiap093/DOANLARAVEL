@@ -17,7 +17,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Quản lý tài khoản:</h6>
               <a class="collapse-item" href="{{route('user.index')}}">Tài khoản của tôi</a>
-              
+
           </div>
       </div>
   </li>
@@ -61,7 +61,7 @@
               <a class="collapse-item" href="#">Danh mục nhân sự</a>
               <a class="collapse-item" href="#">Danh sách nhân sự</a>
 
-              
+
           </div>
       </div>
   </li> -->
@@ -75,6 +75,11 @@
           <i class="fas fa-fw fa-folder"></i>
           <span>HÓA ĐƠN</span></a>
   </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('slider.index')}}">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Slider</span></a>
+    </li>
   <hr class="sidebar-divider d-none d-md-block">
   <div class="text-center d-none d-md-inline">
       <button class="rounded-circle border-0" id="sidebarToggle"></button>
