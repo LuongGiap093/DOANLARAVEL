@@ -20,7 +20,7 @@ class CreateSliderTable extends Migration
             $table->string('slider_small_title')->nullable();
             $table->string('slider_big_title')->nullable();
             $table->string('highlight_text')->nullable();
-            $table->string('slider_description')->nullable();
+            $table->longText('slider_description')->nullable();
             $table->string('slider_title_button');
             $table->timestamps();
         });

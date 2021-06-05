@@ -92,6 +92,7 @@
 {{--</body>--}}
 {{--</html>--}}
 
+
         <!DOCTYPE html>
 <html lang="en">
 
@@ -140,12 +141,11 @@
                             {{ csrf_field() }}
                             <div class="form-group mb-3">
                                 <label for="emailaddress">Email Address :</label>
-                                <input class="form-control" type="email" name="txtEmail" id="emailaddress" required="" placeholder="john@deo.com">
+                                <input class="form-control" type="email" name="txtEmail" placeholder="jonh@gmail.com" >
                             </div>
-
                             <div class="form-group mb-3">
                                 <label for="password">Password :</label>
-                                <input class="form-control" type="password" name="txtPassword" required="" id="password" placeholder="Enter your password">
+                                <input class="form-control" type="password" name="txtPassword" placeholder="Enter your password" >
                             </div>
 
                             <div class="form-group mb-4">

@@ -1,6 +1,6 @@
 @extends('admin.product.layout')
 @section('content')
-        <table class="table table-hover">
+        <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
               <thead>
                 <th>Hình ảnh</th>
                 <th>Tên</th>
@@ -24,7 +24,6 @@
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
-
 
                     </form>
                     </td>
