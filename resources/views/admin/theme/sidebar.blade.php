@@ -144,6 +144,13 @@
                         {{--                        <span class="menu-arrow"></span>--}}
                     </a>
                 </li>
+                <li>
+                    <a href="{{route('user.index')}}" class="waves-effect">
+                        <i class="ion-ios-apps"></i>
+                        <span> User </span>
+                        {{--                        <span class="menu-arrow"></span>--}}
+                    </a>
+                </li>
 
 
 {{--                <li>--}}
