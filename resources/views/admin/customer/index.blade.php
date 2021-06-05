@@ -1,6 +1,6 @@
 @extends('admin.customer.layout')
 @section('content')
-<table class="table table-hover">
+<table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
   <thead>
     <th>Tên khách hàng</th>             
     <th>Email</th>             

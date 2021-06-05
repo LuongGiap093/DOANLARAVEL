@@ -1,8 +1,8 @@
 @extends('admin.category.layout')
 @section('content')
-<table class="table table-hover">
+<table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
   <thead>
-    <th></th> 
+
     <th>Name</th> 
     <th>Content</th> 
     <th>View product</th>
@@ -13,7 +13,7 @@
   <tbody>
   @foreach($categorys ?? '' as $category)
       <tr>        
-      <td></td>
+
         <td>{{$category->name}} </td>
         <td>{{$category->content}}</td>
         <td><a href="#" class="btn btn-outline-primary"><i class="fa fa-eye"></i></a></td>

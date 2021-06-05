@@ -7,7 +7,7 @@
         <select name="idcat" class="form-control">
             <option value=''>---Vui lòng chọn danh mục sản phẩm---</option>>
             @foreach ($categorys as $key =>$cat)
-            <option value="{{$cat->id}}">{{($key+1).'. '.$cat->name}}</option>   
+            <option value="{{$cat->id}}">{{($key+1).'. '.$cat->name}}</option>
             @endforeach
         </select>
    </div>
@@ -30,7 +30,7 @@
   <div class="form-group">
     <label for="content">Content:</label>
     <textarea class="form-control" name="content" id="contents"></textarea>
-  
+
   </div>
 
    <button type="submit" name="btn_addproduct"class="btn btn-primary">Thực Hiện</button>

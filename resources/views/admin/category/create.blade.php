@@ -8,10 +8,10 @@
    </div>
   <div class="form-group">
     <label for="content">Content:</label>
-    <textarea class="form-control" id="contents" name="content"></textarea>
- 
+    <textarea class="form-control" name="content"></textarea>
   </div>
    <button type="submit" name="btn_addcategory"class="btn btn-primary">Thực Hiện</button>
  </form>
  </div>
  @stop
+
