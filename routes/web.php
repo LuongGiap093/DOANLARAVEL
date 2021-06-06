@@ -50,7 +50,7 @@ Route::group(['prefix' => 'product', 'namespace' => 'FrontEnd'], function() {
 Route::group(['prefix' => '', 'namespace' => 'user'], function() {
 		Route::get('', 'UserController@index')->name('shopping.index');
 		Route::get('category', 'UserController@category')->name('shopping.category');
-		//Route::get('product', 'UserController@product')->name('shopping.product');
+		Route::get('blog', 'UserController@product')->name('shopping.blog');
 		//Route::get('cartdetail', 'UserController@cartDetail')->name('shopping.cartdetail');
 		Route::get('viewCart', 'UserController@viewCart')->name('shopping.viewCart');
 		Route::get('details/{id}','UserController@viewProduct')->name('shopping.viewProduct');
