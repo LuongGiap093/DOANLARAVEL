@@ -65,6 +65,9 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function() {
 		Route::get('save-ListItemCart/{id}/{quanty}','UserController@saveListItemCart')->name('shopping.save-ListItemCart');
 
 		Route::get('loaisp/{id}','UserController@getsp')->name('shopping.loaisp');
+
+
+
 });
 /*
 GET	    /product	        		index	product.index

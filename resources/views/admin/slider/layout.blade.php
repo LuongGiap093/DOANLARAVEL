@@ -70,7 +70,7 @@
     <link href="{!! asset('admin/assets/css/bootstrap.min.css') !!}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
     <link href="{!! asset('admin/assets/css/icons.min.css') !!}" rel="stylesheet" type="text/css">
     <link href="{!! asset('admin/assets/css/app.min.css') !!}" rel="stylesheet" type="text/css" id="app-stylesheet">
-    <script src="{!! asset('admin/ckeditor/ckeditor.js') !!}"></script>
+    <script src="//cdn.ckeditor.com/4.16.1/full/ckeditor.js"></script>
 
 </head>
 

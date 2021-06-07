@@ -12,17 +12,18 @@ use App\Models\Order_Detail;
 use DB;
 use App\Cart;
 use Session;
-
+use App\Models\Slider;
 class UserController extends Controller
 {
     //
     public function index()
     {
+        $sliders=Slider::all();
         $categorys=Category::all();
         $products = Product::all();
         $productss = Product::all()->sortByDesc("id");
         $results = Product::select('idcat')->orderBy('idcat')->get();
-        return view('user.page.index', compact('products','categorys','productss','results'));
+        return view('user.page.index', compact('products','categorys','productss','results','sliders'));
        //return view('user.page.index');
     }
 
