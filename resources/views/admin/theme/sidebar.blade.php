@@ -151,6 +151,13 @@
                         {{--                        <span class="menu-arrow"></span>--}}
                     </a>
                 </li>
+                <li>
+                    <a href="{{route('blog.index')}}" class="waves-effect">
+                        <i class="ion-ios-apps"></i>
+                        <span>Blog </span>
+                        {{--                        <span class="menu-arrow"></span>--}}
+                    </a>
+                </li>
 
 
 {{--                <li>--}}
