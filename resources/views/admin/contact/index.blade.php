@@ -12,6 +12,11 @@
 {{--        <th>Delete</th>--}}
         </thead>
         <tbody>
+        @if(Session::has('success'))
+            <div class="alert alert-success">
+                {{Session::get('success')}}
+            </div>
+        @endif
         @foreach($contacts as $contact)
             <tr>
                 <td width="5%">{{$contact->contacts_name}} </td>
@@ -19,6 +24,7 @@
                 <td>{{$contact->contacts_title}}</td>
                 <td>{{$contact->contacts_comment}}</td>
                 <td>
+
                     <form action="{{route('contact.destroy', $contact->contacts_id)}}" method="POST">
                         @csrf
                         @method('DELETE')
