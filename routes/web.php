@@ -29,6 +29,7 @@ Route::resource('panel/customer',admin\CustomerController::class);
 Route::resource('panel/order',admin\OrderController::class);
 Route::resource('panel/slider',admin\SliderController::class);
 Route::resource('panel/blog',admin\BlogController::class);
+Route::resource('panel/faq',admin\FaqController::class);
 /* Route::resource('panel/news',admin\CategoryNews::class); */
 
 Route::get('panel/category/productlist/{id}','admin\CategoryController@productlist')->name('category.productlist');
@@ -53,7 +54,9 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function() {
 		Route::get('category', 'UserController@category')->name('shopping.category');
 
 		Route::get('blog', 'BlogController@index')->name('shopping.blog');
-  Route::get('blogdetail/{id}', 'BlogController@blogdetail')->name('blog.detail');
+    Route::get('blogdetail/{id}', 'BlogController@blogdetail')->name('blog.detail');
+
+    Route::get('faq', 'FaqController@index')->name('shopping.faq');
 
 		//Route::get('cartdetail', 'UserController@cartDetail')->name('shopping.cartdetail');
 		Route::get('viewCart', 'UserController@viewCart')->name('shopping.viewCart');
