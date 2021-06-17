@@ -56,6 +56,11 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function() {
 		Route::get('blog', 'BlogController@index')->name('shopping.blog');
     Route::get('blogdetail/{id}', 'BlogController@blogdetail')->name('blog.detail');
 
+     Route::get('contact-form', 'ContactController@showForm')->name('showForm');
+//    Route::get('/contact-form', [ContactController::class, 'showForm']);
+  Route::post('contact-form', 'ContactController@storeForm')->name('contact.save');
+//    Route::post('/contact-form', [ContactController::class, 'storeForm'])->name('contact.save');
+
     Route::get('faq', 'FaqController@index')->name('shopping.faq');
 
 		//Route::get('cartdetail', 'UserController@cartDetail')->name('shopping.cartdetail');

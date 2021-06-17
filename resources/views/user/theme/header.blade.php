@@ -162,8 +162,9 @@
                                 <li class="dropdown hidden-sm"> <a href="{{route('shopping.category')}}">Sản Phẩm<span class="menu-label new-menu hidden-xs">Mới</span> </a> </li>
                                 <li class="dropdown"> <a href="contact.html">Khuyến Mãi</a> </li>
                                 <li class="dropdown"> <a href="{{route('shopping.blog')}}">Tin Tức</a> </li>
-                                <li class="dropdown"> <a href="#">Liên Hệ</a> </li>
+                                <li class="dropdown"> <a href="{{route('showForm')}}">Liên Hệ</a> </li>
                                 <li class="dropdown"> <a href="{{route('shopping.faq')}}">FAQ</a> </li>
+
 
                                 <li class="dropdown  navbar-right special-menu"> <a href="#">Đề nghị hôm nay</a> </li>
                             </ul>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
+
     @include('user.theme.head')
     </head>
     <body class="cnt-home">
@@ -10,17 +11,17 @@
     @include('user.theme.footer')	
     @yield('scripts')
     @include('user.page.scripts.scripts_cart')
-        <script src="{!! asset('frontend\assets\js\jquery-1.11.1.min.js') !!}"></script> 
-        <script src="{!! asset('frontend\assets\js\bootstrap.min.js') !!}"></script> 
-        <script src="{!! asset('frontend\assets\js\bootstrap-hover-dropdown.min.js') !!}"></script> 
-        <script src="{!! asset('frontend\assets\js\owl.carousel.min.js') !!}"></script> 
-        <script src="{!! asset('frontend\assets\js\echo.min.js') !!}"></script> 
-        <script src="{!! asset('frontend\assets\js\jquery.easing-1.3.min.js') !!}"></script> 
-        <script src="{!! asset('frontend\assets\js\bootstrap-slider.min.js') !!}"></script> 
-        <script src="{!! asset('frontend\assets\js\jquery.rateit.min.js') !!}"></script> 
-        <script type="text/javascript" src="{!! asset('frontend\assets\js\lightbox.min.js') !!}"></script> 
-        <script src="{!! asset('frontend\assets\js\bootstrap-select.min.js') !!}"></script> 
-        <script src="{!! asset('frontend\assets\js\wow.min.js') !!}"></script> 
+        <script src="{!! asset('frontend\assets\js\jquery-1.11.1.min.js') !!}"></script>
+        <script src="{!! asset('frontend\assets\js\bootstrap.min.js') !!}"></script>
+        <script src="{!! asset('frontend\assets\js\bootstrap-hover-dropdown.min.js') !!}"></script>
+        <script src="{!! asset('frontend\assets\js\owl.carousel.min.js') !!}"></script>
+        <script src="{!! asset('frontend\assets\js\echo.min.js') !!}"></script>
+        <script src="{!! asset('frontend\assets\js\jquery.easing-1.3.min.js') !!}"></script>
+        <script src="{!! asset('frontend\assets\js\bootstrap-slider.min.js') !!}"></script>
+        <script src="{!! asset('frontend\assets\js\jquery.rateit.min.js') !!}"></script>
+        <script type="text/javascript" src="{!! asset('frontend\assets\js\lightbox.min.js') !!}"></script>
+        <script src="{!! asset('frontend\assets\js\bootstrap-select.min.js') !!}"></script>
+        <script src="{!! asset('frontend\assets\js\wow.min.js') !!}"></script>
         <script src="{!! asset('frontend\assets\js\scripts.js') !!}"></script>
 
         <!-- JavaScript Alertifyjs-->
@@ -39,6 +40,6 @@
     <!-- Go to www.addthis.com/dashboard to customize your tools -->
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-60c621cd3d595993"></script>
 
-
     </body>
+
 </html>
