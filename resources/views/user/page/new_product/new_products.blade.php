@@ -24,8 +24,8 @@
                                     <div class="product-info text-left">
                                         <h3 class="name"><a href="{{route('shopping.viewProduct', $product->id)}}">{{ $product->name }}</a></h3>
                                         <div class="rating rateit-small"></div>
-                                        <div class="description"></div>
-                                        <div class="product-price"> <span class="price"> {{ number_format($product->price) }} VNĐ</span> <span class="price-before-discount"> 800 VNĐ</span>
+                                        <div class="product-discount">Giảm giá: {{ number_format(($product->discount*100)/$product->price) }}%</div>
+                                        <div class="product-price"> <span class="price"> {{ number_format($product->price - $product->discount) }} VNĐ</span> <span class="price-before-discount">{{ number_format($product->price) }}</span>
                                         </div>
                                         <!-- /.product-price -->
                                     </div>

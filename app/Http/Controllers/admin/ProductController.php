@@ -31,7 +31,9 @@ class ProductController extends Controller
     {
         $categorys = Category::all();
         $products = Product::all();
+
         return view($this->viewprefix.'index', compact('products', 'categorys'));
+
     }
 
     public function create()
@@ -40,7 +42,7 @@ class ProductController extends Controller
         return view($this->viewprefix.'create', compact('categorys'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
         $product = new Product;
         $request->validate([
@@ -49,6 +51,8 @@ class ProductController extends Controller
             'price' => 'required',
             'discount' => 'required',
             'content' => 'required',
+            'describe' => 'required',
+            'status' => 'required',
             'idcat' => 'required',
         ]);
         $product->name = $request->name;
@@ -56,6 +60,8 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->discount = $request->discount;
         $product->content = $request->content;
+        $product->describe = $request->describe;
+        $product->status = $request->status;
         $product->idcat = $request->idcat;
 
         if ($product->save()) {
@@ -132,7 +138,9 @@ class ProductController extends Controller
         }
         $product->price = $request->price;
         $product->discount = $request->discount;
-        $product->content = $request->content;
+        $product->content = $request->contents;
+        $product->describe = $request->describe;
+        $product->status = $request->status;
         $product->idcat = $request->idcat;
         // if(Product::create($request->all()))
         if ($product->save()) {

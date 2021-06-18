@@ -151,7 +151,13 @@
                         {{--                        <span class="menu-arrow"></span>--}}
                     </a>
                 </li>
-
+                <li>
+                    <a href="{{route('filemanager.index')}}" class="waves-effect">
+                        <i class="ion-ios-apps"></i>
+                        <span> File manager </span>
+                        {{--                        <span class="menu-arrow"></span>--}}
+                    </a>
+                </li>
 
 {{--                <li>--}}
 {{--                    <a href="javascript: void(0);" class="waves-effect">--}}

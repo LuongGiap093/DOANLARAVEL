@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use app\model\Image;
 
 class Product extends Model
 {
@@ -15,6 +16,8 @@ class Product extends Model
         'price',
         'discount',
         'content',
+        'describe',
+        'status',
         'idcat',
     ];
     protected $primaryKey = 'id';

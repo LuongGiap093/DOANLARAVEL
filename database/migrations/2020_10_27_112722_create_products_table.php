@@ -21,6 +21,8 @@ class CreateProductsTable extends Migration
             $table->string('price');
             $table->string('discount')->nullable();
             $table->text('content')->nullable();
+            $table->text('describe')->nullable();
+            $table->integer('status')->nullable();
             $table->timestamps();
             $table->integer('idcat')->unsigned()->nullable();
             $table->foreign('idcat')->references('id')->on('category');

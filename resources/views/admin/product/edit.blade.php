@@ -8,9 +8,9 @@
         <select name="idcat" class="form-control">
             @foreach ($categorys as $cate)
             <option value="{{$cate->id}}">{{$cate->name}}</option>
-                
+
             @endforeach
-           
+
         </select>
    </div>
     <div class="form-group">
@@ -31,11 +31,22 @@
   </div>
   <div class="form-group">
     <label for="content">Content:</label>
-    <textarea class="form-control" name="content" id="contents">{{$product->content}}</textarea>
-    
+    <textarea class="form-control" name="contents" id="contents">{{$product->content}}</textarea>
   </div>
 
-   <button type="submit" name="btn_editproduct"class="btn btn-primary">Thực Hiện</button>
+    <div class="form-group">
+        <label for="describe">Describe:</label>
+        <textarea class="form-control" name="describe" id="describe">{{$product->describe}}</textarea>
+    </div>
+    <div class="form-group">
+        <label for="status">Status:</label>
+        <select name="status" class="form-control" id="product_status">
+            <option value=''>{{$product->status}}</option>
+
+        </select>
+    </div>
+
+   <button type="submit" name="btn_editor's"class="btn btn-primary">Thực Hiện</button>
  </form>
  </div>
  @stop

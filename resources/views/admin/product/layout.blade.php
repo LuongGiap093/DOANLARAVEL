@@ -215,6 +215,7 @@
 <!-- App js -->
 <script src="{!! asset('admin/assets/js/app.min.js') !!}"></script>
 <script>CKEDITOR.replace('contents')</script>
+<script>CKEDITOR.replace('describe')</script>
 </body>
 
 </html>

@@ -1,11 +1,12 @@
 <section class="section featured-product wow fadeInUp">
     <h3 class="section-title">Featured products</h3>
     <div class="owl-carousel home-owl-carousel custom-carousel owl-theme outer-top-xs">
+        @foreach($products as $product)
         <div class="item item-carousel">
             <div class="products">
                 <div class="product">
                     <div class="product-image">
-                        <div class="image"> <a href="detail.html"><img src="assets\images\products\p5.jpg" alt=""></a> </div>
+                        <div class="image"> <a href="detail.html"><img src="{{asset('images/'. $product->image)}}" alt=""></a> </div>
                         <!-- /.image -->
 
                         <div class="tag hot"><span>hot</span></div>
@@ -13,10 +14,10 @@
                     <!-- /.product-image -->
 
                     <div class="product-info text-left">
-                        <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
+                        <h3 class="name"><a href="detail.html">{{ $product->name }}</a></h3>
                         <div class="rating rateit-small"></div>
                         <div class="description"></div>
-                        <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
+                        <div class="product-price"> <span class="price">{{ number_format($product->price - $product->discount) }} VNĐ</span> <span class="price-before-discount">{{ number_format($product->price) }}</span> </div>
                         <!-- /.product-price -->
 
                     </div>
@@ -41,6 +42,7 @@
             </div>
             <!-- /.products -->
         </div>
+    @endforeach
         <!-- /.item -->
 
         <div class="item item-carousel">

@@ -28,6 +28,7 @@ Route::resource('panel/category',admin\CategoryController::class);
 Route::resource('panel/customer',admin\CustomerController::class);
 Route::resource('panel/order',admin\OrderController::class);
 Route::resource('panel/slider',admin\SliderController::class);
+Route::resource('panel/filemanager',admin\FilemanagerController::class);
 /* Route::resource('panel/news',admin\CategoryNews::class); */
 
 Route::get('panel/category/productlist/{id}','admin\CategoryController@productlist')->name('category.productlist');
