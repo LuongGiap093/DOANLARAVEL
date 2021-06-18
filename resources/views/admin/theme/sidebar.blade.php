@@ -158,6 +158,29 @@
                         {{--                        <span class="menu-arrow"></span>--}}
                     </a>
                 </li>
+                <li>
+                    <a href="{{route('blog.index')}}" class="waves-effect">
+                        <i class="ion-ios-apps"></i>
+                        <span>Blog </span>
+                        {{--                        <span class="menu-arrow"></span>--}}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('faq.index')}}" class="waves-effect">
+                        <i class="ion-ios-apps"></i>
+                        <span>Faq</span>
+                        {{--                        <span class="menu-arrow"></span>--}}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('contact.index')}}" class="waves-effect">
+                        <i class="ion-ios-apps"></i>
+                        <span>Contact</span>
+                        {{--                        <span class="menu-arrow"></span>--}}
+                    </a>
+                </li>
+
+
 
 {{--                <li>--}}
 {{--                    <a href="javascript: void(0);" class="waves-effect">--}}

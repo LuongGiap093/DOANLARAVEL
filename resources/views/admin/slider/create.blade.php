@@ -24,7 +24,7 @@
         </div>
     <div class="form-group">
         <label for="slider_description">Mô tả:</label>
-        <textarea class="form-control" id="contents" name="slider_description"></textarea>
+        <textarea class="form-control" id="contents"  name="slider_description"></textarea>
         <script>CKEDITOR.replace('contents');</script>
     </div>
    <button type="submit" name="btn_addslider"class="btn btn-primary">Thực Hiện</button>
