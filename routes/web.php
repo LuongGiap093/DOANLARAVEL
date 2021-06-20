@@ -16,13 +16,14 @@ Route::group(['middleware' => 'CheckAdminLogin','prefix' => 'panel'], function()
 Route::group(['middleware' => 'CheckAdminLogin','prefix' => 'panel/user', 'namespace' => 'admin'], function() {
 	Route::get('/', 'UserController@index')->name('user.index');
 	Route::get('index','UserController@index')->name('user.index');
+  Route::get('profile','UserController@profile')->name('user.profile');
 	Route::get('add','UserController@getadd')->name('user.getadd');
 	Route::post('add','UserController@postadd')->name('user.postadd');
 	Route::get('edit/{id}','UserController@getedit')->name('user.getedit');
 	Route::post('edit/{id}','UserController@postedit')->name('user.postedit');
 	Route::get('delete/{id}','UserController@delete')->name('user.delete');
+  Route::get('changestatus/{id}','UserController@changestatus')->name('user.changestatus');
 });
-
 Route::resource('panel/product',admin\ProductController::class);
 Route::resource('panel/category',admin\CategoryController::class);
 Route::resource('panel/customer',admin\CustomerController::class);

@@ -66,7 +66,7 @@
     <link href="{!! asset('admin/assets/css/bootstrap.min.css') !!}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
     <link href="{!! asset('admin/assets/css/icons.min.css') !!}" rel="stylesheet" type="text/css">
     <link href="{!! asset('admin/assets/css/app.min.css') !!}" rel="stylesheet" type="text/css" id="app-stylesheet">
-    <script src="{!! asset('admin/ckeditor/ckeditor.js') !!}"></script>
+    <script src="//cdn.ckeditor.com/4.16.1/full/ckeditor.js"></script>
 
 </head>
 
@@ -149,7 +149,7 @@
                 <strong>Customize </strong> the overall color scheme, layout, etc.
             </div>
             <div class="mb-2">
-                <img src="assets/images/layouts/light.png" class="img-fluid img-thumbnail" alt="">
+                <img src="{!! asset('admin/assets/images/layouts/light.png') !!}" class="img-fluid img-thumbnail" alt="">
             </div>
             <div class="custom-control custom-switch mb-3">
                 <input type="checkbox" class="custom-control-input theme-choice" id="light-mode-switch" checked="">
@@ -157,19 +157,11 @@
             </div>
 
             <div class="mb-2">
-                <img src="assets/images/layouts/dark.png" class="img-fluid img-thumbnail" alt="">
+                <img src="{!! asset('admin/assets/images/layouts/dark.png') !!}" class="img-fluid img-thumbnail" alt="">
             </div>
             <div class="custom-control custom-switch mb-3">
-                <input type="checkbox" class="custom-control-input theme-choice" id="dark-mode-switch" data-bsstyle="assets/css/bootstrap-dark.min.css" data-appstyle="assets/css/app-dark.min.css">
+                <input type="checkbox" class="custom-control-input theme-choice" id="dark-mode-switch" data-bsstyle="{!!asset(' admin/assets/css/bootstrap-dark.min.css') !!}" data-appstyle="{!! asset('admin/assets/css/app-dark.min.css') !!}">
                 <label class="custom-control-label" for="dark-mode-switch">Dark Mode</label>
-            </div>
-
-            <div class="mb-2">
-                <img src="assets/images/layouts/rtl.png" class="img-fluid img-thumbnail" alt="">
-            </div>
-            <div class="custom-control custom-switch mb-5">
-                <input type="checkbox" class="custom-control-input theme-choice" id="rtl-mode-switch" data-appstyle="assets/css/app-rtl.min.css">
-                <label class="custom-control-label" for="rtl-mode-switch">RTL Mode</label>
             </div>
 
         </div>

@@ -356,9 +356,9 @@
 
         <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                <img src="{!! asset('admin/assets/images/users/avatar-1.jpg') !!}" alt="user-image" class="rounded-circle">
+                <img src="{{asset('images/'. Auth::User()->image)}}" alt="user-image" class="rounded-circle">
                 <span class="pro-user-name ml-1">
-                                Thompson   <i class="mdi mdi-chevron-down"></i>
+                                {{Auth::User()->name}} <i class="mdi mdi-chevron-down"></i>
                             </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -368,7 +368,7 @@
                 </div>
 
                 <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                <a href="{{ route('user.profile') }}" class="dropdown-item notify-item">
                     <i class="mdi mdi-account-outline"></i>
                     <span>Profile</span>
                 </a>
@@ -396,12 +396,11 @@
             </div>
         </li>
 
-        <li class="dropdown notification-list">
-            <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect">
-                <i class="mdi mdi-settings-outline noti-icon"></i>
-            </a>
-        </li>
-
+{{--        <li class="dropdown notification-list">--}}
+{{--            <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect">--}}
+{{--                <i class="mdi mdi-settings-outline noti-icon"></i>--}}
+{{--            </a>--}}
+{{--        </li>--}}
 
     </ul>
 

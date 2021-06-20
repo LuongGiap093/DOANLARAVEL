@@ -141,11 +141,11 @@
                             {{ csrf_field() }}
                             <div class="form-group mb-3">
                                 <label for="emailaddress">Email Address :</label>
-                                <input class="form-control" type="email" name="txtEmail" placeholder="jonh@gmail.com" >
+                                <input class="form-control" type="email" name="email" placeholder="jonh@gmail.com" >
                             </div>
                             <div class="form-group mb-3">
                                 <label for="password">Password :</label>
-                                <input class="form-control" type="password" name="txtPassword" placeholder="Enter your password" >
+                                <input class="form-control" type="password" name="password" placeholder="Enter your password" >
                             </div>
 
                             <div class="form-group mb-4">
