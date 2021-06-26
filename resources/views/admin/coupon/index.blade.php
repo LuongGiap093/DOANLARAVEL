@@ -1,28 +1,23 @@
-@extends('admin.slider.layout')
+@extends('admin.coupon.layout')
 @section('content')
-    <table id="datatable" class="table table-bordered dt-responsive nowrap"
-           style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+    <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
         <thead>
-        <th>Hình ảnh</th>
-        <th>Tiêu đề nhỏ</th>
-        <th>Tiêu đề lớn</th>
-        <th>Highlight</th>
-        <th>Tiêu đề button</th>
-        <th>Mô tả</th>
+        <th>Tên Voucher</th>
+        <th>Mã Voucher</th>
+        <th>Giá trị</th>
+        <th>Số lượng</th>
         <th>Option</th>
         {{--        <th>Edit</th>--}}
         {{--        <th>Lock</th>--}}
         {{--        <th>Delete</th>--}}
         </thead>
         <tbody>
-        @foreach($sliders as $slider)
+        @foreach($coupons as $coupon)
             <tr>
-                <td width="5%"><img src="{{asset('images/'. $slider->image)}}" width="100px" height="70px"/></td>
-                <td width="5%">{{$slider->slider_small_title}} </td>
-                <td>{{$slider->slider_big_title}}</td>
-                <td>{{$slider->highlight_text}}</td>
-                <td>{{$slider->slider_title_button}}</td>
-                <td>{{$slider->slider_description}}</td>
+                <td width="5%">{{$coupon->coupon_name}} </td>
+                <td>{{$coupon->coupon_code}}</td>
+                <td>{{number_format($coupon->coupon_money)}}</td>
+                <td>{{$coupon->coupon_qty}}</td>
                 {{--                <td><a href="#" class="btn btn-outline-primary"><i class="fa fa-eye"></i></a>--}}
                 {{--                    <a href="{{route('slider.edit', $slider->slider_id)}}" class="btn btn-primary"><i--}}
                 {{--                                class="fa fa-edit"></i></a>--}}
@@ -31,18 +26,18 @@
                 {{--                <td><a href="{{route('slider.edit', $slider->slider_id)}}" class="btn btn-primary"><i--}}
                 {{--                                class="fa fa-edit"></i></a></td>--}}
                 {{--                <td><a href="" class="btn btn-warning"><i class="fa fa-lock"></i></a></td>--}}
+
                 <td>
-                    <form action="{{route('slider.destroy', $slider->slider_id)}}" method="POST">
+                    <form action="{{route('coupon.destroy', $coupon->coupon_id)}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                         <a href="#" class="btn btn-outline-primary"><i class="fa fa-eye"></i></a>
-                        <a href="{{route('slider.edit', $slider->slider_id)}}" class="btn btn-primary"><i
+                        <a href="{{route('coupon.edit', $coupon->coupon_id)}}" class="btn btn-primary"><i
                                 class="fa fa-edit"></i></a>
                         <a href="" class="btn btn-warning"><i class="fa fa-lock"></i></a>
                     </form>
                 </td>
-
             </tr>
         @endforeach
         </tbody>

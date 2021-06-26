@@ -1,49 +1,51 @@
 @extends('user.theme.layout')
 @section('content')
+    <div class="breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-inner">
+                <ul class="list-inline list-unstyled">
+                    <li><a href="home.html">Home</a></li>
+                    <li class='active'>Coupon</li>
+                </ul>
+            </div><!-- /.breadcrumb-inner -->
+        </div><!-- /.container -->
+    </div><!-- /.breadcrumb -->
+
     <div class="body-content">
         <div class="container">
-            <div class="checkout-box faq-page">
+            <div class="my-wishlist-page">
                 <div class="row">
-                    <div class="col-md-12">
-                        <h2 class="heading-title">Câu hỏi thường gặp</h2>
-                        <span class="title-tag">Cập nhật lần cuối on November 02, 2014</span>
-                        <div class="panel-group checkout-steps" id="accordion">
-                            <!-- checkout-step-01  -->
-                            @foreach($faqs as $faq)
-                                <div class="panel panel-default checkout-step-01">
-                                    <!-- panel-heading -->
-                                    <div class="panel-heading">
-                                        <h4 class="unicase-checkout-title">
-                                            <a data-toggle="collapse" class="" data-parent="#accordion"
-                                               href="#{{$faq->faq_id}}">
-                                                <span>{{ $faq->faq_serial }}</span> {!! $faq->faq_title !!}
-                                            </a>
-                                        </h4>
-                                    </div>
-                                    <!-- panel-heading -->
-                                    <div id="{{$faq->faq_id}}" class="panel-collapse collapse in">
-                                        <!-- panel-body  -->
-                                        <div class="panel-body">
-                                            {!! $faq->faq_description !!}
-                                        </div>
-                                        <!-- panel-body  -->
-                                    </div><!-- row -->
-                                </div>
-
-                        @endforeach
-                        <!-- checkout-step-01  -->
-                            <!-- checkout-step-02  -->
-
-                            <!-- checkout-step-02  -->
-
-                            <!-- checkout-step-03  -->
-
-                            <!-- checkout-step-09  -->
-
-                        </div><!-- /.checkout-steps -->
+                    <div class="col-md-12 my-wishlist">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th colspan="4" class="heading-title">Voucher Hôm Nay</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($coupons as $coupon)
+                                <tr>
+                                    <td class="col-md-2"><img src="{!! asset('frontend\assets\images\products\voucher.jpg')!!}" alt="imga"></td>
+                                    <td class="col-md-4">
+                                        <div class="product-name"><a href="#">{{$coupon->coupon_name}}</a></div>
+                                        <div class="price">Giảm: {{number_format($coupon->coupon_money)}} VNĐ</div>
+                                        <div class="coupon_qty" style="margin-top: 10px; font-weight: bolder; color: red;">Số lượng: {{($coupon->coupon_qty)}}</div>
+                                    </td>
+                                    <td class="col-md-4">
+                                        <input type="text" class="form-control" name="contacts_name" id="name" required="" value="{{$coupon->coupon_code}}">
+                                    </td>
+                                    <td class="col-md-2">
+                                        <a href="#" class="btn-upper btn btn-primary">Sao chép mã</a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div><!-- /.row -->
-            </div><!-- /.checkout-box -->
+            </div><!-- /.sigin-in-->
             <!-- ============================================== BRANDS CAROUSEL ============================================== -->
             <div id="brands-carousel" class="logo-slider wow fadeInUp">
 

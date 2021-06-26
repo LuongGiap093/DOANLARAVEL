@@ -18,29 +18,38 @@
                     <div class="col-md-9">
 
                         <div class="blog-post  wow fadeInUp">
-                            <a href="{{route('blog.detail',$firsts->blog_id)}}"><img class="img-responsive" src="{!!asset('images/'. $firsts->image) !!}" alt=""></a>
+                            <a href="{{route('blog.detail',$firsts->blog_id)}}"><img class="img-responsive"
+                                                                                     src="{!!asset('images/'. $firsts->image) !!}"
+                                                                                     alt=""></a>
                             <h1><a href="{{route('blog.detail',$firsts->blog_id)}}">{!! $firsts->blog_title !!}</a></h1>
                             <span class="author">{{$firsts->blog_author}}</span>
                             <span class="review">6 Comments</span>
                             <span class="date-time">{{$firsts->blog_time}}</span>
-{{--                            <p>{!!str_split($blog->blog_description,10)!!}</p>--}}
+                            {{--                            <p>{!!str_split($blog->blog_description,10)!!}</p>--}}
                             <p>{!! \Illuminate\Support\Str::limit($firsts->blog_description,1000,$end="...") !!}</p>
-                            <a href="{{route('blog.detail',$firsts->blog_id)}}" class="btn btn-upper btn-primary read-more">read more</a>
+                            <a href="{{route('blog.detail',$firsts->blog_id)}}"
+                               class="btn btn-upper btn-primary read-more">read more</a>
                         </div>
                         @foreach($collections as $collect)
                             <div class="blog-post outer-top-bd  wow fadeInUp">
-                                <a href="{{route('blog.detail',$collect->blog_id)}}"><img class="img-responsive" src="{!!asset('images/'. $collect->image) !!}" alt=""></a>
-                                <h1><a href="{{route('blog.detail',$collect->blog_id)}}">{!! $collect->blog_title !!}</a></h1>
+                                <a href="{{route('blog.detail',$collect->blog_id)}}"><img class="img-responsive"
+                                                                                          src="{!!asset('images/'. $collect->image) !!}"
+                                                                                          alt=""></a>
+                                <h1>
+                                    <a href="{{route('blog.detail',$collect->blog_id)}}">{!! $collect->blog_title !!}</a>
+                                </h1>
                                 <span class="author">{{$collect->blog_author}}</span>
                                 <span class="review">6 Comments</span>
                                 <span class="date-time">{{$collect->blog_time}}</span>
                                 {{--                            <p>{!!str_split($blog->blog_description,10)!!}</p>--}}
                                 <p>{!! \Illuminate\Support\Str::limit($collect->blog_description,1000,$end="...") !!}</p>
-                                <a href="{{route('blog.detail',$collect->blog_id)}}" class="btn btn-upper btn-primary read-more">read more</a>
+                                <a href="{{route('blog.detail',$collect->blog_id)}}"
+                                   class="btn btn-upper btn-primary read-more">read more</a>
                             </div>
                         @endforeach
 
-                        <div class="clearfix blog-pagination filters-container  wow fadeInUp" style="padding:0px; background:none; box-shadow:none; margin-top:15px; border:none">
+                        <div class="clearfix blog-pagination filters-container  wow fadeInUp"
+                             style="padding:0px; background:none; box-shadow:none; margin-top:15px; border:none">
                             <div class="text-right">
                                 <div class="pagination-container">
                                     <ul class="list-inline list-unstyled">
@@ -56,7 +65,6 @@
                         </div><!-- /.filters-container -->
                     </div>
                     <div class="col-md-3 sidebar">
-
 
 
                         <div class="sidebar-module-container">
@@ -79,7 +87,8 @@
                                     <div class="accordion">
                                         <div class="accordion-group">
                                             <div class="accordion-heading">
-                                                <a href="#collapseOne" data-toggle="collapse" class="accordion-toggle collapsed">
+                                                <a href="#collapseOne" data-toggle="collapse"
+                                                   class="accordion-toggle collapsed">
                                                     Camera
                                                 </a>
                                             </div><!-- /.accordion-heading -->
@@ -97,7 +106,8 @@
 
                                         <div class="accordion-group">
                                             <div class="accordion-heading">
-                                                <a href="#collapseTwo" data-toggle="collapse" class="accordion-toggle collapsed">
+                                                <a href="#collapseTwo" data-toggle="collapse"
+                                                   class="accordion-toggle collapsed">
                                                     Desktops
                                                 </a>
                                             </div><!-- /.accordion-heading -->
@@ -115,11 +125,13 @@
 
                                         <div class="accordion-group">
                                             <div class="accordion-heading">
-                                                <a href="#collapseThree" data-toggle="collapse" class="accordion-toggle collapsed">
+                                                <a href="#collapseThree" data-toggle="collapse"
+                                                   class="accordion-toggle collapsed">
                                                     Pants
                                                 </a>
                                             </div><!-- /.accordion-heading -->
-                                            <div class="accordion-body collapse" id="collapseThree" style="height: 0px;">
+                                            <div class="accordion-body collapse" id="collapseThree"
+                                                 style="height: 0px;">
                                                 <div class="accordion-inner">
                                                     <ul>
                                                         <li><a href="#">gaming</a></li>
@@ -133,7 +145,8 @@
 
                                         <div class="accordion-group">
                                             <div class="accordion-heading">
-                                                <a href="#collapseFour" data-toggle="collapse" class="accordion-toggle collapsed">
+                                                <a href="#collapseFour" data-toggle="collapse"
+                                                   class="accordion-toggle collapsed">
                                                     Bags
                                                 </a>
                                             </div><!-- /.accordion-heading -->
@@ -151,7 +164,8 @@
 
                                         <div class="accordion-group">
                                             <div class="accordion-heading">
-                                                <a href="#collapseFive" data-toggle="collapse" class="accordion-toggle collapsed">
+                                                <a href="#collapseFive" data-toggle="collapse"
+                                                   class="accordion-toggle collapsed">
                                                     Hats
                                                 </a>
                                             </div><!-- /.accordion-heading -->
@@ -169,7 +183,8 @@
 
                                         <div class="accordion-group">
                                             <div class="accordion-heading">
-                                                <a href="#collapseSix" data-toggle="collapse" class="accordion-toggle collapsed">
+                                                <a href="#collapseSix" data-toggle="collapse"
+                                                   class="accordion-toggle collapsed">
                                                     Accessories
                                                 </a>
                                             </div><!-- /.accordion-heading -->
@@ -188,7 +203,8 @@
                                     </div><!-- /.accordion -->
                                 </div><!-- /.sidebar-widget-body -->
                             </div><!-- /.sidebar-widget -->
-                            <!-- ============================================== CATEGORY : END ============================================== -->						<div class="sidebar-widget outer-bottom-xs wow fadeInUp">
+                            <!-- ============================================== CATEGORY : END ============================================== -->
+                            <div class="sidebar-widget outer-bottom-xs wow fadeInUp">
                                 <h3 class="section-title">tab widget</h3>
                                 <ul class="nav nav-tabs">
                                     <li class="active"><a href="#popular" data-toggle="tab">popular post</a></li>
@@ -197,7 +213,8 @@
                                 <div class="tab-content" style="padding-left:0">
                                     <div class="tab-pane active m-t-20" id="popular">
                                         <div class="blog-post inner-bottom-30 ">
-                                            <img class="img-responsive" src="assets\images\blog-post\blog_big_01.jpg" alt="">
+                                            <img class="img-responsive" src="assets\images\blog-post\blog_big_01.jpg"
+                                                 alt="">
                                             <h4><a href="blog-details.html">Simple Blog Post</a></h4>
                                             <span class="review">6 Comments</span>
                                             <span class="date-time">12/06/16</span>
@@ -205,7 +222,8 @@
 
                                         </div>
                                         <div class="blog-post">
-                                            <img class="img-responsive" src="assets\images\blog-post\blog_big_02.jpg" alt="">
+                                            <img class="img-responsive" src="assets\images\blog-post\blog_big_02.jpg"
+                                                 alt="">
                                             <h4><a href="blog-details.html">Simple Blog Post</a></h4>
                                             <span class="review">6 Comments</span>
                                             <span class="date-time">23/06/16</span>
@@ -216,7 +234,8 @@
 
                                     <div class="tab-pane m-t-20" id="recent">
                                         <div class="blog-post inner-bottom-30">
-                                            <img class="img-responsive" src="assets\images\blog-post\blog_big_03.jpg" alt="">
+                                            <img class="img-responsive" src="assets\images\blog-post\blog_big_03.jpg"
+                                                 alt="">
                                             <h4><a href="blog-details.html">Simple Blog Post</a></h4>
                                             <span class="review">6 Comments</span>
                                             <span class="date-time">5/06/16</span>
@@ -224,7 +243,8 @@
 
                                         </div>
                                         <div class="blog-post">
-                                            <img class="img-responsive" src="assets\images\blog-post\blog_big_01.jpg" alt="">
+                                            <img class="img-responsive" src="assets\images\blog-post\blog_big_01.jpg"
+                                                 alt="">
                                             <h4><a href="blog-details.html">Simple Blog Post</a></h4>
                                             <span class="review">6 Comments</span>
                                             <span class="date-time">10/07/16</span>
@@ -251,7 +271,8 @@
                                     </div><!-- /.tag-list -->
                                 </div><!-- /.sidebar-widget-body -->
                             </div><!-- /.sidebar-widget -->
-                            <!-- ============================================== PRODUCT TAGS : END ============================================== -->					</div>
+                            <!-- ============================================== PRODUCT TAGS : END ============================================== -->
+                        </div>
                     </div>
                 </div>
             </div>

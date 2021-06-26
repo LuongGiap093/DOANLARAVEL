@@ -1,6 +1,6 @@
-@extends('admin.slider.layout')
+@extends('admin.coupon.layout')
 @section('content')
-    <form action="{{route('slider.update', $slider->slider_id)}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('coupon.update', $coupon->coupon_id)}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -29,30 +29,32 @@
         {{--  </div>--}}
 
         <div class="form-group">
-            <label for="image">Hình ảnh:</label>
-            <input type="file" class="form-control" name="image" value="{{$slider->image}}"/>
+            <label for="coupon_name">Tên Voucher:</label>
+            <input type="text" class="form-control" name="coupon_name" value="{{$coupon->coupon_name}}">
         </div>
         <div class="form-group">
-            <label for="slider_small_title">Tiêu đề nhỏ:</label>
-            <input type="text" class="form-control" name="slider_small_title" value="{{$slider->slider_small_title}}">
+            <label for="coupon_code">Mã Voucher:</label>
+            <input type="text" class="form-control" name="coupon_code"value="{{$coupon->coupon_code}}">
         </div>
         <div class="form-group">
-            <label for="slider_big_title">Tiêu đề lớn</label>
-            <input type="text" class="form-control" name="slider_big_title" value="{{$slider->slider_big_title}}">
+            <label for="coupon_money">Giá trị:</label>
+            <input type="text" class="form-control" name="coupon_money"value="{{$coupon->coupon_money}}">
         </div>
         <div class="form-group">
-            <label for="highlight_text">Highlight</label>
-            <input type="text" class="form-control" name="highlight_text" value="{{$slider->highlight_text}}">
+            <label for="coupon_qty">Số lượng:</label>
+            <input type="text" class="form-control" name="coupon_qty"value="{{$coupon->coupon_qty}}">
         </div>
         <div class="form-group">
-            <label for="slider_title_button">Tiêu đề button</label>
-            <input type="text" class="form-control" name="slider_title_button" value="{{$slider->slider_title_button}}">
-        </div>
-        <div class="form-group">
-            <label for="slider_description">Mô tả:</label>
-            <textarea class="form-control" id="contents"
-                      name="slider_description">{{$slider->slider_description}}</textarea>
-            <script>CKEDITOR.replace('contents');</script>
+            <label for="status">Trạng thái:</label>
+            <select name="status" class="form-control" id="status">
+                @if($coupon->status==1)
+                    <option value="1">true</option>
+                    <option value="0">flase</option>
+                @else
+                    <option value="0">flase</option>
+                    <option value="1">true</option>
+                @endif
+            </select>
         </div>
 
 

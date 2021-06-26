@@ -4,12 +4,16 @@ class Cart{
     public $products = null;
     public $totalPrice = 0;
     public $totalQuanty = 0;
-    
+    public $coupons=null;
+    public $couponPrice=0;
+
     public function __construct($cart){
         if($cart){
             $this->products = $cart->products;
             $this->totalPrice = $cart->totalPrice;
             $this->totalQuanty = $cart->totalQuanty;
+            $this->coupons=$cart->coupons;
+            $this->couponPrice=$cart->couponPrice;
         }
     }
 
@@ -21,9 +25,9 @@ class Cart{
             }
         }
         $newProduct['quanty']++;
-        $newProduct['price'] = $newProduct['quanty'] * $product->price;
+        $newProduct['price'] = $newProduct['quanty'] * ($product->price-$product->discount);
         $this->products[$id] = $newProduct;
-        $this->totalPrice += $product->price;
+        $this->totalPrice += ($product->price-$product->discount);
         $this->totalQuanty++;
     }
 
@@ -36,9 +40,9 @@ class Cart{
     public function UpdateItemCart($id ,$quanty){
         $this->totalQuanty -= $this->products[$id]['quanty'];
         $this->totalPrice -= $this->products[$id]['price'];
-        
+
         $this->products[$id]['quanty'] = $quanty;
-        $this->products[$id]['price'] = $quanty * $this->products[$id]['productInfo']->price;
+        $this->products[$id]['price'] = $quanty * ($this->products[$id]['productInfo']->price - $this->products[$id]['productInfo']->discount);
 
         $this->totalQuanty += $this->products[$id]['quanty'];
         $this->totalPrice += $this->products[$id]['price'];

@@ -13,7 +13,10 @@
     <div class="container">
         <div class="contact-page">
             <div class="row">
-                <div style="width: 100%"><iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=400&amp;hl=en&amp;q=10.7715174,106.70159678893364+(Flipmart)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://www.maps.ie/draw-radius-circle-map/"></a></div>
+                <div style="width: 100%">
+                    <iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                            src="https://maps.google.com/maps?width=100%25&amp;height=400&amp;hl=en&amp;q=10.7715174,106.70159678893364+(Flipmart)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+                    <a href="https://www.maps.ie/draw-radius-circle-map/"></a></div>
 
 
                 <div class="col-md-9 contact-form">
@@ -22,16 +25,17 @@
                             {{Session::get('success')}}
                         </div>
                     @endif
-                        <h5 style="color: red; font-weight: bold">Contact Form</h5>
-{{--                    <div class="col-md-12 contact-title">--}}
-{{--                       --}}
-{{--                    --}}
-{{--                    </div>--}}
-                    <form  method="post" action="{{ route('contact.save') }}">
+                    <h5 style="color: red; font-weight: bold">Contact Form</h5>
+                    {{--                    <div class="col-md-12 contact-title">--}}
+                    {{--                       --}}
+                    {{--                    --}}
+                    {{--                    </div>--}}
+                    <form method="post" action="{{ route('contact.save') }}">
                         @csrf
                         <div class="form-group">
                             <label>Tên<span>*</span></label>
-                            <input type="text" class="form-control" name="contacts_name" id="name" required="" placeholder="Tên của bạn">
+                            <input type="text" class="form-control" name="contacts_name" id="name" required=""
+                                   placeholder="Tên của bạn">
                             <!-- Show error -->
                             @if ($errors->has('contacts_name'))
                                 <div class="alert alert-danger">
@@ -42,7 +46,8 @@
 
                         <div class="form-group">
                             <label>Email<span>*</span></label>
-                            <input type="email" class="form-control" name="contacts_email" id="email" required="" placeholder="example@gmail.com">
+                            <input type="email" class="form-control" name="contacts_email" id="email" required=""
+                                   placeholder="example@gmail.com">
                             <!-- Show error -->
                             @if ($errors->has('contacts_email'))
                                 <div class="alert alert-danger">
@@ -53,7 +58,8 @@
 
                         <div class="form-group">
                             <label>Tiêu đề<span>*</span></label>
-                            <input type="text" class="form-control" name="contacts_title" id="phone" placeholder="Nhập tiêu đề">
+                            <input type="text" class="form-control" name="contacts_title" id="phone"
+                                   placeholder="Nhập tiêu đề">
                             <!-- Show error -->
                             @if ($errors->has('contacts_title'))
                                 <div class="alert alert-danger">
@@ -92,7 +98,8 @@
                         <span class="contact-i"><i class="fa fa-envelope"></i></span>
                         <span class="contact-span"><a href="#">flipmart@themesground.com</a></span>
                     </div>
-                </div>			</div><!-- /.contact-page -->
+                </div>
+            </div><!-- /.contact-page -->
         </div><!-- /.row -->
         <!-- ============================================== BRANDS CAROUSEL ============================================== -->
         <div id="brands-carousel" class="logo-slider wow fadeInUp">
@@ -162,5 +169,6 @@
             </div><!-- /.logo-slider-inner -->
 
         </div><!-- /.logo-slider -->
-        <!-- ============================================== BRANDS CAROUSEL : END ============================================== -->	</div><!-- /.container -->
+        <!-- ============================================== BRANDS CAROUSEL : END ============================================== -->
+    </div><!-- /.container -->
 @stop
