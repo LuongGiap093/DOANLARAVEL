@@ -55,17 +55,17 @@ Route::group(['prefix' => 'product', 'namespace' => 'FrontEnd'], function() {
 Route::group(['prefix' => '', 'namespace' => 'user'], function() {
 		Route::get('', 'UserController@index')->name('shopping.index');
 		Route::get('category', 'UserController@category')->name('shopping.category');
-
+//
 		Route::get('blog', 'BlogController@index')->name('shopping.blog');
     Route::get('blogdetail/{id}', 'BlogController@blogdetail')->name('blog.detail');
-
+//
      Route::get('contact-form', 'ContactController@showForm')->name('showForm');
 //    Route::get('/contact-form', [ContactController::class, 'showForm']);
-  Route::post('contact-form', 'ContactController@storeForm')->name('contact.save');
+    Route::post('contact-form', 'ContactController@storeForm')->name('contact.save');
 //    Route::post('/contact-form', [ContactController::class, 'storeForm'])->name('contact.save');
-
     Route::get('faq', 'FaqController@index')->name('shopping.faq');
-
+//
+    Route::get('login', 'LoginCustomerController@index')->name('shopping.login');
 		//Route::get('cartdetail', 'UserController@cartDetail')->name('shopping.cartdetail');
 		Route::get('viewCart', 'UserController@viewCart')->name('shopping.viewCart');
 		Route::get('details/{id}','UserController@viewProduct')->name('shopping.viewProduct');

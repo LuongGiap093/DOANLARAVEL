@@ -13,12 +13,10 @@ use Illuminate\Http\Request;
 use Session;
 use Illuminate\Support\Collection;
 
-class FaqController extends Controller {
-
+class LoginCustomerController extends Controller {
 
   public function index() {
-      $faqs=Faq::all();
-      return view('user.page.faq',compact('faqs'));
+      return view('user.page.loginCustomer');
   }
 
 }
