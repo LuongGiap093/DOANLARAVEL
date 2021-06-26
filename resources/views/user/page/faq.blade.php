@@ -10,27 +10,28 @@
                         <div class="panel-group checkout-steps" id="accordion">
                             <!-- checkout-step-01  -->
                             @foreach($faqs as $faq)
-                            <div class="panel panel-default checkout-step-01">
-                                <!-- panel-heading -->
-                                <div class="panel-heading">
-                                    <h4 class="unicase-checkout-title">
-                                        <a data-toggle="collapse" class="" data-parent="#accordion" href="#{{$faq->faq_id}}">
-                                            <span>{{ $faq->faq_serial }}</span> {!! $faq->faq_title !!}
-                                        </a>
-                                    </h4>
-                                </div>
-                                <!-- panel-heading -->
-                                <div id="{{$faq->faq_id}}" class="panel-collapse collapse in">
-                                    <!-- panel-body  -->
-                                    <div class="panel-body">
-                                                {!! $faq->faq_description !!}
+                                <div class="panel panel-default checkout-step-01">
+                                    <!-- panel-heading -->
+                                    <div class="panel-heading">
+                                        <h4 class="unicase-checkout-title">
+                                            <a data-toggle="collapse" class="" data-parent="#accordion"
+                                               href="#{{$faq->faq_id}}">
+                                                <span>{{ $faq->faq_serial }}</span> {!! $faq->faq_title !!}
+                                            </a>
+                                        </h4>
                                     </div>
-                                    <!-- panel-body  -->
-                                </div><!-- row -->
-                            </div>
+                                    <!-- panel-heading -->
+                                    <div id="{{$faq->faq_id}}" class="panel-collapse collapse in">
+                                        <!-- panel-body  -->
+                                        <div class="panel-body">
+                                            {!! $faq->faq_description !!}
+                                        </div>
+                                        <!-- panel-body  -->
+                                    </div><!-- row -->
+                                </div>
 
-                            @endforeach
-                            <!-- checkout-step-01  -->
+                        @endforeach
+                        <!-- checkout-step-01  -->
                             <!-- checkout-step-02  -->
 
                             <!-- checkout-step-02  -->
@@ -111,6 +112,7 @@
                 </div><!-- /.logo-slider-inner -->
 
             </div><!-- /.logo-slider -->
-            <!-- ============================================== BRANDS CAROUSEL : END ============================================== -->	</div><!-- /.container -->
+            <!-- ============================================== BRANDS CAROUSEL : END ============================================== -->
+        </div><!-- /.container -->
     </div><!-- /.body-content -->
 @stop

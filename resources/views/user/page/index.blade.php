@@ -8,35 +8,35 @@
                 <div class="col-xs-12 col-sm-12 col-md-3 sidebar">
 
                     <!-- ================================== CATEGORYS MENU ================================== -->
-                   @include('user.page.menu_danh_muc.categorys_menu')
-                    <!-- /.side-menu -->
+                @include('user.page.menu_danh_muc.categorys_menu')
+                <!-- /.side-menu -->
                     <!-- ================================== CATEGORYS MENU : END ================================== -->
 
                     <!-- ============================================== HOT DEALS ============================================== -->
-                    @include('user.page.hot_deals.hotdeals')
-                    <!-- ============================================== HOT DEALS: END ============================================== -->
+                @include('user.page.hot_deals.hotdeals')
+                <!-- ============================================== HOT DEALS: END ============================================== -->
 
                     <!-- ============================================== SPECIAL OFFER ============================================== -->
-                    @include('user.page.special_offer.special_offer')
-                    <!-- ============================================== SPECIAL OFFER : END ============================================== -->
+                @include('user.page.special_offer.special_offer')
+                <!-- ============================================== SPECIAL OFFER : END ============================================== -->
 
                     <!-- ============================================== PRODUCT TAGS ============================================== -->
-                    @include('user.page.product_tag.product_tags')
-                    <!-- ============================================== PRODUCT TAGS : END ============================================== -->
+                @include('user.page.product_tag.product_tags')
+                <!-- ============================================== PRODUCT TAGS : END ============================================== -->
 
                     <!-- ============================================== SPECIAL DEALS ============================================== -->
-                    @include('user.page.special_deals.special_deals')
-                    <!-- ============================================== SPECIAL DEALS : END ============================================== -->
+                @include('user.page.special_deals.special_deals')
+                <!-- ============================================== SPECIAL DEALS : END ============================================== -->
 
                     <!-- ============================================== NEWSLETTER ============================================== -->
-                    @include('user.page.newsletter.newsletter')
-                    <!-- ============================================== NEWSLETTER: END ============================================== -->
+                @include('user.page.newsletter.newsletter')
+                <!-- ============================================== NEWSLETTER: END ============================================== -->
 
                     <!-- ============================================== Testimonials============================================== -->
-                    @include('user.page.comment.testimonials')
-                    <!-- ============================================== Testimonials: END ============================================== -->
+                @include('user.page.comment.testimonials')
+                <!-- ============================================== Testimonials: END ============================================== -->
 
-                    <div class="home-banner"> <img src="assets\images\banners\LHS-banner.jpg" alt="Image"> </div>
+                    <div class="home-banner"><img src="assets\images\banners\LHS-banner.jpg" alt="Image"></div>
 
                     <!-- /.sidemenu-holder -->
                     <!-- ============================================== SIDEBAR : END ============================================== -->
@@ -47,8 +47,8 @@
                 <!-- ============================================== CONTENT ============================================== -->
                 <div class="col-xs-12 col-sm-12 col-md-9 homebanner-holder">
                     <!-- ========================================== SECTION – HERO ========================================= -->
-                    @include('user.page.slider.slider')
-                    <!-- ========================================= SECTION – HERO : END ========================================= -->
+                @include('user.page.slider.slider')
+                <!-- ========================================= SECTION – HERO : END ========================================= -->
 
                     <!-- ============================================== INFO BOXES ============================================== -->
 
@@ -100,31 +100,31 @@
                     <!-- ============================================== INFO BOXES : END ============================================== -->
 
                     <!-- ============================================== NEW PRODUCTS ============================================== -->
-                    @include('user.page.new_product.new_products')
-                    <!-- ============================================== NEW PRODUCTS : END ============================================== -->
+                @include('user.page.new_product.new_products')
+                <!-- ============================================== NEW PRODUCTS : END ============================================== -->
 
                     <!-- ============================================== BANNER SLIDE============================================== -->
-                    @include('user.page.banner.banner_slide')
-                    <!-- ============================================== BANNER SLIDE : END ============================================== -->
+                @include('user.page.banner.banner_slide')
+                <!-- ============================================== BANNER SLIDE : END ============================================== -->
 
                     <!-- ============================================== FEATURED PRODUCTS ============================================== -->
-                    @include('user.page.featured_product.featured_products')
-                    <!-- ============================================== FEATURED PRODUCTS : END ============================================== -->
+                @include('user.page.featured_product.featured_products')
+                <!-- ============================================== FEATURED PRODUCTS : END ============================================== -->
                     <!-- ============================================== BEST SELLER ============================================== -->
                     <!-- /.sidebar-widget -->
                     <!-- ============================================== BEST SELLER : END ============================================== -->
                     <!-- ============================================== BANNER ============================================== -->
-                    @include('user.page.banner.banner')
-                    <!-- /.wide-banners -->
+                @include('user.page.banner.banner')
+                <!-- /.wide-banners -->
                     <!-- ============================================== BANNER : END ============================================== -->
 
                     <!-- ============================================== BEST SELLER ============================================== -->
-                    @include('user.page.best_seller.best_seller')
-                    <!-- ============================================== BEST SELLER : END ============================================== -->
+                @include('user.page.best_seller.best_seller')
+                <!-- ============================================== BEST SELLER : END ============================================== -->
 
                     <!-- ============================================== BLOG SLIDER ============================================== -->
-                    @include('user.page.blog_slider.blog_index')
-                    <!-- ============================================== BLOG SLIDER : END ============================================== -->
+                @include('user.page.blog_slider.blog_index')
+                <!-- ============================================== BLOG SLIDER : END ============================================== -->
 
                     <!-- ============================================== FEATURED PRODUCTS ============================================== -->
                     <section class="section wow fadeInUp new-arriavls">
@@ -134,7 +134,8 @@
                                 <div class="products">
                                     <div class="product">
                                         <div class="product-image">
-                                            <div class="image"> <a href="detail.html"><img src="assets\images\products\p19.jpg" alt=""></a> </div>
+                                            <div class="image"><a href="detail.html"><img
+                                                        src="assets\images\products\p19.jpg" alt=""></a></div>
                                             <!-- /.image -->
 
                                             <div class="tag new"><span>new</span></div>
@@ -145,7 +146,8 @@
                                             <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
                                             <div class="rating rateit-small"></div>
                                             <div class="description"></div>
-                                            <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
+                                            <div class="product-price"><span class="price"> $450.99 </span> <span
+                                                    class="price-before-discount">$ 800</span></div>
                                             <!-- /.product-price -->
 
                                         </div>
@@ -154,11 +156,20 @@
                                             <div class="action">
                                                 <ul class="list-unstyled">
                                                     <li class="add-cart-button btn-group">
-                                                        <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                                                        <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+                                                        <button class="btn btn-primary icon" data-toggle="dropdown"
+                                                                type="button"><i class="fa fa-shopping-cart"></i>
+                                                        </button>
+                                                        <button class="btn btn-primary cart-btn" type="button">Add to
+                                                            cart
+                                                        </button>
                                                     </li>
-                                                    <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                                    <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal" aria-hidden="true"></i> </a> </li>
+                                                    <li class="lnk wishlist"><a class="add-to-cart" href="detail.html"
+                                                                                title="Wishlist"> <i
+                                                                class="icon fa fa-heart"></i> </a></li>
+                                                    <li class="lnk"><a class="add-to-cart" href="detail.html"
+                                                                       title="Compare"> <i class="fa fa-signal"
+                                                                                           aria-hidden="true"></i> </a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                             <!-- /.action -->
@@ -176,7 +187,8 @@
                                 <div class="products">
                                     <div class="product">
                                         <div class="product-image">
-                                            <div class="image"> <a href="detail.html"><img src="assets\images\products\p28.jpg" alt=""></a> </div>
+                                            <div class="image"><a href="detail.html"><img
+                                                        src="assets\images\products\p28.jpg" alt=""></a></div>
                                             <!-- /.image -->
 
                                             <div class="tag new"><span>new</span></div>
@@ -187,7 +199,8 @@
                                             <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
                                             <div class="rating rateit-small"></div>
                                             <div class="description"></div>
-                                            <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
+                                            <div class="product-price"><span class="price"> $450.99 </span> <span
+                                                    class="price-before-discount">$ 800</span></div>
                                             <!-- /.product-price -->
 
                                         </div>
@@ -196,11 +209,20 @@
                                             <div class="action">
                                                 <ul class="list-unstyled">
                                                     <li class="add-cart-button btn-group">
-                                                        <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                                                        <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+                                                        <button class="btn btn-primary icon" data-toggle="dropdown"
+                                                                type="button"><i class="fa fa-shopping-cart"></i>
+                                                        </button>
+                                                        <button class="btn btn-primary cart-btn" type="button">Add to
+                                                            cart
+                                                        </button>
                                                     </li>
-                                                    <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                                    <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal" aria-hidden="true"></i> </a> </li>
+                                                    <li class="lnk wishlist"><a class="add-to-cart" href="detail.html"
+                                                                                title="Wishlist"> <i
+                                                                class="icon fa fa-heart"></i> </a></li>
+                                                    <li class="lnk"><a class="add-to-cart" href="detail.html"
+                                                                       title="Compare"> <i class="fa fa-signal"
+                                                                                           aria-hidden="true"></i> </a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                             <!-- /.action -->
@@ -218,7 +240,8 @@
                                 <div class="products">
                                     <div class="product">
                                         <div class="product-image">
-                                            <div class="image"> <a href="detail.html"><img src="assets\images\products\p30.jpg" alt=""></a> </div>
+                                            <div class="image"><a href="detail.html"><img
+                                                        src="assets\images\products\p30.jpg" alt=""></a></div>
                                             <!-- /.image -->
 
                                             <div class="tag hot"><span>hot</span></div>
@@ -229,7 +252,8 @@
                                             <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
                                             <div class="rating rateit-small"></div>
                                             <div class="description"></div>
-                                            <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
+                                            <div class="product-price"><span class="price"> $450.99 </span> <span
+                                                    class="price-before-discount">$ 800</span></div>
                                             <!-- /.product-price -->
 
                                         </div>
@@ -238,11 +262,20 @@
                                             <div class="action">
                                                 <ul class="list-unstyled">
                                                     <li class="add-cart-button btn-group">
-                                                        <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                                                        <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+                                                        <button class="btn btn-primary icon" data-toggle="dropdown"
+                                                                type="button"><i class="fa fa-shopping-cart"></i>
+                                                        </button>
+                                                        <button class="btn btn-primary cart-btn" type="button">Add to
+                                                            cart
+                                                        </button>
                                                     </li>
-                                                    <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                                    <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal" aria-hidden="true"></i> </a> </li>
+                                                    <li class="lnk wishlist"><a class="add-to-cart" href="detail.html"
+                                                                                title="Wishlist"> <i
+                                                                class="icon fa fa-heart"></i> </a></li>
+                                                    <li class="lnk"><a class="add-to-cart" href="detail.html"
+                                                                       title="Compare"> <i class="fa fa-signal"
+                                                                                           aria-hidden="true"></i> </a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                             <!-- /.action -->
@@ -260,7 +293,8 @@
                                 <div class="products">
                                     <div class="product">
                                         <div class="product-image">
-                                            <div class="image"> <a href="detail.html"><img src="assets\images\products\p1.jpg" alt=""></a> </div>
+                                            <div class="image"><a href="detail.html"><img
+                                                        src="assets\images\products\p1.jpg" alt=""></a></div>
                                             <!-- /.image -->
 
                                             <div class="tag hot"><span>hot</span></div>
@@ -271,7 +305,8 @@
                                             <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
                                             <div class="rating rateit-small"></div>
                                             <div class="description"></div>
-                                            <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
+                                            <div class="product-price"><span class="price"> $450.99 </span> <span
+                                                    class="price-before-discount">$ 800</span></div>
                                             <!-- /.product-price -->
 
                                         </div>
@@ -280,11 +315,20 @@
                                             <div class="action">
                                                 <ul class="list-unstyled">
                                                     <li class="add-cart-button btn-group">
-                                                        <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                                                        <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+                                                        <button class="btn btn-primary icon" data-toggle="dropdown"
+                                                                type="button"><i class="fa fa-shopping-cart"></i>
+                                                        </button>
+                                                        <button class="btn btn-primary cart-btn" type="button">Add to
+                                                            cart
+                                                        </button>
                                                     </li>
-                                                    <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                                    <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal" aria-hidden="true"></i> </a> </li>
+                                                    <li class="lnk wishlist"><a class="add-to-cart" href="detail.html"
+                                                                                title="Wishlist"> <i
+                                                                class="icon fa fa-heart"></i> </a></li>
+                                                    <li class="lnk"><a class="add-to-cart" href="detail.html"
+                                                                       title="Compare"> <i class="fa fa-signal"
+                                                                                           aria-hidden="true"></i> </a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                             <!-- /.action -->
@@ -302,7 +346,8 @@
                                 <div class="products">
                                     <div class="product">
                                         <div class="product-image">
-                                            <div class="image"> <a href="detail.html"><img src="assets\images\products\p2.jpg" alt=""></a> </div>
+                                            <div class="image"><a href="detail.html"><img
+                                                        src="assets\images\products\p2.jpg" alt=""></a></div>
                                             <!-- /.image -->
 
                                             <div class="tag sale"><span>sale</span></div>
@@ -313,7 +358,8 @@
                                             <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
                                             <div class="rating rateit-small"></div>
                                             <div class="description"></div>
-                                            <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
+                                            <div class="product-price"><span class="price"> $450.99 </span> <span
+                                                    class="price-before-discount">$ 800</span></div>
                                             <!-- /.product-price -->
 
                                         </div>
@@ -322,11 +368,20 @@
                                             <div class="action">
                                                 <ul class="list-unstyled">
                                                     <li class="add-cart-button btn-group">
-                                                        <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                                                        <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+                                                        <button class="btn btn-primary icon" data-toggle="dropdown"
+                                                                type="button"><i class="fa fa-shopping-cart"></i>
+                                                        </button>
+                                                        <button class="btn btn-primary cart-btn" type="button">Add to
+                                                            cart
+                                                        </button>
                                                     </li>
-                                                    <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                                    <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal" aria-hidden="true"></i> </a> </li>
+                                                    <li class="lnk wishlist"><a class="add-to-cart" href="detail.html"
+                                                                                title="Wishlist"> <i
+                                                                class="icon fa fa-heart"></i> </a></li>
+                                                    <li class="lnk"><a class="add-to-cart" href="detail.html"
+                                                                       title="Compare"> <i class="fa fa-signal"
+                                                                                           aria-hidden="true"></i> </a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                             <!-- /.action -->
@@ -344,7 +399,8 @@
                                 <div class="products">
                                     <div class="product">
                                         <div class="product-image">
-                                            <div class="image"> <a href="detail.html"><img src="assets\images\products\p3.jpg" alt=""></a> </div>
+                                            <div class="image"><a href="detail.html"><img
+                                                        src="assets\images\products\p3.jpg" alt=""></a></div>
                                             <!-- /.image -->
 
                                             <div class="tag sale"><span>sale</span></div>
@@ -355,7 +411,8 @@
                                             <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
                                             <div class="rating rateit-small"></div>
                                             <div class="description"></div>
-                                            <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
+                                            <div class="product-price"><span class="price"> $450.99 </span> <span
+                                                    class="price-before-discount">$ 800</span></div>
                                             <!-- /.product-price -->
 
                                         </div>
@@ -364,11 +421,20 @@
                                             <div class="action">
                                                 <ul class="list-unstyled">
                                                     <li class="add-cart-button btn-group">
-                                                        <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                                                        <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+                                                        <button class="btn btn-primary icon" data-toggle="dropdown"
+                                                                type="button"><i class="fa fa-shopping-cart"></i>
+                                                        </button>
+                                                        <button class="btn btn-primary cart-btn" type="button">Add to
+                                                            cart
+                                                        </button>
                                                     </li>
-                                                    <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                                    <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal" aria-hidden="true"></i> </a> </li>
+                                                    <li class="lnk wishlist"><a class="add-to-cart" href="detail.html"
+                                                                                title="Wishlist"> <i
+                                                                class="icon fa fa-heart"></i> </a></li>
+                                                    <li class="lnk"><a class="add-to-cart" href="detail.html"
+                                                                       title="Compare"> <i class="fa fa-signal"
+                                                                                           aria-hidden="true"></i> </a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                             <!-- /.action -->
@@ -395,34 +461,54 @@
             <div id="brands-carousel" class="logo-slider wow fadeInUp">
                 <div class="logo-slider-inner">
                     <div id="brand-slider" class="owl-carousel brand-slider custom-carousel owl-theme">
-                        <div class="item m-t-15"> <a href="#" class="image"> <img data-echo="{!! asset('frontend/assets/images/brands/brand1.png') !!}" src="{!! asset('frontend\assets\images\blank.gif') !!}" alt=""> </a> </div>
+                        <div class="item m-t-15"><a href="#" class="image"> <img
+                                    data-echo="{!! asset('frontend/assets/images/brands/brand1.png') !!}"
+                                    src="{!! asset('frontend\assets\images\blank.gif') !!}" alt=""> </a></div>
                         <!--/.item-->
 
-                        <div class="item m-t-10"> <a href="#" class="image"> <img data-echo="{!! asset('frontend/assets/images/brands/brand2.png') !!}" src="{!! asset('frontend\assets\images\blank.gif') !!}" alt=""> </a> </div>
+                        <div class="item m-t-10"><a href="#" class="image"> <img
+                                    data-echo="{!! asset('frontend/assets/images/brands/brand2.png') !!}"
+                                    src="{!! asset('frontend\assets\images\blank.gif') !!}" alt=""> </a></div>
                         <!--/.item-->
 
-                        <div class="item"> <a href="#" class="image"> <img data-echo="{!! asset('frontend/assets/images/brands/brand3.png') !!}" src="{!! asset('frontend\assets\images\blank.gif') !!}" alt=""> </a> </div>
+                        <div class="item"><a href="#" class="image"> <img
+                                    data-echo="{!! asset('frontend/assets/images/brands/brand3.png') !!}"
+                                    src="{!! asset('frontend\assets\images\blank.gif') !!}" alt=""> </a></div>
                         <!--/.item-->
 
-                        <div class="item"> <a href="#" class="image"> <img data-echo="{!! asset('frontend/assets/images/brands/brand4.png') !!}" src="{!! asset('frontend\assets\images\blank.gif') !!}" alt=""> </a> </div>
+                        <div class="item"><a href="#" class="image"> <img
+                                    data-echo="{!! asset('frontend/assets/images/brands/brand4.png') !!}"
+                                    src="{!! asset('frontend\assets\images\blank.gif') !!}" alt=""> </a></div>
                         <!--/.item-->
 
-                        <div class="item"> <a href="#" class="image"> <img data-echo="{!! asset('frontend/assets/images/brands/brand5.png') !!}" src="{!! asset('frontend\assets\images\blank.gif') !!}" alt=""> </a> </div>
+                        <div class="item"><a href="#" class="image"> <img
+                                    data-echo="{!! asset('frontend/assets/images/brands/brand5.png') !!}"
+                                    src="{!! asset('frontend\assets\images\blank.gif') !!}" alt=""> </a></div>
                         <!--/.item-->
 
-                        <div class="item"> <a href="#" class="image"> <img data-echo="{!! asset('frontend/assets/images/brands/brand6.png') !!}" src="{!! asset('frontend\assets\images\blank.gif') !!}" alt=""> </a> </div>
+                        <div class="item"><a href="#" class="image"> <img
+                                    data-echo="{!! asset('frontend/assets/images/brands/brand6.png') !!}"
+                                    src="{!! asset('frontend\assets\images\blank.gif') !!}" alt=""> </a></div>
                         <!--/.item-->
 
-                        <div class="item"> <a href="#" class="image"> <img data-echo="{!! asset('frontend/assets/images/brands/brand2.png') !!}" src="{!! asset('frontend\assets\images\blank.gif') !!}" alt=""> </a> </div>
+                        <div class="item"><a href="#" class="image"> <img
+                                    data-echo="{!! asset('frontend/assets/images/brands/brand2.png') !!}"
+                                    src="{!! asset('frontend\assets\images\blank.gif') !!}" alt=""> </a></div>
                         <!--/.item-->
 
-                        <div class="item"> <a href="#" class="image"> <img data-echo="{!! asset('frontend/assets/images/brands/brand4.png') !!}" src="{!! asset('frontend\assets\images\blank.gif') !!}" alt=""> </a> </div>
+                        <div class="item"><a href="#" class="image"> <img
+                                    data-echo="{!! asset('frontend/assets/images/brands/brand4.png') !!}"
+                                    src="{!! asset('frontend\assets\images\blank.gif') !!}" alt=""> </a></div>
                         <!--/.item-->
 
-                        <div class="item"> <a href="#" class="image"> <img data-echo="{!! asset('frontend/assets/images/brands/brand1.png') !!}" src="{!! asset('frontend\assets\images\blank.gif') !!}" alt=""> </a> </div>
+                        <div class="item"><a href="#" class="image"> <img
+                                    data-echo="{!! asset('frontend/assets/images/brands/brand1.png') !!}"
+                                    src="{!! asset('frontend\assets\images\blank.gif') !!}" alt=""> </a></div>
                         <!--/.item-->
 
-                        <div class="item"> <a href="#" class="image"> <img data-echo="{!! asset('frontend/assets/images/brands/brand5.png') !!}" src="{!! asset('frontend\assets\images\blank.gif') !!}" alt=""> </a> </div>
+                        <div class="item"><a href="#" class="image"> <img
+                                    data-echo="{!! asset('frontend/assets/images/brands/brand5.png') !!}"
+                                    src="{!! asset('frontend\assets\images\blank.gif') !!}" alt=""> </a></div>
                         <!--/.item-->
                     </div>
                     <!-- /.owl-carousel #logo-slider -->

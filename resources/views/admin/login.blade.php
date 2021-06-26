@@ -93,7 +93,7 @@
 {{--</html>--}}
 
 
-        <!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -107,7 +107,8 @@
     <link rel="shortcut icon" href="{!! asset('admin/assets/images/favicon.ico') !!}">
 
     <!-- App css -->
-    <link href="{!! asset('admin/assets/css/bootstrap.min.css') !!}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
+    <link href="{!! asset('admin/assets/css/bootstrap.min.css') !!}" rel="stylesheet" type="text/css"
+          id="bootstrap-stylesheet">
     <link href="{!! asset('admin/assets/css/icons.min.css')!!}" rel="stylesheet" type="text/css">
     <link href="{!! asset('admin/assets/css/app.min.css') !!}" rel="stylesheet" type="text/css" id="app-stylesheet">
 
@@ -125,27 +126,28 @@
                     </div>
                     <div class="card-body">
                         @if (count($errors) >0)
-                                 <ul>
-                                     @foreach($errors->all() as $error)
-                                         <li class="text-danger"> {{ $error }}</li>
-                                     @endforeach
-                                 </ul>
-                             @endif
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                    <li class="text-danger"> {{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
 
-                             @if (session('status'))
-                                 <ul>
-                                     <li class="text-danger"> {{ session('status') }}</li>
-                                 </ul>
-                             @endif
+                        @if (session('status'))
+                            <ul>
+                                <li class="text-danger"> {{ session('status') }}</li>
+                            </ul>
+                        @endif
                         <form action="{{ route('getLogin') }}" method="post" class="p-2">
                             {{ csrf_field() }}
                             <div class="form-group mb-3">
                                 <label for="emailaddress">Email Address :</label>
-                                <input class="form-control" type="email" name="txtEmail" placeholder="jonh@gmail.com" >
+                                <input class="form-control" type="email" name="txtEmail" placeholder="jonh@gmail.com">
                             </div>
                             <div class="form-group mb-3">
                                 <label for="password">Password :</label>
-                                <input class="form-control" type="password" name="txtPassword" placeholder="Enter your password" >
+                                <input class="form-control" type="password" name="txtPassword"
+                                       placeholder="Enter your password">
                             </div>
 
                             <div class="form-group mb-4">
@@ -154,19 +156,24 @@
                                     <label for="remember">
                                         Remember me
                                     </label>
-                                    <a href="pages-recoverpw.html" class="text-muted float-right">Forgot your password?</a>
+                                    <a href="pages-recoverpw.html" class="text-muted float-right">Forgot your
+                                        password?</a>
                                 </div>
                             </div>
 
                             <div class="form-group row text-center mt-4 mb-4">
                                 <div class="col-12">
-                                    <button class="btn btn-md btn-block btn-primary waves-effect waves-light" type="submit">Sign In</button>
+                                    <button class="btn btn-md btn-block btn-primary waves-effect waves-light"
+                                            type="submit">Sign In
+                                    </button>
                                 </div>
                             </div>
 
                             <div class="form-group row mb-0">
                                 <div class="col-sm-12 text-center">
-                                    <p class="text-muted mb-0">Don't have an account? <a href="pages-register.html" class="text-dark m-l-5"><b>Sign Up</b></a></p>
+                                    <p class="text-muted mb-0">Don't have an account? <a href="pages-register.html"
+                                                                                         class="text-dark m-l-5"><b>Sign
+                                                Up</b></a></p>
                                 </div>
                             </div>
                         </form>

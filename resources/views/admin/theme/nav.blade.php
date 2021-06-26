@@ -184,20 +184,24 @@
     <ul class="list-unstyled topnav-menu float-right mb-0">
 
         <li class="dropdown d-none d-lg-block">
-            <a class="nav-link dropdown-toggle mr-0 waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                <img src="{!! asset('admin/assets/images/flags/us.jpg') !!}" alt="user-image" class="mr-2" height="12"> <span class="align-middle">English <i class="mdi mdi-chevron-down"></i> </span>
+            <a class="nav-link dropdown-toggle mr-0 waves-effect" data-toggle="dropdown" href="#" role="button"
+               aria-haspopup="false" aria-expanded="false">
+                <img src="{!! asset('admin/assets/images/flags/us.jpg') !!}" alt="user-image" class="mr-2" height="12">
+                <span class="align-middle">English <i class="mdi mdi-chevron-down"></i> </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <!-- item-->
                 <a href="javascript:void(0);" class="dropdown-item notify-item">
-                    <img src="{!! asset('admin/assets/images/flags/germany.jpg') !!}" alt="user-image" class="mr-2" height="12"> <span class="align-middle">German</span>
+                    <img src="{!! asset('admin/assets/images/flags/germany.jpg') !!}" alt="user-image" class="mr-2"
+                         height="12"> <span class="align-middle">German</span>
                 </a>
 
             </div>
         </li>
 
         <li class="dropdown notification-list">
-            <a class="nav-link dropdown-toggle  waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+            <a class="nav-link dropdown-toggle  waves-effect" data-toggle="dropdown" href="#" role="button"
+               aria-haspopup="false" aria-expanded="false">
                 <i class="mdi mdi-email-outline noti-icon"></i>
                 <span class="badge badge-purple rounded-circle noti-icon-badge">3</span>
             </a>
@@ -219,35 +223,43 @@
                     <div class="inbox-widget">
                         <a href="#">
                             <div class="inbox-item">
-                                <div class="inbox-item-img"><img src="{!! asset('admin/assets/images/users/avatar-1.jpg') !!}" class="rounded-circle" alt=""></div>
+                                <div class="inbox-item-img"><img
+                                        src="{!! asset('admin/assets/images/users/avatar-1.jpg') !!}"
+                                        class="rounded-circle" alt=""></div>
                                 <p class="inbox-item-author">Cristina Pride</p>
-                                <p class="inbox-item-text text-truncate">Hi, How are you? What about our next meeting</p>
+                                <p class="inbox-item-text text-truncate">Hi, How are you? What about our next
+                                    meeting</p>
                             </div>
                         </a>
                         <a href="#">
                             <div class="inbox-item">
-                                <div class="inbox-item-img"><img src="assets/images/users/avatar-2.jpg" class="rounded-circle" alt=""></div>
+                                <div class="inbox-item-img"><img src="assets/images/users/avatar-2.jpg"
+                                                                 class="rounded-circle" alt=""></div>
                                 <p class="inbox-item-author">Sam Garret</p>
                                 <p class="inbox-item-text text-truncate">Yeah everything is fine</p>
                             </div>
                         </a>
                         <a href="#">
                             <div class="inbox-item">
-                                <div class="inbox-item-img"><img src="assets/images/users/avatar-3.jpg" class="rounded-circle" alt=""></div>
+                                <div class="inbox-item-img"><img src="assets/images/users/avatar-3.jpg"
+                                                                 class="rounded-circle" alt=""></div>
                                 <p class="inbox-item-author">Karen Robinson</p>
                                 <p class="inbox-item-text text-truncate">Wow that's great</p>
                             </div>
                         </a>
                         <a href="#">
                             <div class="inbox-item">
-                                <div class="inbox-item-img"><img src="assets/images/users/avatar-4.jpg" class="rounded-circle" alt=""></div>
+                                <div class="inbox-item-img"><img src="assets/images/users/avatar-4.jpg"
+                                                                 class="rounded-circle" alt=""></div>
                                 <p class="inbox-item-author">Sherry Marshall</p>
-                                <p class="inbox-item-text text-truncate">Hi, How are you? What about our next meeting</p>
+                                <p class="inbox-item-text text-truncate">Hi, How are you? What about our next
+                                    meeting</p>
                             </div>
                         </a>
                         <a href="#">
                             <div class="inbox-item">
-                                <div class="inbox-item-img"><img src="assets/images/users/avatar-5.jpg" class="rounded-circle" alt=""></div>
+                                <div class="inbox-item-img"><img src="assets/images/users/avatar-5.jpg"
+                                                                 class="rounded-circle" alt=""></div>
                                 <p class="inbox-item-author">Shawn Millard</p>
                                 <p class="inbox-item-text text-truncate">Yeah everything is fine</p>
 
@@ -266,7 +278,8 @@
         </li>
 
         <li class="dropdown notification-list">
-            <a class="nav-link dropdown-toggle  waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+            <a class="nav-link dropdown-toggle  waves-effect" data-toggle="dropdown" href="#" role="button"
+               aria-haspopup="false" aria-expanded="false">
                 <i class="mdi mdi-bell-outline noti-icon"></i>
                 <span class="badge badge-pink rounded-circle noti-icon-badge">4</span>
             </a>
@@ -355,8 +368,10 @@
         </li>
 
         <li class="dropdown notification-list">
-            <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                <img src="{!! asset('admin/assets/images/users/avatar-1.jpg') !!}" alt="user-image" class="rounded-circle">
+            <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button"
+               aria-haspopup="false" aria-expanded="false">
+                <img src="{!! asset('admin/assets/images/users/avatar-1.jpg') !!}" alt="user-image"
+                     class="rounded-circle">
                 <span class="pro-user-name ml-1">
                                 Thompson   <i class="mdi mdi-chevron-down"></i>
                             </span>

@@ -1,4 +1,3 @@
-
 {{--<!DOCTYPE html>--}}
 {{--<html lang="en">--}}
 {{--<head>--}}
@@ -43,7 +42,7 @@
 {{--</body>--}}
 {{--</html>--}}
 
-        <!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -57,13 +56,18 @@
     <link rel="shortcut icon" href="{!! asset('admin/assets/images/favicon.ico') !!}">
 
     <!-- third party css -->
-    <link href="{!! asset('admin/assets/libs/datatables/dataTables.bootstrap4.min.css') !!}" rel="stylesheet" type="text/css">
-    <link href="{!! asset('admin/assets/libs/datatables/buttons.bootstrap4.min.css') !!}" rel="stylesheet" type="text/css">
-    <link href="{!! asset('admin/assets/libs/datatables/responsive.bootstrap4.min.css') !!}" rel="stylesheet" type="text/css">
-    <link href="{!! asset('admin/assets/libs/datatables/select.bootstrap4.min.css') !!}" rel="stylesheet" type="text/css">
+    <link href="{!! asset('admin/assets/libs/datatables/dataTables.bootstrap4.min.css') !!}" rel="stylesheet"
+          type="text/css">
+    <link href="{!! asset('admin/assets/libs/datatables/buttons.bootstrap4.min.css') !!}" rel="stylesheet"
+          type="text/css">
+    <link href="{!! asset('admin/assets/libs/datatables/responsive.bootstrap4.min.css') !!}" rel="stylesheet"
+          type="text/css">
+    <link href="{!! asset('admin/assets/libs/datatables/select.bootstrap4.min.css') !!}" rel="stylesheet"
+          type="text/css">
 
     <!-- App css -->
-    <link href="{!! asset('admin/assets/css/bootstrap.min.css') !!}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
+    <link href="{!! asset('admin/assets/css/bootstrap.min.css') !!}" rel="stylesheet" type="text/css"
+          id="bootstrap-stylesheet">
     <link href="{!! asset('admin/assets/css/icons.min.css') !!}" rel="stylesheet" type="text/css">
     <link href="{!! asset('admin/assets/css/app.min.css') !!}" rel="stylesheet" type="text/css" id="app-stylesheet">
     <script src="{!! asset('admin/ckeditor/ckeditor.js') !!}"></script>
@@ -104,7 +108,8 @@
                             <div class="card-body table-responsive">
                                 <h4 class="m-t-0 header-title mb-4"><b>Default Example</b></h4>
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a href="{{ url(Request::route()->getPrefix()) }}" class="btn btn-primary">Quản lý</a>
+                                    <a href="{{ url(Request::route()->getPrefix()) }}" class="btn btn-primary">Quản
+                                        lý</a>
                                     <a href="{{route('user.getadd')}}" class="btn btn-success">Thêm mới</a>
                                 </div>
                                 @yield('content')
@@ -160,7 +165,8 @@
                 <img src="assets/images/layouts/dark.png" class="img-fluid img-thumbnail" alt="">
             </div>
             <div class="custom-control custom-switch mb-3">
-                <input type="checkbox" class="custom-control-input theme-choice" id="dark-mode-switch" data-bsstyle="assets/css/bootstrap-dark.min.css" data-appstyle="assets/css/app-dark.min.css">
+                <input type="checkbox" class="custom-control-input theme-choice" id="dark-mode-switch"
+                       data-bsstyle="assets/css/bootstrap-dark.min.css" data-appstyle="assets/css/app-dark.min.css">
                 <label class="custom-control-label" for="dark-mode-switch">Dark Mode</label>
             </div>
 
@@ -168,7 +174,8 @@
                 <img src="assets/images/layouts/rtl.png" class="img-fluid img-thumbnail" alt="">
             </div>
             <div class="custom-control custom-switch mb-5">
-                <input type="checkbox" class="custom-control-input theme-choice" id="rtl-mode-switch" data-appstyle="assets/css/app-rtl.min.css">
+                <input type="checkbox" class="custom-control-input theme-choice" id="rtl-mode-switch"
+                       data-appstyle="assets/css/app-rtl.min.css">
                 <label class="custom-control-label" for="rtl-mode-switch">RTL Mode</label>
             </div>
 

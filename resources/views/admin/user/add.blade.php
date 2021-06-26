@@ -64,6 +64,6 @@
             <label for="pwd">Password:</label>
             <input type="password" class="form-control" id="pwd" name="txtpassword" placeholder="Enter Password">
         </div>
-        <button type="submit" name="btnregister"class="btn btn-primary">Thực Hiện</button>
+        <button type="submit" name="btnregister" class="btn btn-primary">Thực Hiện</button>
     </form>
     <@stop
