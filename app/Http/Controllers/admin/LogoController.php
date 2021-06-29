@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use DB;
+use App\Models\Logo;
 
-class FilemanagerController extends Controller
+class LogoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,7 @@ class FilemanagerController extends Controller
      */
     public function index()
     {
-        return view('admin.filemanager.index');
+        //
     }
 
     /**

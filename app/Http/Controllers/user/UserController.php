@@ -5,12 +5,17 @@ namespace App\Http\Controllers\user;
 use App\Cart;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Coupon;
 use App\Models\Order_Detail;
 use App\Models\Product;
 use App\Models\Slider;
+use App\Models\City;
+use App\Models\Province;
+use App\Models\Wards;
+use App\Models\Feeship;
 use DB;
 use Illuminate\Http\Request;
-use Session;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -21,10 +26,12 @@ class UserController extends Controller
         $sliders = Slider::all();
         $categorys = Category::all();
         $products = Product::all();
+        $city=City::all();
         $productss = Product::all()->sortByDesc("id");
+        $citys=City::orderby('matp','ASC')->get();
         $results = Product::select('idcat')->orderBy('idcat')->get();
         return view('user.page.index',
-            compact('products', 'categorys', 'productss', 'results', 'sliders'));
+            compact('products', 'categorys', 'productss', 'results', 'sliders','city','citys'));
         //return view('user.page.index');
     }
 
@@ -59,7 +66,9 @@ class UserController extends Controller
 
     public function viewCart()
     {
-        return view('user.page.view_cart');
+        $coupons=Coupon::all();
+        $city=City::orderby('matp','ASC')->get();
+        return view('user.page.view_cart',compact('coupons','city'));
     }
 
 
@@ -67,6 +76,38 @@ class UserController extends Controller
     {
         $products = Product::find($id);
         return view('user.page.view-product', compact('products'));
+    }
+
+    public function select_delivery_home(Request  $request){
+        $data = $request->all();
+        if ($data['action']) {
+            $output = '';
+            if ($data['action'] == 'city') {
+                $select_province = Province::where('matp', $data['ma_id'])->orderby('maqh', 'ASC')->get();
+                $output .= '<option>---Chọn quận huyện---</option>';
+                foreach ($select_province as $key => $province) {
+                    $output .= '<option value="' . $province->maqh . '">' . $province->name_quanhuyen . '</option>';
+                }
+            } else {
+                $select_wards = Wards::where('maqh', $data['ma_id'])->orderby('xaid', 'ASC')->get();
+                $output .= '<option>---Chọn xã phường---</option>';
+                foreach ($select_wards as $key => $ward) {
+                    $output .= '<option value="' . $ward->xaid . '">' . $ward->name_xaphuong . '</option>';
+                }
+            }
+        }
+        echo $output;
+    }
+
+    public function calculate_fee(Request  $request){
+        $data=$request->all();
+        if($data['matp']){
+            $feeship=Feeship::where('fee_matp',$data['matp'])->where('fee_maqh',$data['maqh'])->where('fee_xaid',$data['xaid'])->get();
+            foreach ($feeship as $Key=>$fee){
+                Session::put('fee',$fee->fee_feeship);
+                Session::save();
+            }
+        }
     }
 
     public function blog()
@@ -123,7 +164,8 @@ class UserController extends Controller
         if (Count($newCart->products) > 0) {
             $request->Session()->put('Cart', $newCart);
         } else {
-            $request->Session()->forget('Cart');
+//            $request->Session()->forget('Cart');
+            $request->Session()->flush();
         }
 
         return view('user.page.update.view-cart-update');

@@ -75,6 +75,14 @@ class CouponController extends Controller
         }
     }
 
+    function DeleteCoupon(){
+        $coupon=Session::get('coupon');
+        if($coupon==true){
+            Session::forget('coupon');
+            return redirect()->back()->with('message','Xóa mã khuyến mãi thành công!');
+        }
+    }
+
     /**
      * Show the form for creating a new resource.
      *

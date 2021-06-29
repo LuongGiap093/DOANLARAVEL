@@ -32,7 +32,7 @@
                                         <div class="price">Giảm: {{number_format($coupon->coupon_money)}} VNĐ</div>
                                         <div class="coupon_qty" style="margin-top: 10px; font-weight: bolder; color: red;">Số lượng: {{($coupon->coupon_qty)}}</div>
                                     </td>
-                                    <td class="col-md-4">
+                                    <td class="col-md-4" style="padding: 20px 30px;">
                                         <input type="text" class="form-control" name="contacts_name" id="name" required="" value="{{$coupon->coupon_code}}">
                                     </td>
                                     <td class="col-md-2">

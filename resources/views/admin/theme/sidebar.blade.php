@@ -117,7 +117,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('category.index')}}" class="waves-effect">
+                    <a href="{{route('delivery.index')}}" class="waves-effect">
                         <i class="ion-ios-apps"></i>
                         <span> Category </span>
                         {{--                        <span class="menu-arrow"></span>--}}
@@ -134,6 +134,13 @@
                     <a href="{{route('coupon.index')}}" class="waves-effect">
                         <i class="ion-ios-apps"></i>
                         <span> Coupon </span>
+                        {{--                        <span class="menu-arrow"></span>--}}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('delivery.index')}}" class="waves-effect">
+                        <i class="ion-ios-apps"></i>
+                        <span> Delivery </span>
                         {{--                        <span class="menu-arrow"></span>--}}
                     </a>
                 </li>

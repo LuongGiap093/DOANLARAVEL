@@ -12,6 +12,22 @@
         });
     }
 
+    // function AddCoupon(coupon_code) {
+    //     console.log(coupon_code);
+    //     $.ajax({
+    //         url: 'AddCoupon' + coupon_code,
+    //         type: 'GET',
+    //     }).done(function (response){
+    //         ShowCoupon(response);
+    //         $("#change-item-coupon").load(location.href + "#change-item-coupon>*","");
+    //         alertify.success('Thêm mã giảm giá thành công!');
+    //     });
+    // }
+    // function ShowCoupon(response) {
+    //     $("#change-item-coupon").empty();
+    //     $("#change-item-coupon").html(response);
+    //     $("#total-quanty-show").text($("#total-quanty-card").val());
+    // }
     /* //Xóa giỏ hàng khỏi session
     $("#change-item-cart").on("click","li .cart-item .row .col-xs-1 a", function(){
       console.log('2')
@@ -101,5 +117,10 @@
         // khi thẻ dropdown_menu li bị hover thì submenusubmenu thuộc thẻ li đó sẽ trượt lên(ẩnẩn)
         $('.submenu', this).slideUp();
     });
+
+
+
+
+
 
 </script>

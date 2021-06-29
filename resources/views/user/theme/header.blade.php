@@ -92,7 +92,7 @@
                                     <div class="basket-item-count">
                                     <span class="count">
                                         @if(Session::has('Cart') != null)
-                                       {{Session::get('Cart')->totalQuanty}}
+                                            {{Session::get('Cart')->totalQuanty}}
                                         @else
                                             0
                                         @endif
@@ -142,9 +142,7 @@
                                                 <span class="text">Tổng tiền:</span><span class='price'>{{number_format(Session::get('Cart')->totalPrice)}} VNĐ</span>
                                             </div>
                                             @else
-                                                <span style="color: black;margin-left: 40px;">
-                            - Giỏ hàng trống -
-                          </span>
+                                                <span style="color: black;margin-left: 40px;">- Giỏ hàng trống -</span>
                                             @endif
                                             <div class="clearfix"></div>
                                             <a href="{{route('shopping.viewCart')}}"
@@ -197,7 +195,8 @@
                                 <li class="dropdown"><a href="{{route('shopping.faq')}}">FAQ</a></li>
 
 
-                                <li class="dropdown  navbar-right special-menu"><a href="{{route('shopping.coupon')}}">Nhận Voucher ngay<span
+                                <li class="dropdown  navbar-right special-menu"><a href="{{route('shopping.coupon')}}">Nhận
+                                        Voucher ngay<span
                                             class="menu-label hot-menu hidden-xs">Hot</span></a></li>
                             </ul>
                             <!-- /.navbar-nav -->
