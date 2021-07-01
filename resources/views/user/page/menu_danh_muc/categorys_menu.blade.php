@@ -6,7 +6,7 @@
                 <li><a href="{{route('shopping.loaisp', $category->id)}}"><i
                             class="icon fa fa-futbol-o"></i>{{$category->name}}</a>
                     <!-- /.dropdown-menu --> </li>
-        @endforeach
+            @endforeach
         <!-- /.menu-item -->
 
         </ul>

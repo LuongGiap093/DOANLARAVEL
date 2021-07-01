@@ -59,7 +59,7 @@
 
                                         <tbody>
                                         <tr>
-                                            <th scope="row">Liên hệ</th>
+                                            <th scope="row">Facebook</th>
                                             <td>
                                                 <a href="{{Auth::User()->contact}}" class="ng-binding">
                                                     {{Auth::User()->contact}}
@@ -69,7 +69,7 @@
                                         <tr>
                                             <th scope="row">Email</th>
                                             <td>
-                                                <a href="" class="ng-binding">
+                                                <a href="mailto: {{Auth::User()->email}}" class="ng-binding">
                                                     {{Auth::User()->email}}
                                                 </a>
                                             </td>

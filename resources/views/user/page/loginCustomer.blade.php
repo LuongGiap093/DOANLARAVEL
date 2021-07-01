@@ -19,18 +19,28 @@
                     <div class="col-md-6 col-sm-6 sign-in">
                         <h4 class="">Sign in</h4>
                         <p class="">Hello, Welcome to your account.</p>
-                        <div class="social-sign-in outer-top-xs">
-                            <a href="#" class="facebook-sign-in"><i class="fa fa-facebook"></i> Sign In with Facebook</a>
-                            <a href="#" class="twitter-sign-in"><i class="fa fa-twitter"></i> Sign In with Twitter</a>
-                        </div>
-                        <form class="register-form outer-top-xs" role="form">
+                        @if (count($errors) >0)
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                    <li class="text-danger"> {{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
+
+                        @if (session('status'))
+                            <ul>
+                                <li class="text-danger"> {{ session('status') }}</li>
+                            </ul>
+                        @endif
+                        <form class="register-form outer-top-xs" role="form" action="{{ route('customer.postLogin') }}" method="post">
+                            {{ csrf_field() }}
                             <div class="form-group">
-                                <label class="info-title" for="exampleInputEmail1">Email Address <span>*</span></label>
-                                <input type="email" class="form-control unicase-form-control text-input" id="exampleInputEmail1">
+                                <label class="info-title" for="email">Email Address <span>*</span></label>
+                                <input class="form-control" type="email" name="email" placeholder="jonh@gmail.com">
                             </div>
                             <div class="form-group">
-                                <label class="info-title" for="exampleInputPassword1">Password <span>*</span></label>
-                                <input type="password" class="form-control unicase-form-control text-input" id="exampleInputPassword1">
+                                <label class="info-title" for="password">Password <span>*</span></label>
+                                <input class="form-control" type="password" name="password" placeholder="Enter your password">
                             </div>
                             <div class="radio outer-xs">
                                 <label>
@@ -38,37 +48,48 @@
                                 </label>
                                 <a href="#" class="forgot-password pull-right">Forgot your Password?</a>
                             </div>
-                            <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Login</button>
+                            <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Đăng nhập</button>
                         </form>
+                        <div class="social-sign-in outer-top-xs">
+                            <a href="#" class="facebook-sign-in"><i class="fa fa-facebook"></i> Sign In with Facebook</a>
+                            <a href="#" class="twitter-sign-in"><i class="fa fa-twitter"></i> Sign In with Twitter</a>
+                        </div>
                     </div>
+
                     <!-- Sign-in -->
 
                     <!-- create a new account -->
                     <div class="col-md-6 col-sm-6 create-new-account">
                         <h4 class="checkout-subtitle">Create a new account</h4>
                         <p class="text title-tag-line">Create your new account.</p>
-                        <form class="register-form outer-top-xs" role="form">
+                        @if(Session::has('message'))
+                            <div class="alert alert-success">
+                                {{Session::get('message')}}
+                            </div>
+                        @endif
+                        <form class="register-form outer-top-xs" role="form" action="{{route('user.postadd')}}" method="POST" enctype="multipart/form-data">
+                            {{ csrf_field() }}
                             <div class="form-group">
-                                <label class="info-title" for="exampleInputEmail2">Email Address <span>*</span></label>
-                                <input type="email" class="form-control unicase-form-control text-input" id="exampleInputEmail2">
+                                <label class="info-title" for="email">Email Address <span>*</span></label>
+                                <input type="email" class="form-control unicase-form-control text-input" id="exampleInputEmail2" name="email">
                             </div>
                             <div class="form-group">
-                                <label class="info-title" for="exampleInputEmail1">Name <span>*</span></label>
-                                <input type="email" class="form-control unicase-form-control text-input" id="exampleInputEmail1">
+                                <label class="info-title" for="name">Name <span>*</span></label>
+                                <input type="text" class="form-control unicase-form-control text-input" id="exampleInputEmail1" name="name">
                             </div>
                             <div class="form-group">
-                                <label class="info-title" for="exampleInputEmail1">Phone Number <span>*</span></label>
-                                <input type="email" class="form-control unicase-form-control text-input" id="exampleInputEmail1">
+                                <label class="info-title" for="phone">Phone Number <span>*</span></label>
+                                <input type="text" class="form-control unicase-form-control text-input" id="exampleInputEmail1" name="phone">
                             </div>
                             <div class="form-group">
-                                <label class="info-title" for="exampleInputEmail1">Password <span>*</span></label>
-                                <input type="email" class="form-control unicase-form-control text-input" id="exampleInputEmail1">
+                                <label class="info-title" for="password">Password <span>*</span></label>
+                                <input type="password" class="form-control unicase-form-control text-input" id="exampleInputEmail1" name="password">
                             </div>
-                            <div class="form-group">
-                                <label class="info-title" for="exampleInputEmail1">Confirm Password <span>*</span></label>
-                                <input type="email" class="form-control unicase-form-control text-input" id="exampleInputEmail1">
-                            </div>
-                            <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Sign Up</button>
+{{--                            <div class="form-group">--}}
+{{--                                <label class="info-title" for="exampleInputEmail1">Confirm Password <span>*</span></label>--}}
+{{--                                <input type="email" class="form-control unicase-form-control text-input" id="exampleInputEmail1">--}}
+{{--                            </div>--}}
+                            <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Đăng ký</button>
                         </form>
 
 

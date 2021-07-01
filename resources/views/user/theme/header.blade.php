@@ -9,8 +9,13 @@
                         <li><a href="#"><i class="icon fa fa-user"></i>My Account</a></li>
                         <li><a href="#"><i class="icon fa fa-heart"></i>Wishlist</a></li>
                         <li><a href="#"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
-                        <li><a href="#"><i class="icon fa fa-check"></i>Checkout</a></li>
-                        <li><a href="{{route('shopping.login')}}"><i class="icon fa fa-lock"></i>Đăng nhập</a></li>
+                        @if(Auth::guard('account_customer')->check())
+                            <li><a href="#"><i class="icon fa fa-user"></i>Xin chào bạn  {{Auth::guard('account_customer')->user()->name}} </a></li>
+                            <li><a href="{{ route('customer.getLogout') }}"><i class="icon fa fa-lock"></i>Đăng xuất</a></li>
+                        @else
+                            <li><a href="{{route('shopping.login')}}"><i class="icon fa fa-lock"></i>Đăng nhập</a></li>
+                            <li><a href="{{route('shopping.login')}}"><i class="icon fa fa-lock"></i>Đăng ký</a></li>
+                        @endif
                     </ul>
                 </div>
                 <!-- /.cnt-account -->

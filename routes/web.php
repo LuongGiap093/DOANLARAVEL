@@ -3,10 +3,16 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
+
 Route::group(['prefix' => 'panel', 'namespace' => 'admin'], function() {
 	Route::get('login','LoginController@getLogin')->name('getLogin');
 	Route::post('login','LoginController@postLogin')->name('postLogin');
 	Route::get('logout','LoginController@getLogout')->name('getLogout');
+});
+Route::group(['prefix' => '', 'namespace' => 'user'], function() {
+  Route::get('login','AccountCustomerController@getLogin')->name('customer.getLogin');
+  Route::post('login','AccountCustomerController@postLogin')->name('customer.postLogin');
+  Route::get('logout','AccountCustomerController@getLogout')->name('customer.getLogout');
 });
 
 Route::group(['middleware' => 'CheckAdminLogin','prefix' => 'panel'], function() {
@@ -87,6 +93,8 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function() {
     Route::get('loaisp/{id}', 'UserController@getsp')->name('shopping.loaisp');
 
     Route::post('AddCoupon','CouponController@AddCoupon')->name('giamgia');
+
+    Route::post('account_add','LoginCustomerController@postadd')->name('user.postadd');
 
 
 });
