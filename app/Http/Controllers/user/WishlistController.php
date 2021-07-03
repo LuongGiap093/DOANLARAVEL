@@ -8,6 +8,7 @@ use App\Models\Logo;
 use App\Models\Wishlist;
 use Auth;
 use DB;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Session;
 
@@ -22,16 +23,24 @@ class WishlistController extends Controller {
     return view('user.page.wishlish',compact('wishlists','logos','categorys'));
   }
   public function addToWishlist($product_id) {
-    if (Auth::guard('account_customer')->check()) {
-      Wishlist::insert([
-        'customer_id' => Auth::guard('account_customer')->id(),
-        'product_id' => $product_id,
-      ]);
-      return Redirect()->back()->with('cart', 'Sản phẩm đã thêm vào yêu thích');
-    }
-    else {
-      return Redirect()->route('shopping.login')->with('cart', 'Hãy đăng nhập');
-
+    $status=Wishlist::where('customer_id',Auth::guard('account_customer')->id())->where('product_id',$product_id)->first();
+    if(isset($status->customer_id) and isset($status->product_id)) {
+      return redirect()->back()->with('cart', 'Sản phẩm đã tồn tại trong danh sách yêu thích');
+    }else{
+      if (Auth::guard('account_customer')->check()) {
+        Wishlist::insert([
+          'customer_id' => Auth::guard('account_customer')->id(),
+          'product_id' => $product_id,
+        ]);
+        return Redirect()
+          ->back()
+          ->with('cart', 'Sản phẩm đã thêm vào yêu thích');
+      }
+      else {
+        return Redirect()
+          ->route('shopping.login')
+          ->with('cart', 'Hãy đăng nhập');
+      }
     }
   }
   public function destroy($wishlist_id){
