@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-
 Route::group(['prefix' => 'panel', 'namespace' => 'admin'], function() {
 	Route::get('login','LoginController@getLogin')->name('getLogin');
 	Route::post('login','LoginController@postLogin')->name('postLogin');
@@ -40,9 +39,18 @@ Route::resource('panel/blog', admin\BlogController::class);
 Route::resource('panel/faq', admin\FaqController::class);
 Route::resource('panel/contact', admin\ContactController::class);
 Route::resource('panel/filemanager', admin\FilemanagerController::class);
-Route::resource('panel/coupon',admin\CouponController::class);
+Route::resource('panel/coupon', admin\CouponController::class);
+Route::resource('panel/delivery', admin\DeliveryController::class);
+Route::resource('panel/brand',admin\BrandController::class);
+Route::resource('panel/logo',admin\LogoController::class);
 
-/* Route::resource('panel/news',admin\CategoryNews::class); */
+
+Route::group(['prefix' => 'panel', 'namespace' => 'admin'], function () {
+    Route::post('update-delivery','DeliveryController@update_delivery')->name('update-delivery');
+    Route::post('select-delivery','DeliveryController@select_delivery')->name('select-delivery');
+    Route::post('insert-delivery','DeliveryController@insert_delivery')->name('insert');
+    Route::get('category/productlist/{id}', 'CategoryController@productlist')->name('category.productlist');
+});
 
 Route::get('panel/category/productlist/{id}','admin\CategoryController@productlist')->name('category.productlist');
 
@@ -61,9 +69,11 @@ Route::group(['prefix' => 'product', 'namespace' => 'FrontEnd'], function() {
 });
 
 
-Route::group(['prefix' => '', 'namespace' => 'user'], function() {
-		Route::get('', 'UserController@index')->name('shopping.index');
-		Route::get('category', 'UserController@category')->name('shopping.category');
+Route::group(['prefix' => '', 'namespace' => 'user'], function () {
+    Route::get('', 'UserController@index')->name('shopping.index');
+    Route::get('category', 'UserController@category')->name('shopping.category');
+    Route::get('show-product', 'UserController@show_product')->name('shopping.show-product');
+    Route::get('show-phone/{id}', 'UserController@show_phone')->name('shopping.show-phone');
 
 		Route::get('blog', 'BlogController@index')->name('shopping.blog');
     Route::get('blogdetail/{id}', 'BlogController@blogdetail')->name('blog.detail');
@@ -92,7 +102,11 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function() {
 
     Route::get('loaisp/{id}', 'UserController@getsp')->name('shopping.loaisp');
 
-    Route::post('AddCoupon','CouponController@AddCoupon')->name('giamgia');
+    Route::post('AddCoupon', 'CouponController@AddCoupon')->name('giamgia');
+    Route::get('DeleteCoupon', 'CouponController@DeleteCoupon')->name('delete-coupon');
+    Route::post('select-delivery-home','UserController@select_delivery_home')->name('select-delivery-home');
+    Route::post('calculate-fee','UserController@calculate_fee')->name('calculate-fee');
+
 
     Route::post('account_add','LoginCustomerController@postadd')->name('user.postadd');
     Route::get('add/to-wishlist/{id}', 'WishlistController@addToWishlist');

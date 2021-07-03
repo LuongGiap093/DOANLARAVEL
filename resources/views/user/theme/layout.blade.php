@@ -39,7 +39,55 @@
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-60c621cd3d595993"></script>
-
+<script type="text/javascript">
+    //Tính phí vận chuyển
+    $(document).ready(function () {
+        $('.choose').on('change', function () {
+            var action = $(this).attr('id');
+            var ma_id = $(this).val();
+            var _token = $('input[name="_token"]').val();
+            var result = '';
+            // alert(action);
+            // alert(matp);
+            // alert(_token);
+            if (action == 'city') {
+                result = 'province';
+            } else {
+                result = 'wards';
+            }
+            $.ajax({
+                url: '{{route('select-delivery-home')}}',
+                method: 'POST',
+                data: {action: action, ma_id: ma_id, _token: _token},
+                success: function (data) {
+                    $('#' + result).html(data);
+                }
+            });
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.calculate_delivery').click(function () {
+            var matp = $('.city').val();
+            var maqh = $('.province').val();
+            var xaid = $('.wards').val();
+            var _token = $('input[name="_token"]').val();
+            if (matp == '' && maqh == '' && xaid == '') {
+                alert('Làm ơn chọn địa điểm để tính phí vận chuyển');
+            } else {
+                $.ajax({
+                    url: '{{route('calculate-fee')}}',
+                    method: 'POST',
+                    data: {matp: matp, maqh: maqh, xaid: xaid, _token: _token},
+                    success: function (data) {
+                        location.reload();
+                    }
+                });
+            }
+        });
+    });
+</script>
 </body>
 
 </html>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
@@ -168,10 +169,11 @@ class ProductsController extends Controller
 
             }
         }
-        Session::forget('cart');
+        $req->session()->flush();
         $categorys = Category::all();
         return view('user.page.hoanthanh', compact('categorys'));
 
 
     }
+
 }

@@ -57,9 +57,14 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-3 logo-holder">
                     <!-- ============================================================= LOGO ============================================================= -->
-                    <div class="logo"><a href="home.html"> <img src="{!! asset('frontend\assets\images\logo.png') !!}"
-                                                                alt="logo"> </a></div>
-                    <!-- /.logo -->
+                    @foreach($logos as $logo)
+                        <div class="logo">
+                            <a href="{{route('shopping.index')}}">
+                                <img src="{{asset('images/'. $logo->logo_image)}}" alt="logo">
+                            </a>
+                        </div>
+                @endforeach
+                <!-- /.logo -->
                     <!-- ============================================================= LOGO : END ============================================================= -->
                 </div>
                 <!-- /.logo-holder -->
@@ -74,7 +79,15 @@
                                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
                                                             href="category.html">Danh mục<b class="caret"></b></a>
                                         <ul class="dropdown-menu" role="menu">
-
+                                            @foreach($categorys as $category)
+                                                <li role="presentation"><a role="menuitem" tabindex="-1"
+                                                                           href="category.html">{{$category->name}}</a>
+                                                </li>
+                                            @endforeach
+                                            {{--                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Clothing</a></li>--}}
+                                            {{--                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Electronics</a></li>--}}
+                                            {{--                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Shoes</a></li>--}}
+                                            {{--                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Watches</a></li>--}}
                                         </ul>
                                     </li>
                                 </ul>
@@ -147,9 +160,7 @@
                                                 <span class="text">Tổng tiền:</span><span class='price'>{{number_format(Session::get('Cart')->totalPrice)}} VNĐ</span>
                                             </div>
                                             @else
-                                                <span style="color: black;margin-left: 40px;">
-                            - Giỏ hàng trống -
-                          </span>
+                                                <span style="color: black;margin-left: 40px;">- Giỏ hàng trống -</span>
                                             @endif
                                             <div class="clearfix"></div>
                                             <a href="{{route('shopping.viewCart')}}"
@@ -194,15 +205,24 @@
                             <ul class="nav navbar-nav">
                                 <li class="active dropdown yamm-fw"><a href="{{route('shopping.index')}}">Trang Chủ</a>
                                 </li>
-                                <li class="dropdown hidden-sm"><a href="{{route('shopping.category')}}">Sản Phẩm<span
+                                <li class="dropdown hidden-sm"><a href="{{route('shopping.show-product')}}">Sản
+                                        Phẩm<span
                                             class="menu-label new-menu hidden-xs">Mới</span> </a></li>
-                                <li class="dropdown"><a href="contact.html">Khuyến Mãi</a></li>
+                                @foreach($categorys as $category)
+                                    @if($category->name=='Điện thoại'||$category->name=='Máy tính Laptop'||$category->name=='Đồng hồ thông minh'||$category->name=='Phụ kiện')
+                                        <li class="dropdown"><a
+                                                href="{{route('shopping.show-phone',$category->id)}}">{{$category->name}}</a>
+                                        </li>
+                                    @endif
+                                @endforeach
+
                                 <li class="dropdown"><a href="{{route('shopping.blog')}}">Tin Tức</a></li>
                                 <li class="dropdown"><a href="{{route('showForm')}}">Liên Hệ</a></li>
                                 <li class="dropdown"><a href="{{route('shopping.faq')}}">FAQ</a></li>
 
 
-                                <li class="dropdown  navbar-right special-menu"><a href="{{route('shopping.coupon')}}">Nhận Voucher ngay<span
+                                <li class="dropdown  navbar-right special-menu"><a href="{{route('shopping.coupon')}}">Nhận
+                                        Voucher ngay<span
                                             class="menu-label hot-menu hidden-xs">Hot</span></a></li>
                             </ul>
                             <!-- /.navbar-nav -->

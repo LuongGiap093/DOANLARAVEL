@@ -14,7 +14,10 @@ class CreateLogosTable extends Migration
     public function up()
     {
         Schema::create('logos', function (Blueprint $table) {
-            $table->id();
+            $table->engine = "InnoDB";
+            $table->Increments('logo_id')->unsigned();
+            $table->string('logo_image');
+            $table->integer('logo_status')->nullable();
             $table->timestamps();
         });
     }

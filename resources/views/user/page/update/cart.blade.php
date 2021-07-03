@@ -57,3 +57,5 @@
                 <!-- /.cart-total-->
 
         </li>
+    </ul>
+</div>

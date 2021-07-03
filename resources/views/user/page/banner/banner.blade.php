@@ -3,7 +3,7 @@
         <div class="col-md-12">
             <div class="wide-banner cnt-strip">
                 <div class="image"><img class="img-responsive"
-                                        src="{!! asset('frontend\assets\images\banners\home-banner.jpg') !!}" alt="">
+                                        src="{!! asset('frontend\assets\images\banners\Screenshot 2021-07-02 221944.png') !!}" alt="">
                 </div>
                 <div class="strip strip-text">
                     <div class="strip-inner">

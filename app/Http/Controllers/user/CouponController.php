@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Logo;
 use Illuminate\Http\Request;
 use App\Models\Coupon;
 use DB;
@@ -18,8 +20,10 @@ class CouponController extends Controller
     public function index()
     {
         //
+        $logos=Logo::all();
+        $categorys = Category::all();
         $coupons = Coupon::all();
-        return view('user.page.coupon', compact('coupons'));
+        return view('user.page.coupon', compact('coupons','categorys','logos'));
     }
 
     public function AddCoupon(Request $request)
@@ -72,6 +76,14 @@ class CouponController extends Controller
             }
         } else {
             return redirect()->back()->with('message', 'Mã giảm giá không đúng');
+        }
+    }
+
+    function DeleteCoupon(){
+        $coupon=Session::get('coupon');
+        if($coupon==true){
+            Session::forget('coupon');
+            return redirect()->back()->with('message','Xóa mã khuyến mãi thành công!');
         }
     }
 
