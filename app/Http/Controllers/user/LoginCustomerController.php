@@ -5,6 +5,8 @@ namespace App\Http\Controllers\user;
 use App\Cart;
 use App\Http\Controllers\Controller;
 use App\Models\AccountCustomer;
+use App\Models\Category;
+use App\Models\Logo;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -14,7 +16,9 @@ use Illuminate\Support\Collection;
 class LoginCustomerController extends Controller {
 
   public function index() {
-      return view('user.page.loginCustomer');
+      $logos=Logo::all();
+      $categorys = Category::all();
+      return view('user.page.loginCustomer',compact('logos','categorys'));
   }
   public function postadd(request $request) {
 

@@ -15,6 +15,7 @@ use App\Models\City;
 use App\Models\Province;
 use App\Models\Wards;
 use App\Models\Feeship;
+use App\Models\AccountCustomer;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -25,6 +26,7 @@ class UserController extends Controller
     //
     public function index()
     {
+        $accountcustomers=AccountCustomer::all();
         $brands=Brand::all();
         $logos=Logo::all();
         $sliders = Slider::all();
@@ -35,7 +37,7 @@ class UserController extends Controller
         $citys=City::orderby('matp','ASC')->get();
         $results = Product::select('idcat')->orderBy('idcat')->get();
         return view('user.page.index',
-            compact('products', 'categorys', 'productss', 'results', 'sliders','city','citys','logos','brands'));
+            compact('products', 'categorys', 'productss', 'results', 'sliders','city','citys','logos','brands','accountcustomers'));
         //return view('user.page.index');
     }
 
