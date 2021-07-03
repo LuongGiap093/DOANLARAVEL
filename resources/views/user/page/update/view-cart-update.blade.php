@@ -177,9 +177,11 @@
                                                     <div class="cart-sub-total">
                                                         <span class="inner-left-md" style="padding-left: 0px;">Tổng tiền: {{number_format(Session::get('Cart')->totalPrice)}} VNĐ</span>
                                                     </div>
-                                                    <div class="cart-sub-total">
-                                                        <span class="inner-left-md" style="padding-left: 0px;">Shiping: 15,000 VNĐ</span>
-                                                    </div>
+                                                    @if(Session::get('fee'))
+                                                        <div class="cart-sub-total">
+                                                            <span class="inner-left-md" style="padding-left: 0px;">Shiping: {{number_format(Session::get('fee'))}} VNĐ</span>
+                                                        </div>
+                                                    @endif
                                                     <div class="cart-sub-total">
                                                             <span class="inner-left-md" style="padding-left: 0px;">
                                                                 @if($cou['coupon_code']!=null)
@@ -192,7 +194,7 @@
                                                             </span>
                                                     </div>
                                                     <div class="cart-grand-total">
-                                                        <span class="inner-left-md" style="padding-left: 0px;">Thành tiền: {{number_format(Session::get('Cart')->totalPrice + 15000 - $cou['coupon_money'],0,',',',')}} VNĐ</span>
+                                                        <span class="inner-left-md" style="padding-left: 0px;">Thành tiền: {{number_format(Session::get('Cart')->totalPrice + Session::get('fee') - $cou['coupon_money'],0,',',',')}} VNĐ</span>
                                                     </div>
                                                 </th>
                                             @endforeach
@@ -202,11 +204,13 @@
                                                 <div class="cart-sub-total">
                                                     <span class="inner-left-md">Tổng tiền: {{number_format(Session::get('Cart')->totalPrice )}} VNĐ</span>
                                                 </div>
-                                                <div class="cart-sub-total">
-                                                    <span class="inner-left-md">Shiping: 15,000 VNĐ</span>
-                                                </div>
+                                                @if(Session::get('fee'))
+                                                    <div class="cart-sub-total">
+                                                        <span class="inner-left-md" >Shiping: {{number_format(Session::get('fee'))}} VNĐ</span>
+                                                    </div>
+                                                @endif
                                                 <div class="cart-grand-total">
-                                                    <span class="inner-left-md">Thành tiền: {{number_format(Session::get('Cart')->totalPrice + 15000)}} VNĐ</span>
+                                                    <span class="inner-left-md">Thành tiền: {{number_format(Session::get('Cart')->totalPrice + Session::get('fee'))}} VNĐ</span>
                                                 </div>
                                             </th>
                                         @endif

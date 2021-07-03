@@ -38,6 +38,9 @@ Route::resource('panel/contact', admin\ContactController::class);
 Route::resource('panel/filemanager', admin\FilemanagerController::class);
 Route::resource('panel/coupon', admin\CouponController::class);
 Route::resource('panel/delivery', admin\DeliveryController::class);
+Route::resource('panel/brand',admin\BrandController::class);
+Route::resource('panel/logo',admin\LogoController::class);
+
 
 Route::group(['prefix' => 'panel', 'namespace' => 'admin'], function () {
     Route::post('update-delivery','DeliveryController@update_delivery')->name('update-delivery');
@@ -60,6 +63,8 @@ Route::group(['prefix' => 'product', 'namespace' => 'FrontEnd'], function () {
 Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::get('', 'UserController@index')->name('shopping.index');
     Route::get('category', 'UserController@category')->name('shopping.category');
+    Route::get('show-product', 'UserController@show_product')->name('shopping.show-product');
+    Route::get('show-phone/{id}', 'UserController@show_phone')->name('shopping.show-phone');
 
     Route::get('blog', 'BlogController@index')->name('shopping.blog');
     Route::get('blogdetail/{id}', 'BlogController@blogdetail')->name('blog.detail');

@@ -2,7 +2,7 @@
     <h3 class="section-title">ưu đãi khủng</h3>
     <div class="owl-carousel sidebar-carousel custom-carousel owl-theme outer-top-ss">
         @foreach($products as $product)
-            @if((($product->discount*100)/$product->price) >= 40 )
+            @if((($product->discount*100)/$product->price) >= 20 )
                 <div class="item">
                     <div class="products">
                         <div class="hot-deal-wrapper">
@@ -37,9 +37,11 @@
                         <div class="product-info text-left m-t-20">
                             <h3 class="name"><a href="detail.html">{{ $product->name }}</a></h3>
                             <div class="rating rateit-small"></div>
+                            <div class="product-price">
+                                <span class="price-before-discount"> {{ number_format($product->price) }} VNĐ</span>
+                            </div>
                             <div class="product-price"><span
-                                    class="price">{{ number_format($product->price)}} VNĐ</span> <span
-                                    class="price-before-discount">{{ number_format($product->discount)}} VNĐ</span>
+                                    class="price">{{ number_format($product->price - $product->discount) }} VNĐ</span>
                             </div>
                             <!-- /.product-price -->
 

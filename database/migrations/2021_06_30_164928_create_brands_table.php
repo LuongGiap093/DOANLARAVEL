@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLogosTable extends Migration
+class CreateBrandsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateLogosTable extends Migration
      */
     public function up()
     {
-        Schema::create('logos', function (Blueprint $table) {
+        Schema::create('brands', function (Blueprint $table) {
             $table->engine = "InnoDB";
-            $table->Increments('logos_id')->unsigned();
-            $table->integer('status')->nullable();
+            $table->Increments('brand_id')->unsigned();
+            $table->string('brand_name');
+            $table->text('brand_desc')->nullable();
+            $table->integer('brand_status')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateLogosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('logos');
+        Schema::dropIfExists('brands');
     }
 }

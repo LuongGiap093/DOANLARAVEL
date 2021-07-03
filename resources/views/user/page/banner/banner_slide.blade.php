@@ -3,7 +3,7 @@
         <div class="col-md-7 col-sm-7">
             <div class="wide-banner cnt-strip">
                 <div class="image"><img class="img-responsive"
-                                        src="{!! asset('frontend\assets\images\banners\home-banner1.jpg') !!}" alt="">
+                                        src="{!! asset('frontend\assets\images\banners\Screenshot 2021-07-02 221652.png') !!}" alt="">
                 </div>
             </div>
             <!-- /.wide-banner -->
@@ -12,7 +12,7 @@
         <div class="col-md-5 col-sm-5">
             <div class="wide-banner cnt-strip">
                 <div class="image"><img class="img-responsive"
-                                        src="{!! asset('frontend\assets\images\banners\home-banner2.jpg') !!}" alt="">
+                                        src="{!! asset('frontend\assets\images\banners\Screenshot 2021-07-02 221832.png') !!}" alt="">
                 </div>
             </div>
             <!-- /.wide-banner -->

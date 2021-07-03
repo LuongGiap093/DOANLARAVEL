@@ -1,4 +1,4 @@
-<div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp" style="; border-radius: 20px; padding-bottom: 30px;">
+<div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp" style="padding-bottom: 30px;">
     <div class="more-info-tab clearfix ">
         <h3 class="new-product-title pull-left">Sản phẩm mới</h3>
         <!-- /.nav-tabs -->
@@ -13,7 +13,7 @@
                         <div class="item item-carousel">
 
                             <div class="products"
-                                 style="margin-right: 5px; background-color: white; padding-bottom: 0px; border-radius: 20px; border-style: groove;">
+                                 style="margin-right: 5px; background-color: white; padding-bottom: 0px;">
 
                                 <div class="product">
                                     <div class="product-image">
@@ -34,7 +34,7 @@
                                         <div class="rating rateit-small"></div>
                                         <div class="product-price">
                                             Giảm: <span class="price-before-discount"> {{ number_format($product->price) }}đ</span>
-                                            <span style="position: absolute; right: 40px">-{{ number_format(($product->discount*100)/$product->price) }}%</span>
+                                            <span style="position: absolute;">-{{ number_format(($product->discount*100)/$product->price) }}%</span>
                                         </div>
                                         <div class="product-price">
                                             <span class="price"> {{ number_format($product->price - $product->discount) }} VNĐ</span>

@@ -110,6 +110,13 @@
                 </li>
 
                 <li>
+                    <a href="{{route('logo.index')}}" class="waves-effect">
+                        <i class="ion-md-basket"></i>
+                        <span> Logo </span>
+                        {{--                        <span class="menu-arrow"></span>--}}
+                    </a>
+                </li>
+                <li>
                     <a href="{{route('slider.index')}}" class="waves-effect">
                         <i class="ion-md-basket"></i>
                         <span> Slider </span>
@@ -117,7 +124,14 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('delivery.index')}}" class="waves-effect">
+                    <a href="{{route('brand.index')}}" class="waves-effect">
+                        <i class="ion-ios-apps"></i>
+                        <span> Brand </span>
+{{--                                                <span class="menu-arrow"></span>--}}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('category.index')}}" class="waves-effect">
                         <i class="ion-ios-apps"></i>
                         <span> Category </span>
                         {{--                        <span class="menu-arrow"></span>--}}

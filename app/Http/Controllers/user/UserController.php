@@ -4,7 +4,9 @@ namespace App\Http\Controllers\user;
 
 use App\Cart;
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Logo;
 use App\Models\Coupon;
 use App\Models\Order_Detail;
 use App\Models\Product;
@@ -23,6 +25,8 @@ class UserController extends Controller
     //
     public function index()
     {
+        $brands=Brand::all();
+        $logos=Logo::all();
         $sliders = Slider::all();
         $categorys = Category::all();
         $products = Product::all();
@@ -31,23 +35,30 @@ class UserController extends Controller
         $citys=City::orderby('matp','ASC')->get();
         $results = Product::select('idcat')->orderBy('idcat')->get();
         return view('user.page.index',
-            compact('products', 'categorys', 'productss', 'results', 'sliders','city','citys'));
+            compact('products', 'categorys', 'productss', 'results', 'sliders','city','citys','logos','brands'));
         //return view('user.page.index');
     }
 
     public function category()
     {
+        $logos=Logo::all();
         $categorys = Category::all();
         $products = Product::all();
-        return view('user.page.category', compact('products', 'categorys'));
+        return view('user.page.category', compact('products', 'categorys','logos'));
         //return view('user.page.index');
     }
 
-    public function getsp($idcat)
-    {
+    public  function show_product(){
+        $logos=Logo::all();
+        $categorys = Category::all();
+        $products = Product::all();
+        return view('user.page.show_product.products', compact('products', 'categorys','logos'));
+    }
+    public  function show_phone($idcat){
+        $logos=Logo::all();
         if ($idcat == NULL) {
             $products = Product::all();
-            return view('user.page.loai_sp', compact('products'));
+            return view('user.page.show_product.phone', compact('products','logos'));
         }
         $categorys = Category::all();
 
@@ -55,7 +66,24 @@ class UserController extends Controller
         if ($products == NULL) {
             return abort(404);
         }
-        return view('user.page.loai_sp', compact('categorys', 'products'));
+        return view('user.page.show_product.phone', compact('products', 'categorys','logos'));
+    }
+
+
+    public function getsp($idcat)
+    {
+        $logos=Logo::all();
+        if ($idcat == NULL) {
+            $products = Product::all();
+            return view('user.page.loai_sp', compact('products','logos'));
+        }
+        $categorys = Category::all();
+
+        $products = DB::table('product')->where('idcat', $idcat)->get();
+        if ($products == NULL) {
+            return abort(404);
+        }
+        return view('user.page.loai_sp', compact('categorys', 'products','logos'));
 
     }
 
@@ -66,16 +94,20 @@ class UserController extends Controller
 
     public function viewCart()
     {
+        $logos=Logo::all();
+        $categorys = Category::all();
         $coupons=Coupon::all();
         $city=City::orderby('matp','ASC')->get();
-        return view('user.page.view_cart',compact('coupons','city'));
+        return view('user.page.view_cart',compact('coupons','city','logos','categorys'));
     }
 
 
     public function viewProduct($id)
     {
+        $logos=Logo::all();
+        $categorys = Category::all();
         $products = Product::find($id);
-        return view('user.page.view-product', compact('products'));
+        return view('user.page.view-product', compact('products','logos','categorys'));
     }
 
     public function select_delivery_home(Request  $request){

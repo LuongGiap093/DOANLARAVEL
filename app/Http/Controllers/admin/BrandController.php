@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Classes\Helper;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Logo;
+use App\Models\Brand;
 use Illuminate\Support\Facades\Session;
 
-class LogoController extends Controller
+class BrandController extends Controller
 {
-    public function __construct()
-    {
+
+    public $viewprefix;
+
+    public $viewnamespace;
+
+    public function __construct() {
         $this->middleware('CheckAdminLogin');
-        $this->viewprefix='admin.logo.';
-        $this->viewnamespace='panel/logo';
-        $this->index='logo.index';
+        $this->viewprefix = 'admin.brand.';
+        $this->viewnamespace = 'panel/brand';
     }
     /**
      * Display a listing of the resource.
@@ -25,8 +27,8 @@ class LogoController extends Controller
     public function index()
     {
         //
-        $logos = Logo::all();
-        return view($this->viewprefix.'index' ,compact('logos'));
+        $brands = Brand::all();
+        return view($this->viewprefix . 'index', compact('brands'));
     }
 
     /**
@@ -37,8 +39,7 @@ class LogoController extends Controller
     public function create()
     {
         //
-        $logos = Logo::all();
-        return view($this->viewprefix.'create',compact('logos'));
+        return view($this->viewprefix . 'create');
     }
 
     /**
@@ -50,16 +51,23 @@ class LogoController extends Controller
     public function store(Request $request)
     {
         //
-        $data=$request->validate([
-            'image' => 'required',
-            'logo_status' => 'required',
+        $brand = new Brand();
+        $request->validate([
+            'brand_name' => 'required',
+            'brand_desc' => 'required',
+            'brand_status' => 'required',
         ]);
-        $data['logo_image'] = Helper::imageUpload($request);
-        if(Logo::create($data))
+        $brand->brand_name = $request->brand_name;
+        $brand->brand_desc = $request->brand_desc;
+        $brand->brand_status = $request->brand_status;
+        if ($brand->save()) //if(Category::create($request->all()))
+        {
             Session::flash('message', 'successfully!');
-        else
+        }
+        else {
             Session::flash('message', 'Failure!');
-        return redirect()->route($this->index);
+        }
+        return redirect()->route('brand.index');
     }
 
     /**
@@ -79,10 +87,10 @@ class LogoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Logo $logo)
+    public function edit(Brand $brand)
     {
         //
-        return view($this->viewprefix.'edit')->with('logo', $logo);
+        return view('admin.brand.edit', compact('brand'));
     }
 
     /**
@@ -92,19 +100,20 @@ class LogoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Logo $logo)
+    public function update(Request $request, Brand $brand)
     {
         //
-        $data=$request->validate([
-            'logo_image' => 'required',
-            'logo_status' => 'required',
-        ]);
-        $data['logo_image'] = Helper::imageUpload($request);
-        if($logo->update($data))
-            Session::flash('message', ' Update successfully!');
-        else
+        $brand->brand_name = $request->brand_name;
+        $brand->brand_desc = $request->brand_desc;
+        $brand->brand_status = $request->brand_status;
+        if ($brand->save()) //if(Category::create($request->all()))
+        {
+            Session::flash('message', 'successfully!');
+        }
+        else {
             Session::flash('message', 'Failure!');
-        return redirect()->route('logo.index');
+        }
+        return redirect()->route('brand.index');
     }
 
     /**
@@ -113,13 +122,15 @@ class LogoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Logo $logo)
+    public function destroy(Brand $brand)
     {
         //
-        if($logo->delete())
+        if ($brand->delete()) {
             Session::flash('message', 'successfully!');
-        else
+        }
+        else {
             Session::flash('message', 'Failure!');
-        return redirect()->route('logo.index');
+        }
+        return redirect()->route('brand.index');
     }
 }
