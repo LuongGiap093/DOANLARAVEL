@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Logo;
 use App\Models\Wishlist;
 use Auth;
 use DB;
@@ -12,10 +14,12 @@ use Session;
 class WishlistController extends Controller {
 
   public function index() {
+      $logos=Logo::all();
+      $categorys = Category::all();
 //    $contacts=Contact::all();
 //    return view('user.page.contact',compact('contacts'));
     $wishlists = Wishlist::where('customer_id',Auth::guard('account_customer')->id())->latest()->get();
-    return view('user.page.wishlish',compact('wishlists'));
+    return view('user.page.wishlish',compact('wishlists','logos','categorys'));
   }
   public function addToWishlist($product_id) {
     if (Auth::guard('account_customer')->check()) {
