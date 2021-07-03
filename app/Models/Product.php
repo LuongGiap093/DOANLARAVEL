@@ -29,4 +29,7 @@ class Product extends Model
     {
         return $this->hasMany('App\Models\Order_Details', 'id', 'order_details_id');
     }
+    public function wishlist(){
+    return $this->hasMany(Wishlist::class);
+    }
 }

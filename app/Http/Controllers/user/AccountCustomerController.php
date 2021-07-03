@@ -18,7 +18,7 @@ class AccountCustomerController extends Controller
       $logos=Logo::all();
       $categorys = Category::all();
     if (Auth::guard('account_customer')->check()) {
-      return view('user.page.loginCustomer',compact('logos','categorys'));
+      return view('user.page.loginCustomer');
 
     } else {
       return view('user.page.loginCustomer',compact('logos','categorys'));

@@ -109,7 +109,9 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function () {
 
 
     Route::post('account_add','LoginCustomerController@postadd')->name('user.postadd');
-
+    Route::get('add/to-wishlist/{id}', 'WishlistController@addToWishlist');
+    Route::get('wishlist', 'WishlistController@index')->name('showWishlist');
+    Route::get('wishlist/destroy/{wishlist_id}','WishlistController@destroy');
 
 });
 
