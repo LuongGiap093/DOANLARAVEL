@@ -3,28 +3,31 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-Route::group(['middleware' => 'CheckAdminLogin', 'prefix' => 'panel'], function () {
-    Route::get('/', function () {
-        return view('admin.home');
-    })->name('welcome');
+Route::group(['prefix' => 'panel', 'namespace' => 'admin'], function() {
+	Route::get('login','LoginController@getLogin')->name('getLogin');
+	Route::post('login','LoginController@postLogin')->name('postLogin');
+	Route::get('logout','LoginController@getLogout')->name('getLogout');
+});
+Route::group(['prefix' => '', 'namespace' => 'user'], function() {
+  Route::get('login','AccountCustomerController@getLogin')->name('customer.getLogin');
+  Route::post('login','AccountCustomerController@postLogin')->name('customer.postLogin');
+  Route::get('logout','AccountCustomerController@getLogout')->name('customer.getLogout');
 });
 
-Route::group(['prefix' => 'panel', 'namespace' => 'admin'], function () {
-    Route::get('login', 'LoginController@getLogin')->name('getLogin');
-    Route::post('login', 'LoginController@postLogin')->name('postLogin');
-    Route::get('logout', 'LoginController@getLogout')->name('getLogout');
+Route::group(['middleware' => 'CheckAdminLogin','prefix' => 'panel'], function() {
+	Route::get('/', function() {return view('admin.home');})->name('welcome');
 });
 
-Route::group(['middleware' => 'CheckAdminLogin', 'prefix' => 'panel/user', 'namespace' => 'admin'], function () {
-    Route::get('/', 'UserController@index')->name('user.index');
-    Route::get('index', 'UserController@index')->name('user.index');
-    Route::get('profile', 'UserController@profile')->name('user.profile');
-    Route::get('add', 'UserController@getadd')->name('user.getadd');
-    Route::post('add', 'UserController@postadd')->name('user.postadd');
-    Route::get('edit/{id}', 'UserController@getedit')->name('user.getedit');
-    Route::post('edit/{id}', 'UserController@postedit')->name('user.postedit');
-    Route::get('delete/{id}', 'UserController@delete')->name('user.delete');
-    Route::get('changestatus/{id}', 'UserController@changestatus')->name('user.changestatus');
+Route::group(['middleware' => 'CheckAdminLogin','prefix' => 'panel/user', 'namespace' => 'admin'], function() {
+	Route::get('/', 'UserController@index')->name('user.index');
+	Route::get('index','UserController@index')->name('user.index');
+  Route::get('profile','UserController@profile')->name('user.profile');
+	Route::get('add','UserController@getadd')->name('user.getadd');
+	Route::post('add','UserController@postadd')->name('user.postadd');
+	Route::get('edit/{id}','UserController@getedit')->name('user.getedit');
+	Route::post('edit/{id}','UserController@postedit')->name('user.postedit');
+	Route::get('delete/{id}','UserController@delete')->name('user.delete');
+  Route::get('changestatus/{id}','UserController@changestatus')->name('user.changestatus');
 });
 
 Route::resource('panel/product', admin\ProductController::class);
@@ -49,14 +52,20 @@ Route::group(['prefix' => 'panel', 'namespace' => 'admin'], function () {
     Route::get('category/productlist/{id}', 'CategoryController@productlist')->name('category.productlist');
 });
 
+Route::get('panel/category/productlist/{id}','admin\CategoryController@productlist')->name('category.productlist');
 
-//Route::get('panel/category/productlist/{id}', 'admin\CategoryController@productlist')->name('category.productlist');
+
+Route::group(['prefix' => 'product', 'namespace' => 'FrontEnd'], function() {
+/* 	Route::get('/', 'ProductsController@index');
+	Route::get('cart', 'ProductsController@cart');
+	Route::get('add-to-cart/{id}', 'ProductsController@addToCart');
+	Route::patch('update-cart', 'ProductsController@update');
+	Route::delete('remove-from-cart', 'ProductsController@remove'); */
 
 
-Route::group(['prefix' => 'product', 'namespace' => 'FrontEnd'], function () {
-    Route::get('checkout', 'ProductsController@DetailsCheckout');
-    Route::get('hoanthanh', 'ProductsController@hoanthanh');
-    Route::post('dathang', 'ProductsController@postCheckout')->name('dathang');
+	Route::get('checkout','ProductsController@DetailsCheckout');
+	Route::get('hoanthanh','ProductsController@hoanthanh');
+	Route::post('dathang','ProductsController@postCheckout')->name('dathang');
 });
 
 
@@ -66,22 +75,22 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::get('show-product', 'UserController@show_product')->name('shopping.show-product');
     Route::get('show-phone/{id}', 'UserController@show_phone')->name('shopping.show-phone');
 
-    Route::get('blog', 'BlogController@index')->name('shopping.blog');
+		Route::get('blog', 'BlogController@index')->name('shopping.blog');
     Route::get('blogdetail/{id}', 'BlogController@blogdetail')->name('blog.detail');
-    Route::get('coupon', 'CouponController@index')->name('shopping.coupon');
+    Route::get('coupon','CouponController@index')->name('shopping.coupon');
 
     Route::get('contact-form', 'ContactController@showForm')->name('showForm');
 //    Route::get('/contact-form', [ContactController::class, 'showForm']);
-    Route::post('contact-form', 'ContactController@storeForm')->name('contact.save');
+  Route::post('contact-form', 'ContactController@storeForm')->name('contact.save');
 //    Route::post('/contact-form', [ContactController::class, 'storeForm'])->name('contact.save');
 
     Route::get('faq', 'FaqController@index')->name('shopping.faq');
 //
     Route::get('login', 'LoginCustomerController@index')->name('shopping.login');
-    //Route::get('cartdetail', 'UserController@cartDetail')->name('shopping.cartdetail');
-    Route::get('viewCart', 'UserController@viewCart')->name('shopping.viewCart');
-    Route::get('details/{id}', 'UserController@viewProduct')->name('shopping.viewProduct');
-    //Route::get('checkout','UserController@getCheckout')->name('shopping.getCheckout');
+		//Route::get('cartdetail', 'UserController@cartDetail')->name('shopping.cartdetail');
+		Route::get('viewCart', 'UserController@viewCart')->name('shopping.viewCart');
+		Route::get('details/{id}','UserController@viewProduct')->name('shopping.viewProduct');
+		//Route::get('checkout','UserController@getCheckout')->name('shopping.getCheckout');
 
     Route::get('addCart/{id}', 'UserController@AddCart')->name('shopping.addCart');
     Route::get('details/addCart/{id}', 'UserController@AddCart')->name('shopping.addCart');
@@ -97,6 +106,11 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::get('DeleteCoupon', 'CouponController@DeleteCoupon')->name('delete-coupon');
     Route::post('select-delivery-home','UserController@select_delivery_home')->name('select-delivery-home');
     Route::post('calculate-fee','UserController@calculate_fee')->name('calculate-fee');
+
+
+    Route::post('account_add','LoginCustomerController@postadd')->name('user.postadd');
+
+
 });
 
 

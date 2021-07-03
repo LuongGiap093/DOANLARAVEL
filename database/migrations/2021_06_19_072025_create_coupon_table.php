@@ -13,7 +13,7 @@ class CreateCouponTable extends Migration
      */
     public function up()
     {
-        Schema::create('coupons', function (Blueprint $table) {
+        Schema::create('coupon', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->Increments('coupon_id')->unsigned();
             $table->string('coupon_name');
