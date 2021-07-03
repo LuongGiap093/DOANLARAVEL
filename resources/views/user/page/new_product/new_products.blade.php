@@ -1,5 +1,10 @@
 <div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp" style="; border-radius: 20px; padding-bottom: 30px;">
     <div class="more-info-tab clearfix ">
+        @if(Session::has('cart'))
+            <div class="alert alert-success">
+                {{Session::get('cart')}}
+            </div>
+        @endif
         <h3 class="new-product-title pull-left">Sản phẩm mới</h3>
         <!-- /.nav-tabs -->
     </div>
@@ -55,7 +60,7 @@
                                                     </button>
                                                 </li>
                                                 <li class="lnk wishlist"><a data-toggle="tooltip" class="add-to-cart"
-                                                                            href="#" title="Wishlist"> <i
+                                                                            href="{{ url('add/to-wishlist/'.$product->id) }}" title="Wishlist"> <i
                                                             class="icon fa fa-heart"></i> </a></li>
                                                 <li class="lnk"><a data-toggle="tooltip" class="add-to-cart" href="#"
                                                                    title="Compare"> <i class="fa fa-signal"

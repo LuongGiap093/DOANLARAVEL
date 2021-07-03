@@ -23,7 +23,10 @@ class AccountCustomer extends Authenticatable {
     'phone',
 
   ];
-
+  protected $primaryKey = 'id';
+  public function wishlist(){
+    return $this->hasMany(Wishlist::class);
+  }
   /**
    * The attributes that should be hidden for arrays.
    *
@@ -33,7 +36,6 @@ class AccountCustomer extends Authenticatable {
     'password',
     'remember_token',
   ];
-
   /**
    * The attributes that should be cast to native types.
    *

@@ -14,7 +14,7 @@ class AccountCustomerController extends Controller
   public function getLogin()
   {
     if (Auth::guard('account_customer')->check()) {
-      return view('user.page.loginCustomer');
+      return view('user.page.index');
 
     } else {
       return view('user.page.loginCustomer');
@@ -34,7 +34,7 @@ class AccountCustomerController extends Controller
 //        ->with('status', 'Đang nhập thành công
 //
 //        ');
-      return view('user.page.loginCustomer')->with('status', 'Đang nhập thành công');
+      return view('user.page.contact')->with('status', 'Đang nhập thành công');
     }
     else {
       return redirect()
