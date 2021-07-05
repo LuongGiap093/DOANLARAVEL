@@ -14,7 +14,7 @@
             <div class="product-slider">
                 <div class="owl-carousel home-owl-carousel custom-carousel owl-theme" data-item="4">
                     <!-- riverse() là hàm đảo ngược -->
-                    @foreach($products->reverse() as $product)
+                    @foreach($products as $product)
                         <div class="item item-carousel">
 
                             <div class="products"

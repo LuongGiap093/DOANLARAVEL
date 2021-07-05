@@ -66,6 +66,8 @@ Route::group(['prefix' => 'product', 'namespace' => 'FrontEnd'], function() {
 	Route::get('checkout','ProductsController@DetailsCheckout');
 	Route::get('hoanthanh','ProductsController@hoanthanh');
 	Route::post('dathang','ProductsController@postCheckout')->name('dathang');
+    Route::get('search','ProductsController@search_product')->name('search-product');
+
 });
 
 
@@ -106,13 +108,13 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::get('DeleteCoupon', 'CouponController@DeleteCoupon')->name('delete-coupon');
     Route::post('select-delivery-home','UserController@select_delivery_home')->name('select-delivery-home');
     Route::post('calculate-fee','UserController@calculate_fee')->name('calculate-fee');
+    Route::post('dat-hang','UserController@dat_hang')->name('dat-hang');
 
 
     Route::post('account_add','LoginCustomerController@postadd')->name('user.postadd');
     Route::get('add/to-wishlist/{id}', 'WishlistController@addToWishlist');
     Route::get('wishlist', 'WishlistController@index')->name('showWishlist');
     Route::get('wishlist/destroy/{wishlist_id}','WishlistController@destroy');
-
 });
 
 

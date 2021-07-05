@@ -8,7 +8,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Logo;
 use App\Models\Coupon;
-use App\Models\Order_Detail;
+use App\Models\Order_Details;
 use App\Models\Product;
 use App\Models\Slider;
 use App\Models\City;
@@ -16,7 +16,10 @@ use App\Models\Province;
 use App\Models\Wards;
 use App\Models\Feeship;
 use App\Models\AccountCustomer;
+use App\Models\Customer;
+use App\Models\Order;
 use DB;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -31,7 +34,7 @@ class UserController extends Controller
         $logos=Logo::all();
         $sliders = Slider::all();
         $categorys = Category::all();
-        $products = Product::all();
+        $products = DB::table('product')->orderby('id','desc')->limit(15)->get();;
         $city=City::all();
         $productss = Product::all()->sortByDesc("id");
         $citys=City::orderby('matp','ASC')->get();
@@ -40,7 +43,7 @@ class UserController extends Controller
             compact('products', 'categorys', 'productss', 'results', 'sliders','city','citys','logos','brands','accountcustomers'));
         //return view('user.page.index');
     }
-
+//show menu trái
     public function category()
     {
         $logos=Logo::all();
@@ -49,18 +52,19 @@ class UserController extends Controller
         return view('user.page.category', compact('products', 'categorys','logos'));
         //return view('user.page.index');
     }
-
+//show sản phẩm
     public  function show_product(){
         $logos=Logo::all();
         $categorys = Category::all();
         $products = Product::all();
         return view('user.page.show_product.products', compact('products', 'categorys','logos'));
     }
+    //show sản phẩm theo danh mục
     public  function show_phone($idcat){
         $logos=Logo::all();
         if ($idcat == NULL) {
             $products = Product::all();
-            return view('user.page.show_product.phone', compact('products','logos'));
+            return view('user.page.show_product.products', compact('products','logos'));
         }
         $categorys = Category::all();
 
@@ -68,7 +72,16 @@ class UserController extends Controller
         if ($products == NULL) {
             return abort(404);
         }
-        return view('user.page.show_product.phone', compact('products', 'categorys','logos'));
+        return view('user.page.show_product.products', compact('products', 'categorys','logos'));
+    }
+//Tìm kiếm
+    public function search_product(Request $request){
+        $logos=Logo::all();
+        $categorys = Category::all();
+        $keywords=$request->keywords_submit;
+        $products=DB::table('product')->orderby('id','desc');
+        $search_product=DB::table('product')->where('name','like','%'. $keywords .'%')->get();
+        return view('user.page.show_product.phone', compact('products', 'categorys','logos','search_product'));
     }
 
 
@@ -93,7 +106,7 @@ class UserController extends Controller
         {   $products = Product::all();
             return view('user.page.product', compact('products'));
         } */
-
+//Xem trang giỏ hàng
     public function viewCart()
     {
         $logos=Logo::all();
@@ -103,7 +116,7 @@ class UserController extends Controller
         return view('user.page.view_cart',compact('coupons','city','logos','categorys'));
     }
 
-
+// Trang chi tiết sản phẩm
     public function viewProduct($id)
     {
         $logos=Logo::all();
@@ -111,7 +124,7 @@ class UserController extends Controller
         $products = Product::find($id);
         return view('user.page.view-product', compact('products','logos','categorys'));
     }
-
+// chọn địa điểm tính phí giao hàng
     public function select_delivery_home(Request  $request){
         $data = $request->all();
         if ($data['action']) {
@@ -132,16 +145,86 @@ class UserController extends Controller
         }
         echo $output;
     }
-
+// Tính phí giao hàng
     public function calculate_fee(Request  $request){
         $data=$request->all();
         if($data['matp']){
             $feeship=Feeship::where('fee_matp',$data['matp'])->where('fee_maqh',$data['maqh'])->where('fee_xaid',$data['xaid'])->get();
-            foreach ($feeship as $Key=>$fee){
-                Session::put('fee',$fee->fee_feeship);
-                Session::save();
+            if($feeship){
+                $count_feeship=$feeship->count();
+                if($count_feeship>0){
+                    foreach ($feeship as $Key=>$fee){
+                        Session::put('fee',$fee->fee_feeship);
+                        Session::save();
+                    }
+                }else{
+                    Session::put('fee',50000);
+                    Session::save();
+                }
             }
         }
+    }
+
+    // Xác nhận mua hàng
+    public function dat_hang(Request $request){
+        $data=$request->all();
+        $customer = new Customer;
+        $customer->customer_name = $data['customer_name'];
+        $customer->customer_email = $data['customer_email'];
+        $customer->customer_address = $data['customer_address'];
+        $customer->customer_phone_number = $data['customer_phone_number'];
+        $customer->customer_note =$data['customer_note'];
+        $customer->save();
+        $customer_id=$customer->customer_id;
+
+        $checkout_code=substr(md5(microtime()),rand(0,26),5);
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
+
+        $order = new Order;
+        $coupon=Coupon::all();
+        $order->customer_id = $customer_id;
+        $order->order_total = $data['order_total'];
+        $order->order_payment = $data['order_payment'];
+        if(Session::get('coupon')){
+            foreach ($coupon as $cou)
+            {
+                if($cou->coupon_code == $data['order_coupon'])
+                {
+                    $order->coupon_id=$cou->coupon_id;
+                }
+            }
+        }else{
+            $order->coupon_id=null;
+        }
+        $order->order_status='1';
+        $order->save();
+        $order_id=$order->order_id;
+
+        $orders=Order::all();
+
+        if (Session::has('Cart') != null) {
+            foreach (Session::get('Cart')->products as $value) {
+                $order_details = new Order_Details;
+                foreach ($orders as $od)
+                {
+                    if($od->customer_id == $customer_id){
+                        $order_details->order_id =$od->order_id;
+                    }
+                }
+                $order_details->id = $value['productInfo']->id;
+                $order_details->quantity = $value['quanty'];
+                $order_details->unit_price = $value['productInfo']->price - $value['productInfo']->discount;
+                $order_details->total_price = $value['quanty']*($value['productInfo']->price - $value['productInfo']->discount);
+                $order_details->save();
+
+            }
+        }
+        Session::forget('Cart');
+        Session::forget('fee');
+        Session::forget('coupon');
+        //$request->session()->flush();
+//        $categorys = Category::all();
+//        return view('user.page.hoanthanh', compact('categorys'));
     }
 
     public function blog()
@@ -191,6 +274,7 @@ class UserController extends Controller
     //Xóa sản phẩm trong trang giỏ hàng
     public function deleteListItemCart(Request $request, $id)
     {
+        $city=City::orderby('matp','ASC')->get();
         $oldCart = Session('Cart') ? Session('Cart') : NULL;
         $newCart = new Cart($oldCart);
         $newCart->DeleteItemCart($id);
@@ -202,19 +286,20 @@ class UserController extends Controller
             $request->Session()->flush();
         }
 
-        return view('user.page.update.view-cart-update');
+        //return view('user.page.update.view-cart-update',compact('city'));
     }
 
     //Cập nhập sp trong trang giỏ hàng
     public function saveListItemCart(Request $request, $id, $quanty)
     {
+        $city=City::orderby('matp','ASC')->get();
         $oldCart = Session('Cart') ? Session('Cart') : NULL;
         $newCart = new Cart($oldCart);
         $newCart->UpdateItemCart($id, $quanty);
 
         $request->Session()->put('Cart', $newCart);
 
-        return view('user.page.update.view-cart-update');
+//        return view('user.page.update.view-cart-update',compact('city'));
     }
 
     //Lưu tất cả sp trong trang giỏ hàng

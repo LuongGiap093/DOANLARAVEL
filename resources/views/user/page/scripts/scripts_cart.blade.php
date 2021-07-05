@@ -39,11 +39,12 @@
             type: 'GET',
         }).done(function (response) {
             alertify.error('Xóa Thành Công!');
-            $("#change-item-cart").load(location.href + " #change-item-cart>*", "");
-            $("#list-cart").empty();
-            $("#list-cart").html(response);
-            $("#total-quanty-show").text($("#total-quanty-card").val());
+            // $("#change-item-cart").load(location.href + " #change-item-cart>*", "");
+            // $("#list-cart").empty();
+            // $("#list-cart").html(response);
+            // $("#total-quanty-show").text($("#total-quanty-card").val());
 
+            location.reload();
         });
     }
 
@@ -53,11 +54,12 @@
             url: 'save-ListItemCart/' + id + "/" + $("#quanty-item-" + id).val(),
             type: 'GET',
         }).done(function (response) {
-            alertify.success('Cập Nhật Thành Công!');
-            $("#change-item-cart").load(location.href + " #change-item-cart>*", "");
-            $("#list-cart").empty();
-            $("#list-cart").html(response);
-            $("#total-quanty-show").text($("#total-quanty-card").val());
+            // alertify.success('Cập Nhật Thành Công!');
+            // $("#change-item-cart").load(location.href + " #change-item-cart>*", "");
+            // $("#list-cart").empty();
+            // $("#list-cart").html(response);
+            // $("#total-quanty-show").text($("#total-quanty-card").val());
+            location.reload();
         });
     }
 

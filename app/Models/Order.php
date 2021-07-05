@@ -14,18 +14,22 @@ class Order extends Model
         'order_payment',
         'order_status',
         'customer_id',
-       
+        'coupon_id',
+
     ];
     protected $primarykey = 'order_id';
     public function owner(){
         return $this->belongsTo('User');
     }
-    public function order_detail()
+    public function order_details()
     {
-        return $this->hasMany('App\Models\Order_Detail','order_id');
-    }   
+        return $this->hasMany('App\Models\Order_Details','order_id');
+    }
     public function customer(){
         return $this->belongsTo('App\Models\Customer', 'customer_id', 'order_id');
     }
-    
+    public function coupon(){
+        return $this->belongsTo('App\Models\Coupon', 'coupon_id','order_id');
+    }
+
 }

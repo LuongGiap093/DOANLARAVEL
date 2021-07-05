@@ -57,42 +57,46 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-3 logo-holder">
                     <!-- ============================================================= LOGO ============================================================= -->
-                    @foreach($logos as $logo)
-                        <div class="logo">
-                            <a href="{{route('shopping.index')}}">
-                                <img src="{{asset('images/'. $logo->logo_image)}}" alt="logo">
-                            </a>
-                        </div>
-                @endforeach
+{{--                    @foreach($logos as $logo)--}}
+{{--                        <div class="logo">--}}
+{{--                            <a href="{{route('shopping.index')}}">--}}
+{{--                                <img src="{{asset('images/'. $logo->logo_image)}}" alt="logo">--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                @endforeach--}}
                 <!-- /.logo -->
+                    <div class="logo">
+                        <a href="">
+                            <img src="" alt="logo">
+                        </a>
+                    </div>
                     <!-- ============================================================= LOGO : END ============================================================= -->
                 </div>
                 <!-- /.logo-holder -->
 
-                <div class="col-xs-12 col-sm-12 col-md-7 top-search-holder">
+                <div class="col-xs-12 col-sm-12 col-md-7 top-search-holder" style="padding-right: 126px;">
                     <!-- /.contact-row -->
                     <!-- ============================================================= SEARCH AREA ============================================================= -->
                     <div class="search-area">
-                        <form>
+                        <form action="{{route('search-product')}}" method="GET">
+                            @csrf
                             <div class="control-group">
-                                <ul class="categories-filter animate-dropdown">
-                                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                            href="category.html">Danh mục<b class="caret"></b></a>
-                                        <ul class="dropdown-menu" role="menu">
-                                            @foreach($categorys as $category)
-                                                <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                                           href="category.html">{{$category->name}}</a>
-                                                </li>
-                                            @endforeach
-                                            {{--                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Clothing</a></li>--}}
-                                            {{--                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Electronics</a></li>--}}
-                                            {{--                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Shoes</a></li>--}}
-                                            {{--                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Watches</a></li>--}}
-                                        </ul>
-                                    </li>
-                                </ul>
-                                <input class="search-field" placeholder="Tìm kiếm...">
-                                <a class="search-button" href="#"></a></div>
+{{--                                <ul class="categories-filter animate-dropdown">--}}
+{{--                                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"--}}
+{{--                                                            href="category.html">Danh mục<b class="caret"></b></a>--}}
+{{--                                        <ul class="dropdown-menu" role="menu">--}}
+{{--                                            @foreach($categorys as $category)--}}
+{{--                                                <li role="presentation"><a role="menuitem" tabindex="-1"--}}
+{{--                                                                           href="category.html">{{$category->name}}</a>--}}
+{{--                                                </li>--}}
+{{--                                            @endforeach--}}
+{{--                                        </ul>--}}
+{{--                                    </li>--}}
+{{--                                </ul>--}}
+                                <input type="text" class="search-field" name="keyword_search" placeholder="Tìm kiếm..." style="width: 82%;">
+                                <input type="submit" name="search_items" class="search-button" value="Tìm kiếm">
+{{--                                <a class="search-button" href="#"></a>--}}
+                            </div>
                         </form>
                     </div>
                     <!-- /.search-area -->

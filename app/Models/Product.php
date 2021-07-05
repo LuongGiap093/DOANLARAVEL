@@ -27,7 +27,7 @@ class Product extends Model
     }
     public function order_details()
     {
-        return $this->hasMany('App\Models\Order_Details', 'id', 'order_details_id');
+        return $this->hasMany('App\Models\Order_Details', 'id');
     }
     public function wishlist(){
     return $this->hasMany(Wishlist::class);

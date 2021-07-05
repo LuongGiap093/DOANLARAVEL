@@ -25,7 +25,7 @@ class CouponController extends Controller
         $coupons = Coupon::all();
         return view('user.page.coupon', compact('coupons','categorys','logos'));
     }
-
+//Thêm mã giảm giá
     public function AddCoupon(Request $request)
     {
         $data = $request->all();
@@ -78,7 +78,7 @@ class CouponController extends Controller
             return redirect()->back()->with('message', 'Mã giảm giá không đúng');
         }
     }
-
+//Xóa mã giảm giá
     function DeleteCoupon(){
         $coupon=Session::get('coupon');
         if($coupon==true){

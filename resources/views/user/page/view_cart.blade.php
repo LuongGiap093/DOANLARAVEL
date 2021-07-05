@@ -10,10 +10,14 @@
             </div><!-- /.breadcrumb-inner -->
         </div><!-- /.container -->
     </div><!-- /.breadcrumb -->
+    @if(Session::has('message'))
+        <p class="alert alert-info" style="text-align: center;">{{ Session::get('message') }}</p>
+    @endif
     <div class="body-content outer-top-xs">
         <div class="row" id="list-cart">
             <div class="container">
-                <form action="{{route('dathang')}}" method="POST" class="creditly-card-form agileinfo_form">
+{{--                action="{{route('dathang')}}"--}}
+                <form  method="POST" class="creditly-card-form agileinfo_form" style="padding-bottom: 20px;">
                     <input type="hidden" name="_token" value="{{csrf_token()}}" autocomplete="on">
                     <span id="status"></span>
                     <div class="shopping-cart">
@@ -118,19 +122,59 @@
                                     <td>
                                         <div class="form-group">
                                             <input type="text" autocomplete="off"
-                                                   class="form-control unicase-form-control text-input"
+                                                   class="form-control unicase-form-control text-input customer_name"
                                                    placeholder="Họ và tên..." name="customer_name" required="">
                                         </div>
                                         <div class="form-group">
                                             <input type="text" autocomplete="off"
-                                                   class="form-control unicase-form-control text-input"
+                                                   class="form-control unicase-form-control text-input customer_email"
                                                    placeholder="Email..." name="customer_email" required="">
                                         </div>
                                         <div class="form-group">
                                             <input type="text" autocomplete="off"
-                                                   class="form-control unicase-form-control text-input"
+                                                   class="form-control unicase-form-control text-input customer_phone_number"
                                                    placeholder="Số điện thoại..." name="customer_phone_number"
                                                    required="">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" autocomplete="off"
+                                                   class="form-control unicase-form-control text-input customer_address"
+                                                   placeholder="Địa chỉ..." name="customer_address" required="">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" autocomplete="off"
+                                                   class="form-control unicase-form-control text-input customer_note"
+                                                   placeholder="Ghi chú..." name="customer_note" required="">
+                                            @if(Session::get('fee'))
+                                                <input type="hidden" autocomplete="off"
+                                                       class="form-control unicase-form-control text-input order_fee"
+                                                       name="order_fee" value="Session::get('fee')">
+                                            @else
+                                                <input type="hidden" autocomplete="off"
+                                                       class="form-control unicase-form-control text-input order_fee"
+                                                       name="order_fee" value="50000">
+                                            @endif
+                                            @if(Session::get('coupon'))
+                                                @foreach(Session::get('coupon') as $key => $cou)
+                                                    <input type="hidden" autocomplete="off"
+                                                           class="form-control unicase-form-control text-input order_coupon"
+                                                           name="order_coupon" value="{{$cou['coupon_code']}}">
+                                                @endforeach
+                                            @else
+                                                <input type="hidden" autocomplete="off"
+                                                       class="form-control unicase-form-control text-input order_coupon"
+                                                       name="order_coupon" value="không có">
+                                            @endif
+                                        </div>
+                                        <div class="form-group">
+                                            {{--                                            <label class="info-title control-label">Phương thức thanh toán--}}
+                                            {{--                                                <span>*</span></label>--}}
+                                            <select class="form-control unicase-form-control text-input order_payment"
+                                                    name="order_payment" required="">
+                                                <option>--Tùy chọn phương thức thanh toán--</option>
+                                                <option>Thanh toán bằng thẻ ATM</option>
+                                                <option>Thanh toán bằng tiền mặt</option>
+                                            </select>
                                         </div>
                                     </td>
                                 </tr>
@@ -151,26 +195,31 @@
                                 <tr>
                                     <td>
                                         <div class="form-group">
-                                            <input type="text" autocomplete="off"
-                                                   class="form-control unicase-form-control text-input"
-                                                   placeholder="Địa chỉ..." name="customer_address" required="">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" autocomplete="off"
-                                                   class="form-control unicase-form-control text-input"
-                                                   placeholder="Ghi chú..." name="customer_note" required="">
-                                        </div>
-                                        <div class="form-group">
-                                            {{--                                            <label class="info-title control-label">Phương thức thanh toán--}}
-                                            {{--                                                <span>*</span></label>--}}
-                                            <select class="form-control unicase-form-control text-input"
-                                                    name="order_payment" required="">
-                                                <option>--Tùy chọn phương thức thanh toán--</option>
-                                                <option>Thanh toán bằng thẻ ATM</option>
-                                                <option>Thanh toán bằng tiền mặt</option>
+                                            <label for="city">Chọn thành phố:</label>
+                                            <select name="city" id="city"  class="form-control unicase-form-control text-input choose city" autocomplete="new-password">
+                                                <option value=''>---Vui lòng chọn thành phố---</option>
+                                                @foreach($city as $key=>$ci)
+                                                    <option value='{{$ci->matp}}'>{{$ci->name_city}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
-
+                                        <div class="form-group">
+                                            <label for="province">Chọn quận huyện:</label>
+                                            <select name="province" id="province" class="form-control unicase-form-control text-input province choose">
+                                                <option value=''>---Vui lòng chọn quận huyện---</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="wards">Chọn xã phường:</label>
+                                            <select name="wards" id="wards" class="form-control unicase-form-control text-input wards">
+                                                <option value=''>---Vui lòng chọn xã phường---</option>
+                                            </select>
+                                        </div>
+                                        @if(Session::has('Cart') != null)
+                                            <input type="button" value="Tính phí vận chuyển" name="calculate_order" class="btn btn-primary btn-upper calculate_delivery">
+                                        @else
+                                            <input type="button" value="Tính phí vận chuyển" name="calculate_order" class="btn btn-primary btn-upper calculate_delivery" disabled="">
+                                        @endif
                                     </td>
                                 </tr>
                                 </tbody>
@@ -207,6 +256,9 @@
                                                         </div>
                                                         <div class="cart-grand-total">
                                                             <span class="inner-left-md" style="padding-left: 0px;">Thành tiền: {{number_format(Session::get('Cart')->totalPrice + Session::get('fee') - $cou['coupon_money'],0,',',',')}} VNĐ</span>
+                                                            <input type="hidden" autocomplete="off"
+                                                                   class="form-control unicase-form-control text-input order_total"
+                                                                   name="order_total" value="{{Session::get('Cart')->totalPrice + Session::get('fee') - $cou['coupon_money']}}">
                                                         </div>
                                                     </th>
                                                 @endforeach
@@ -223,6 +275,9 @@
                                                     @endif
                                                     <div class="cart-grand-total">
                                                         <span class="inner-left-md">Thành tiền: {{number_format(Session::get('Cart')->totalPrice + Session::get('fee'))}} VNĐ</span>
+                                                        <input type="hidden" autocomplete="off"
+                                                               class="form-control unicase-form-control text-input order_total"
+                                                               name="order_total" value="{{Session::get('Cart')->totalPrice + Session::get('fee')}}">
                                                     </div>
                                                 </th>
                                             @endif
@@ -249,11 +304,17 @@
                                                     </div>
                                                     <div class="form-group">
                                                     <span style="margin: 10px 0px 10px 0px;">Nhanh tay đặt hàng ngay hôm nay nào!</span>
-
-                                                    <button type="submit" class="btn btn-primary checkout-btn"
-                                                            style="padding: 13px 54px;" style="width: 105%;">
+                                                        @if(Session::get('fee'))
+                                                    <button type="button" name="checkout-btn" class="btn btn-primary checkout-btn"
+                                                            style="padding: 13px 54px;" style="width: 105%;" >
                                                         XÁC NHẬN MUA HÀNG
                                                     </button>
+                                                        @else
+                                                            <button type="button" name="checkout-btn" class="btn btn-primary checkout-btn"
+                                                                    style="padding: 13px 54px;" style="width: 105%;" disabled="">
+                                                                XÁC NHẬN MUA HÀNG
+                                                            </button>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </td>
@@ -267,12 +328,6 @@
                                         <thead>
                                         <tr>
                                             <th style="text-align: left; padding-left: 50px;">
-                                                <div class="cart-sub-total">
-                                                    <span class="inner-left-md" style="padding-left: 0px;">Tổng tiền: 0 VNĐ</span>
-                                                </div>
-                                                <div class="cart-sub-total">
-                                                    <span class="inner-left-md" style="padding-left: 0px;">Shiping: 0 VNĐ</span>
-                                                </div>
                                                 <div class="cart-grand-total">
                                                     <span class="inner-left-md" style="padding-left: 0px;">Thành tiền: 0 VNĐ</span>
                                                 </div>
@@ -283,8 +338,8 @@
                                         <tr>
                                             <td style="padding: 24px 54px;">
                                                 <div class="cart-checkout-btn pull-right">
-                                                    <button type="submit" class="btn btn-primary checkout-btn"
-                                                            style="padding: 12px 44px;" style="width: 105%;">
+                                                    <button type="button" name="checkout-btn" class="btn btn-primary checkout-btn"
+                                                            style="padding: 12px 44px;" style="width: 105%;" disabled="">
                                                         XÁC NHẬN MUA HÀNG
                                                     </button>
                                                     <span class="">Nhanh tay đặt hàng ngay hôm nay nào!</span>
@@ -298,43 +353,7 @@
                         </div>
                     </div><!-- /.shopping-cart -->
                 </form>
-                <?php
-                $message = Session::get('message');
-                if ($message) {
-                    echo '<span class="text-alert">' . $message . '</span>';
-                    Session::put('message', null);
-                }
-                ?>
-                <form style="margin: 0px 200px;" >
-                    @csrf
-                    <div class="form-group">
-                        <label for="city">Chọn thành phố:</label>
-                        <select name="city" id="city" class="form-control choose city">
-                            <option value=''>---Vui lòng chọn thành phố---</option>
-                            @foreach($city as $key=>$ci)
-                                <option value='{{$ci->matp}}'>{{$ci->name_city}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="province">Chọn quận huyện:</label>
-                        <select name="province" id="province" class="form-control province choose">
-                            <option value=''>---Vui lòng chọn quận huyện---</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="wards">Chọn xã phường:</label>
-                        <select name="wards" id="wards" class="form-control wards">
-                            <option value=''>---Vui lòng chọn xã phường---</option>
-                        </select>
-                    </div>
-                    <input type="button" value="Tính phí vận chuyển" name="calculate_order" class="btn btn-primary btn-upper calculate_delivery">
-                </form>
-                <?php
-                echo Session::get('fee');
-                ?>
             </div>
         </div>
     </div><!-- /.body-content -->
-
 @stop

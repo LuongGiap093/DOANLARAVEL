@@ -10,11 +10,12 @@ class Order_Details extends Model
     use HasFactory;
     protected $table='order_details';
     protected $fillable = [
+
+        'id',
         'quantity',
         'unit_price',
         'order_id',
-        'product_id',
-       
+        'total_price',
     ];
     protected $primaryKey = 'order_details_id';
     public function owner(){
@@ -26,4 +27,11 @@ class Order_Details extends Model
     public function order(){
         return $this->belongsTo('App\Models\Order', 'order_id','order_details_id');
     }
+
 }
+
+
+
+
+
+

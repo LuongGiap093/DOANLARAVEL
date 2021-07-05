@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
+use App\Models\Logo;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Models\Category;
@@ -13,8 +14,9 @@ use App\Models\Order_Details;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Coupon;
 use DB;
+use App\Cart;
 use PhpParser\Node\Expr\Print_;
-use Session;
+use Illuminate\Support\Facades\Session;
 
 Session_start();
 
@@ -136,6 +138,7 @@ class ProductsController extends Controller
 
     public function postCheckout(Request $req)
     {
+        $coupons=Coupon::all();
         $cart = Session::get('cart');
         $total = 0;
 //        foreach($cart as $key=>$car)
@@ -157,14 +160,28 @@ class ProductsController extends Controller
         $order->customer_id = $customer->customer_id;
         $order->order_total = $req->order_total;
         $order->order_payment = $req->order_payment;
+        if(Session::get('coupon')==true){
+            $order->coupon_id='14';
+        }
+        $order->order_status='1';
         $order->save();
-        if (Session::get('cart') == true) {
-            foreach (Session::get('cart') as $key => $value) {
+
+
+        if (Session::has('Cart') != null) {
+
+//            $order_details = new Order_Details;
+//            $order_details->order_id = $order->order_id;
+//            $order_details->id = '8';
+//            $order_details->quantity = '3';
+//            $order_details->unit_price = '10000';
+//            $order_details->save();
+            foreach (Session::get('Cart')->products as $value) {
                 $order_details = new Order_Details;
                 $order_details->order_id = $order->order_id;
-                $order_details->product_id = $key;
-                $order_details->quantity = $value['quantity'];
-                $order_details->unit_price = $value['price'];
+                $order_details->id = $value['productInfo']->id;
+                $order_details->quantity = $value['quanty'];
+                $order_details->unit_price = $value['productInfo']->price - $value['productInfo']->discount;
+                $order_details->total_price = $value['quanty']*($value['productInfo']->price - $value['productInfo']->discount);
                 $order_details->save();
 
             }
@@ -173,6 +190,14 @@ class ProductsController extends Controller
         $categorys = Category::all();
         return view('user.page.hoanthanh', compact('categorys'));
 
+
+    }
+
+    public function search_product(Request $request){
+        $logos=Logo::all();
+        $categorys = Category::all();
+        $products=Product::where('name','like','%'.$request->keyword_search.'%')->orwhere('price','like','%'.$request->keyword_search.'%')->get();
+        return view('user.page.show_product.products', compact('products', 'categorys','logos'));
 
     }
 
