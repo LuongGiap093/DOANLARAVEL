@@ -54,7 +54,7 @@
             url: 'save-ListItemCart/' + id + "/" + $("#quanty-item-" + id).val(),
             type: 'GET',
         }).done(function (response) {
-            // alertify.success('Cập Nhật Thành Công!');
+            alertify.success('Cập Nhật Thành Công!');
             // $("#change-item-cart").load(location.href + " #change-item-cart>*", "");
             // $("#list-cart").empty();
             // $("#list-cart").html(response);

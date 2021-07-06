@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -38,8 +39,9 @@ class ProductController extends Controller
 
     public function create()
     {
+        $brands=Brand::all();
         $categorys = Category::all();
-        return view($this->viewprefix.'create', compact('categorys'));
+        return view($this->viewprefix.'create', compact('categorys','brands'));
     }
 
     public function store(Request $request): \Illuminate\Http\RedirectResponse
@@ -50,24 +52,26 @@ class ProductController extends Controller
             'image' => 'required',
             'price' => 'required',
             'discount' => 'required',
-            'content' => 'required',
+            'product_content' => 'required',
             'describe' => 'required',
             'status' => 'required',
             'idcat' => 'required',
+            'brand_id' => 'required',
         ]);
         $product->name = $request->name;
         $product->image = $this->imageUpload($request);
         $product->price = $request->price;
         $product->discount = $request->discount;
-        $product->content = $request->content;
+        $product->content = $request->product_content;
         $product->describe = $request->describe;
         $product->status = $request->status;
         $product->idcat = $request->idcat;
+        $product->brand_id = $request->brand_id;
 
         if ($product->save()) {
-            Session::flash('message', 'successfully!');
+            Session::flash('message', 'Thêm sản phẩm thành công!');
         } else {
-            Session::flash('message', 'Failure!');
+            Session::flash('message', 'Thêm thất bại!');
         }
         return redirect()->route('product.index');
     }
@@ -116,9 +120,10 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+        $brands=Brand::all();
         $categorys = Category::all();
 
-        return view('admin.product.edit', compact('product', 'categorys'));
+        return view('admin.product.edit', compact('product', 'categorys','brands'));
     }
 
     /**
@@ -131,22 +136,21 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-
         $product->name = $request->name;
         if ($request->hasFile('image')) {
             $product->image = $this->imageUpload($request);
         }
         $product->price = $request->price;
         $product->discount = $request->discount;
-        $product->content = $request->contents;
+        $product->content = $request->product_content;
         $product->describe = $request->describe;
         $product->status = $request->status;
         $product->idcat = $request->idcat;
         // if(Product::create($request->all()))
         if ($product->save()) {
-            Session::flash('message', 'successfully!');
+            Session::flash('message', 'Sửa thành công!');
         } else {
-            Session::flash('message', 'Failure!');
+            Session::flash('message', 'Sửa thất bại!');
         }
         return redirect()->route('product.index');
     }

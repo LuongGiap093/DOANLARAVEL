@@ -12,6 +12,7 @@ class Category extends Model
     protected $fillable = [
         'name',
         'content',
+        'status',
     ];
     protected $primaryKey = 'id';
     public function product()

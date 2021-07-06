@@ -19,11 +19,16 @@ class Product extends Model
         'describe',
         'status',
         'idcat',
+        'brand_id'
     ];
     protected $primaryKey = 'id';
     public function category()
     {
         return $this->belongsTo('App\Models\Category', 'idcat', 'id');
+    }
+    public function brands()
+    {
+        return $this->belongsTo('App\Models\Brand', 'brand_id', 'id');
     }
     public function order_details()
     {

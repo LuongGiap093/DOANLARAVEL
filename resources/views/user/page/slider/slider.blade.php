@@ -3,9 +3,9 @@
         @foreach($sliders as $slider)
             <div class="item" style="background-image: url({!!asset('images/'. $slider->image) !!});">
                 <div class="container-fluid">
-                    <div class="caption bg-color vertical-center text-left">
+                    <div class="caption bg-color vertical-center text-left" style="text-align: center;">
                         <div class="slider-header fadeInDown-1">{{($slider->slider_small_title)}}</div>
-                        <div class="big-text fadeInDown-1"> {{$slider->slider_big_title}} <span
+                        <div class="big-text fadeInDown-1" style="font-size: 25px;"> {{$slider->slider_big_title}} <span
                                 class="highlight">{{($slider->highlight_text)}}</span></div>
                         <div class="excerpt fadeInDown-2 hidden-xs"><span>{!! $slider->slider_description !!}</span>
                         </div>

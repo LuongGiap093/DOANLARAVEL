@@ -3,31 +3,6 @@
     <form action="{{route('coupon.update', $coupon->coupon_id)}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
-
-        {{--    <div class="form-group">--}}
-        {{--        <label for="image">Image:</label>--}}
-        {{--        <input type="file" class="form-control" name="image" value="{{$category->image}}"/>--}}
-        {{--    </div>--}}
-        {{--    <div class="form-group">--}}
-        {{--     <label for="name">Name:</label>--}}
-        {{--     <input type="text" class="form-control" name="name" value="{{$category->name}}">--}}
-        {{--   </div>--}}
-        {{--    <div class="form-group">--}}
-        {{--        <label for="name">Name:</label>--}}
-        {{--        <input type="text" class="form-control" name="category_name" value="{{$category->category_name}}">--}}
-        {{--    </div>--}}
-        {{--    --}}
-        {{--    <div class="form-group">--}}
-        {{--        <label for="content">Description:</label>--}}
-        {{--        <textarea class="form-control" id="contents" name="category_desc" >{{$category->category_desc}}</textarea>--}}
-        {{--        <script>CKEDITOR.replace('contents');</script>--}}
-        {{--    </div>--}}
-        {{--  <div class="form-group">--}}
-        {{--    <label for="content">Content:</label>--}}
-        {{--    <textarea class="form-control" id="contents" name="content">{{$category->content}}</textarea>--}}
-        {{--    <script>CKEDITOR.replace('contents');</script>--}}
-        {{--  </div>--}}
-
         <div class="form-group">
             <label for="coupon_name">Tên Voucher:</label>
             <input type="text" class="form-control" name="coupon_name" value="{{$coupon->coupon_name}}">

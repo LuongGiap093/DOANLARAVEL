@@ -53,17 +53,18 @@ class CategoryController extends Controller {
     $category = new Category;
     $request->validate([
       'name' => 'required',
-      'content' => 'required',
-
+      'category_content' => 'required',
+        'status'=> 'required',
     ]);
     $category->name = $request->name;
-    $category->content = $request->content;
-    if ($category->save()) //if(Category::create($request->all()))
+    $category->content = $request->category_content;
+    $category->status = $request->status;
+      if ($category->save()) //if(Category::create($request->all()))
     {
-      Session::flash('message', 'successfully!');
+      Session::flash('message', 'Thêm danh mục thành công!');
     }
     else {
-      Session::flash('message', 'Failure!');
+      Session::flash('message', 'Thêm danh mục thất bại!');
     }
     return redirect()->route('category.index');
   }
@@ -103,13 +104,14 @@ class CategoryController extends Controller {
     //
 
     $category->name = $request->name;
-    $category->content = $request->content;
+    $category->content = $request->category_content;
+    $category->status = $request->status;
     if ($category->save()) //if(Category::create($request->all()))
     {
-      Session::flash('message', 'successfully!');
+      Session::flash('message', 'Sửa thành công!');
     }
     else {
-      Session::flash('message', 'Failure!');
+      Session::flash('message', 'Sửa thất bại!');
     }
     return redirect()->route('category.index');
   }

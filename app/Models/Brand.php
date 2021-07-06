@@ -18,6 +18,6 @@ class Brand extends Model
     protected $primaryKey = 'brand_id';
     public function product()
     {
-        return $this->hasMany('App\Models\Product','id');
+        return $this->hasMany('App\Models\Product','brand_id');
     }
 }

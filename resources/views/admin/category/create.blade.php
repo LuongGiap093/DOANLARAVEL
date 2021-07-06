@@ -8,9 +8,16 @@
    </div>
   <div class="form-group">
     <label for="content">Content:</label>
-    <textarea class="form-control" id="contents" name="content"></textarea>
+    <textarea class="form-control" id="contents" name="category_content"></textarea>
       <script>CKEDITOR.replace('contents');</script>
   </div>
+    <div class="form-group">
+        <label for="status">Trạng thái:</label>
+        <select name="status" class="form-control" id="status">
+            <option value='1'>True</option>
+            <option value='0'>False</option>
+        </select>
+    </div>
    <button type="submit" name="btn_addcategory"class="btn btn-primary">Thực Hiện</button>
  </form>
  </div>

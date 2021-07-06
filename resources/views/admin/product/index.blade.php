@@ -7,6 +7,7 @@
         <th>Tên</th>
         <th>Giá</th>
         <th>Giảm giá</th>
+        <th>Trạng thái</th>
         <th>Edit</th>
         <th>Lock</th>
         <th>Delete</th>
@@ -18,6 +19,11 @@
                 <td>{{$product->name}} </td>
                 <td>{{$product->price}} </td>
                 <td>{{$product->discount}} </td>
+                @if($product->status==1)
+                    <td>True</td>
+                @else
+                    <td>Flase</td>
+                @endif
                 <td><a href="{{route('product.edit', $product->id)}}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                 </td>
                 <td><a href="" class="btn btn-warning"><i class="fa fa-lock"></i></a></td>
