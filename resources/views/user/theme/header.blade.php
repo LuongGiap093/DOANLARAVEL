@@ -209,13 +209,12 @@
                             <ul class="nav navbar-nav">
                                 <li class="active dropdown yamm-fw"><a href="{{route('shopping.index')}}">Trang Chủ</a>
                                 </li>
-                                <li class="dropdown hidden-sm"><a href="{{route('shopping.show-product')}}">Sản
-                                        Phẩm<span
+                                <li class="dropdown hidden-sm"><a href="{{route('shopping.category')}}">Sản Phẩm<span
                                             class="menu-label new-menu hidden-xs">Mới</span> </a></li>
                                 @foreach($categorys as $category)
                                     @if($category->name=='Điện thoại'||$category->name=='Máy tính Laptop'||$category->name=='Đồng hồ thông minh'||$category->name=='Phụ kiện')
                                         <li class="dropdown"><a
-                                                href="{{route('shopping.show-phone',$category->id)}}">{{$category->name}}</a>
+                                                    href="{{route('shopping.show-phone',$category->id)}}">{{$category->name}}</a>
                                         </li>
                                     @endif
                                 @endforeach
@@ -225,8 +224,7 @@
                                 <li class="dropdown"><a href="{{route('shopping.faq')}}">FAQ</a></li>
 
 
-                                <li class="dropdown  navbar-right special-menu"><a href="{{route('shopping.coupon')}}">Nhận
-                                        Voucher ngay<span
+                                <li class="dropdown  navbar-right special-menu"><a href="{{route('shopping.coupon')}}">Nhận Voucher ngay<span
                                             class="menu-label hot-menu hidden-xs">Hot</span></a></li>
                             </ul>
                             <!-- /.navbar-nav -->

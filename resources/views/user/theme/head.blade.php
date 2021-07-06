@@ -69,4 +69,5 @@
     .shopping-cart .cart-shopping-total table tbody tr td .cart-checkout-btn button {
         float: right !important;
         margin-bottom: 20px;
+    }
 </style>

@@ -52,8 +52,11 @@ class AccountCustomerController extends Controller
 
   public function getLogout()
   {
+
+    $logos=Logo::all();
+    $categorys = Category::all();
     Auth::guard('account_customer')->logout();
-    return view('user.page.contact');
+    return view('user.page.contact',compact('logos','categorys'));
   }
 }
 ?>
