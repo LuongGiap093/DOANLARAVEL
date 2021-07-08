@@ -94,19 +94,14 @@
         <div id="sidebar-menu">
             <ul class="metismenu" id="side-menu">
 
-                <li class="menu-title">Navigation</li>
+                <li class="menu-title">Điều hướng</li>
 
                 <li>
-                    <a href="javascript: void(0);" class="waves-effect">
+                    <a href="{{route('dashboard.index')}}" class="waves-effect">
                         <i class="ion-md-speedometer"></i>
                         <span>  Dashboard  </span>
-                        <span class="badge badge-info badge-pill float-right"> 3 </span>
+                        <span class="badge badge-info badge-pill float-right"></span>
                     </a>
-                    <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href="index.html">Dashboard 1</a></li>
-                        <li><a href="dashboard-2.html">Dashboard 2</a></li>
-                        <li><a href="dashboard-3.html">Dashboard 3</a></li>
-                    </ul>
                 </li>
 
                 <li>
@@ -118,14 +113,14 @@
                 </li>
                 <li>
                     <a href="{{route('slider.index')}}" class="waves-effect">
-                        <i class="ion-md-basket"></i>
+                        <i class=" ion ion-ios-paper"></i>
                         <span> Slider </span>
                         {{--                        <span class="menu-arrow"></span>--}}
                     </a>
                 </li>
                 <li>
                     <a href="{{route('brand.index')}}" class="waves-effect">
-                        <i class="ion-ios-apps"></i>
+                        <i class=" ion ion-md-bowtie"></i>
                         <span> Brand </span>
 {{--                                                <span class="menu-arrow"></span>--}}
                     </a>

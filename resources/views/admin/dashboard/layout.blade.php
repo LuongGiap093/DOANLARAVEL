@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,18 +12,13 @@
     <link rel="shortcut icon" href="{!! asset('admin/assets/images/favicon.ico') !!}">
 
     <!-- third party css -->
-    <link href="{!! asset('admin/assets/libs/datatables/dataTables.bootstrap4.min.css') !!}" rel="stylesheet"
-          type="text/css">
-    <link href="{!! asset('admin/assets/libs/datatables/buttons.bootstrap4.min.css') !!}" rel="stylesheet"
-          type="text/css">
-    <link href="{!! asset('admin/assets/libs/datatables/responsive.bootstrap4.min.css') !!}" rel="stylesheet"
-          type="text/css">
-    <link href="{!! asset('admin/assets/libs/datatables/select.bootstrap4.min.css') !!}" rel="stylesheet"
-          type="text/css">
+    <link href="{!! asset('admin/assets/libs/datatables/dataTables.bootstrap4.min.css') !!}" rel="stylesheet" type="text/css">
+    <link href="{!! asset('admin/assets/libs/datatables/buttons.bootstrap4.min.css') !!}" rel="stylesheet" type="text/css">
+    <link href="{!! asset('admin/assets/libs/datatables/responsive.bootstrap4.min.css') !!}" rel="stylesheet" type="text/css">
+    <link href="{!! asset('admin/assets/libs/datatables/select.bootstrap4.min.css') !!}" rel="stylesheet" type="text/css">
 
     <!-- App css -->
-    <link href="{!! asset('admin/assets/css/bootstrap.min.css') !!}" rel="stylesheet" type="text/css"
-          id="bootstrap-stylesheet">
+    <link href="{!! asset('admin/assets/css/bootstrap.min.css') !!}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
     <link href="{!! asset('admin/assets/css/icons.min.css') !!}" rel="stylesheet" type="text/css">
     <link href="{!! asset('admin/assets/css/app.min.css') !!}" rel="stylesheet" type="text/css" id="app-stylesheet">
     <script src="//cdn.ckeditor.com/4.16.1/full/ckeditor.js"></script>
@@ -33,9 +29,9 @@
 
 <!-- Begin page -->
 <div id="wrapper">
-    @include('admin.theme.nav')
+@include('admin.theme.nav')
 
-    @include('admin.theme.sidebar')
+@include('admin.theme.sidebar')
 
     <div class="content-page">
         <div class="content">
@@ -43,12 +39,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box">
-                            <h4 class="page-title">Data Table</h4>
+                            <h4 class="page-title">Welcome !</h4>
                             <div class="page-title-right">
                                 <ol class="breadcrumb p-0 m-0">
                                     <li class="breadcrumb-item"><a href="#">Velonic</a></li>
-                                    <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                                    <li class="breadcrumb-item active">Data Table</li>
+                                    <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                                    <li class="breadcrumb-item active">Dashboard 1</li>
                                 </ol>
                             </div>
                             <div class="clearfix"></div>
@@ -57,38 +53,28 @@
                 </div>
 
 
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body table-responsive">
-                                <h4 class="m-t-0 header-title mb-4"><b>Bài Viết</b></h4>
-                                <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a href="{{ url(Request::route()->getPrefix()) }}" class="btn btn-primary">Quản
-                                        lý</a>
-                                    <a href="{{route('blog.create')}}" class="btn btn-success">Thêm mới</a>
-                                </div>
                                 @yield('content')
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+
             </div>
         </div>
 
 
-        <!-- Footer Start -->
-        <footer class="footer">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        2015 - 2020 &copy; Velonic theme by <a href="">Coderthemes</a>
-                    </div>
+
+
+<!-- Footer Start -->
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    2015 - 2020 &copy; Velonic theme by <a href="">Coderthemes</a>
                 </div>
             </div>
-        </footer>
-        <!-- end Footer -->
+        </div>
+    </footer>
+    <!-- end Footer -->
 
-    </div>
+</div>
 
 </div>
 <!-- END wrapper -->
@@ -109,8 +95,7 @@
                 <strong>Customize </strong> the overall color scheme, layout, etc.
             </div>
             <div class="mb-2">
-                <img src="{!! asset('admin/assets/images/layouts/light.png') !!}" class="img-fluid img-thumbnail"
-                     alt="">
+                <img src="{!! asset('admin/assets/images/layouts/light.png') !!}" class="img-fluid img-thumbnail" alt="">
             </div>
             <div class="custom-control custom-switch mb-3">
                 <input type="checkbox" class="custom-control-input theme-choice" id="light-mode-switch" checked="">
@@ -121,9 +106,7 @@
                 <img src="{!! asset('admin/assets/images/layouts/dark.png') !!}" class="img-fluid img-thumbnail" alt="">
             </div>
             <div class="custom-control custom-switch mb-3">
-                <input type="checkbox" class="custom-control-input theme-choice" id="dark-mode-switch"
-                       data-bsstyle="{!!asset(' admin/assets/css/bootstrap-dark.min.css') !!}"
-                       data-appstyle="{!! asset('admin/assets/css/app-dark.min.css') !!}">
+                <input type="checkbox" class="custom-control-input theme-choice" id="dark-mode-switch" data-bsstyle="{!!asset(' admin/assets/css/bootstrap-dark.min.css') !!}" data-appstyle="{!! asset('admin/assets/css/app-dark.min.css') !!}">
                 <label class="custom-control-label" for="dark-mode-switch">Dark Mode</label>
             </div>
 
