@@ -57,19 +57,19 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-3 logo-holder">
                     <!-- ============================================================= LOGO ============================================================= -->
-{{--                    @foreach($logos as $logo)--}}
-{{--                        <div class="logo">--}}
-{{--                            <a href="{{route('shopping.index')}}">--}}
-{{--                                <img src="{{asset('images/'. $logo->logo_image)}}" alt="logo">--}}
-{{--                            </a>--}}
-{{--                        </div>--}}
-{{--                @endforeach--}}
+                    @foreach($logos as $logo)
+                        <div class="logo">
+                            <a href="{{route('shopping.index')}}">
+                                <img src="{{asset('images/'. $logo->logo_image)}}" alt="logo">
+                            </a>
+                        </div>
+                @endforeach
                 <!-- /.logo -->
-                    <div class="logo">
-                        <a href="">
-                            <img src="" alt="logo">
-                        </a>
-                    </div>
+{{--                    <div class="logo">--}}
+{{--                        <a href="">--}}
+{{--                            <img src="" alt="logo">--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
                     <!-- ============================================================= LOGO : END ============================================================= -->
                 </div>
                 <!-- /.logo-holder -->

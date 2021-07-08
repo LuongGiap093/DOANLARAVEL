@@ -51,10 +51,10 @@ class LogoController extends Controller
     {
         //
         $data=$request->validate([
-            'image' => 'required',
+            'logo_image' => 'required',
             'logo_status' => 'required',
         ]);
-        $data['logo_image'] = Helper::imageUpload($request);
+        $data['logo_image'] = Helper::background_imageUpload($request);
         if(Logo::create($data))
             Session::flash('message', 'successfully!');
         else
@@ -99,7 +99,7 @@ class LogoController extends Controller
             'logo_image' => 'required',
             'logo_status' => 'required',
         ]);
-        $data['logo_image'] = Helper::imageUpload($request);
+        $data['logo_image'] = Helper::background_imageUpload($request);
         if($logo->update($data))
             Session::flash('message', ' Update successfully!');
         else

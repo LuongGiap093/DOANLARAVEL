@@ -21,10 +21,10 @@ class Helper{
     }
   public static function background_imageUpload(Request $request)
   {
-    if($request->hasFile('background_image')){
-      if($request->file('background_image')->isValid()){
+    if($request->hasFile('logo_image')){
+      if($request->file('logo_image')->isValid()){
         $request->validate([
-          'background_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+          'logo_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         $imageName = time().'.'.$request->image->extension();
         $request->image->move(public_path('images'), $imageName);
