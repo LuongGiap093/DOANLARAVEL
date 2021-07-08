@@ -139,6 +139,7 @@ class ProductsController extends Controller
     public function postCheckout(Request $req)
     {
         $coupons=Coupon::all();
+        $logos = Logo::all();
         $cart = Session::get('cart');
         $total = 0;
 //        foreach($cart as $key=>$car)
@@ -165,30 +166,20 @@ class ProductsController extends Controller
         }
         $order->order_status='1';
         $order->save();
-
-
-        if (Session::has('Cart') != null) {
-
-//            $order_details = new Order_Details;
-//            $order_details->order_id = $order->order_id;
-//            $order_details->id = '8';
-//            $order_details->quantity = '3';
-//            $order_details->unit_price = '10000';
-//            $order_details->save();
-            foreach (Session::get('Cart')->products as $value) {
+        if (Session::get('cart') == true) {
+            foreach (Session::get('cart') as $key => $value) {
                 $order_details = new Order_Details;
                 $order_details->order_id = $order->order_id;
-                $order_details->id = $value['productInfo']->id;
-                $order_details->quantity = $value['quanty'];
-                $order_details->unit_price = $value['productInfo']->price - $value['productInfo']->discount;
-                $order_details->total_price = $value['quanty']*($value['productInfo']->price - $value['productInfo']->discount);
+                $order_details->product_id = $key;
+                $order_details->quantity = $value['quantity'];
+                $order_details->unit_price = $value['price'];
                 $order_details->save();
 
             }
         }
         $req->session()->flush();
         $categorys = Category::all();
-        return view('user.page.hoanthanh', compact('categorys'));
+        return view('user.page.hoanthanh', compact('categorys','logos'));
 
 
     }

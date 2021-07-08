@@ -43,6 +43,7 @@ Route::resource('panel/coupon', admin\CouponController::class);
 Route::resource('panel/delivery', admin\DeliveryController::class);
 Route::resource('panel/brand',admin\BrandController::class);
 Route::resource('panel/logo',admin\LogoController::class);
+Route::resource('panel/dashboard',admin\DashboardController::class);
 
 
 Route::group(['prefix' => 'panel', 'namespace' => 'admin'], function () {
