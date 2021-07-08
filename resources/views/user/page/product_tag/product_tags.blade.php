@@ -3,7 +3,7 @@
     <div class="sidebar-widget-body outer-top-xs">
 
         <div class="tag-list">
-            @foreach($products as $product)
+            @foreach($product_tag as $product)
                 <a class="item" title="Phone" href="#">{{ $product->name }}</a>
             @endforeach
         </div>

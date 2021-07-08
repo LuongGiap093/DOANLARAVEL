@@ -9,7 +9,7 @@
                                 class="highlight">{{($slider->highlight_text)}}</span></div>
                         <div class="excerpt fadeInDown-2 hidden-xs"><span>{!! $slider->slider_description !!}</span>
                         </div>
-                        <div class="button-holder fadeInDown-3"><a href="#"
+                        <div class="button-holder fadeInDown-3"><a href="{{($slider->slider_link)}}"
                                                                    class="btn-lg btn btn-uppercase btn-primary shop-now-button">{{$slider->slider_title_button}}</a>
                         </div>
                     </div>

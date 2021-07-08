@@ -19,6 +19,8 @@ class CreateBrandsTable extends Migration
             $table->string('brand_name');
             $table->text('brand_desc')->nullable();
             $table->integer('brand_status')->nullable();
+            $table->integer('category_id')->unsigned()->nullable();
+            $table->foreign('category_id')->references('id')->on('category');
             $table->timestamps();
         });
     }

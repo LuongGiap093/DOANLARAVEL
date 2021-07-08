@@ -7,7 +7,10 @@
      <label for="name">Name:</label>
      <input type="text" class="form-control" name="name" value="{{$category->name}}">
    </div>
-
+    <div class="form-group">
+        <label for="icon">Icon:</label>
+        <input type="text" class="form-control" name="icon" value="{{$category->icon}}">
+    </div>
   <div class="form-group">
     <label for="content">Content:</label>
     <textarea class="form-control" id="contents" name="category_content">{{$category->content}}</textarea>

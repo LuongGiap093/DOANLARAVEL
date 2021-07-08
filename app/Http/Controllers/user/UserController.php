@@ -33,24 +33,26 @@ class UserController extends Controller
         $brands=Brand::all();
         $logos=Logo::all();
         $sliders = Slider::all();
-        $categorys = Category::all();
-        $products = DB::table('product')->orderby('id','desc')->limit(15)->get();;
+        $categorys = DB::table('category')->where('status',0)->get();
+        $categoryss=Category::all();
+        $products = DB::table('product')->orderby('id','desc')->limit(15)->get();
+        $hot_deals=DB::table('product')->where('discount','>',0)->orderby('discount','desc')->get();
+        $product_tag=DB::table('product')->orderby('id','desc')->limit(8)->get();
         $city=City::all();
         $productss = Product::all()->sortByDesc("id");
         $citys=City::orderby('matp','ASC')->get();
         $results = Product::select('idcat')->orderBy('idcat')->get();
         return view('user.page.index',
-            compact('products', 'categorys', 'productss', 'results', 'sliders','city','citys','logos','brands','accountcustomers'));
-        //return view('user.page.index');
+            compact('products', 'categorys', 'categoryss', 'productss', 'results', 'sliders','city',
+                'citys','logos','brands','accountcustomers','hot_deals','product_tag'));
     }
-//show menu trái
+
     public function category()
     {
         $logos=Logo::all();
         $categorys = Category::all();
         $products = Product::all();
         return view('user.page.category', compact('products', 'categorys','logos'));
-        //return view('user.page.index');
     }
 //show sản phẩm
     public  function show_product(){
@@ -74,14 +76,28 @@ class UserController extends Controller
         }
         return view('user.page.show_product.products', compact('products', 'categorys','logos'));
     }
+    //show sản phẩm theo thương hiệu
+    public  function show_brand($brand_id){
+        $logos=Logo::all();
+        if ($brand_id == NULL) {
+            $products = Product::all();
+            return view('user.page.show_product.products', compact('products','logos'));
+        }
+        $categorys = Category::all();
+        $brands=Brand::all();
+
+        $products = DB::table('product')->where('brand_id', $brand_id)->get();
+        if ($products == NULL) {
+            return abort(404);
+        }
+        return view('user.page.show_product.products', compact('products', 'categorys','logos','brands'));
+    }
 //Tìm kiếm
     public function search_product(Request $request){
         $logos=Logo::all();
         $categorys = Category::all();
-        $keywords=$request->keywords_submit;
-        $products=DB::table('product')->orderby('id','desc');
-        $search_product=DB::table('product')->where('name','like','%'. $keywords .'%')->get();
-        return view('user.page.show_product.phone', compact('products', 'categorys','logos','search_product'));
+        $products=Product::where('name','like','%'.$request->keyword_search.'%')->orwhere('price','like','%'.$request->keyword_search.'%')->get();
+        return view('user.page.show_product.products', compact('products', 'categorys','logos'));
     }
 
 

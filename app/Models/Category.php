@@ -13,10 +13,15 @@ class Category extends Model
         'name',
         'content',
         'status',
+        'icon',
     ];
     protected $primaryKey = 'id';
     public function product()
     {
         return $this->hasMany('App\Models\Product','id');
+    }
+    public function brands()
+    {
+        return $this->hasMany('App\Models\Brand','id');
     }
 }

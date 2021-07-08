@@ -212,11 +212,11 @@
                                 <li class="dropdown hidden-sm"><a href="{{route('shopping.category')}}">Sản Phẩm<span
                                             class="menu-label new-menu hidden-xs">Mới</span> </a></li>
                                 @foreach($categorys as $category)
-                                    @if($category->name=='Điện thoại'||$category->name=='Máy tính Laptop'||$category->name=='Đồng hồ thông minh'||$category->name=='Phụ kiện')
+{{--                                    @if($category->name=='Điện thoại'||$category->name=='Máy tính Laptop'||$category->name=='Đồng hồ thông minh'||$category->name=='Phụ kiện')--}}
                                         <li class="dropdown"><a
-                                                    href="{{route('shopping.show-phone',$category->id)}}">{{$category->name}}</a>
+                                                    href="{{route('shopping.show-category',$category->id)}}">{{$category->name}}</a>
                                         </li>
-                                    @endif
+{{--                                    @endif--}}
                                 @endforeach
 
                                 <li class="dropdown"><a href="{{route('shopping.blog')}}">Tin Tức</a></li>

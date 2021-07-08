@@ -19,6 +19,10 @@
             <input type="text" class="form-control" name="highlight_text">
         </div>
         <div class="form-group">
+            <label for="slider_link">Link</label>
+            <input type="text" class="form-control" name="slider_link">
+        </div>
+        <div class="form-group">
             <label for="slider_title_button">Tiêu đề button</label>
             <input type="text" class="form-control" name="slider_title_button">
         </div>

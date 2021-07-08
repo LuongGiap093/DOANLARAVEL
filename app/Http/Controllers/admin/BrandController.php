@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Brand;
 use Illuminate\Support\Facades\Session;
@@ -38,8 +39,9 @@ class BrandController extends Controller
      */
     public function create()
     {
+        $categorys = Category::all();
         //
-        return view($this->viewprefix . 'create');
+        return view($this->viewprefix . 'create',compact( 'categorys',));
     }
 
     /**
@@ -56,10 +58,12 @@ class BrandController extends Controller
             'brand_name' => 'required',
             'brand_desc' => 'required',
             'brand_status' => 'required',
+            'category_id' => 'required',
         ]);
         $brand->brand_name = $request->brand_name;
         $brand->brand_desc = $request->brand_desc;
         $brand->brand_status = $request->brand_status;
+        $brand->category_id = $request->category_id;
         if ($brand->save()) //if(Category::create($request->all()))
         {
             Session::flash('message', 'successfully!');
@@ -89,8 +93,9 @@ class BrandController extends Controller
      */
     public function edit(Brand $brand)
     {
+        $categorys = Category::all();
         //
-        return view('admin.brand.edit', compact('brand'));
+        return view('admin.brand.edit', compact('brand','categorys'));
     }
 
     /**
@@ -106,6 +111,7 @@ class BrandController extends Controller
         $brand->brand_name = $request->brand_name;
         $brand->brand_desc = $request->brand_desc;
         $brand->brand_status = $request->brand_status;
+        $brand->category_id = $request->category_id;
         if ($brand->save()) //if(Category::create($request->all()))
         {
             Session::flash('message', 'successfully!');

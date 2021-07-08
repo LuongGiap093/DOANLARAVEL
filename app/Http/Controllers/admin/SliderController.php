@@ -51,6 +51,7 @@ class SliderController extends Controller
             'slider_big_title' => 'required',
             'highlight_text' => 'required',
             'slider_description' => 'required',
+            'slider_link' => 'required',
             'slider_title_button' => 'required',
         ]);
         $data['image'] = Helper::imageUpload($request);
@@ -83,6 +84,7 @@ class SliderController extends Controller
           'slider_big_title' => 'required',
           'highlight_text' => 'required',
           'slider_description' => 'required',
+            'slider_link' => 'required',
           'slider_title_button' => 'required',
         ]);
         $data['image'] = Helper::imageUpload($request);

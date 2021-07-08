@@ -2,7 +2,6 @@
 @section('content')
 <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
   <thead>
-
     <th>Tên danh mục</th>
     <th>Trạng thái</th>
     <th>View product</th>
@@ -13,7 +12,6 @@
   <tbody>
   @foreach($categorys ?? '' as $category)
       <tr>
-
         <td>{{$category->name}} </td>
           @if($category->status==1)
               <td>True</td>

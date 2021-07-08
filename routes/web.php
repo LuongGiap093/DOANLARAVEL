@@ -66,7 +66,7 @@ Route::group(['prefix' => 'product', 'namespace' => 'FrontEnd'], function() {
 	Route::get('checkout','ProductsController@DetailsCheckout');
 	Route::get('hoanthanh','ProductsController@hoanthanh');
 	Route::post('dathang','ProductsController@postCheckout')->name('dathang');
-    Route::get('search','ProductsController@search_product')->name('search-product');
+
 
 });
 
@@ -75,9 +75,12 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::get('', 'UserController@index')->name('shopping.index');
     Route::get('category', 'UserController@category')->name('shopping.category');
     Route::get('show-product', 'UserController@show_product')->name('shopping.show-product');
-    Route::get('show-phone/{id}', 'UserController@show_phone')->name('shopping.show-phone');
+    Route::get('show-phone/{id}', 'UserController@show_phone')->name('shopping.show-category');
+    Route::get('show-brand/{id}', 'UserController@show_brand')->name('shopping.show-brand');
 
-		Route::get('blog', 'BlogController@index')->name('shopping.blog');
+    Route::get('search','UserController@search_product')->name('search-product');
+
+    Route::get('blog', 'BlogController@index')->name('shopping.blog');
     Route::get('blogdetail/{id}', 'BlogController@blogdetail')->name('blog.detail');
     Route::get('coupon','CouponController@index')->name('shopping.coupon');
 
@@ -115,6 +118,7 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::get('add/to-wishlist/{id}', 'WishlistController@addToWishlist');
     Route::get('wishlist', 'WishlistController@index')->name('showWishlist');
     Route::get('wishlist/destroy/{wishlist_id}','WishlistController@destroy');
+
 });
 
 

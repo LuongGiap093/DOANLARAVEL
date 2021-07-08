@@ -55,10 +55,12 @@ class CategoryController extends Controller {
       'name' => 'required',
       'category_content' => 'required',
         'status'=> 'required',
+        'icon' => 'required'
     ]);
     $category->name = $request->name;
     $category->content = $request->category_content;
     $category->status = $request->status;
+      $category->icon = $request->icon;
       if ($category->save()) //if(Category::create($request->all()))
     {
       Session::flash('message', 'Thêm danh mục thành công!');
@@ -106,6 +108,7 @@ class CategoryController extends Controller {
     $category->name = $request->name;
     $category->content = $request->category_content;
     $category->status = $request->status;
+      $category->icon = $request->icon;
     if ($category->save()) //if(Category::create($request->all()))
     {
       Session::flash('message', 'Sửa thành công!');

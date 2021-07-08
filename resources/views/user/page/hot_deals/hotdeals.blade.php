@@ -1,8 +1,8 @@
 <div class="sidebar-widget hot-deals wow fadeInUp outer-bottom-xs">
     <h3 class="section-title">ưu đãi khủng</h3>
     <div class="owl-carousel sidebar-carousel custom-carousel owl-theme outer-top-ss">
-        @foreach($products as $product)
-            @if((($product->discount*100)/$product->price) >= 20 )
+        @foreach($hot_deals as $product)
+{{--            @if((($product->discount*100)/$product->price) >= 20 )--}}
                 <div class="item">
                     <div class="products">
                         <div class="hot-deal-wrapper">
@@ -66,8 +66,8 @@
                         <!-- /.cart -->
                     </div>
                 </div>
-            @else
-            @endif
+{{--            @else--}}
+{{--            @endif--}}
         @endforeach
     </div>
     <!-- /.sidebar-widget -->
