@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
+use App\Models\Logo;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Models\Category;
@@ -136,6 +137,7 @@ class ProductsController extends Controller
 
     public function postCheckout(Request $req)
     {
+      $logos = Logo::all();
         $cart = Session::get('cart');
         $total = 0;
 //        foreach($cart as $key=>$car)
@@ -171,7 +173,7 @@ class ProductsController extends Controller
         }
         $req->session()->flush();
         $categorys = Category::all();
-        return view('user.page.hoanthanh', compact('categorys'));
+        return view('user.page.hoanthanh', compact('categorys','logos'));
 
 
     }
