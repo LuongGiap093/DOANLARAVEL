@@ -17,13 +17,12 @@
                 <div class="blog-page">
                     <div class="col-md-9">
                         <div class="blog-post wow fadeInUp">
-                            <img class="img-responsive" src="{!!asset('images/'. $blog_detail->image) !!}" alt="">
+{{--                            <img class="img-responsive" src="{!!asset('images/'. $blog_detail->image) !!}" alt="">--}}
                             <h1>{!! $blog_detail->blog_title !!}</h1>
                             <span class="author">{{$blog_detail->blog_author}}</span>
                             <span class="review">7 Comments</span>
                             <span class="date-time">{{$blog_detail->blog_time}}</span>
                             <p>{!! $blog_detail->blog_description !!}</p>
-                            <!-- Go to www.addthis.com/dashboard to customize your tools -->
                             <div class="addthis_inline_share_toolbox_y76p"><strong>Share post:</strong></div>
                         </div>
                         <div class="blog-post-author-details wow fadeInUp">

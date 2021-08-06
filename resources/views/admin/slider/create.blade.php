@@ -5,6 +5,9 @@
         <div class="form-group">
             <label for="image">Hình ảnh:</label>
             <input type="file" class="form-control" name="image" value=""/>
+            @error('image')
+            <p class="text-danger">{{$message}}</p>
+            @enderror
         </div>
         <div class="form-group">
             <label for="slider_small_title">Tiêu đề nhỏ:</label>

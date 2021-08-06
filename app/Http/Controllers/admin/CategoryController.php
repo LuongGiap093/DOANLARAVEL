@@ -57,10 +57,10 @@ class CategoryController extends Controller {
         'status'=> 'required',
         'icon' => 'required'
     ]);
-    $category->name = $request->name;
-    $category->content = $request->category_content;
-    $category->status = $request->status;
-      $category->icon = $request->icon;
+    $category->category_name = $request->name;
+    $category->category_content = $request->category_content;
+    $category->category_status = $request->status;
+      $category->category_icon = $request->icon;
       if ($category->save()) //if(Category::create($request->all()))
     {
       Session::flash('message', 'Thêm danh mục thành công!');
@@ -105,10 +105,10 @@ class CategoryController extends Controller {
   public function update(Request $request, Category $category) {
     //
 
-    $category->name = $request->name;
-    $category->content = $request->category_content;
-    $category->status = $request->status;
-      $category->icon = $request->icon;
+    $category->category_name = $request->name;
+    $category->category_content = $request->category_content;
+    $category->category_status = $request->status;
+      $category->category_icon = $request->icon;
     if ($category->save()) //if(Category::create($request->all()))
     {
       Session::flash('message', 'Sửa thành công!');

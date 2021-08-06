@@ -45,7 +45,7 @@
                                                              alt="" style="width: 90px;">
                                                     </a>
                                                 </td>
-                                                <td class="cart-product-name-info" style="text-align: center;">
+                                                <td class="cart-product-name-info" style="text-align: center; width: 30%;">
                                                     <h4 class='cart-product-description'><a
                                                             href="#">{{$item['productInfo']->name}}</a></h4>
 
@@ -54,7 +54,7 @@
                                                 </td>
                                                 <td>
                                                     <input data-id="{{$item['productInfo']->id}}"
-                                                           id="quanty-item-{{$item['productInfo']->id}}" type="number"
+                                                           id="quanty-item-{{$item['productInfo']->id}}" type="number" min="1"
                                                            autocomplete="off" value="{{$item['quanty']}}"
                                                            style="width: 47%; text-align: center; margin-left: 26%;">
                                                 </td>
@@ -145,16 +145,37 @@
                                             <input type="text" autocomplete="off"
                                                    class="form-control unicase-form-control text-input customer_note"
                                                    placeholder="Ghi chú..." name="customer_note" required="">
+
                                             @if(Session::get('fee'))
                                                 <input type="hidden" autocomplete="off"
                                                        class="form-control unicase-form-control text-input order_fee"
-                                                       name="order_fee" value="Session::get('fee')">
+                                                       name="order_fee" value="{{Session::get('fee')}}">
+                                                <input type="hidden" autocomplete="off"
+                                                       class="form-control unicase-form-control text-input customer_matp"
+                                                       name="customer_matp" value="{{Session::get('fee_matp')}}">
+                                                <input type="hidden" autocomplete="off"
+                                                       class="form-control unicase-form-control text-input customer_maqh"
+                                                       name="customer_maqh" value="{{Session::get('fee_maqh')}}">
+                                                <input type="hidden" autocomplete="off"
+                                                       class="form-control unicase-form-control text-input customer_xaid"
+                                                       name="customer_xaid" value="{{Session::get('fee_xaid')}}">
                                             @else
                                                 <input type="hidden" autocomplete="off"
                                                        class="form-control unicase-form-control text-input order_fee"
                                                        name="order_fee" value="50000">
+                                                <input type="hidden" autocomplete="off"
+                                                       class="form-control unicase-form-control text-input customer_matp"
+                                                       name="customer_matp" value="{{Session::get('fee_matp')}}">
+                                                <input type="hidden" autocomplete="off"
+                                                       class="form-control unicase-form-control text-input customer_maqh"
+                                                       name="customer_maqh" value="{{Session::get('fee_maqh')}}">
+                                                <input type="hidden" autocomplete="off"
+                                                       class="form-control unicase-form-control text-input customer_xaid"
+                                                       name="customer_xaid" value="{{Session::get('fee_xaid')}}">
                                             @endif
+
                                             @if(Session::get('coupon'))
+
                                                 @foreach(Session::get('coupon') as $key => $cou)
                                                     <input type="hidden" autocomplete="off"
                                                            class="form-control unicase-form-control text-input order_coupon"
@@ -255,10 +276,10 @@
                                                             </span>
                                                         </div>
                                                         <div class="cart-grand-total">
-                                                            <span class="inner-left-md" style="padding-left: 0px;">Thành tiền: {{number_format(Session::get('Cart')->totalPrice + Session::get('fee') - $cou['coupon_money'],0,',',',')}} VNĐ</span>
+                                                            <span class="inner-left-md" style="padding-left: 0px;">Thành tiền: {{number_format((Session::get('Cart')->totalPrice + Session::get('fee')) - $cou['coupon_money'],0,',',',')}} VNĐ</span>
                                                             <input type="hidden" autocomplete="off"
                                                                    class="form-control unicase-form-control text-input order_total"
-                                                                   name="order_total" value="{{Session::get('Cart')->totalPrice + Session::get('fee') - $cou['coupon_money']}}">
+                                                                   name="order_total" value="{{(Session::get('Cart')->totalPrice + Session::get('fee')) - $cou['coupon_money']}}">
                                                         </div>
                                                     </th>
                                                 @endforeach

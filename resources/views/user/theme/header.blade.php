@@ -6,13 +6,16 @@
             <div class="header-top-inner">
                 <div class="cnt-account">
                     <ul class="list-unstyled">
-                        <li><a href="#"><i class="icon fa fa-user"></i>Tài khoản</a></li>
+                        @if(Auth::guard('account_customer')->check())
+                        <li><a href="{{route('profiles')}}"><i class="icon fa fa-user"></i>Tài khoản</a></li>
                         <li><a href="{{route('showWishlist')}}"><i class="icon fa fa-heart"></i>Yêu thích</a></li>
                         <li><a href="#"><i class="icon fa fa-shopping-cart"></i>Giỏ hàng</a></li>
-                        @if(Auth::guard('account_customer')->check())
                             <li><a href="#"><i class="icon fa fa-user"></i>Xin chào bạn  {{Auth::guard('account_customer')->user()->name}} </a></li>
                             <li><a href="{{ route('customer.getLogout') }}"><i class="icon fa fa-lock"></i>Đăng xuất</a></li>
                         @else
+                            <li><a href="{{route('shopping.login')}}"><i class="icon fa fa-user"></i>Tài khoản</a></li>
+                            <li><a href="{{route('showWishlist')}}"><i class="icon fa fa-heart"></i>Yêu thích</a></li>
+                            <li><a href="#"><i class="icon fa fa-shopping-cart"></i>Giỏ hàng</a></li>
                             <li><a href="{{route('shopping.login')}}"><i class="icon fa fa-lock"></i>Đăng nhập</a></li>
                             <li><a href="{{route('shopping.login')}}"><i class="icon fa fa-lock"></i>Đăng ký</a></li>
                         @endif
@@ -20,29 +23,29 @@
                 </div>
                 <!-- /.cnt-account -->
 
-                <div class="cnt-block">
-                    <ul class="list-unstyled list-inline">
-                        <li class="dropdown dropdown-small"><a href="#" class="dropdown-toggle" data-hover="dropdown"
-                                                               data-toggle="dropdown"><span class="value">USD </span><b
-                                    class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">USD</a></li>
-                                <li><a href="#">INR</a></li>
-                                <li><a href="#">GBP</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown dropdown-small"><a href="#" class="dropdown-toggle" data-hover="dropdown"
-                                                               data-toggle="dropdown"><span
-                                    class="value">English </span><b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">English</a></li>
-                                <li><a href="#">French</a></li>
-                                <li><a href="#">German</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <!-- /.list-unstyled -->
-                </div>
+{{--                <div class="cnt-block">--}}
+{{--                    <ul class="list-unstyled list-inline">--}}
+{{--                        <li class="dropdown dropdown-small"><a href="#" class="dropdown-toggle" data-hover="dropdown"--}}
+{{--                                                               data-toggle="dropdown"><span class="value">USD </span><b--}}
+{{--                                    class="caret"></b></a>--}}
+{{--                            <ul class="dropdown-menu">--}}
+{{--                                <li><a href="#">USD</a></li>--}}
+{{--                                <li><a href="#">INR</a></li>--}}
+{{--                                <li><a href="#">GBP</a></li>--}}
+{{--                            </ul>--}}
+{{--                        </li>--}}
+{{--                        <li class="dropdown dropdown-small"><a href="#" class="dropdown-toggle" data-hover="dropdown"--}}
+{{--                                                               data-toggle="dropdown"><span--}}
+{{--                                    class="value">English </span><b class="caret"></b></a>--}}
+{{--                            <ul class="dropdown-menu">--}}
+{{--                                <li><a href="#">English</a></li>--}}
+{{--                                <li><a href="#">French</a></li>--}}
+{{--                                <li><a href="#">German</a></li>--}}
+{{--                            </ul>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                    <!-- /.list-unstyled -->--}}
+{{--                </div>--}}
                 <!-- /.cnt-cart -->
                 <div class="clearfix"></div>
             </div>
@@ -60,41 +63,34 @@
                     @foreach($logos as $logo)
                         <div class="logo">
                             <a href="{{route('shopping.index')}}">
-                                <img src="{{asset('images/'. $logo->logo_image)}}" alt="logo">
+                                <img src="{{asset('images/'. $logo->logo_image)}}" alt="logo" style="width: auto;">
                             </a>
                         </div>
                 @endforeach
-                <!-- /.logo -->
-{{--                    <div class="logo">--}}
-{{--                        <a href="">--}}
-{{--                            <img src="" alt="logo">--}}
-{{--                        </a>--}}
-{{--                    </div>--}}
-                    <!-- ============================================================= LOGO : END ============================================================= -->
+                <!-- ============================================================= LOGO : END ============================================================= -->
                 </div>
                 <!-- /.logo-holder -->
 
-                <div class="col-xs-12 col-sm-12 col-md-7 top-search-holder" style="padding-right: 126px;">
+                <div class="col-xs-12 col-sm-12 col-md-6 top-search-holder">
                     <!-- /.contact-row -->
                     <!-- ============================================================= SEARCH AREA ============================================================= -->
                     <div class="search-area">
-                        <form action="{{route('search-product')}}" method="GET">
+                        <form action="{{route('search-product')}}" method="GET" >
                             @csrf
                             <div class="control-group">
-{{--                                <ul class="categories-filter animate-dropdown">--}}
-{{--                                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"--}}
-{{--                                                            href="category.html">Danh mục<b class="caret"></b></a>--}}
-{{--                                        <ul class="dropdown-menu" role="menu">--}}
-{{--                                            @foreach($categorys as $category)--}}
-{{--                                                <li role="presentation"><a role="menuitem" tabindex="-1"--}}
-{{--                                                                           href="category.html">{{$category->name}}</a>--}}
-{{--                                                </li>--}}
-{{--                                            @endforeach--}}
-{{--                                        </ul>--}}
-{{--                                    </li>--}}
-{{--                                </ul>--}}
-                                <input type="text" class="search-field" name="keyword_search" placeholder="Tìm kiếm..." style="width: 82%;">
-                                <input type="submit" name="search_items" class="search-button" value="Tìm kiếm">
+                                <ul class="categories-filter animate-dropdown">
+                                    <select name="categories" id="categories" style="width: 100%;border: 0px;padding: 13px;">
+                                        <option value="0">Danh mục</option>
+                                        @foreach($categorys as $key => $category)
+                                        <option value="{{$key+1}}">{{$category->category_name}}</option>
+                                        @endforeach
+                                        <svg class="svg-arrow select-arrow">
+                                            <use xlink:href="#svg-arrow"></use>
+                                        </svg>
+                                    </select>
+                                </ul>
+                                <input type="text" class="search-field" name="keyword_search" placeholder="Tìm kiếm..." style="width: 55.5%;padding: 14px;">
+                                <input type="submit" name="search_items" class="search-button" value="Tìm kiếm" style="padding: 14px 19px 12px; border-radius: 5px 0px 0px 5px;">
 {{--                                <a class="search-button" href="#"></a>--}}
                             </div>
                         </form>
@@ -104,7 +100,7 @@
                 </div>
                 <!-- /.top-search-holder -->
 
-                <div class="col-xs-12 col-sm-12 col-md-2 animate-dropdown top-cart-row">
+                <div class="col-xs-12 col-sm-12 col-md-3 animate-dropdown top-cart-row">
                     <!-- ============================================================= SHOPPING CART DROPDOWN ============================================================= -->
                     <div id="change-item-cart">
                         <div class="dropdown dropdown-cart">
@@ -209,14 +205,14 @@
                             <ul class="nav navbar-nav">
                                 <li class="active dropdown yamm-fw"><a href="{{route('shopping.index')}}">Trang Chủ</a>
                                 </li>
-                                <li class="dropdown hidden-sm"><a href="{{route('shopping.category')}}">Sản Phẩm<span
+                                <li class="dropdown hidden-sm"><a href="{{route('shopping.show-product')}}">Sản Phẩm<span
                                             class="menu-label new-menu hidden-xs">Mới</span> </a></li>
                                 @foreach($categorys as $category)
-{{--                                    @if($category->name=='Điện thoại'||$category->name=='Máy tính Laptop'||$category->name=='Đồng hồ thông minh'||$category->name=='Phụ kiện')--}}
+                                    @if($category->category_status==1)
                                         <li class="dropdown"><a
-                                                    href="{{route('shopping.show-category',$category->id)}}">{{$category->name}}</a>
+                                                    href="{{route('shopping.show-category',$category->category_id)}}">{{$category->category_name}}</a>
                                         </li>
-{{--                                    @endif--}}
+                                    @endif
                                 @endforeach
 
                                 <li class="dropdown"><a href="{{route('shopping.blog')}}">Tin Tức</a></li>
@@ -244,7 +240,10 @@
     </div>
     <!-- /.header-nav -->
     <!-- ============================================== NAVBAR : END ============================================== -->
-
+    <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button" style="background-color: #3498db; color: #ecf0f1; padding: 7px 9px;">
+        <i class="fa fa-chevron-up"></i>
+    </a>
 </header>
+
 
 <!-- ============================================== HEADER : END ============================================== -->

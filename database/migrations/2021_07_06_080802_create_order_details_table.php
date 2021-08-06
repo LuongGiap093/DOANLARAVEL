@@ -16,14 +16,14 @@ class CreateOrderDetailsTable extends Migration
         Schema::create('order_details', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->Increments('order_details_id')->unsigned();
-            $table->integer('quantity')->nullable();
-            $table->string('unit_price')->nullable();
-            $table->string('total_price')->nullable();
+            $table->integer('quantity');
+            $table->string('unit_price');
+            $table->string('total_price');
             $table->timestamps();
 
-            $table->integer('order_id')->unsigned()->nullable();
+            $table->integer('order_id')->unsigned();
             $table->foreign('order_id')->references('order_id')->on('order');
-            $table->integer('id')->unsigned()->nullable();
+            $table->integer('id')->unsigned();
             $table->foreign('id')->references('id')->on('product');
 
 

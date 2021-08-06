@@ -26,14 +26,22 @@ class ContactController extends Controller
 
     public function storeForm(Request $request)
     {
+        $data=Request::all();
         $this->validate($request, [
             'contacts_name' => 'required',
             'contacts_email' => 'required|email',
             'contacts_title' => 'required',
-            'contacts_comment' => 'required',
+            'contacts_comment' => '',
         ]);
-
         Contact::create($request->all());
+//        $to_name = "TLMobile";
+//        $to_email = $data['contacts_email'];//send to this email
+//        $data = array("name"=>"Mail từ tài khoản khách hàng","body"=>'Mail gửi về vấn đề hàng hóa'); //body of mail.blade.php
+//        Mail::send('user.page.send_mail',$data,function($message) use ($to_name,$to_email){
+//            $message->to($to_email)->subject('test mail nhé');//send this mail with subject
+//            $message->from($to_email,$to_name);//send from this mail
+//        });
+
         \Mail::send('user.page.mail', [
             'contacts_name' => $request->get('contacts_name'),
             'contacts_email' => $request->get('contacts_email'),

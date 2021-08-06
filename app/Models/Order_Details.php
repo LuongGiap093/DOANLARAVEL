@@ -11,18 +11,18 @@ class Order_Details extends Model
     protected $table='order_details';
     protected $fillable = [
 
-        'id',
         'quantity',
         'unit_price',
-        'order_id',
         'total_price',
+        'order_id',
+        'id',
     ];
     protected $primaryKey = 'order_details_id';
     public function owner(){
         return $this->belongsTo('User');
     }
     public function product(){
-        return $this->belongsTo('App\Models\Product', 'id','order_details_id');
+        return $this->belongsTo('App\Models\Product', 'id');
     }
     public function order(){
         return $this->belongsTo('App\Models\Order', 'order_id','order_details_id');

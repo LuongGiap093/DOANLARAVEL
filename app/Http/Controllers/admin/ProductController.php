@@ -5,7 +5,9 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Category;
+
 use App\Models\Product;
+use App\Models\Gallery;
 use Illuminate\Http\Request;
 use Session;
 
@@ -31,7 +33,7 @@ class ProductController extends Controller
     public function index()
     {
         $categorys = Category::all();
-        $products = Product::all();
+        $products = Product::where('status','<>','0')->get();
 
         return view($this->viewprefix.'index', compact('products', 'categorys'));
 
@@ -57,6 +59,8 @@ class ProductController extends Controller
             'status' => 'required',
             'idcat' => 'required',
             'brand_id' => 'required',
+
+
         ]);
         $product->name = $request->name;
         $product->image = $this->imageUpload($request);
@@ -67,12 +71,30 @@ class ProductController extends Controller
         $product->status = $request->status;
         $product->idcat = $request->idcat;
         $product->brand_id = $request->brand_id;
-
         if ($product->save()) {
             Session::flash('message', 'Thêm sản phẩm thành công!');
         } else {
             Session::flash('message', 'Thêm thất bại!');
         }
+
+        $pro_id=$product->id;
+
+        $get_image=$request->file('files');
+        if($get_image){
+            foreach ($get_image as $key=> $image)
+            {
+                $get_name_image=$image->getClientOriginalName();
+                $name_image=current(explode('.',$get_name_image));
+                $new_image=$name_image.rand(0,99).'.'.$image->getClientOriginalExtension();
+                $image->move(public_path('frontend/assets/images/gallery'),$new_image);
+                $gallery=new Gallery();
+                $gallery->gallery_name=$new_image;
+                $gallery->gallery_image=$new_image;
+                $gallery->product_id=$pro_id;
+                    $gallery->save();
+            }
+        }
+
         return redirect()->route('product.index');
     }
 

@@ -16,14 +16,16 @@ class CreateOrderTable extends Migration
         Schema::create('order', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->Increments('order_id')->unsigned();
-            $table->float('order_total')->nullable();
-            $table->string('order_payment')->nullable();
-            $table->integer('order_status')->nullable();
+            $table->float('order_total');
+            $table->string('order_payment');
+            $table->integer('order_status')->default(0);
             $table->timestamps();
-            $table->integer('customer_id')->unsigned()->nullable();
+            $table->integer('customer_id')->unsigned();
             $table->foreign('customer_id')->references('customer_id')->on('customer');
             $table->integer('coupon_id')->unsigned()->nullable();
             $table->foreign('coupon_id')->references('coupon_id')->on('coupon');
+            $table->integer('shipping_id')->unsigned();
+            $table->foreign('shipping_id')->references('shipping_id')->on('shipping');
         });
     }
 

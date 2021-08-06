@@ -47,18 +47,22 @@ class SliderController extends Controller
     public function store(Request $request)
     {
         $data=$request->validate([
-            'slider_small_title' => 'required',
-            'slider_big_title' => 'required',
-            'highlight_text' => 'required',
-            'slider_description' => 'required',
-            'slider_link' => 'required',
-            'slider_title_button' => 'required',
+            'image' => 'required',
+            'slider_small_title' => '',
+            'slider_big_title' => '',
+            'highlight_text' => '',
+            'slider_description' => '',
+            'slider_link' => '',
+            'slider_title_button' => '',
+        ],[
+            'image.required'=>'Hình ảnh lhoong được để trống',
         ]);
         $data['image'] = Helper::imageUpload($request);
         if(Slider::create($data))
             Session::flash('message', 'successfully!');
         else
-            Session::flash('message', 'Failure!');
+            return redirect()->back()->withErrors($data);
+
         return redirect()->route($this->index);
     }
 
@@ -80,18 +84,21 @@ class SliderController extends Controller
     public function update(Request $request, Slider $slider)
     {
         $data=$request->validate([
-          'slider_small_title' => 'required',
-          'slider_big_title' => 'required',
-          'highlight_text' => 'required',
-          'slider_description' => 'required',
-            'slider_link' => 'required',
-          'slider_title_button' => 'required',
+            'image' => 'required',
+          'slider_small_title' => '',
+          'slider_big_title' => '',
+          'highlight_text' => '',
+          'slider_description' => '',
+            'slider_link' => '',
+          'slider_title_button' => '',
+        ],[
+            'image.required'=>'Hình ảnh lhoong được để trống',
         ]);
         $data['image'] = Helper::imageUpload($request);
         if($slider->update($data))
             Session::flash('message', ' Update successfully!');
         else
-            Session::flash('message', 'Failure!');
+            return redirect()->back()->withErrors($data);
         return redirect()->route('slider.index');
     }
 
@@ -104,28 +111,5 @@ class SliderController extends Controller
             Session::flash('message', 'Failure!');
         return redirect()->route('slider.index');
     }
-//
-//
-//
-//    public function productlist($id){
-//
-//        $products = Slider::find($id)->product;
-//        return view('admin.Slider.productlist', compact('products'));
-//    }
-//
-//    public function changestatus($id)
-//    {
-//        $Slider= Slider::find($id);
-//        $Slider->Slider_status=!$Slider->Slider_status;
-//        if($Slider->save()){
-//            return redirect()->back();
-//        }
-//        else
-//        {
-//            return redirect(route('changestatus'));
-//        }
-//    }
-
-
 
 }

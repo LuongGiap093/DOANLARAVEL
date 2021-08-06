@@ -9,8 +9,7 @@
     </div>
     <div class="form-group">
         <label for="blog_title">Tiêu đề </label>
-        <textarea class="form-control" id="contents"  name="blog_title" >{{$blog->blog_title}}</textarea>
-
+        <input type="text" class="form-control" name="blog_title" value="{{$blog->blog_title}}">
     </div>
     <div class="form-group">
         <label for="blog_author">Người đăng</label>

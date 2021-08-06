@@ -10,18 +10,18 @@ class Category extends Model
     use HasFactory;
     protected $table='category';
     protected $fillable = [
-        'name',
-        'content',
-        'status',
-        'icon',
+        'category_name',
+        'category_content',
+        'category_status',
+        'category_icon',
     ];
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'category_id';
     public function product()
     {
-        return $this->hasMany('App\Models\Product','id');
+        return $this->hasMany('App\Models\Product','category_id');
     }
     public function brands()
     {
-        return $this->hasMany('App\Models\Brand','id');
+        return $this->hasMany('App\Models\Brand','category_id');
     }
 }

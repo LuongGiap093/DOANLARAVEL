@@ -5,6 +5,7 @@
         <thead>
         <th>Hình ảnh</th>
         <th>Tên</th>
+        <th>Thư viện ảnh</th>
         <th>Giá</th>
         <th>Giảm giá</th>
         <th>Trạng thái</th>
@@ -17,12 +18,17 @@
             <tr>
                 <td><img src="{{asset('images/'. $product->image)}}" width="40"/></td>
                 <td>{{$product->name}} </td>
+                <td><a href="{{route('add-gallery', $product->id)}}">Thêm thư viện ảnh</a></td>
                 <td>{{$product->price}} </td>
                 <td>{{$product->discount}} </td>
-                @if($product->status==1)
-                    <td>True</td>
+                @if($product->status==0)
+                    <td>Hết hàng</td>
+                @elseif($product->status==1)
+                    <td>Mới</td>
+                @elseif($product->status==2)
+                    <td>Nổi bậc</td>
                 @else
-                    <td>Flase</td>
+                    <td>Big Sale</td>
                 @endif
                 <td><a href="{{route('product.edit', $product->id)}}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                 </td>

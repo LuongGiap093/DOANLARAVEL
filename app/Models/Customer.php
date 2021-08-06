@@ -15,7 +15,8 @@ class Customer extends Model
         'customer_address',
         'customer_phone_number',
         'customer_note',
-       
+
+
     ];
     protected $primaryKey = 'customer_id';
     public function owner(){

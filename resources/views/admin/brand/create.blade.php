@@ -8,7 +8,7 @@
             <option value=''>---Vui lòng chọn danh mục---</option>
             >
             @foreach ($categorys as $key =>$cat)
-                <option value="{{$cat->id}}">{{($key+1).'. '.$cat->name}}</option>
+                <option value="{{$cat->category_id}}">{{($key+1).'. '.$cat->category_name}}</option>
             @endforeach
         </select>
     </div>

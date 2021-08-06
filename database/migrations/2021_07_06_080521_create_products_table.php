@@ -17,16 +17,16 @@ class CreateProductsTable extends Migration
             $table->engine = "InnoDB";
             $table->Increments('id')->unsigned();
             $table->string('name');
-            $table->string('image')->nullable();
+            $table->string('image');
             $table->string('price');
-            $table->string('discount')->nullable();
+            $table->string('discount')->default(0);
             $table->text('content')->nullable();
             $table->text('describe')->nullable();
-            $table->integer('status')->nullable();
+            $table->integer('status')->default(0);
             $table->timestamps();
-            $table->integer('idcat')->unsigned()->nullable();
+            $table->integer('idcat')->unsigned();
             $table->foreign('idcat')->references('id')->on('category');
-            $table->integer('brand_id')->unsigned()->nullable();
+            $table->integer('brand_id')->unsigned();
             $table->foreign('brand_id')->references('brand_id')->on('brands');
         });
     }

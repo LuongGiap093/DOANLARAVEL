@@ -24,9 +24,6 @@ class BlogController extends Controller
         $logos = Logo::all();
         $blogs = Blog::all();
         $firsts = $blogs->first();
-//    $collection = new Collection($blogs);
-//    $firstValue = $collection->shift();
-//    dump($firstValue);
 
         $collections = collect($blogs);
         $chunk = $collections->splice(0, 1);
@@ -43,5 +40,8 @@ class BlogController extends Controller
         return view('user.page.blog_details', compact('blog_detail','logos','categorys'));
     }
 
+    public function show_blog()
+    {
 
+    }
 }

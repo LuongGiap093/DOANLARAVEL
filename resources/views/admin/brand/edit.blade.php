@@ -7,13 +7,13 @@
             <label for="category_id">Danh mục:</label>
             <select name="category_id" class="form-control">
                 @foreach ($categorys as $cate)
-                    @if($cate->id==$brand->category_id)
-                        <option value="{{$cate->id}}">{{$cate->name}}</option>
+                    @if($cate->category_id==$brand->category_id)
+                        <option value="{{$cate->category_id}}">{{$cate->category_name}}</option>
                     @endif
                 @endforeach
                 @foreach ($categorys as $cate)
-                    @if($cate->id!=$brand->category_id)
-                        <option value="{{$cate->id}}">{{$cate->name}}</option>
+                    @if($cate->category_id!=$brand->category_id)
+                        <option value="{{$cate->category_id}}">{{$cate->category_name}}</option>
                     @endif
                 @endforeach
 

@@ -8,7 +8,7 @@
                 <option value=''>---Vui lòng chọn danh mục sản phẩm---</option>
                 >
                 @foreach ($categorys as $key =>$cat)
-                    <option value="{{$cat->id}}">{{($key+1).'. '.$cat->name}}</option>
+                    <option value="{{$cat->category_id}}">{{($key+1).'. '.$cat->category_name}}</option>
                 @endforeach
             </select>
         </div>
@@ -29,6 +29,11 @@
         <div class="form-group">
             <label for="image">Hình ảnh sản phẩm:</label>
             <input type="file" class="form-control" name="image" value=""/>
+        </div>
+        <div class="form-group">
+            <label for="image">Thư viện ảnh:</label>
+            <input type="file" class="form-control" id="file" name="files[]" accept="image/*" multiple>
+            <span id="error_gallery"></span>
         </div>
         <!--<div class="form-group" >
             <label>Choose Images</label>
@@ -53,8 +58,10 @@
         <div class="form-group">
             <label for="status">Trạng thái:</label>
             <select name="status" class="form-control" id="product_status">
-                <option value='1'>True</option>
-                <option value='0'>False</option>
+                <option value='1'>Sản phẩm mới</option>
+                <option value='0'>Hết hàng</option>
+                <option value='2'>Sản phẩm nổi bậc</option>
+                <option value='3'>Sản phẩm Big sale</option>
             </select>
         </div>
 
