@@ -1,50 +1,3 @@
-{{--<!DOCTYPE html>--}}
-{{--<html lang="en">--}}
-{{--<head>--}}
-{{--    <meta charset="utf-8">--}}
-{{--    <meta http-equiv="X-UA-Compatible" content="IE=edge">--}}
-{{--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">--}}
-{{--    <meta name="description" content="">--}}
-{{--    <meta name="author" content="">--}}
-{{--    <title>SB Admin 2 - Dashboard</title>--}}
-{{--    <link href="{!! asset('admin/vendor/fontawesome-free/css/all.min.css') !!}" rel="stylesheet" type="text/css">--}}
-{{--    <link--}}
-{{--        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"--}}
-{{--        rel="stylesheet">--}}
-{{--    <link href="{!! asset('admin/css/sb-admin-2.min.css') !!}" rel="stylesheet">--}}
-{{--    <script src="{!! asset('admin/js/jquery.min.js') !!}"></script>--}}
-{{--  <script src="{!! asset('admin/ckeditor/ckeditor.js') !!}"></script>--}}
-{{--</head>--}}
-{{--<body id="page-top">--}}
-{{--    <div id="wrapper">--}}
-{{--        @include('admin.theme.sidebar')	--}}
-{{--        <div id="content-wrapper" class="d-flex flex-column">--}}
-{{--        <div id="content">--}}
-{{--                @include('admin.theme.nav')--}}
-{{--                @if(Session::has('message'))--}}
-{{--                <div class="alert alert-success">--}}
-{{--                  {{ Session::get('message') }}--}}
-{{--                </div>--}}
-{{--                @endif	   --}}
-{{--                <div class="btn-group" role="group" aria-label="Basic example">--}}
-{{--                    <a href="{{ route('product.index') }}" class="btn btn-primary">Quản lý</a>--}}
-{{--                    <a href="{{route('product.create')}}" class="btn btn-success">Thêm mới</a>--}}
-{{--                </div>--}}
-{{--        @yield('content')--}}
-{{--        </div>--}}
-{{--	      </div>--}}
-{{--    </div>--}}
-{{--    <script src="{!! asset('admin/vendor/jquery/jquery.min.js') !!}"></script>--}}
-{{--  <script src="{!! asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js') !!}"></script>--}}
-{{--  <script src="{!! asset('admin/vendor/jquery-easing/jquery.easing.min.js') !!}"></script>--}}
-{{--  <script src="{!! asset('admin/js/sb-admin-2.min.js') !!}"></script>--}}
-{{--  <script src="{!! asset('admin/vendor/chart.js/Chart.min.js') !!}"></script>--}}
-{{--  <script src="{!! asset('admin/js/demo/chart-area-demo.js') !!}"></script>--}}
-{{--  <script src="{!! asset('admin/js/demo/chart-pie-demo.js') !!}"></script>--}}
-{{--  <script>CKEDITOR.replace('contents')</script>--}}
-{{--  </body>--}}
-{{--</html>--}}
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -105,7 +58,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body table-responsive">
-                                <h4 class="m-t-0 header-title mb-4"><b>Default Example</b></h4>
+                                <h4 class="m-t-0 header-title mb-4"><b>Danh sách sản phẩm</b></h4>
                                 <div class="btn-group" role="group" aria-label="Basic example">
                                     <a href="{{ url(Request::route()->getPrefix()) }}" class="btn btn-primary">Quản lý</a>
                                     <a href="{{route('product.create')}}" class="btn btn-success">Thêm mới</a>
@@ -208,6 +161,27 @@
 <script src="{!! asset('admin/assets/js/app.min.js') !!}"></script>
 <script>CKEDITOR.replace('contents')</script>
 <script>CKEDITOR.replace('describe')</script>
+<script type="text/javascript">
+    $('#file').change(function (){ //change là thay đổi (nghĩz là khi id="file" thay đổi)
+        var error='';
+        var files=$('#file')[0].files;//bắt ảnh đầu tiên
+        if(files.length>10){
+            error+='<p>Bạn chọn tối đa chỉ được 10 ảnh</p>';
+        }else if(files.length==''){
+            error+='<p>Bạn không được bỏ trống trường này</p>';
+        }else if(files.size>2000000){
+            error+='<p>File ảnh không được lớn hơn 2MB</p>';
+        }
+
+        if(error==''){
+
+        }else {
+            $('#file').val('');
+            $('#error_gallery').html('<span class="text-danger">'+error+'</span>');
+            return false;
+        }
+    });
+</script>
 </body>
 
 </html>

@@ -39,7 +39,6 @@ class UserController extends Controller {
 
     $user = new User;
     $user->image = Helper::imageUpload($request);
-    //      $user->background_image = Helper::background_imageUpload($request);
     $user->name = $request->name;
     $user->email = $request->email;
     $user->password = Hash::make($request->password);
@@ -48,11 +47,6 @@ class UserController extends Controller {
     $user->contact = $request->contact;
     $user->address = $request->address;
     $user->description = $request->description;
-
-    //      $user->phone = $request->phone;
-    //      $user->address = $request->address;
-    //      $user->contact = $request->contact;
-    //      $user->description = $request->description;
 
     $user->save();
     return redirect('panel/user');

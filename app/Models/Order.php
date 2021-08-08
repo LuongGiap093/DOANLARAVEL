@@ -14,7 +14,9 @@ class Order extends Model
         'order_payment',
         'order_status',
         'customer_id',
+        'shipping_id',
         'coupon_id',
+        'created_at',
 
     ];
     protected $primarykey = 'order_id';
@@ -29,7 +31,10 @@ class Order extends Model
         return $this->belongsTo('App\Models\Customer', 'customer_id', 'order_id');
     }
     public function coupon(){
-        return $this->belongsTo('App\Models\Coupon', 'coupon_id','order_id');
+        return $this->belongsTo('App\Models\Coupon', 'coupon_id');
+    }
+    public function shipping(){
+        return $this->belongsTo('App\Models\Shipping', 'shipping_id');
     }
 
 }

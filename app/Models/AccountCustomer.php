@@ -21,7 +21,6 @@ class AccountCustomer extends Authenticatable {
     'email',
     'password',
     'phone',
-
   ];
   protected $primaryKey = 'id';
   public function wishlist(){

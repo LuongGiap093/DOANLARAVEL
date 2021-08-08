@@ -2,12 +2,17 @@
 @section('content')
 <form action="{{ route('category.store') }}" method="POST" enctype="multipart/form-data">
     {{ csrf_field() }}
+
     <div class="form-group">
-     <label for="name">Name:</label>
+     <label for="name">Tên danh mục:</label>
      <input type="text" class="form-control" name="name">
    </div>
+    <div class="form-group">
+        <label for="icon">Icon:</label>
+        <input type="text" class="form-control" name="icon">
+    </div>
   <div class="form-group">
-    <label for="content">Content:</label>
+    <label for="content">Nội dung:</label>
     <textarea class="form-control" id="contents" name="category_content"></textarea>
       <script>CKEDITOR.replace('contents');</script>
   </div>

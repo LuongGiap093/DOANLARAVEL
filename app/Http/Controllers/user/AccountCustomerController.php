@@ -16,9 +16,10 @@ class AccountCustomerController extends Controller
   public function getLogin()
   {
       $logos=Logo::all();
-      $categorys = Category::all();
+      $categorys=Category::all();
+
     if (Auth::guard('account_customer')->check()) {
-      return view('user.page.loginCustomer');
+      return view('user.page.loginCustomer',compact('logos','categorys'));
 
     } else {
       return view('user.page.loginCustomer',compact('logos','categorys'));
@@ -27,20 +28,14 @@ class AccountCustomerController extends Controller
   public function postLogin(request $request)
   {
       $logos=Logo::all();
-      $categorys = Category::all();
-
+      $categorys=Category::all();
     $login = [
       'email' => $request->email,
       'password' => $request->password,
-
     ];
 
     if (Auth::guard('account_customer')->attempt($login)) {
-//      return redirect()
-//        ->back()
-//        ->with('status', 'Đang nhập thành công
-//
-//        ');
+
       return view('user.page.loginCustomer',compact('logos','categorys'))->with('status', 'Đang nhập thành công');
     }
     else {
@@ -52,11 +47,9 @@ class AccountCustomerController extends Controller
 
   public function getLogout()
   {
-
-    $logos=Logo::all();
-    $categorys = Category::all();
     Auth::guard('account_customer')->logout();
-    return view('user.page.contact',compact('logos','categorys'));
+      return redirect()
+          ->back();
   }
 }
 ?>

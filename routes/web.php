@@ -54,6 +54,14 @@ Route::group(['prefix' => 'panel', 'namespace' => 'admin'], function () {
     Route::post('select-delivery','DeliveryController@select_delivery')->name('select-delivery');
     Route::post('insert-delivery','DeliveryController@insert_delivery')->name('insert');
     Route::get('category/productlist/{id}', 'CategoryController@productlist')->name('category.productlist');
+    Route::get('add-gallery/{id}', 'GalleryController@add_gallery')->name('add-gallery');
+    Route::post('select-gallery', 'GalleryController@select_gallery')->name('select-gallery');
+    Route::post('insert-gallery/{id}', 'GalleryController@insert_gallery')->name('insert-gallery');
+    Route::post('update-gallery', 'GalleryController@update_gallery')->name('update-gallery');
+    Route::post('delete-gallery', 'GalleryController@delete_gallery')->name('delete-gallery');
+
+    Route::get('chi-tiet-hoa-don/{id}','OrderController@view_order_detail')->name('chi-tiet-hoa-don');
+    Route::get('cap-nhat-trang-thai/{id}','OrderController@order_status')->name('cap-nhat-trang-thai');
 });
 
 Route::get('panel/category/productlist/{id}','admin\CategoryController@productlist')->name('category.productlist');
@@ -70,18 +78,20 @@ Route::group(['prefix' => 'product', 'namespace' => 'FrontEnd'], function() {
 	Route::get('checkout','ProductsController@DetailsCheckout');
 	Route::get('hoanthanh','ProductsController@hoanthanh');
 	Route::post('dathang','ProductsController@postCheckout')->name('dathang');
-    Route::get('search','ProductsController@search_product')->name('search-product');
+
 
 });
 
 
 Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::get('', 'UserController@index')->name('shopping.index');
-    Route::get('category', 'UserController@category')->name('shopping.category');
     Route::get('show-product', 'UserController@show_product')->name('shopping.show-product');
-    Route::get('show-phone/{id}', 'UserController@show_phone')->name('shopping.show-phone');
+    Route::get('category/{id}', 'UserController@show_category_product')->name('shopping.show-category');
+    Route::get('show-brand/{id}', 'UserController@show_brand')->name('shopping.show-brand');
 
-		Route::get('blog', 'BlogController@index')->name('shopping.blog');
+    Route::get('search','UserController@search_product')->name('search-product');
+
+    Route::get('blog', 'BlogController@index')->name('shopping.blog');
     Route::get('blogdetail/{id}', 'BlogController@blogdetail')->name('blog.detail');
     Route::get('coupon','CouponController@index')->name('shopping.coupon');
 
@@ -119,6 +129,12 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::get('add/to-wishlist/{id}', 'WishlistController@addToWishlist');
     Route::get('wishlist', 'WishlistController@index')->name('showWishlist');
     Route::get('wishlist/destroy/{wishlist_id}','WishlistController@destroy');
+
+    Route::get('profiles','UserController@profiles')->name('profiles');
+    Route::get('track-order','UserController@track_order')->name('track-order');
+    Route::get('create-profiles','UserController@create_profiles')->name('create-profiles');
+
+
 });
 
 

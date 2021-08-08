@@ -4,6 +4,22 @@
         @csrf
         @method('PUT')
         <div class="form-group">
+            <label for="category_id">Danh mục:</label>
+            <select name="category_id" class="form-control">
+                @foreach ($categorys as $cate)
+                    @if($cate->category_id==$brand->category_id)
+                        <option value="{{$cate->category_id}}">{{$cate->category_name}}</option>
+                    @endif
+                @endforeach
+                @foreach ($categorys as $cate)
+                    @if($cate->category_id!=$brand->category_id)
+                        <option value="{{$cate->category_id}}">{{$cate->category_name}}</option>
+                    @endif
+                @endforeach
+
+            </select>
+        </div>
+        <div class="form-group">
             <label for="brand_name">Name:</label>
             <input type="text" class="form-control" name="brand_name" value="{{$brand->brand_name}}">
         </div>

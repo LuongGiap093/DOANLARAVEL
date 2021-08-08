@@ -15,6 +15,7 @@ class Slider extends Model
         'slider_big_title',
         'highlight_text',
         'slider_description',
+        'slider_link',
         'slider_title_button',
     ];
     protected $primaryKey = 'slider_id';

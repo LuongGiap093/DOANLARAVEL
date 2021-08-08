@@ -105,72 +105,59 @@
                 </li>
 
                 <li>
-                    <a href="{{route('logo.index')}}" class="waves-effect">
+                    <a href="javascript: void(0);" class="waves-effect">
                         <i class="ion-md-basket"></i>
-                        <span> Logo </span>
-                        {{--                        <span class="menu-arrow"></span>--}}
+                        <span> Quản lý sản phẩm </span>
+                        <span class="menu-arrow"></span>
                     </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="{{route('product.index')}}">Tất cả Sản phẩm</a></li>
+                        <li><a href="{{route('brand.index')}}">Thương hiệu sản phẩm</a></li>
+                        <li><a href="{{route('category.index')}}">Danh mục sản phẩm</a></li>
+                    </ul>
                 </li>
+
                 <li>
-                    <a href="{{route('slider.index')}}" class="waves-effect">
-                        <i class=" ion ion-ios-paper"></i>
-                        <span> Slider </span>
-                        {{--                        <span class="menu-arrow"></span>--}}
+                    <a href="javascript: void(0);" class="waves-effect">
+                        <i class="ion-md-basket"></i>
+                        <span> Quản lý bài viết </span>
+                        <span class="menu-arrow"></span>
                     </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="{{route('blog.index')}}">Tin tức</a></li>
+                        <li><a href="{{route('faq.index')}}">Faq</a></li>
+                    </ul>
                 </li>
+
                 <li>
-                    <a href="{{route('brand.index')}}" class="waves-effect">
-                        <i class=" ion ion-md-bowtie"></i>
-                        <span> Brand </span>
-{{--                                                <span class="menu-arrow"></span>--}}
+                    <a href="javascript: void(0);" class="waves-effect">
+                        <i class="ion-md-basket"></i>
+                        <span> Quản lý hình ảnh </span>
+                        <span class="menu-arrow"></span>
                     </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="{{route('logo.index')}}">Logo</a></li>
+                        <li><a href="{{route('slider.index')}}">slider</a></li>
+                    </ul>
                 </li>
+
                 <li>
-                    <a href="{{route('category.index')}}" class="waves-effect">
-                        <i class="ion-ios-apps"></i>
-                        <span> Category </span>
-                        {{--                        <span class="menu-arrow"></span>--}}
+                    <a href="javascript: void(0);" class="waves-effect">
+                        <i class="ion-md-basket"></i>
+                        <span> Quản lý đơn hàng </span>
+                        <span class="menu-arrow"></span>
                     </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="{{route('order.index')}}">Đơn hàng</a></li>
+                        <li><a href="{{route('coupon.index')}}">Voucher giảm giá</a></li>
+                        <li><a href="{{route('delivery.index')}}">Phí vận chuyển</a></li>
+                    </ul>
                 </li>
-                <li>
-                    <a href="{{route('product.index')}}" class="waves-effect">
-                        <i class="ion-ios-apps"></i>
-                        <span> Product </span>
-                        {{--                        <span class="menu-arrow"></span>--}}
-                    </a>
-                </li>
-                <li>
-                    <a href="{{route('coupon.index')}}" class="waves-effect">
-                        <i class="ion-ios-apps"></i>
-                        <span> Coupon </span>
-                        {{--                        <span class="menu-arrow"></span>--}}
-                    </a>
-                </li>
-                <li>
-                    <a href="{{route('delivery.index')}}" class="waves-effect">
-                        <i class="ion-ios-apps"></i>
-                        <span> Delivery </span>
-                        {{--                        <span class="menu-arrow"></span>--}}
-                    </a>
-                </li>
-                <li>
-                    <a href="{{route('order.index')}}" class="waves-effect">
-                        <i class="ion-ios-apps"></i>
-                        <span> Order </span>
-                        {{--                        <span class="menu-arrow"></span>--}}
-                    </a>
-                </li>
-                <li>
-                    <a href="{{route('customer.index')}}" class="waves-effect">
-                        <i class="ion-ios-apps"></i>
-                        <span> Customer </span>
-                        {{--                        <span class="menu-arrow"></span>--}}
-                    </a>
-                </li>
+
                 <li>
                     <a href="{{route('user.index')}}" class="waves-effect">
                         <i class="ion-ios-apps"></i>
-                        <span> User </span>
+                        <span> Tài khoản quản trị </span>
                         {{--                        <span class="menu-arrow"></span>--}}
                     </a>
                 </li>
@@ -182,44 +169,12 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('blog.index')}}" class="waves-effect">
-                        <i class="ion-ios-apps"></i>
-                        <span>Blog </span>
-                        {{--                        <span class="menu-arrow"></span>--}}
-                    </a>
-                </li>
-                <li>
-                    <a href="{{route('faq.index')}}" class="waves-effect">
-                        <i class="ion-ios-apps"></i>
-                        <span>Faq</span>
-                        {{--                        <span class="menu-arrow"></span>--}}
-                    </a>
-                </li>
-                <li>
                     <a href="{{route('contact.index')}}" class="waves-effect">
                         <i class="ion-ios-apps"></i>
-                        <span>Contact</span>
+                        <span>Form liên hệ</span>
                         {{--                        <span class="menu-arrow"></span>--}}
                     </a>
                 </li>
-
-
-                {{--                <li>--}}
-                {{--                    <a href="javascript: void(0);" class="waves-effect">--}}
-                {{--                        <i class="ion-ios-apps"></i>--}}
-                {{--                        <span> Components </span>--}}
-                {{--                        <span class="menu-arrow"></span>--}}
-                {{--                    </a>--}}
-                {{--                    <ul class="nav-second-level" aria-expanded="false">--}}
-                {{--                        <li><a href="components-grid.html">Grid</a></li>--}}
-                {{--                        <li><a href="components-portlets.html">Portlets</a></li>--}}
-                {{--                        <li><a href="components-widgets.html">Widgets</a></li>--}}
-                {{--                        <li><a href="components-nestable-list.html">Nesteble</a></li>--}}
-                {{--                        <li><a href="components-calendar.html">Calendar</a></li>--}}
-                {{--                        <li><a href="components-range-sliders.html">Range Slider</a></li>--}}
-                {{--                    </ul>--}}
-                {{--                </li>--}}
-
             </ul>
 
         </div>

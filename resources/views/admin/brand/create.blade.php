@@ -3,6 +3,16 @@
 <form action="{{ route('brand.store') }}" method="POST" enctype="multipart/form-data">
     {{ csrf_field() }}
     <div class="form-group">
+        <label for="category_id">Danh Mục:</label>
+        <select name="category_id" class="form-control">
+            <option value=''>---Vui lòng chọn danh mục---</option>
+            >
+            @foreach ($categorys as $key =>$cat)
+                <option value="{{$cat->category_id}}">{{($key+1).'. '.$cat->category_name}}</option>
+            @endforeach
+        </select>
+    </div>
+    <div class="form-group">
      <label for="brand_name">Name:</label>
      <input type="text" class="form-control" name="brand_name">
    </div>

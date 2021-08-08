@@ -25,7 +25,7 @@
                             {{Session::get('success')}}
                         </div>
                     @endif
-                    <h5 style="color: red; font-weight: bold">Contact Form</h5>
+                    <h5 style="color: red; font-weight: bold">ĐĂNG KÝ NHẬN TIN</h5>
                     {{--                    <div class="col-md-12 contact-title">--}}
                     {{--                       --}}
                     {{--                    --}}
@@ -84,7 +84,7 @@
                 </div>
                 <div class="col-md-3 contact-info">
                     <div class="contact-title">
-                        <h4>Information</h4>
+                        <h4>THÔNG TIN</h4>
                     </div>
                     <div class="clearfix address">
                         <span class="contact-i"><i class="fa fa-map-marker"></i></span>

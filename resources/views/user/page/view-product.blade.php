@@ -4,9 +4,9 @@
         <div class="container">
             <div class="breadcrumb-inner">
                 <ul class="list-inline list-unstyled">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Clothing</a></li>
-                    <li class='active'>Floral Print Buttoned</li>
+                    <li><a href="#">Trang chủ</a></li>
+                    <li><a href="#">Điện thoại</a></li>
+                    <li class='active'>Vivo</li>
                 </ul>
             </div><!-- /.breadcrumb-inner -->
         </div><!-- /.container -->
@@ -16,278 +16,16 @@
             <div class='row single-product'>
                 <div class='col-md-3 sidebar'>
                     <div class="sidebar-module-container">
-                        <div class="home-banner outer-top-n">
+                        <div class="home-banner outer-top-n" style="margin: 0px 0px 30px 0px;">
                             <img src="{!! asset('frontend\assets\images\banners\LHS-banner.jpg') !!}" alt="Image">
                         </div>
 
                         <!-- ============================================== HOT DEALS ============================================== -->
-                        <div class="sidebar-widget hot-deals wow fadeInUp outer-top-vs">
-                            <h3 class="section-title">hot deals</h3>
-                            <div class="owl-carousel sidebar-carousel custom-carousel owl-theme outer-top-xs">
-
-                                <div class="item">
-                                    <div class="products">
-                                        <div class="hot-deal-wrapper">
-                                            <div class="image">
-                                                <img src="assets\images\hot-deals\p5.jpg" alt="">
-                                            </div>
-                                            <div class="sale-offer-tag"><span>35%<br>off</span></div>
-                                            <div class="timing-wrapper">
-                                                <div class="box-wrapper">
-                                                    <div class="date box">
-                                                        <span class="key">120</span>
-                                                        <span class="value">Days</span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="box-wrapper">
-                                                    <div class="hour box">
-                                                        <span class="key">20</span>
-                                                        <span class="value">HRS</span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="box-wrapper">
-                                                    <div class="minutes box">
-                                                        <span class="key">36</span>
-                                                        <span class="value">MINS</span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="box-wrapper hidden-md">
-                                                    <div class="seconds box">
-                                                        <span class="key">60</span>
-                                                        <span class="value">SEC</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div><!-- /.hot-deal-wrapper -->
-
-                                        <div class="product-info text-left m-t-20">
-                                            <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-                                            <div class="rating rateit-small"></div>
-
-                                            <div class="product-price">
-								<span class="price">
-									$600.00
-								</span>
-
-                                                <span class="price-before-discount">$800.00</span>
-
-                                            </div><!-- /.product-price -->
-
-                                        </div><!-- /.product-info -->
-
-                                        <div class="cart clearfix animate-effect">
-                                            <div class="action">
-
-                                                <div class="add-cart-button btn-group">
-                                                    <button class="btn btn-primary icon" data-toggle="dropdown"
-                                                            type="button">
-                                                        <i class="fa fa-shopping-cart"></i>
-                                                    </button>
-                                                    <button class="btn btn-primary cart-btn" type="button">Add to cart
-                                                    </button>
-
-                                                </div>
-
-                                            </div><!-- /.action -->
-                                        </div><!-- /.cart -->
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="products">
-                                        <div class="hot-deal-wrapper">
-                                            <div class="image">
-                                                <img src="assets\images\products\p6.jpg" alt="">
-                                            </div>
-                                            <div class="sale-offer-tag"><span>35%<br>off</span></div>
-                                            <div class="timing-wrapper">
-                                                <div class="box-wrapper">
-                                                    <div class="date box">
-                                                        <span class="key">120</span>
-                                                        <span class="value">Days</span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="box-wrapper">
-                                                    <div class="hour box">
-                                                        <span class="key">20</span>
-                                                        <span class="value">HRS</span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="box-wrapper">
-                                                    <div class="minutes box">
-                                                        <span class="key">36</span>
-                                                        <span class="value">MINS</span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="box-wrapper hidden-md">
-                                                    <div class="seconds box">
-                                                        <span class="key">60</span>
-                                                        <span class="value">SEC</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div><!-- /.hot-deal-wrapper -->
-
-                                        <div class="product-info text-left m-t-20">
-                                            <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-                                            <div class="rating rateit-small"></div>
-
-                                            <div class="product-price">
-								<span class="price">
-									$600.00
-								</span>
-
-                                                <span class="price-before-discount">$800.00</span>
-
-                                            </div><!-- /.product-price -->
-
-                                        </div><!-- /.product-info -->
-
-                                        <div class="cart clearfix animate-effect">
-                                            <div class="action">
-
-                                                <div class="add-cart-button btn-group">
-                                                    <button class="btn btn-primary icon" data-toggle="dropdown"
-                                                            type="button">
-                                                        <i class="fa fa-shopping-cart"></i>
-                                                    </button>
-                                                    <button class="btn btn-primary cart-btn" type="button">Add to cart
-                                                    </button>
-
-                                                </div>
-
-                                            </div><!-- /.action -->
-                                        </div><!-- /.cart -->
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="products">
-                                        <div class="hot-deal-wrapper">
-                                            <div class="image">
-                                                <img src="assets\images\products\p7.jpg" alt="">
-                                            </div>
-                                            <div class="sale-offer-tag"><span>35%<br>off</span></div>
-                                            <div class="timing-wrapper">
-                                                <div class="box-wrapper">
-                                                    <div class="date box">
-                                                        <span class="key">120</span>
-                                                        <span class="value">Days</span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="box-wrapper">
-                                                    <div class="hour box">
-                                                        <span class="key">20</span>
-                                                        <span class="value">HRS</span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="box-wrapper">
-                                                    <div class="minutes box">
-                                                        <span class="key">36</span>
-                                                        <span class="value">MINS</span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="box-wrapper hidden-md">
-                                                    <div class="seconds box">
-                                                        <span class="key">60</span>
-                                                        <span class="value">SEC</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div><!-- /.hot-deal-wrapper -->
-
-                                        <div class="product-info text-left m-t-20">
-                                            <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-                                            <div class="rating rateit-small"></div>
-
-                                            <div class="product-price">
-								<span class="price">
-									$600.00
-								</span>
-
-                                                <span class="price-before-discount">$800.00</span>
-
-                                            </div><!-- /.product-price -->
-
-                                        </div><!-- /.product-info -->
-
-                                        <div class="cart clearfix animate-effect">
-                                            <div class="action">
-
-                                                <div class="add-cart-button btn-group">
-                                                    <button class="btn btn-primary icon" data-toggle="dropdown"
-                                                            type="button">
-                                                        <i class="fa fa-shopping-cart"></i>
-                                                    </button>
-                                                    <button class="btn btn-primary cart-btn" type="button">Add to cart
-                                                    </button>
-
-                                                </div>
-
-                                            </div><!-- /.action -->
-                                        </div><!-- /.cart -->
-                                    </div>
-                                </div>
-
-
-                            </div><!-- /.sidebar-widget -->
-                        </div>
+                    @include('user.page.hot_deals.hotdeals')
                         <!-- ============================================== HOT DEALS: END ============================================== -->
-                        <!-- ============================================== NEWSLETTER ============================================== -->
-                        <div class="sidebar-widget newsletter wow fadeInUp outer-bottom-small outer-top-vs">
-                            <h3 class="section-title">Newsletters</h3>
-                            <div class="sidebar-widget-body outer-top-xs">
-                                <p>Sign Up for Our Newsletter!</p>
-                                <form>
-                                    <div class="form-group">
-                                        <label class="sr-only" for="exampleInputEmail1">Email address</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                               placeholder="Subscribe to our newsletter">
-                                    </div>
-                                    <button class="btn btn-primary">Subscribe</button>
-                                </form>
-                            </div><!-- /.sidebar-widget-body -->
-                        </div><!-- /.sidebar-widget -->
-                        <!-- ============================================== NEWSLETTER: END ============================================== -->
 
                         <!-- ============================================== Testimonials============================================== -->
-                        <div class="sidebar-widget  wow fadeInUp outer-top-vs ">
-                            <div id="advertisement" class="advertisement">
-                                <div class="item">
-                                    <div class="avatar"><img src="assets\images\testimonials\member1.png" alt="Image">
-                                    </div>
-                                    <div class="testimonials"><em>"</em> Vtae sodales aliq uam morbi non sem lacus port
-                                        mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
-                                    <div class="clients_author">John Doe <span>Abc Company</span></div>
-                                    <!-- /.container-fluid -->
-                                </div><!-- /.item -->
-
-                                <div class="item">
-                                    <div class="avatar"><img src="assets\images\testimonials\member3.png" alt="Image">
-                                    </div>
-                                    <div class="testimonials"><em>"</em>Vtae sodales aliq uam morbi non sem lacus port
-                                        mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
-                                    <div class="clients_author">Stephen Doe <span>Xperia Designs</span></div>
-                                </div><!-- /.item -->
-
-                                <div class="item">
-                                    <div class="avatar"><img src="assets\images\testimonials\member2.png" alt="Image">
-                                    </div>
-                                    <div class="testimonials"><em>"</em> Vtae sodales aliq uam morbi non sem lacus port
-                                        mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
-                                    <div class="clients_author">Saraha Smith <span>Datsun &amp; Co</span></div>
-                                    <!-- /.container-fluid -->
-                                </div><!-- /.item -->
-
-                            </div><!-- /.owl-carousel -->
-                        </div>
+                    @include('user.page.comment.testimonials')
 
                         <!-- ============================================== Testimonials: END ============================================== -->
 
@@ -297,80 +35,32 @@
                     <!-- ============================================== VIEW PRODUCT ============================================== -->
                     <div class="detail-block">
                         <div class="row  wow fadeInUp">
-                            <div class="col-xs-12 col-sm-6 col-md-5 gallery-holder">
-                                <div class="product-item-holder size-big single-product-gallery small-gallery">
+                            <div class="col-xs-12 col-sm-6 col-md-6 gallery-holder">
 
-                                    <div id="owl-single-product">
-                                        <div class="single-product-gallery-item" id="slide1">
-                                            <a data-lightbox="image-1" data-title="Gallery"
-                                               href="{{asset('images/'.$products->image)}}">
-                                                <img class="img-responsive" alt=""
-                                                     src="{{asset('images/'.$products->image)}}"
-                                                     data-echo="{{asset('images/'.$products->image)}}">
-                                            </a>
-                                        </div><!-- /.single-product-gallery-item -->
-                                        <div class="single-product-gallery-item" id="slide2">
-                                            <a data-lightbox="image-1" data-title="Gallery"
-                                               href="{{asset('images/'.$products->image)}}">
-                                                <img class="img-responsive" alt=""
-                                                     src="{{asset('images/'.$products->image)}}"
-                                                     data-echo="{{asset('images/'.$products->image)}}">
-                                            </a>
-                                        </div><!-- /.single-product-gallery-item -->
-                                    </div><!-- /.single-product-slider -->
+                                <ul id="imageGallery">
+                                    @if(count($gallerys)>0)
+                                    @foreach($gallerys as $key => $gal)
+                                    <li data-thumb="{!! asset('frontend/assets/images/gallery/'.$gal->gallery_image) !!}" data-src="{!! asset('frontend/assets/images/gallery/'.$gal->gallery_image) !!}">
+                                        <img src="{!! asset('frontend/assets/images/gallery/'.$gal->gallery_image) !!}" />
+                                    </li>
+                                    @endforeach
+                                    @else
+                                        <li data-thumb="{{asset('images/'.$products->image)}}" data-src="{{asset('images/'.$products->image)}}">
+                                            <img src="{{asset('images/'.$products->image)}}" />
+                                        </li>
+                                    @endif
 
-
-                                    <div class="single-product-gallery-thumbs gallery-thumbs">
-                                        <div id="owl-single-product-thumbnails">
-                                            <div class="item">
-                                                <a class="horizontal-thumb active" data-target="#owl-single-product"
-                                                   data-slide="1" href="#slide1">
-                                                    <img class="img-responsive" width="85" alt=""
-                                                         src="{{asset('images/'.$products->image)}}"
-                                                         data-echo="{{asset('images/'.$products->image)}}">
-                                                </a>
-                                            </div>
-
-                                            <div class="item">
-                                                <a class="horizontal-thumb" data-target="#owl-single-product"
-                                                   data-slide="2" href="#slide2">
-                                                    <img class="img-responsive" width="85" alt=""
-                                                         src="{{asset('images/'.$products->image)}}"
-                                                         data-echo="{{asset('images/'.$products->image)}}">
-                                                </a>
-                                            </div>
-                                            <div class="item">
-
-                                                <a class="horizontal-thumb" data-target="#owl-single-product"
-                                                   data-slide="3" href="#slide3">
-                                                    <img class="img-responsive" width="85" alt=""
-                                                         src="{{asset('images/'.$products->image)}}"
-                                                         data-echo="{{asset('images/'.$products->image)}}">
-                                                </a>
-                                            </div>
-                                            <div class="item">
-
-                                                <a class="horizontal-thumb" data-target="#owl-single-product"
-                                                   data-slide="4" href="#slide4">
-                                                    <img class="img-responsive" width="85" alt=""
-                                                         src="{{asset('images/'.$products->image)}}"
-                                                         data-echo="{{asset('images/'.$products->image)}}">
-                                                </a>
-                                            </div>
-                                        </div><!-- /#owl-single-product-thumbnails -->
-                                    </div><!-- /.gallery-thumbs -->
-
-                                </div><!-- /.single-product-gallery -->
+                                </ul>
                             </div><!-- /.gallery-holder -->
-                            <div class='col-sm-6 col-md-7 product-info-block'>
+                            <div class='col-sm-6 col-md-6 product-info-block'>
                                 <div class="product-info">
-                                    <h1 class="name">{{$products->name}}</h1>
+                                    <h3 class="name">{{$products->name}}</h3>
                                     <div class="rating-reviews m-t-20">
                                         <div class="row">
                                             <div class="col-sm-3">
                                                 <div class="rating rateit-small"></div>
                                             </div>
-                                            <div class="col-sm-8">
+                                            <div class="col-sm-9">
                                                 <div class="reviews">
                                                     <a href="#" class="lnk">(13 Đánh Giá)</a>
                                                 </div>
@@ -380,47 +70,48 @@
 
                                     <div class="stock-container info-container m-t-10">
                                         <div class="row">
-                                            <div class="col-sm-2">
+                                            @foreach($brands as $brand)
+                                            <div class="col-sm-12">
                                                 <div class="stock-box">
-                                                    <span class="label">Số lượng tồn :</span>
+                                                    <span class="label">Thương hiệu: <a class="value" href="#">{!! $brand->brand_name !!}</a> </span>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-9">
-                                                <div class="stock-box">
-                                                    <span class="value">.10</span>
-                                                </div>
-                                            </div>
+                                            @endforeach
+{{--                                            @foreach($brands as $brand)--}}
+{{--                                            <div class="col-sm-9">--}}
+{{--                                                <div class="stock-box">--}}
+{{--                                                    <span class="value">{!! $brand->brand_name !!}</span>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                            @endforeach--}}
                                         </div><!-- /.row -->
                                     </div><!-- /.stock-container -->
 
-                                    <div class="description-container m-t-20">{!! $products->content !!}
-
+                                    <div class="description-container m-t-20">
+                                        {!! $products->content !!}
                                     </div><!-- /.description-container -->
 
-                                    <div class="price-container info-container m-t-20">
+                                    <div class="price-container info-container m-t-20" style="padding: 0px 0;">
                                         <div class="row">
 
 
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-9">
                                                 <div class="price-box">
-                                                    <span class="price">{{$products->price}} VNĐ</span>
-
+                                                    <span class="price" style="padding: 0px 50px 0px 0px;">{{ number_format($products->price - $products->discount,'0',',','.') }} VNĐ</span>
+                                                    <span class="price-strike">{{number_format($products->price)}} VNĐ</span>
+                                                    <span style="position: absolute;">-{{ number_format(($products->discount*100)/$products->price) }}%</span>
                                                 </div>
                                             </div>
 
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-3" style="text-align: right; padding-left: 0px;">
                                                 <div class="favorite-button m-t-10">
                                                     <a class="btn btn-primary" data-toggle="tooltip"
-                                                       data-placement="right" title="Wishlist" href="#">
+                                                       data-placement="left" title="Yêu thích" href="#">
                                                         <i class="fa fa-heart"></i>
                                                     </a>
                                                     <a class="btn btn-primary" data-toggle="tooltip"
-                                                       data-placement="right" title="Add to Compare" href="#">
+                                                       data-placement="left" title="So sánh" href="#">
                                                         <i class="fa fa-signal"></i>
-                                                    </a>
-                                                    <a class="btn btn-primary" data-toggle="tooltip"
-                                                       data-placement="right" title="E-mail" href="#">
-                                                        <i class="fa fa-envelope"></i>
                                                     </a>
                                                 </div>
                                             </div>
@@ -429,41 +120,26 @@
                                     </div><!-- /.price-container -->
 
                                     <div class="quantity-container info-container">
-                                        <div class="row">
+                                        <div class="row" style="text-align: center;">
 
-                                            <div class="col-sm-2">
-                                                <span class="label">Quantity :</span>
-                                            </div>
+{{--                                            <div class="col-sm-2">--}}
+{{--                                                <span class="label">Quantity :</span>--}}
+{{--                                            </div>--}}
 
-                                            <div class="col-sm-2">
-                                                <div class="cart-quantity">
-                                                    <div class="quant-input">
-                                                        <div class="arrows">
-                                                            <div class="arrow plus gradient"><span class="ir"><i
-                                                                        class="icon fa fa-sort-asc"></i></span></div>
-                                                            <div class="arrow minus gradient"><span class="ir"><i
-                                                                        class="icon fa fa-sort-desc"></i></span></div>
-                                                        </div>
-                                                        <input min="0" max="100" type="text" value="1" type="number">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--quantity-->
-                                            <script>
-                                                $('.value-plus1').on('click', function () {
-                                                    var divUpd = $(this).parent().find('.value1'),
-                                                        newVal = parseInt(divUpd.text(), 10) + 1;
-                                                    divUpd.text(newVal);
-                                                });
-
-                                                $('.value-minus1').on('click', function () {
-                                                    var divUpd = $(this).parent().find('.value1'),
-                                                        newVal = parseInt(divUpd.text(), 10) - 1;
-                                                    if (newVal >= 1) divUpd.text(newVal);
-                                                });
-                                            </script>
-                                            <!--quantity-->
-                                            <div class="col-sm-7">
+{{--                                            <div class="col-sm-2">--}}
+{{--                                                <div class="cart-quantity">--}}
+{{--                                                    <div class="quant-input">--}}
+{{--                                                        <div class="arrows">--}}
+{{--                                                            <div class="arrow plus gradient"><span class="ir"><i--}}
+{{--                                                                        class="icon fa fa-sort-asc"></i></span></div>--}}
+{{--                                                            <div class="arrow minus gradient"><span class="ir"><i--}}
+{{--                                                                        class="icon fa fa-sort-desc"></i></span></div>--}}
+{{--                                                        </div>--}}
+{{--                                                        <input type="number" min="0" max="100" type="text" value="1">--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+                                            <div class="col-sm-12">
                                                 <a href="javascripts:" onclick="AddCart({{$products->id}})"
                                                    data-text="Add To Cart" class="btn btn-primary"><i
                                                         class="fa fa-shopping-cart inner-right-vs"></i> Thêm Vào Giỏi
@@ -481,8 +157,8 @@
                         <div class="row">
                             <div class="col-sm-3">
                                 <ul id="product-tabs" class="nav nav-tabs nav-tab-cell">
-                                    <li class="active"><a data-toggle="tab" href="#description">DESCRIPTION</a></li>
-                                    <li><a data-toggle="tab" href="#review">REVIEW</a></li>
+                                    <li class="active"><a data-toggle="tab" href="#description">Mô tả chi tiết</a></li>
+                                    <li><a data-toggle="tab" href="#review">Đánh giá</a></li>
                                     <li><a data-toggle="tab" href="#tags">TAGS</a></li>
                                 </ul><!-- /.nav-tabs #product-tabs -->
                             </div>
@@ -490,9 +166,9 @@
 
                                 <div class="tab-content">
 
-                                    <div id="description" class="tab-pane in active">
-                                        <div class="product-tab">
-                                            <p class="text">{!! $products->describe !!}</p>
+                                    <div id="description" class="tab-pane in active" style="height: 507px; overflow: auto;">
+                                        <div class="product-tab" style="word-wrap: break-word;">
+                                            <p class="text" >{!! $products->describe !!}</p>
                                         </div>
                                     </div><!-- /.tab-pane -->
 
@@ -500,7 +176,7 @@
                                         <div class="product-tab">
 
                                             <div class="product-reviews">
-                                                <h4 class="title">Customer Reviews</h4>
+                                                <h4 class="title">Đánh giá của khách hàng</h4>
 
                                                 <div class="reviews">
                                                     <div class="review">
@@ -659,17 +335,17 @@
 
                     <!-- ============================================== UPSELL PRODUCTS ============================================== -->
                     <section class="section featured-product wow fadeInUp">
-                        <h3 class="section-title">upsell products</h3>
+                        <h3 class="section-title">Sản phẩm gợi ý</h3>
                         <div
                             class="owl-carousel home-owl-carousel upsell-product custom-carousel owl-theme outer-top-xs">
-
+                            @foreach($related_product as $product)
                             <div class="item item-carousel">
                                 <div class="products">
 
                                     <div class="product">
                                         <div class="product-image">
                                             <div class="image">
-                                                <a href="detail.html"><img src="assets\images\products\p1.jpg"
+                                                <a href="{{route('shopping.viewProduct', $product->id)}}"><img src="{{asset('images/'. $product->image)}}"
                                                                            alt=""></a>
                                             </div><!-- /.image -->
 
@@ -678,13 +354,13 @@
 
 
                                         <div class="product-info text-left">
-                                            <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
+                                            <h3 class="name"><a href="{{route('shopping.viewProduct', $product->id)}}">{{ $product->name }}</a></h3>
                                             <div class="rating rateit-small"></div>
                                             <div class="description"></div>
 
                                             <div class="product-price">
 				<span class="price">
-					$650.99				</span>
+					{{ number_format($product->price - $product->discount) }} VNĐ				</span>
                                                 <span class="price-before-discount">$ 800</span>
 
                                             </div><!-- /.product-price -->
@@ -722,7 +398,7 @@
 
                                 </div><!-- /.products -->
                             </div><!-- /.item -->
-
+                            @endforeach
                             <div class="item item-carousel">
                                 <div class="products">
 
@@ -1032,75 +708,6 @@
                 <div class="clearfix"></div>
 
             </div><!-- /.row -->
-            <!-- ============================================== BRANDS CAROUSEL ============================================== -->
-            <div id="brands-carousel" class="logo-slider wow fadeInUp">
-
-                <div class="logo-slider-inner">
-                    <div id="brand-slider" class="owl-carousel brand-slider custom-carousel owl-theme">
-                        <div class="item m-t-15">
-                            <a href="#" class="image">
-                                <img data-echo="assets/images/brands/brand1.png" src="assets\images\blank.gif" alt="">
-                            </a>
-                        </div><!--/.item-->
-
-                        <div class="item m-t-10">
-                            <a href="#" class="image">
-                                <img data-echo="assets/images/brands/brand2.png" src="assets\images\blank.gif" alt="">
-                            </a>
-                        </div><!--/.item-->
-
-                        <div class="item">
-                            <a href="#" class="image">
-                                <img data-echo="assets/images/brands/brand3.png" src="assets\images\blank.gif" alt="">
-                            </a>
-                        </div><!--/.item-->
-
-                        <div class="item">
-                            <a href="#" class="image">
-                                <img data-echo="assets/images/brands/brand4.png" src="assets\images\blank.gif" alt="">
-                            </a>
-                        </div><!--/.item-->
-
-                        <div class="item">
-                            <a href="#" class="image">
-                                <img data-echo="assets/images/brands/brand5.png" src="assets\images\blank.gif" alt="">
-                            </a>
-                        </div><!--/.item-->
-
-                        <div class="item">
-                            <a href="#" class="image">
-                                <img data-echo="assets/images/brands/brand6.png" src="assets\images\blank.gif" alt="">
-                            </a>
-                        </div><!--/.item-->
-
-                        <div class="item">
-                            <a href="#" class="image">
-                                <img data-echo="assets/images/brands/brand2.png" src="assets\images\blank.gif" alt="">
-                            </a>
-                        </div><!--/.item-->
-
-                        <div class="item">
-                            <a href="#" class="image">
-                                <img data-echo="assets/images/brands/brand4.png" src="assets\images\blank.gif" alt="">
-                            </a>
-                        </div><!--/.item-->
-
-                        <div class="item">
-                            <a href="#" class="image">
-                                <img data-echo="assets/images/brands/brand1.png" src="assets\images\blank.gif" alt="">
-                            </a>
-                        </div><!--/.item-->
-
-                        <div class="item">
-                            <a href="#" class="image">
-                                <img data-echo="assets/images/brands/brand5.png" src="assets\images\blank.gif" alt="">
-                            </a>
-                        </div><!--/.item-->
-                    </div><!-- /.owl-carousel #logo-slider -->
-                </div><!-- /.logo-slider-inner -->
-
-            </div><!-- /.logo-slider -->
-            <!-- ============================================== BRANDS CAROUSEL : END ============================================== -->
         </div><!-- /.container -->
     </div>
     </div><!-- /.body-content -->

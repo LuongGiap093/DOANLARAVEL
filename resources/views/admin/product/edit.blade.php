@@ -7,13 +7,13 @@
             <label for="idcat">Danh mục:</label>
             <select name="idcat" class="form-control">
                 @foreach ($categorys as $cate)
-                    @if($cate->id==$product->idcat)
-                    <option value="{{$cate->id}}">{{$cate->name}}</option>
+                    @if($cate->category_id==$product->idcat)
+                    <option value="{{$cate->category_id}}">{{$cate->category_name}}</option>
                     @endif
                 @endforeach
                     @foreach ($categorys as $cate)
-                        @if($cate->id!=$product->idcat)
-                            <option value="{{$cate->id}}">{{$cate->name}}</option>
+                        @if($cate->category_id!=$product->idcat)
+                            <option value="{{$cate->category_id}}">{{$cate->category_name}}</option>
                         @endif
                     @endforeach
 
@@ -63,11 +63,25 @@
             <label for="status">Trạng thái:</label>
             <select name="status" class="form-control" id="status">
                 @if($product->status==1)
-                    <option value="1">true</option>
-                    <option value="0">flase</option>
+                    <option value='1'>Sản phẩm mới</option>
+                    <option value='0'>Hết hàng</option>
+                    <option value='2'>Sản phẩm nổi bậc</option>
+                    <option value='3'>Sản phẩm Big sale</option>
+                @elseif($product->status==2)
+                    <option value='2'>Sản phẩm nổi bậc</option>
+                    <option value='1'>Sản phẩm mới</option>
+                    <option value='0'>Hết hàng</option>
+                    <option value='3'>Sản phẩm Big sale</option>
+                @elseif($product->status==3)
+                    <option value='3'>Sản phẩm Big sale</option>
+                    <option value='1'>Sản phẩm mới</option>
+                    <option value='0'>Hết hàng</option>
+                    <option value='2'>Sản phẩm nổi bậc</option>
                 @else
-                    <option value="0">flase</option>
-                    <option value="1">true</option>
+                    <option value='0'>Hết hàng</option>
+                    <option value='1'>Sản phẩm mới</option>
+                    <option value='2'>Sản phẩm nổi bậc</option>
+                    <option value='3'>Sản phẩm Big sale</option>
                 @endif
             </select>
         </div>

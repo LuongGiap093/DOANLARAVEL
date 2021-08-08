@@ -17,10 +17,10 @@ class CreateCouponTable extends Migration
             $table->engine = "InnoDB";
             $table->Increments('coupon_id')->unsigned();
             $table->string('coupon_name');
-            $table->string('coupon_code')->nullable();
+            $table->string('coupon_code');
             $table->string('coupon_money');
             $table->string('coupon_qty');
-            $table->integer('status')->nullable();
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

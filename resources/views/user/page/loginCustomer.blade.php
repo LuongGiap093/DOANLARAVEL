@@ -17,8 +17,8 @@
                 <div class="row">
                     <!-- Sign-in -->
                     <div class="col-md-6 col-sm-6 sign-in">
-                        <h4 class="">Sign in</h4>
-                        <p class="">Hello, Welcome to your account.</p>
+                        <h4 class="">Đăng nhập</h4>
+                        <p class="">Xin chào, Chào mừng đến với tài khoản của bạn.</p>
                         @if (count($errors) >0)
                             <ul>
                                 @foreach($errors->all() as $error)
@@ -35,24 +35,24 @@
                         <form class="register-form outer-top-xs" role="form" action="{{ route('customer.postLogin') }}" method="post">
                             {{ csrf_field() }}
                             <div class="form-group">
-                                <label class="info-title" for="email">Email Address <span>*</span></label>
-                                <input class="form-control" type="email" name="email" placeholder="jonh@gmail.com">
+                                <label class="info-title" for="email">Địa chỉ Email <span>*</span></label>
+                                <input class="form-control" type="email" name="email" placeholder="jonh@gmail.com" autocomplete="off">
                             </div>
                             <div class="form-group">
-                                <label class="info-title" for="password">Password <span>*</span></label>
-                                <input class="form-control" type="password" name="password" placeholder="Enter your password">
+                                <label class="info-title" for="password">Mật khẩu <span>*</span></label>
+                                <input class="form-control" type="password" name="password" placeholder="Enter your password" autocomplete="off">
                             </div>
                             <div class="radio outer-xs">
                                 <label>
-                                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Remember me!
+                                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Ghi nhớ!
                                 </label>
-                                <a href="#" class="forgot-password pull-right">Forgot your Password?</a>
+                                <a href="#" class="forgot-password pull-right">Quên mật khẩu?</a>
                             </div>
                             <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Đăng nhập</button>
                         </form>
                         <div class="social-sign-in outer-top-xs">
-                            <a href="#" class="facebook-sign-in"><i class="fa fa-facebook"></i> Sign In with Facebook</a>
-                            <a href="#" class="twitter-sign-in"><i class="fa fa-twitter"></i> Sign In with Twitter</a>
+                            <a href="#" class="facebook-sign-in"><i class="fa fa-facebook"></i> Đăng nhập với Facebook</a>
+                            <a href="#" class="twitter-sign-in"><i class="fa fa-twitter"></i> Đăng nhập với Twitter</a>
                         </div>
                     </div>
 
@@ -60,8 +60,8 @@
 
                     <!-- create a new account -->
                     <div class="col-md-6 col-sm-6 create-new-account">
-                        <h4 class="checkout-subtitle">Create a new account</h4>
-                        <p class="text title-tag-line">Create your new account.</p>
+                        <h4 class="checkout-subtitle">Tạo tài khoản mới</h4>
+                        <p class="text title-tag-line">Tạo tài khoản mới của bạn.</p>
                         @if(Session::has('message'))
                             <div class="alert alert-success">
                                 {{Session::get('message')}}
@@ -70,25 +70,33 @@
                         <form class="register-form outer-top-xs" role="form" action="{{route('user.postadd')}}" method="POST" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="form-group">
-                                <label class="info-title" for="email">Email Address <span>*</span></label>
-                                <input type="email" class="form-control unicase-form-control text-input" id="exampleInputEmail2" name="email">
+                                <label class="info-title" for="name">Tên tài khoản <span>*</span></label>
+                                <input type="text" class="form-control unicase-form-control text-input" id="exampleInputEmail1" name="name" >
                             </div>
                             <div class="form-group">
-                                <label class="info-title" for="name">Name <span>*</span></label>
-                                <input type="text" class="form-control unicase-form-control text-input" id="exampleInputEmail1" name="name">
+                                <label class="info-title" for="email">Địa chỉ Email <span>*</span></label>
+                                <input type="email" class="form-control unicase-form-control text-input" id="exampleInputEmail2" name="email" placeholder="jonh@gmail.com">
                             </div>
                             <div class="form-group">
-                                <label class="info-title" for="phone">Phone Number <span>*</span></label>
-                                <input type="text" class="form-control unicase-form-control text-input" id="exampleInputEmail1" name="phone">
+                                <label class="info-title" for="password">Mật khẩu <span>*</span></label>
+                                <input type="password" autocomplete="off" class="form-control unicase-form-control text-input" id="exampleInputEmail1" name="password">
                             </div>
                             <div class="form-group">
-                                <label class="info-title" for="password">Password <span>*</span></label>
-                                <input type="password" class="form-control unicase-form-control text-input" id="exampleInputEmail1" name="password">
+                                <label class="info-title" for="exampleInputEmail1">Nhập lại mật khẩu <span>*</span></label>
+                                <input type="password" autocomplete="off" class="form-control unicase-form-control text-input" id="exampleInputEmail1" name="confirm_password">
                             </div>
 {{--                            <div class="form-group">--}}
-{{--                                <label class="info-title" for="exampleInputEmail1">Confirm Password <span>*</span></label>--}}
-{{--                                <input type="email" class="form-control unicase-form-control text-input" id="exampleInputEmail1">--}}
+{{--                                <label class="info-title" for="name">Họ tên <span>*</span></label>--}}
+{{--                                <input type="text" class="form-control unicase-form-control text-input" id="exampleInputEmail1" name="myname" >--}}
 {{--                            </div>--}}
+{{--                            <div class="form-group">--}}
+{{--                                <label class="info-title" for="phone">Địa chỉ <span>*</span></label>--}}
+{{--                                <input type="text" class="form-control unicase-form-control text-input" id="exampleInputEmail1" name="address" autocomplete="off">--}}
+{{--                            </div>--}}
+                            <div class="form-group">
+                                <label class="info-title" for="phone">Số điện thoại <span>*</span></label>
+                                <input type="text" class="form-control unicase-form-control text-input" id="exampleInputEmail1" name="phone" autocomplete="off">
+                            </div>
                             <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Đăng ký</button>
                         </form>
 

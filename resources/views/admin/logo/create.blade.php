@@ -4,7 +4,7 @@
         {{ csrf_field() }}
         <div class="form-group">
             <label for="image">Hình ảnh:</label>
-            <input type="file" class="form-control" name="image" value=""/>
+            <input type="file" class="form-control" name="logo_image" value=""/>
         </div>
         <div class="form-group">
             <label for="logo_status">Trạng thái:</label>

@@ -5,6 +5,9 @@
         <div class="form-group">
             <label for="image">Hình ảnh:</label>
             <input type="file" class="form-control" name="image" value=""/>
+            @error('image')
+            <p class="text-danger">{{$message}}</p>
+            @enderror
         </div>
         <div class="form-group">
             <label for="slider_small_title">Tiêu đề nhỏ:</label>
@@ -17,6 +20,10 @@
         <div class="form-group">
             <label for="highlight_text">Highlight</label>
             <input type="text" class="form-control" name="highlight_text">
+        </div>
+        <div class="form-group">
+            <label for="slider_link">Link</label>
+            <input type="text" class="form-control" name="slider_link">
         </div>
         <div class="form-group">
             <label for="slider_title_button">Tiêu đề button</label>
