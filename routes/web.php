@@ -38,6 +38,8 @@ Route::group(['middleware' => 'CheckAdminLogin','prefix' => 'panel/user', 'names
 	Route::get('delete/{id}','UserController@delete')->name('user.delete');
   Route::get('changestatus/{id}','UserController@changestatus')->name('user.changestatus');
 
+  Route::get('search','DashboardController@search_order')->name('order.search');
+
     Route::post('logo/trang-thai','LogoController@hien_thi')->name('logo.trang-thai');
 });
 
@@ -55,6 +57,7 @@ Route::resource('panel/delivery', admin\DeliveryController::class);
 Route::resource('panel/brand',admin\BrandController::class);
 Route::resource('panel/logo',admin\LogoController::class);
 Route::resource('panel/dashboard',admin\DashboardController::class);
+
 
 
 Route::group(['prefix' => 'panel', 'namespace' => 'admin'], function () {

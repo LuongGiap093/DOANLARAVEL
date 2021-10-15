@@ -338,7 +338,7 @@ template {
 }
 
 .h2, h2 {
-    font-size: 1.8rem
+    font-size: 1.5rem
 }
 
 .h3, h3 {
@@ -12342,6 +12342,10 @@ input:focus {
     min-height: 20px;
     margin-bottom: 20px
 }
+.name-date{
+    padding-left: 10px;
+    font-size: 17px;
+}
 
 .progress-w-percent .progress {
     width: 80%;
@@ -12363,7 +12367,8 @@ a:focus {
 label {
     font-size: 13px !important;
     font-family: Montserrat, sans-serif;
-    font-weight: 600
+    font-weight: 600;
+    padding: 8px;
 }
 
 button:focus {
