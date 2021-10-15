@@ -15,7 +15,7 @@
         @foreach($users ?? '' as $user)
             <tr>
 
-                <td width="5%"><img src="{{asset('images/'. $user->image)}}" width="100px" height="70px"/></td>
+                <td width="5%"><img src="{{asset('public\images/'. $user->image)}}" width="100px" height="70px"/></td>
 
                 <td>{{$user->name}} </td>
                 <td>{{$user->email}} </td>
@@ -38,4 +38,3 @@
         </tbody>
     </table>
 @stop
-  

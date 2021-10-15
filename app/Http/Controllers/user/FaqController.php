@@ -18,10 +18,14 @@ class FaqController extends Controller {
 
 
   public function index() {
-      $categorys = Category::all();
-      $logos = Logo::all();
+      $logos = Logo::first();
+      $categorys=Category::where('category_status',1)->orderby('category_position','asc')->limit(4)->get();
+      $cate=Category::orderby('category_position','asc')
+          ->join('product','category.category_id','=','product.idcat')
+          ->join('brands','product.brand_id','=','brands.brand_id')
+          ->get();
       $faqs=Faq::all();
-      return view('user.page.faq',compact('faqs','categorys','logos'));
+      return view('user.page.faq',compact('faqs','categorys','cate','logos'));
   }
 
 }

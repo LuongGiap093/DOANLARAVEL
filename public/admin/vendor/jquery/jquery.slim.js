@@ -307,7 +307,7 @@ jQuery.extend = jQuery.fn.extend = function() {
 					}
 					copyIsArray = false;
 
-					// Never move original objects, clone them
+					// Never move original objects, clone theme
 					target[ name ] = jQuery.extend( deep, clone, copy );
 
 				// Don't bring in undefined values
@@ -1058,7 +1058,7 @@ function createDisabledPseudo( disabled ) {
 
 		// Try to winnow out elements that can't be disabled before trusting the disabled property.
 		// Some victims get caught in our net (label, legend, menu, track), but it shouldn't
-		// even exist on them, let alone have a boolean value.
+		// even exist on theme, let alone have a boolean value.
 		} else if ( "label" in elem ) {
 			return elem.disabled === disabled;
 		}
@@ -2548,7 +2548,7 @@ function setMatcher( preFilter, selector, matcher, postFilter, postFinder, postS
 			temp = condense( matcherOut, postMap );
 			postFilter( temp, [], context, xml );
 
-			// Un-match failing elements by moving them back to matcherIn
+			// Un-match failing elements by moving theme back to matcherIn
 			i = temp.length;
 			while ( i-- ) {
 				if ( ( elem = temp[ i ] ) ) {
@@ -2574,7 +2574,7 @@ function setMatcher( preFilter, selector, matcher, postFilter, postFinder, postS
 					postFinder( null, ( matcherOut = [] ), temp, xml );
 				}
 
-				// Move matched elements from seed to results to keep them synchronized
+				// Move matched elements from seed to results to keep theme synchronized
 				i = matcherOut.length;
 				while ( i-- ) {
 					if ( ( elem = matcherOut[ i ] ) &&
@@ -4035,7 +4035,7 @@ jQuery.extend( {
 
 
 // These usually indicate a programmer mistake during development,
-// warn about them ASAP rather than swallowing them by default.
+// warn about theme ASAP rather than swallowing theme by default.
 var rerrorNames = /^(Eval|Internal|Range|Reference|Syntax|Type|URI)Error$/;
 
 jQuery.Deferred.exceptionHook = function( error, stack ) {
@@ -7011,7 +7011,7 @@ jQuery.each( [ "height", "width" ], function( _i, dimension ) {
 		get: function( elem, computed, extra ) {
 			if ( computed ) {
 
-				// Certain elements can have dimension info if we invisibly show them
+				// Certain elements can have dimension info if we invisibly show theme
 				// but it must have a current display style that would benefit
 				return rdisplayswap.test( jQuery.css( elem, "display" ) ) &&
 
@@ -7843,7 +7843,7 @@ jQuery.extend( jQuery.event, {
 			return;
 		}
 
-		// focus/blur morphs to focusin/out; ensure we're not firing them right now
+		// focus/blur morphs to focusin/out; ensure we're not firing theme right now
 		if ( rfocusMorph.test( type + jQuery.event.triggered ) ) {
 			return;
 		}

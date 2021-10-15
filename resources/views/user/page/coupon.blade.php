@@ -26,7 +26,7 @@
                                 <tbody>
                                 @foreach($coupons as $coupon)
                                 <tr>
-                                    <td class="col-md-2"><img src="{!! asset('frontend\assets\images\products\voucher.jpg')!!}" alt="imga"></td>
+                                    <td class="col-md-2"><img src="{!! asset('public\frontend\assets\images\products\voucher.jpg')!!}" alt="imga"></td>
                                     <td class="col-md-4">
                                         <div class="product-name"><a href="#">{{$coupon->coupon_name}}</a></div>
                                         <div class="price">Giảm: {{number_format($coupon->coupon_money)}} VNĐ</div>

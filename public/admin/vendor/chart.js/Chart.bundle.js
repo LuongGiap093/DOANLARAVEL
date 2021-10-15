@@ -1532,7 +1532,7 @@ function getAlpha(string) {
 // generators
 function hexString(rgba, a) {
    var a = (a !== undefined && rgba.length === 3) ? a : rgba[3];
-   return "#" + hexDouble(rgba[0]) 
+   return "#" + hexDouble(rgba[0])
               + hexDouble(rgba[1])
               + hexDouble(rgba[2])
               + (
@@ -12070,7 +12070,7 @@ var Scale = core_element.extend({
 		var last = majorIndices[numMajorIndices - 1];
 		var i, ilen, spacing, avgMajorSpacing;
 
-		// If there are too many major ticks to display them all
+		// If there are too many major ticks to display theme all
 		if (numMajorIndices > ticksLimit) {
 			skipMajors(ticks, majorIndices, numMajorIndices / ticksLimit);
 			return nonSkipped(ticks);
@@ -17475,7 +17475,7 @@ var moment = createCommonjsModule(function (module, exports) {
             minutes * 6e4 + // 1000 * 60
             hours * 1000 * 60 * 60; //using 1000 * 60 * 60 instead of 36e5 to avoid floating point rounding errors https://github.com/moment/moment/issues/2978
         // Because of dateAddRemove treats 24 hours as different from a
-        // day when working around DST, we need to store them separately
+        // day when working around DST, we need to store theme separately
         this._days = +days +
             weeks * 7;
         // It is impossible to translate months into days without knowing

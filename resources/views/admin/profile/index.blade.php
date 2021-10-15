@@ -13,7 +13,7 @@
                 <div class="profile-user-box">
                     <div class="row">
                         <div class="col-sm-6">
-                            <div class="profile-user-img"><img src="{{asset('images/'. Auth::User()->image)}}" alt="" class="avatar-lg rounded-circle"></div>
+                            <div class="profile-user-img"><img src="{{asset('public/images/'. Auth::User()->image)}}" alt="" class="avatar-lg rounded-circle"></div>
                             <div class="">
                                 <h4 class="mt-5 font-18 ellipsis">{{Auth::User()->name}}</h4>
                                 <p class="font-13">{!!Auth::User()->title !!}</p>

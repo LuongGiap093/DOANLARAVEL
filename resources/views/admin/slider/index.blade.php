@@ -15,7 +15,7 @@
         <tbody>
         @foreach($sliders as $slider)
             <tr>
-                <td width="5%"><img src="{{asset('images/'. $slider->image)}}" width="100px" height="70px"/></td>
+                <td width="5%"><img src="{{asset('public/images/'. $slider->image)}}" width="100px" height="70px"/></td>
                 <td width="5%">{{$slider->slider_small_title}} </td>
                 <td>{{$slider->slider_big_title}}</td>
                 <td>{{$slider->highlight_text}}</td>

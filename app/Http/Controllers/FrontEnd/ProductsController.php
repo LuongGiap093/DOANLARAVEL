@@ -188,7 +188,7 @@ class ProductsController extends Controller
         $logos=Logo::all();
         $categorys = Category::all();
         $products=Product::where('name','like','%'.$request->keyword_search.'%')->orwhere('price','like','%'.$request->keyword_search.'%')->get();
-        return view('user.page.show_product.products', compact('products', 'categorys','logos'));
+        return view('user.page.product_page.products', compact('products', 'categorys','logos'));
 
     }
 

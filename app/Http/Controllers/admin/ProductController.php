@@ -186,12 +186,17 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        if ($product->delete()) {
-            Session::flash('message', 'successfully!');
-        } else {
-            Session::flash('message', 'Failure!');
-        }
-        return redirect()->route('product.index');
+//        $product_id=$product->id;
+////        $gallery=Gallery::where('product_id',$product_id)->get();
+//        Gallery::where('product_id',$product_id)->delete();
+//        $product->delete();
+//        if($gallery->delete()){
+//            $product->delete();
+//            ession::flash('message', 'successfully!');
+//        }else {
+//            Session::flash('message', 'Failure!');
+//        }
+//        return redirect()->route('product.index');
     }
 
     public function viewUploads()

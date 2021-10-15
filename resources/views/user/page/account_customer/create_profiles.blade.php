@@ -137,7 +137,7 @@
 {{--            </div><!--/col-3-->--}}
 {{--            <div class="col-sm-9">--}}
 {{--                <ul class="nav nav-tabs">--}}
-{{--                    <li class="active"><a data-toggle="tab" href="#home">Home</a></li>--}}
+{{--                    <li class="active"><a data-toggle="tab" href="#home">home</a></li>--}}
 {{--                    <li><a data-toggle="tab" href="#messages">Menu 1</a></li>--}}
 {{--                    <li><a data-toggle="tab" href="#settings">Menu 2</a></li>--}}
 {{--                </ul>--}}

@@ -1,66 +1,10 @@
-{{--<!DOCTYPE html>--}}
-{{--<html lang="en">--}}
-{{--<head>--}}
-{{--    <meta charset="utf-8">--}}
-{{--    <meta http-equiv="X-UA-Compatible" content="IE=edge">--}}
-{{--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">--}}
-{{--    <meta name="description" content="">--}}
-{{--    <meta name="author" content="">--}}
-{{--    <title>SB Admin 2 - Dashboard</title>--}}
-{{--    <link href="{!! asset('admin/vendor/fontawesome-free/css/all.min.css') !!}" rel="stylesheet" type="text/css">--}}
-{{--    <link--}}
-{{--        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"--}}
-{{--        rel="stylesheet">--}}
-{{--    <link href="{!! asset('admin/css/sb-admin-2.min.css') !!}" rel="stylesheet">--}}
-{{--</head>--}}
-{{--<body id="page-top">--}}
-{{--    <div id="wrapper">--}}
-{{--      @include('admin.theme.sidebar')	--}}
-{{--      <div id="content-wrapper" class="d-flex flex-column" style="background-color: #d5d8de;">--}}
-{{--        <div id="content">--}}
-{{--        @include('admin.theme.nav')	   --}}
-{{--        @include('admin.theme.content')--}}
-{{--        </div>--}}
-{{--      </div>--}}
-{{--	</div>--}}
-{{--  <script src="{!! asset('admin/vendor/jquery/jquery.min.js') !!}"></script>--}}
-{{--  <script src="{!! asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js') !!}"></script>--}}
-{{--  <script src="{!! asset('admin/vendor/jquery-easing/jquery.easing.min.js') !!}"></script>--}}
-{{--  <script src="{!! asset('admin/js/sb-admin-2.min.js') !!}"></script>--}}
-{{--  <script src="{!! asset('admin/vendor/chart.js/Chart.min.js') !!}"></script>--}}
-{{--  <script src="{!! asset('admin/js/demo/chart-area-demo.js') !!}"></script>--}}
-{{--  <script src="{!! asset('admin/js/demo/chart-pie-demo.js') !!}"></script>--}}
-{{--</body>--}}
-{{--</html>--}}
-
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <title>Data Table | Velonic - Responsive Bootstrap 4 Admin Dashboard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Responsive bootstrap 4 admin template" name="description">
-    <meta content="Coderthemes" name="author">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="{!! asset('admin/assets/images/favicon.ico') !!}">
-
-    <!-- third party css -->
-    <link href="{!! asset('admin/assets/libs/datatables/dataTables.bootstrap4.min.css') !!}" rel="stylesheet" type="text/css">
-    <link href="{!! asset('admin/assets/libs/datatables/buttons.bootstrap4.min.css') !!}" rel="stylesheet" type="text/css">
-    <link href="{!! asset('admin/assets/libs/datatables/responsive.bootstrap4.min.css') !!}" rel="stylesheet" type="text/css">
-    <link href="{!! asset('admin/assets/libs/datatables/select.bootstrap4.min.css') !!}" rel="stylesheet" type="text/css">
-
-    <!-- App css -->
-    <link href="{!! asset('admin/assets/css/bootstrap.min.css') !!}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
-    <link href="{!! asset('admin/assets/css/icons.min.css') !!}" rel="stylesheet" type="text/css">
-    <link href="{!! asset('admin/assets/css/app.min.css') !!}" rel="stylesheet" type="text/css" id="app-stylesheet">
-
+    @include('admin.theme.head')
 </head>
 
 <body>
-
 <!-- Begin page -->
 <div id="wrapper">
     @include('admin.theme.nav')
@@ -68,28 +12,15 @@
     <div class="content-page">
         <div class="content">
             <div class="container-fluid">
-
+                @yield('content')
             </div>
         </div>
-
         <!-- Footer Start -->
-        <footer class="footer">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        2015 - 2020 &copy; Velonic theme by <a href="">Coderthemes</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        @include('admin.theme.footer')
         <!-- end Footer -->
-
     </div>
-
 </div>
 <!-- END wrapper -->
-
-
 <!-- Right Sidebar -->
 <div class="right-bar">
     <div class="rightbar-title">
@@ -105,7 +36,8 @@
                 <strong>Customize </strong> the overall color scheme, layout, etc.
             </div>
             <div class="mb-2">
-                <img src="{!! asset('assets/images/layouts/light.png') !!}" class="img-fluid img-thumbnail" alt="">
+                <img src="{!! asset('public\assets/images/layouts/light.png') !!}" class="img-fluid img-thumbnail"
+                     alt="">
             </div>
             <div class="custom-control custom-switch mb-3">
                 <input type="checkbox" class="custom-control-input theme-choice" id="light-mode-switch" checked="">
@@ -113,10 +45,13 @@
             </div>
 
             <div class="mb-2">
-                <img src="{!! asset('admin/assets/images/layouts/dark.png') !!}" class="img-fluid img-thumbnail" alt="">
+                <img src="{!! asset('public\admin/assets/images/layouts/dark.png') !!}" class="img-fluid img-thumbnail"
+                     alt="">
             </div>
             <div class="custom-control custom-switch mb-3">
-                <input type="checkbox" class="custom-control-input theme-choice" id="dark-mode-switch" data-bsstyle="{!!asset(' admin/assets/css/bootstrap-dark.min.css') !!}" data-appstyle="{!! asset('admin/assets/css/app-dark.min.css') !!}">
+                <input type="checkbox" class="custom-control-input theme-choice" id="dark-mode-switch"
+                       data-bsstyle="{!!asset(' admin/assets/css/bootstrap-dark.min.css') !!}"
+                       data-appstyle="{!! asset('public\admin/assets/css/app-dark.min.css') !!}">
                 <label class="custom-control-label" for="dark-mode-switch">Dark Mode</label>
             </div>
 
@@ -133,32 +68,50 @@
 </a>
 
 <!-- Vendor js -->
-<script src="{!! asset('admin/assets/js/vendor.min.js') !!}"></script>
+<script src="{!! asset('public\admin/assets/js/vendor.min.js') !!}"></script>
+
 
 <!-- Required datatable js -->
-<script src="{!! asset('admin/assets/libs/datatables/jquery.dataTables.min.js') !!}"></script>
-<script src="{!! asset('admin/assets/libs/datatables/dataTables.bootstrap4.min.js') !!}"></script>
+<script src="{!! asset('public\admin/assets/libs/datatables/jquery.dataTables.min.js') !!}"></script>
+<script src="{!! asset('public\admin/assets/libs/datatables/dataTables.bootstrap4.min.js') !!}"></script>
 <!-- Buttons examples -->
-<script src="{!! asset('admin/assets/libs/datatables/dataTables.buttons.min.js') !!}"></script>
-<script src="{!! asset('admin/assets/libs/datatables/buttons.bootstrap4.min.js') !!}"></script>
-<script src="{!! asset('admin/assets/libs/jszip/jszip.min.js') !!}"></script>
-<script src="{!! asset('admin/assets/libs/pdfmake/pdfmake.min.js') !!}"></script>
-<script src="{!! asset('admin/assets/libs/pdfmake/vfs_fonts.js') !!}"></script>
-<script src="{!! asset('admin/assets/libs/datatables/buttons.html5.min.js') !!}"></script>
-<script src="{!! asset('admin/assets/libs/datatables/buttons.print.min.js') !!}"></script>
+<script src="{!! asset('public\admin/assets/libs/datatables/dataTables.buttons.min.js') !!}"></script>
+<script src="{!! asset('public\admin/assets/libs/datatables/buttons.bootstrap4.min.js') !!}"></script>
+<script src="{!! asset('public\admin/assets/libs/jszip/jszip.min.js') !!}"></script>
+<script src="{!! asset('public\admin/assets/libs/pdfmake/pdfmake.min.js') !!}"></script>
+<script src="{!! asset('public\admin/assets/libs/pdfmake/vfs_fonts.js') !!}"></script>
+<script src="{!! asset('public\admin/assets/libs/datatables/buttons.html5.min.js') !!}"></script>
+<script src="{!! asset('public\admin/assets/libs/datatables/buttons.print.min.js') !!}"></script>
 
 <!-- Responsive examples -->
-<script src="{!! asset('admin/assets/libs/datatables/dataTables.responsive.min.js') !!}"></script>
-<script src="{!! asset('admin/assets/libs/datatables/responsive.bootstrap4.min.js') !!}"></script>
+<script src="{!! asset('public\admin/assets/libs/datatables/dataTables.responsive.min.js') !!}"></script>
+<script src="{!! asset('public\admin/assets/libs/datatables/responsive.bootstrap4.min.js') !!}"></script>
 
-<script src="{!! asset('admin/assets/libs/datatables/dataTables.keyTable.min.js') !!}"></script>
-<script src="{!! asset('admin/assets/libs/datatables/dataTables.select.min.js') !!}"></script>
+<script src="{!! asset('public\admin/assets/libs/datatables/dataTables.keyTable.min.js') !!}"></script>
+<script src="{!! asset('public\admin/assets/libs/datatables/dataTables.select.min.js') !!}"></script>
 
 <!-- Datatables init -->
-<script src="{!! asset('admin/assets/js/pages/datatables.init.js') !!}"></script>
+<script src="{!! asset('public\admin/assets/js/pages/datatables.init.js') !!}"></script>
 
+<script src="{!! asset('public\admin/assets\libs\moment\moment.min.js') !!}"></script>
+<script src="{!! asset('public\admin/assets\libs\jquery-scrollto\jquery.scrollTo.min.js') !!}"></script>
+<script src="{!! asset('public\admin/assets\libs\sweetalert2\sweetalert2.min.js') !!}"></script>
+
+<!-- Chat app -->
+<script src="{!! asset('public\admin/assets\js\pages\jquery.chat.js') !!}"></script>
+
+<!-- Todo app -->
+<script src="{!! asset('public\admin/assets\js\pages\jquery.todo.js') !!}"></script>
+<!--Morris Chart-->
+<script src="{!! asset('public\admin/assets\libs\morris-js\morris.min.js') !!}"></script>
+<script src="{!! asset('public\admin/assets\libs\raphael\raphael.min.js') !!}"></script>
+
+<!-- Sparkline charts -->
+<script src="{!! asset('public\admin/assets\libs\jquery-sparkline\jquery.sparkline.min.js') !!}"></script>
+<!-- Dashboard init JS -->
+<script src="{!! asset('public\admin/assets\js\pages\dashboard.init.js') !!}"></script>
 <!-- App js -->
-<script src="{!! asset('admin/assets/js/app.min.js') !!}"></script>
+<script src="{!! asset('public\admin/assets/js/app.min.js') !!}"></script>
 
 </body>
 

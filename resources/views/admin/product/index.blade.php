@@ -1,5 +1,6 @@
 @extends('admin.product.layout')
 @section('content')
+    <div style="padding: 20px;border: 1px solid #eaeaea;">
     <table id="datatable" class="table table-bordered dt-responsive nowrap"
            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
         <thead>
@@ -16,9 +17,9 @@
         <tbody>
         @foreach($products ?? '' as $product)
             <tr>
-                <td><img src="{{asset('images/'. $product->image)}}" width="40"/></td>
+                <td><img src="{{asset('public/images/'. $product->image)}}" width="40"/></td>
                 <td>{{$product->name}} </td>
-                <td><a href="{{route('add-gallery', $product->id)}}">Thêm thư viện ảnh</a></td>
+                <td><a href="{{route('add-gallery', $product->id)}}" class="btn btn-outline-primary"><i class="fa fa-eye"></i></a></td>
                 <td>{{$product->price}} </td>
                 <td>{{$product->discount}} </td>
                 @if($product->status==0)
@@ -45,4 +46,5 @@
         @endforeach
         </tbody>
     </table>
+    </div>
 @stop

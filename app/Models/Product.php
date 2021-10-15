@@ -19,7 +19,10 @@ class Product extends Model
         'describe',
         'status',
         'idcat',
-        'brand_id'
+        'brand_id',
+        'keywords',
+        'view_number',
+        'collection_id'
     ];
     protected $primaryKey = 'id';
     public function category()
@@ -30,9 +33,17 @@ class Product extends Model
     {
         return $this->belongsTo('App\Models\Brand', 'brand_id', 'id');
     }
+    public function collection()
+    {
+        return $this->belongsTo('App\Models\Collection', 'collection_id', 'id');
+    }
     public function order_details()
     {
         return $this->hasMany('App\Models\Order_Details', 'id');
+    }
+    public function comment()
+    {
+        return $this->hasMany('App\Models\Comment', 'id');
     }
     public function wishlist(){
     return $this->hasMany(Wishlist::class);

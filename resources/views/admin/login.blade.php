@@ -7,11 +7,11 @@
 {{--    <meta name="description" content="">--}}
 {{--    <meta name="author" content="">--}}
 {{--    <title>SB Admin 2 - Login</title>--}}
-{{--    <link href="{!! asset('admin/vendor/fontawesome-free/css/all.min.css') !!}" rel="stylesheet" type="text/css">--}}
+{{--    <link href="{!! asset('public\admin/vendor/fontawesome-free/css/all.min.css') !!}" rel="stylesheet" type="text/css">--}}
 {{--    <link--}}
 {{--        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"--}}
 {{--        rel="stylesheet">--}}
-{{--    <link href="{!! asset('admin/css/sb-admin-2.min.css') !!}" rel="stylesheet">--}}
+{{--    <link href="{!! asset('public\admin/css/sb-admin-2.min.css') !!}" rel="stylesheet">--}}
 {{--</head>--}}
 {{--<body class="bg-gradient-primary">--}}
 {{--<div class="login-form">--}}
@@ -85,10 +85,10 @@
 
 {{--    </div>--}}
 {{--    </div>--}}
-{{--    <script src="{!! asset('admin/vendor/jquery/jquery.min.js') !!}"></script>--}}
-{{--    <script src="{!! asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js') !!}"></script>--}}
-{{--    <script src="{!! asset('admin/vendor/jquery-easing/jquery.easing.min.js') !!}"></script>--}}
-{{--    <script src="{!! asset('admin/js/sb-admin-2.min.js') !!}"></script>--}}
+{{--    <script src="{!! asset('public\admin/vendor/jquery/jquery.min.js') !!}"></script>--}}
+{{--    <script src="{!! asset('public\admin/vendor/bootstrap/js/bootstrap.bundle.min.js') !!}"></script>--}}
+{{--    <script src="{!! asset('public\admin/vendor/jquery-easing/jquery.easing.min.js') !!}"></script>--}}
+{{--    <script src="{!! asset('public\admin/js/sb-admin-2.min.js') !!}"></script>--}}
 {{--</body>--}}
 {{--</html>--}}
 
@@ -104,12 +104,12 @@
     <meta content="Coderthemes" name="author">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{!! asset('admin/assets/images/favicon.ico') !!}">
+    <link rel="shortcut icon" href="{!! asset('public\admin/assets/images/favicon.ico') !!}">
 
     <!-- App css -->
-    <link href="{!! asset('admin/assets/css/bootstrap.min.css') !!}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
-    <link href="{!! asset('admin/assets/css/icons.min.css')!!}" rel="stylesheet" type="text/css">
-    <link href="{!! asset('admin/assets/css/app.min.css') !!}" rel="stylesheet" type="text/css" id="app-stylesheet">
+    <link href="{!! asset('public\admin/assets/css/bootstrap.min.css') !!}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
+    <link href="{!! asset('public\admin/assets/css/icons.min.css')!!}" rel="stylesheet" type="text/css">
+    <link href="{!! asset('public\admin/assets/css/app.min.css') !!}" rel="stylesheet" type="text/css" id="app-stylesheet">
 
 </head>
 
@@ -187,10 +187,10 @@
 </div>
 
 <!-- Vendor js -->
-<script src="{!! asset('admin/assets/js/vendor.min.js') !!}"></script>
+<script src="{!! asset('public\admin/assets/js/vendor.min.js') !!}"></script>
 
 <!-- App js -->
-<script src="{!! asset('admin/assets/js/app.min.js') !!}"></script>
+<script src="{!! asset('public\admin/assets/js/app.min.js') !!}"></script>
 
 </body>
 

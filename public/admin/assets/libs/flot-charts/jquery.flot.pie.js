@@ -226,7 +226,7 @@ More detail and specific examples can be found in the included HTML file.
 				if (numCombined < 2 || value / total > options.series.pie.combine.threshold) {
 					newdata.push(
 						$.extend(data[i], {     /* extend to allow keeping all other original data values
-						                           and using them e.g. in labelFormatter. */
+						                           and using theme e.g. in labelFormatter. */
 							data: [[1, value]],
 							color: data[i].color,
 							label: data[i].label,

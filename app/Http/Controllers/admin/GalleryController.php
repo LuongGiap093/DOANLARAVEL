@@ -56,21 +56,17 @@ class GalleryController extends Controller
         $output = '<form>
                     ' . csrf_field() . '
                     <table class="table table-bordered dt-responsive nowrap"
-                               style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                               style="border-collapse: collapse; border-spacing: 0; width: 100%;text-align: center;">
                             <thead>
-                            <th>Thứ tự</th>
                             <th>Tên</th>
                             <th>Hình ảnh</th>
                             </thead>
                             <tbody>';
         if ($gallery_count > 0) {
-            $i = 0;
             foreach ($gallery as $key => $gal) {
-                $i++;
                 $output .= '<tr>
-                                <td>' . $i . '</td>
                                 <td contenteditable class="edit_gallery_name" data-gal_id="' . $gal->gallery_id . '">' . $gal->gallery_name . '</td>
-                                <td><img src="' . url('/frontend/assets/images/gallery/' . $gal->gallery_image) . '" width="60"/></td>
+                                <td><img src="' . url('public/frontend/assets/images/gallery/' . $gal->gallery_image) . '" width="60"/></td>
                                 <td>
                                 <button type="button" data-gal_id="' . $gal->gallery_id . '"  class="btn btn-danger delete-gallery">Xóa</button>
                                 </td>

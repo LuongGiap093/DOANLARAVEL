@@ -15,6 +15,11 @@ class Shipping extends Model
         'shipping_province',
         'shipping_wards',
         'shipping_fee',
+        'customer_name',
+        'customer_email',
+        'customer_phone',
+        'customer_address',
+        'customer_note',
     ];
     protected $primaryKey = 'shipping_id';
     public function owner(){

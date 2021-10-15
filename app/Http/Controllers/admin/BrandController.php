@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\Brand;
 use Illuminate\Support\Facades\Session;
@@ -83,6 +84,8 @@ class BrandController extends Controller
     public function show($id)
     {
         //
+        $products = Product::where('brand_id',$id)->where('status','<>','0')->get();
+        return view('admin.brand.productlist',compact('products'));
     }
 
     /**

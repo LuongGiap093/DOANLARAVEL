@@ -2022,7 +2022,7 @@
       offsets.left -= borderLeftWidth - marginLeft;
       offsets.right -= borderLeftWidth - marginLeft;
 
-      // Attach marginTop and marginLeft because in some circumstances we may need them
+      // Attach marginTop and marginLeft because in some circumstances we may need theme
       offsets.marginTop = marginTop;
       offsets.marginLeft = marginLeft;
     }
@@ -2099,7 +2099,7 @@
   }
 
   /**
-   * Computed the boundaries limits and return them
+   * Computed the boundaries limits and return theme
    * @method
    * @memberof Popper.Utils
    * @param {HTMLElement} popper
@@ -2363,8 +2363,8 @@
   }
 
   /**
-   * Loop trough the list of modifiers and run them in order,
-   * each of them will then edit the data object.
+   * Loop trough the list of modifiers and run theme in order,
+   * each of theme will then edit the data object.
    * @method
    * @memberof Popper.Utils
    * @param {dataObject} data
@@ -2382,7 +2382,7 @@
       }
       var fn = modifier['function'] || modifier.fn; // eslint-disable-line dot-notation
       if (modifier.enabled && isFunction(fn)) {
-        // Add properties to offsets to make them a complete clientRect object
+        // Add properties to offsets to make theme a complete clientRect object
         // we do this before each modifier to make sure the previous one doesn't
         // mess with these values
         data.offsets.popper = getClientRect(data.offsets.popper);
@@ -2996,7 +2996,7 @@
    * - `-start`
    * - `-end`
    *
-   * Variations are interpreted easily if you think of them as the left to right
+   * Variations are interpreted easily if you think of theme as the left to right
    * written languages. Horizontally (`top` and `bottom`), `start` is left and `end`
    * is right.<br />
    * Vertically (`left` and `right`), `start` is top and `end` is bottom.
@@ -3251,7 +3251,7 @@
     }
 
     // If divider is found, we divide the list of values and operands to divide
-    // them by ofset X and Y.
+    // theme by ofset X and Y.
     var splitRegex = /\s*,\s*|\s+/;
     var ops = divider !== -1 ? [fragments.slice(0, divider).concat([fragments[divider].split(splitRegex)[0]]), [fragments[divider].split(splitRegex)[1]].concat(fragments.slice(divider + 1))] : [fragments];
 
@@ -3574,7 +3574,7 @@
      * '10 - 5vh + 3%'
      * '-10px + 5vh, 5px - 6%'
      * ```
-     * > **NB**: If you desire to apply offsets to your poppers in a way that may make them overlap
+     * > **NB**: If you desire to apply offsets to your poppers in a way that may make theme overlap
      * > with their reference element, unfortunately, you will have to disable the `flip` modifier.
      * > You can read more on this at this [issue](https://github.com/FezVrasta/popper.js/issues/373).
      *
@@ -3844,7 +3844,7 @@
    * @property {Object} data.offsets The measurements of popper, reference and arrow elements
    * @property {Object} data.offsets.popper `top`, `left`, `width`, `height` values
    * @property {Object} data.offsets.reference `top`, `left`, `width`, `height` values
-   * @property {Object} data.offsets.arrow] `top` and `left` offsets, only one of them will be different from 0
+   * @property {Object} data.offsets.arrow] `top` and `left` offsets, only one of theme will be different from 0
    */
 
   /**
@@ -4042,7 +4042,7 @@
        * **DEPRECATION**: This way to access PopperUtils is deprecated
        * and will be removed in v2! Use the PopperUtils module directly instead.
        * Due to the high instability of the methods contained in Utils, we can't
-       * guarantee them to follow semver. Use them at your own risk!
+       * guarantee theme to follow semver. Use theme at your own risk!
        * @static
        * @private
        * @type {Object}

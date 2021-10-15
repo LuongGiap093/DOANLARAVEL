@@ -20,8 +20,4 @@ class Category extends Model
     {
         return $this->hasMany('App\Models\Product','category_id');
     }
-    public function brands()
-    {
-        return $this->hasMany('App\Models\Brand','category_id');
-    }
 }

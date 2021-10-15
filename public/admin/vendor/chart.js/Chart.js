@@ -1528,7 +1528,7 @@ function getAlpha(string) {
 // generators
 function hexString(rgba, a) {
    var a = (a !== undefined && rgba.length === 3) ? a : rgba[3];
-   return "#" + hexDouble(rgba[0]) 
+   return "#" + hexDouble(rgba[0])
               + hexDouble(rgba[1])
               + hexDouble(rgba[2])
               + (
@@ -12066,7 +12066,7 @@ var Scale = core_element.extend({
 		var last = majorIndices[numMajorIndices - 1];
 		var i, ilen, spacing, avgMajorSpacing;
 
-		// If there are too many major ticks to display them all
+		// If there are too many major ticks to display theme all
 		if (numMajorIndices > ticksLimit) {
 			skipMajors(ticks, majorIndices, numMajorIndices / ticksLimit);
 			return nonSkipped(ticks);

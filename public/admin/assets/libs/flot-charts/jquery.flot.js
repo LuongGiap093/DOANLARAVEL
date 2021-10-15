@@ -119,7 +119,7 @@ Licensed under the MIT license.
 		this.text = {};
 
 		// Cache of text fragments and metrics, so we can avoid expensively
-		// re-calculating them when the plot is re-rendered in a loop.
+		// re-calculating theme when the plot is re-rendered in a loop.
 
 		this._textCache = {};
 	}
@@ -167,7 +167,7 @@ Licensed under the MIT license.
 
 		// Scale the coordinate space to match the display density; so even though we
 		// may have twice as many pixels, we still want lines and other drawing to
-		// appear at the same size; the extra pixels will just make them crisper.
+		// appear at the same size; the extra pixels will just make theme crisper.
 
 		context.scale(pixelRatio, pixelRatio);
 	};
@@ -719,7 +719,7 @@ Licensed under the MIT license.
 
         function initPlugins() {
 
-            // References to key classes, allowing plugins to modify them
+            // References to key classes, allowing plugins to modify theme
 
             var classes = {
                 Canvas: Canvas
@@ -737,10 +737,10 @@ Licensed under the MIT license.
 
             $.extend(true, options, opts);
 
-            // $.extend merges arrays, rather than replacing them.  When less
+            // $.extend merges arrays, rather than replacing theme.  When less
             // colors are provided than the size of the default palette, we
             // end up with those colors plus the remaining defaults, which is
-            // not expected behavior; avoid it by replacing them here.
+            // not expected behavior; avoid it by replacing theme here.
 
             if (opts && opts.colors) {
             	options.colors = opts.colors;
@@ -1832,7 +1832,7 @@ Licensed under the MIT license.
                     ticks = oticks;
             }
 
-            // clean up/labelify the supplied ticks, copy them over
+            // clean up/labelify the supplied ticks, copy theme over
             var i, v;
             axis.ticks = [];
             for (i = 0; i < ticks.length; ++i) {
@@ -2010,7 +2010,7 @@ Licensed under the MIT license.
                             ctx.lineTo(xrange.to + subPixel, yrange.to);
                         } else {
                             ctx.moveTo(xrange.from, yrange.to + subPixel);
-                            ctx.lineTo(xrange.to, yrange.to + subPixel);                            
+                            ctx.lineTo(xrange.to, yrange.to + subPixel);
                         }
                         ctx.stroke();
                     } else {
@@ -2525,9 +2525,9 @@ Licensed under the MIT license.
                 radius = series.points.radius,
                 symbol = series.points.symbol;
 
-            // If the user sets the line width to 0, we change it to a very 
+            // If the user sets the line width to 0, we change it to a very
             // small value. A line width of 0 seems to force the default of 1.
-            // Doing the conditional here allows the shadow setting to still be 
+            // Doing the conditional here allows the shadow setting to still be
             // optional even with a lineWidth of 0.
 
             if( lw == 0 )

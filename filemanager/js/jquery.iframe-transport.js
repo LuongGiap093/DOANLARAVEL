@@ -146,7 +146,7 @@
                                 });
                             }
                             // Appending the file input fields to the hidden form
-                            // removes them from their original location:
+                            // removes theme from their original location:
                             form
                                 .append(options.fileInput)
                                 .prop('enctype', 'multipart/form-data')

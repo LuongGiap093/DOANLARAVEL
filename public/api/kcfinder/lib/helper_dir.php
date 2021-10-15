@@ -91,7 +91,7 @@ class dir {
 
         $defaultOptions = array(
             'types' => "all",   // Allowed: "all" or possible return values
-                                // of filetype(), or an array with them
+                                // of filetype(), or an array with theme
             'addPath' => true,  // Whether to add directory path to filenames
             'pattern' => '/./', // Regular expression pattern for filename
             'followLinks' => true

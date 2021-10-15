@@ -8,7 +8,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-3 sidebar">
 
                     <!-- ================================== TOP NAVIGATION ================================== -->
-                @include('user.page.menu_danh_muc.categorys_menu')
+                @include('user.page.home.category_menu.categorys_menu')
                     <!-- /.side-menu -->
                     <!-- ================================== TOP NAVIGATION : END ================================== -->
 

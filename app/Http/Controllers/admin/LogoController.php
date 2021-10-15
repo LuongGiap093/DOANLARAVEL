@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Logo;
 use Illuminate\Support\Facades\Session;
+use DB;
 
 class LogoController extends Controller
 {
@@ -68,9 +69,28 @@ class LogoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request,$id)
     {
-        //
+//        //
+//        $data = $request->all();
+//        if($data['checkBox'].checked==true){
+//            $status=1;
+//        }else{
+//            $status=0;
+//        }
+//        $logo=Logo::find($id);
+//        $logo->logo_status=$status;
+//        $logo->save();
+    }
+
+    public function hien_thi(Request $request)
+    {
+
+        $data = $request->all();
+        Logo::where('logo_id', $data['id'])
+            ->update([
+                'logo_status'	=>	$data['result'],
+            ]);
     }
 
     /**

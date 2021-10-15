@@ -20,22 +20,26 @@ class CouponController extends Controller
     public function index()
     {
         //
-        $logos=Logo::all();
-        $categorys = Category::all();
+        $logos = Logo::first();
+        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->limit(4)->get();
+        $cate=Category::orderby('category_position','asc')
+            ->join('product','category.category_id','=','product.idcat')
+            ->join('brands','product.brand_id','=','brands.brand_id')
+            ->get();
         $coupons = Coupon::all();
-        return view('user.page.coupon', compact('coupons','categorys','logos'));
+        return view('user.page.coupon', compact('coupons','categorys','cate','logos'));
     }
 //Thêm mã giảm giá
     public function AddCoupon(Request $request)
     {
         $data = $request->all();
-        $coupon = Coupon::where('coupon_code', $data['coupon'])->first();
+        $coupon = Coupon::where('coupon_code', $data['coupon_code'])->first();
         if ($coupon == true) {
             $count_coupon = $coupon->count();
             if ($count_coupon > 0) {
                 $coupon_session = Session::get('coupon');
                 if ($coupon_session == true) {
-                    print_r($count_coupon);
+
                     $is_avaiable = 0;
                     if ($is_avaiable == 0) {
                         $cou[] = array(
@@ -53,7 +57,7 @@ class CouponController extends Controller
                         Session::put('coupon', $cou);
                     }
                 }else{
-                    print_r($count_coupon);
+
                     $is_avaiable = 0;
                     if ($is_avaiable == 0) {
                         $cou[] = array(
@@ -72,7 +76,7 @@ class CouponController extends Controller
                     }
                 }
                 Session::save();
-                return redirect()->back()->with('message', 'Thêm mã giảm giá thành công');
+//                return redirect()->back()->with('message', 'Thêm mã giảm giá thành công');
             }
         } else {
             return redirect()->back()->with('message', 'Mã giảm giá không đúng');

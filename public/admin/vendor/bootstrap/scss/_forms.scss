@@ -50,7 +50,7 @@
   //
   // HTML5 says that controls under a fieldset > legend:first-child won't be
   // disabled if the fieldset is disabled. Due to implementation difficulty, we
-  // don't honor that edge case; we style them as disabled anyway.
+  // don't honor that edge case; we style theme as disabled anyway.
   &:disabled,
   &[readonly] {
     background-color: $input-disabled-bg;
@@ -80,7 +80,7 @@ select.form-control {
   }
 }
 
-// Make file inputs better match text inputs by forcing them to new lines.
+// Make file inputs better match text inputs by forcing theme to new lines.
 .form-control-file,
 .form-control-range {
   display: block;

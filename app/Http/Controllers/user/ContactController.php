@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Contact;
 use App\Models\Logo;
@@ -18,10 +19,22 @@ class ContactController extends Controller
 
     public function showForm(Request $request)
     {
-        $categorys = Category::all();
-        $logos = Logo::all();
+        $logos = Logo::first();
+        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->limit(4)->get();
+        $cate=Category::orderby('category_position','asc')
+            ->join('product','category.category_id','=','product.idcat')
+            ->join('brands','product.brand_id','=','brands.brand_id')
+            ->get();
         $contacts = Contact::all();
-        return view('user.page.contact', compact('contacts', 'logos','categorys'));
+        return view('user.page.contact_page.contact', compact('categorys','cate','contacts', 'logos'));
+    }
+
+    public function lien_he(){
+        $logos = Logo::first();
+        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->get();
+        $brands=Brand::all();
+        $contacts = Contact::all();
+        return view('frontend.page.contacts_page.contacts', compact('brands','logos','contacts', 'categorys'));
     }
 
     public function storeForm(Request $request)

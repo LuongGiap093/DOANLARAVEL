@@ -4,8 +4,8 @@ namespace App\Http\Controllers\user;
 
 use App\Cart;
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use App\Models\Category;
-use App\Models\Order_Detail;
 use App\Models\Product;
 use App\Models\Blog;
 use App\Models\Logo;
@@ -20,24 +20,35 @@ class BlogController extends Controller
 
     public function index()
     {
-        $categorys = Category::all();
-        $logos = Logo::all();
+        $logos = Logo::first();
+        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->limit(4)->get();
+        $cate=Category::orderby('category_position','asc')
+            ->join('product','category.category_id','=','product.idcat')
+            ->join('brands','product.brand_id','=','brands.brand_id')
+            ->get();
+        $product_tag=Product::where('status','<>',0)->orderby('view_number','desc')->limit(8)->get();
+        $blogs = Blog::orderby('blog_id','desc')->get();
+
+        return view('user.page.blog_page.blog', compact('logos','cate','categorys','product_tag','blogs'));
+    }
+
+    public function bai_viet()
+    {
+        $logos = Logo::first();
         $blogs = Blog::all();
-        $firsts = $blogs->first();
+        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->get();
+        $brands=Brand::all();
 
-        $collections = collect($blogs);
-        $chunk = $collections->splice(0, 1);
-        $collections->all();
-
-        return view('user.page.blog', compact('collections', 'firsts', 'logos','categorys'));
+        return view('frontend.page.blogs.blog_1', compact('categorys','blogs','brands','logos'));
     }
 
     public function blogdetail($id)
     {
-        $logos=Logo::all();
-        $categorys = Category::all();
+        $logos = Logo::first();
+        $product_tag=Product::where('status','<>',0)->orderby('view_number','desc')->limit(8)->get();
         $blog_detail = Blog::find($id);
-        return view('user.page.blog_details', compact('blog_detail','logos','categorys'));
+
+        return view('user.page.blog_page.blog_details', compact('blog_detail','logos','product_tag'));
     }
 
     public function show_blog()

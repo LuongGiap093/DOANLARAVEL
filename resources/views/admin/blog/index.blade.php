@@ -15,7 +15,7 @@
         <tbody>
         @foreach($blogs as $blog)
             <tr>
-                <td width="5%"><img src="{{asset('images/'. $blog->image)}}" width="100px" height="70px"/></td>
+                <td width="5%"><img src="{{asset('public/images/'. $blog->image)}}" width="100px" height="70px"/></td>
                 <td width="5%">{{$blog->blog_title}} </td>
                 <td>{{$blog->blog_author}}</td>
                 <td>{{$blog->blog_time}}</td>

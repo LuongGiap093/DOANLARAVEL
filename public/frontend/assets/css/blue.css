@@ -379,7 +379,9 @@ a {
   color: #0f6cb2;
 }
 .shopping-cart .cart-shopping-total table thead tr th .cart-grand-total {
-  color: #84b943;
+  color: #373d54;
+    font-size: 15px;
+    text-align: center;
 }
 .shopping-cart-table table tbody tr td .quant-input .arrows .arrow:hover,
 .shopping-cart-table table tbody tr td .quant-input .arrows .arrow:focus {
@@ -417,7 +419,7 @@ a {
 }
 .mega-menu .dropdown-menu {
 width:100%;
-left:0px 
+left:0px
 }
 
 .navbar-nav>li>.dropdown-menu { box-shadow:0 4px 6px -1px rgba(0,0,0,0.4);}
