@@ -41,6 +41,7 @@ Route::group(['middleware' => 'CheckAdminLogin','prefix' => 'panel/user', 'names
   Route::get('search','DashboardController@search_order')->name('order.search');
 
     Route::post('logo/trang-thai','LogoController@hien_thi')->name('logo.trang-thai');
+
 });
 
 Route::resource('panel/product', admin\ProductController::class);
@@ -78,6 +79,21 @@ Route::group(['prefix' => 'panel', 'namespace' => 'admin'], function () {
 Route::get('panel/category/productlist/{id}','admin\CategoryController@productlist')->name('category.productlist');
 
 
+Route::group(['prefix' => 'product', 'namespace' => 'FrontEnd'], function() {
+/* 	Route::get('/', 'ProductsController@index');
+	Route::get('cart', 'ProductsController@cart');
+	Route::get('add-to-cart/{id}', 'ProductsController@addToCart');
+	Route::patch('update-cart', 'ProductsController@update');
+	Route::delete('remove-from-cart', 'ProductsController@remove'); */
+
+
+	Route::get('checkout','ProductsController@DetailsCheckout');
+	Route::get('hoanthanh','ProductsController@hoanthanh');
+	Route::post('dathang','ProductsController@postCheckout')->name('dathang');
+
+
+});
+
 
 Route::group(['prefix' => '', 'namespace' => 'user'], function () {
 //    Route::get('', 'UserController@index')->name('shopping.index');
@@ -86,6 +102,9 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::get('loaisp/{id}', 'UserController@getsp')->name('shopping.loaisp');
 });
 
+    Route::get('blog', 'BlogController@index')->name('shopping.blog');
+    Route::get('blogdetail/{id}', 'BlogController@blogdetail')->name('blog.detail');
+    Route::get('coupon','CouponController@index')->name('shopping.coupon');
 
 Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::get('trang-chu', 'UserController@trang_chu')->name('trang-chu');
@@ -159,6 +178,7 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::get('chi-tiet/addCart/{id}', 'UserController@AddCart')->name('shopping.addCart');
     Route::get('deleteItemCart/{id}', 'UserController@deleteItemCart')->name('shopping.deleteItemCart');
     Route::get('details/deleteItemCart/{id}', 'UserController@deleteItemCart'); //Dung de delete Cart trang details
+
     Route::get('delete-ListItemCart/{id}', 'UserController@deleteListItemCart')->name('shopping.delete-ListItemCart');
     Route::get('save-ListItemCart/{id}/{quanty}', 'UserController@saveListItemCart')->name('shopping.save-ListItemCart');
     Route::get('save-ListItemCart1/{id}/{quanty}', 'UserController@saveListItemCart1')->name('shopping.save-ListItemCart1');
