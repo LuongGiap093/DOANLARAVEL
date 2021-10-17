@@ -292,24 +292,27 @@
                 <div class="cnt-account">
                     <ul class="list-unstyled">
                         @if(Auth::guard('account_customer')->check())
-                            <li><a href="{{route('customer.profiles')}}"><i class="icon fa fa-user"></i>Tài khoản</a></li>
-                            <li><a href="{{route('shopping.showWishlist')}}"><i class="icon fa fa-heart"></i>Yêu thích</a></li>
-                            <li><a href="#"><i class="icon fa fa-shopping-cart"></i>Giỏ hàng</a></li>
-                            <li><a href="#"><i class="icon fa fa-user"></i>Xin chào
+                            <li><a href="{{route('customer.profiles')}}"><i class="icon fa fa-user"></i>Tài khoản</a>
+                            </li>
+                            <li><a href="{{route('shopping.showWishlist')}}"><i class="icon fa fa-heart"></i>Yêu
+                                    thích</a></li>
+                            <li><a href="{{route('shopping.cart')}}"><i class="icon fa fa-shopping-cart"></i>Giỏ
+                                    hàng</a></li>
+                            <li><a href="{{route('customer.profiles')}}"><i class="icon fa fa-user"></i>Xin chào
                                     bạn {{Auth::guard('account_customer')->user()->name}} </a></li>
                             <li><a href="{{ route('customer.getLogout') }}"><i class="icon fa fa-lock"></i>Đăng xuất</a>
                             </li>
                         @else
                             <li><a href="{{route('shopping.login')}}"><i class="icon fa fa-user"></i>Tài khoản</a></li>
-                            <li><a href="{{route('shopping.showWishlist')}}"><i class="icon fa fa-heart"></i>Yêu thích</a></li>
-                            <li><a href="#"><i class="icon fa fa-shopping-cart"></i>Giỏ hàng</a></li>
+                            <li><a href="{{route('shopping.showWishlist')}}"><i class="icon fa fa-heart"></i>Yêu
+                                    thích</a></li>
+                            <li><a href="{{route('shopping.cart')}}"><i class="icon fa fa-shopping-cart"></i>Giỏ
+                                    hàng</a></li>
                             <li><a href="{{route('shopping.login')}}"><i class="icon fa fa-lock"></i>Đăng nhập</a></li>
                             <li><a href="{{route('shopping.login')}}"><i class="icon fa fa-lock"></i>Đăng ký</a></li>
                         @endif
                     </ul>
                 </div>
-                <!-- /.cnt-account -->
-                <!-- /.cnt-cart -->
                 <div class="clearfix"></div>
             </div>
             <!-- /.header-top-inner -->
@@ -323,46 +326,45 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-3 logo-holder">
                     <!-- ============================================================= LOGO ============================================================= -->
-                    <div class="logo"><a href="{{route('shopping.home')}}"> <img
-                                src="{{asset('public/images/'. $logos->logo_image)}}" alt="logo"> </a></div>
-                    <!-- /.logo -->
+                    <div class="logo">
+                        <a href="{{route('shopping.home')}}"> <img src="{{asset('public/images/'. $logos->logo_image)}}"
+                                                                   alt="logo"></a>
+                    </div>
                     <!-- ============================================================= LOGO : END ============================================================= -->
                 </div>
-                <!-- /.logo-holder -->
 
                 <div class="col-xs-12 col-sm-12 col-md-5 top-search-holder">
-                    <!-- /.contact-row -->
                     <!-- ============================================================= SEARCH AREA ============================================================= -->
                     <div class="search-area">
                         <form action="{{route('product.search')}}" method="GET">
                             @csrf
                             <div class="control-group" style="background: #fff;border-radius: 3px;">
-{{--                                <div class="row">--}}
-{{--                                <div class="col-xs-9">--}}
-                                <input class="search-field" name="search_key" placeholder="Tìm kiếm sản phẩm của bạn..." autocomplete="off" required>
-{{--                                <ul class="hidden" id="myUL">--}}
-{{--                                    <li><a href="#">Adele</a></li>--}}
-{{--                                    <li><a href="#">Agnes</a></li>--}}
+                                {{--                                <div class="row">--}}
+                                {{--                                <div class="col-xs-9">--}}
+                                <input class="search-field" name="search_key" placeholder="Tìm kiếm sản phẩm của bạn..."
+                                       autocomplete="off" required>
+                                {{--                                <ul class="hidden" id="myUL">--}}
+                                {{--                                    <li><a href="#">Adele</a></li>--}}
+                                {{--                                    <li><a href="#">Agnes</a></li>--}}
 
-{{--                                    <li><a href="#">Billy</a></li>--}}
-{{--                                    <li><a href="#">Bob</a></li>--}}
+                                {{--                                    <li><a href="#">Billy</a></li>--}}
+                                {{--                                    <li><a href="#">Bob</a></li>--}}
 
-{{--                                    <li><a href="#">Calvin</a></li>--}}
-{{--                                    <li><a href="#">Christina</a></li>--}}
-{{--                                    <li><a href="#">Cindy</a></li>--}}
-{{--                                </ul>--}}
-{{--                                </div>--}}
-{{--                                    <div class="col-xs-3">--}}
+                                {{--                                    <li><a href="#">Calvin</a></li>--}}
+                                {{--                                    <li><a href="#">Christina</a></li>--}}
+                                {{--                                    <li><a href="#">Cindy</a></li>--}}
+                                {{--                                </ul>--}}
+                                {{--                                </div>--}}
+                                {{--                                    <div class="col-xs-3">--}}
                                 <button type="submit" class="search-button">Tìm kiếm</button>
-{{--                                    </div>--}}
-{{--                                </div>--}}
+                                {{--                                    </div>--}}
+                                {{--                                </div>--}}
                             </div>
                         </form>
                     </div>
-                    <!-- /.search-area -->
                     <!-- ============================================================= SEARCH AREA : END ============================================================= -->
                 </div>
-                <!-- /.top-search-holder -->
+
                 <div class="col-xs-12 col-sm-12 col-md-1"></div>
                 <div class="col-xs-12 col-sm-12 col-md-3 animate-dropdown top-cart-row">
                     <!-- ============================================================= SHOPPING CART DROPDOWN ============================================================= -->
@@ -384,7 +386,6 @@
                                 </div>
                             </a>
                             <ul class="dropdown-menu">
-
                                 <li>
                                     @if(Session::has('Cart') != null)
                                         @foreach(Session::get('Cart')->products as $item)
@@ -402,14 +403,16 @@
                                                                 href="index.php?page-detail">{{$item['productInfo']->name}}</a>
                                                         </h3>
                                                         <div
-                                                            class="price">{{number_format($item['productInfo']->price - $item['productInfo']->discount)}} VNĐ
+                                                            class="price">{{number_format($item['productInfo']->price - $item['productInfo']->discount)}}
+                                                            VNĐ
                                                             x {{$item['quanty']}}
                                                         </div>
                                                     </div>
-                                                    <div class="col-xs-1 action" style="text-align: right"> <a href="#"><i class="fa fa-trash"></i></a> </div>
-{{--                                                    <div class="col-xs-1">--}}
-{{--                                                        <a type="button"  class="fa fa-close" href="javascrip:" data-id="{{$item['productInfo']->id}}"></a>--}}
-{{--                                                    </div>--}}
+                                                    <div class="col-xs-1 action" style="text-align: right"><a
+                                                            href="#"><i class="fa fa-trash"></i></a></div>
+                                                {{--                                                    <div class="col-xs-1">--}}
+                                                {{--                                                        <a type="button"  class="fa fa-close" href="javascrip:" data-id="{{$item['productInfo']->id}}"></a>--}}
+                                                {{--                                                    </div>--}}
                                                 <!-- <div  class="col-lg-2 col-sm-2 col-2 cart-detail-product">
 													<a style="background: white; color: black" class="fa fa-close" type="button"  href="javascrip:" data-id="{{$item['productInfo']->id}}">
 													</a>
@@ -421,10 +424,7 @@
                                     @endforeach
                                     <!-- /.cart-item -->
                                         <div class="clearfix"></div>
-
-
                                         <div class="clearfix cart-total">
-
                                             <div class="pull-right">
                                                 <span class="text">Tổng tiền:</span><span class='price'>{{number_format(Session::get('Cart')->totalPrice)}} VNĐ</span>
                                             </div>
@@ -441,17 +441,14 @@
                             <!-- /.dropdown-menu-->
                         </div>
                         <!-- /.dropdown-cart -->
-
                         <!-- ============================================================= SHOPPING CART DROPDOWN : END============================================================= -->
                     </div>
                     <!-- /.top-cart-row -->
                 </div>
             </div>
             <!-- /.row -->
-
         </div>
         <!-- /.container -->
-
     </div>
     <!-- /.main-header -->
 
@@ -473,25 +470,30 @@
                                     <a href="{{route('shopping.home')}}">Trang chủ</a>
                                 </li>
                                 <li class="dropdown"><a href="{{route('shopping.blog')}}">Giới Thiệu</a></li>
-                                <li class="dropdown yamm mega-menu"> <a href="home.html" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">Sản Phẩm<span class="menu-label new-menu hidden-xs">sale</span></a>
+                                <li class="dropdown yamm mega-menu"><a href="home.html" data-hover="dropdown"
+                                                                       class="dropdown-toggle" data-toggle="dropdown">Sản
+                                        Phẩm<span class="menu-label new-menu hidden-xs">sale</span></a>
                                     <ul class="dropdown-menu container">
                                         <li>
                                             <div class="yamm-content ">
                                                 <div class="row">
-{{--                                                    @foreach($categorys as $key => $cate)--}}
-{{--                                                    <div class="col-xs-12 col-sm-6 col-md-1 col-menu">--}}
-{{--                                                        <h2 class="title">{{$cate->category_name}}</h2>--}}
-{{--                                                        <ul class="links">--}}
-{{--                                                            @foreach($brands as $brand)--}}
-{{--                                                                @if($brand->category_id==$cate->category_id)--}}
-{{--                                                            <li><a href="{{route('product.show-brand',$brand->brand_id)}}">{{$brand->brand_name}}</a></li>--}}
-{{--                                                                @endif--}}
-{{--                                                            @endforeach--}}
-{{--                                                        </ul>--}}
-{{--                                                    </div>--}}
-{{--                                                @endforeach--}}
-{{--                                                    <!-- /.col -->--}}
-                                                    <div class="col-xs-12 col-sm-6 col-md-4 col-menu banner-image"> <img class="img-responsive" src="{!! asset('public\frontend\assets\images\banners\1629820918.png') !!}" alt=""> </div>
+                                                    {{--                                                    @foreach($categorys as $key => $cate)--}}
+                                                    {{--                                                    <div class="col-xs-12 col-sm-6 col-md-1 col-menu">--}}
+                                                    {{--                                                        <h2 class="title">{{$cate->category_name}}</h2>--}}
+                                                    {{--                                                        <ul class="links">--}}
+                                                    {{--                                                            @foreach($brands as $brand)--}}
+                                                    {{--                                                                @if($brand->category_id==$cate->category_id)--}}
+                                                    {{--                                                            <li><a href="{{route('product.show-brand',$brand->brand_id)}}">{{$brand->brand_name}}</a></li>--}}
+                                                    {{--                                                                @endif--}}
+                                                    {{--                                                            @endforeach--}}
+                                                    {{--                                                        </ul>--}}
+                                                    {{--                                                    </div>--}}
+                                                    {{--                                                @endforeach--}}
+                                                    {{--                                                    <!-- /.col -->--}}
+                                                    <div class="col-xs-12 col-sm-6 col-md-4 col-menu banner-image"><img
+                                                            class="img-responsive"
+                                                            src="{!! asset('public\frontend\assets\images\banners\1629820918.png') !!}"
+                                                            alt=""></div>
                                                     <!-- /.yamm-content -->
                                                 </div>
                                             </div>
@@ -500,7 +502,8 @@
                                 </li>
                                 <li class="dropdown mega-menu">
                                     <a href="#" data-hover="dropdown" class="dropdown-toggle"
-                                       data-toggle="dropdown">Sản phẩm <span class="menu-label new-menu hidden-xs">sale</span>
+                                       data-toggle="dropdown">Sản phẩm <span
+                                            class="menu-label new-menu hidden-xs">sale</span>
                                     </a>
                                     <ul class="dropdown-menu container">
                                         <li>
@@ -508,16 +511,21 @@
                                                 <div class="row">
                                                     @foreach($categorys as $key => $category)
 
-                                                    <div class="col-xs-12 col-sm-12 col-md-2 col-menu">
-                                                        <h2 class="title"><a href="{{route('shopping.loaisp', $category->category_id)}}" style="padding:0px">{{$category->category_name}}</a></h2>
-                                                        <ul class="links">
-                                                            @foreach($cate->unique('brand_id')->where('idcat',$category->category_id) as $brand)
-                                                            <li><a href="{{route('product.show-brand',$brand->brand_id)}}">{{$brand->brand_name}}</a></li>
-                                                            @endforeach
-                                                        </ul>
-                                                    </div>
+                                                        <div class="col-xs-12 col-sm-12 col-md-2 col-menu">
+                                                            <h2 class="title"><a
+                                                                    href="{{route('shopping.loaisp', $category->category_id)}}"
+                                                                    style="padding:0px">{{$category->category_name}}</a>
+                                                            </h2>
+                                                            <ul class="links">
+                                                                @foreach($cate->unique('brand_id')->where('idcat',$category->category_id) as $brand)
+                                                                    <li>
+                                                                        <a href="{{route('product.show-brand',$brand->brand_id)}}">{{$brand->brand_name}}</a>
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </div>
                                                 @endforeach
-                                                    <!-- /.col -->
+                                                <!-- /.col -->
                                                     <div class="col-xs-12 col-sm-12 col-md-4 col-menu custom-banner"><a
                                                             href="#"><img alt=""
                                                                           src="{!! asset('public\frontend\assets\images\banners\banner-side.png') !!}"></a>
@@ -533,7 +541,8 @@
                                             class="menu-label hot-menu hidden-xs">hot</span> </a></li>
                                 <li class="dropdown"><a href="{{route('shopping.contact')}}">Liên hệ</a></li>
                                 <li class="dropdown"><a href="{{route('shopping.faq')}}">Hỗ trợ</a></li>
-                                <li class="dropdown  navbar-right special-menu"><a href="{{route('shopping.coupon')}}"><span
+                                <li class="dropdown  navbar-right special-menu"><a
+                                        href="{{route('shopping.coupon')}}"><span
                                             class="menu-label hot-menu hidden-xs">hot</span>Mã giảm giá hôm nay</a></li>
                             </ul>
                             <!-- /.navbar-nav -->
@@ -553,7 +562,7 @@
     </div>
     <!-- /.header-nav -->
     <!-- ============================================== NAVBAR : END ============================================== -->
-{{--    <div id=”backtotop”>--}}
-{{--        <a href=”javascript:void(0)” class=”backtotop”></a>--}}
-{{--    </div>--}}
+    {{--    <div id=”backtotop”>--}}
+    {{--        <a href=”javascript:void(0)” class=”backtotop”></a>--}}
+    {{--    </div>--}}
 </header>

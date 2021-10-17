@@ -27,13 +27,17 @@ class AccountCustomerController extends Controller
     public function getLogin()
     {
         $logos = Logo::first();
-        $categorys = Category::where('category_status', 1)->orderby('category_position', 'asc')->get();
+        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->limit(4)->get();
+        $cate=Category::orderby('category_position','asc')
+            ->join('product','category.category_id','=','product.idcat')
+            ->join('brands','product.brand_id','=','brands.brand_id')
+            ->get();
 
         if (Auth::guard('account_customer')->check()) {
             return view('user.page.home.loginCustomer', compact('logos', 'categorys'));
 
         } else {
-            return view('user.page.home.loginCustomer', compact('logos', 'categorys'));
+            return view('user.page.home.loginCustomer', compact('logos','cate', 'categorys'));
         }
     }
 //
@@ -181,6 +185,17 @@ class AccountCustomerController extends Controller
         Auth::guard('account_customer')->logout();
         return redirect()
             ->back();
+    }
+
+    public function profiles(){
+        $logos = Logo::first();
+        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->limit(4)->get();
+        $cate=Category::orderby('category_position','asc')
+            ->join('product','category.category_id','=','product.idcat')
+            ->join('brands','product.brand_id','=','brands.brand_id')
+            ->get();
+        $accountcustomer=AccountCustomer::all();
+        return view('user.page.profiles',compact('accountcustomer','logos','categorys','cate'));
     }
 }
 

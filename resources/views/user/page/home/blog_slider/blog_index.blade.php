@@ -10,7 +10,6 @@
                                     src="{{asset('public/images/'. $blog->image)}}" alt="" style="height: 201px"></a></div>
                     </div>
                     <!-- /.blog-post-image -->
-
                     <div class="blog-post-info text-left">
                         <h3 class="name"><a href="{{route('shopping.blog-detail',$firsts->blog_id)}}">{!! $blog->blog_title !!}</a></h3>
                         <span class="info">{{$blog->blog_author}} &nbsp;|&nbsp; {{$blog->blog_time}} </span>

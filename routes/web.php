@@ -14,17 +14,6 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function() {
 
 Route::group(['middleware' => 'CheckAdminLogin','prefix' => 'admin'], function() {
     Route::get('/', function() {return view('admin.home');})->name('welcome');
-
-
-
-
-
-
-
-
-
-
-
 });
 
 Route::group(['middleware' => 'CheckAdminLogin','prefix' => 'panel/user', 'namespace' => 'admin'], function() {
@@ -114,14 +103,36 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function () {
 Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::get('/', 'HomeController@index')->name('shopping.home');
 
-    Route::get('danh-sach-yeu-thich/them/{id}', 'WishlistController@addToWishlist');
-    Route::get('danh-sach-yeu-thich', 'WishlistController@index')->name('shopping.showWishlist');
-    Route::get('danh-sach-yeu-thich/xoa/{wishlist_id}','WishlistController@destroy');
-
+    Route::get('thong-tin-tai-khoan','AccountCustomerController@profiles')->name('customer.profiles');
+    Route::get('create-profiles','UserController@create_profiles')->name('create-profiles');
     Route::get('dang-ky-dang-nhap', 'AccountCustomerController@getLogin')->name('shopping.login');
     Route::post('dang-ky','AccountCustomerController@postadd')->name('customer.postadd');
     Route::post('dang-nhap','AccountCustomerController@postLogin')->name('customer.postLogin');
     Route::get('dang-xuat','AccountCustomerController@getLogout')->name('customer.getLogout');
+
+    Route::get('danh-sach-yeu-thich', 'WishlistController@index')->name('shopping.showWishlist');
+    Route::get('danh-sach-yeu-thich/them/{id}', 'WishlistController@addToWishlist');
+    Route::get('danh-sach-yeu-thich/xoa/{wishlist_id}','WishlistController@destroy');
+
+    Route::get('tim-kiem','HomeController@search_product')->name('product.search');
+    Route::get('tim-kiem/addCart/{id}', 'UserController@AddCart')->name('shopping.addCart');
+
+    Route::get('gio-hang', 'CartController@index')->name('shopping.cart');
+    Route::get('addCart/{id}', 'UserController@AddCart')->name('shopping.addCart');
+    Route::get('deleteItemCart/{id}', 'UserController@deleteItemCart')->name('shopping.deleteItemCart');
+    Route::get('details/deleteItemCart/{id}', 'UserController@deleteItemCart'); //Dung de delete Cart trang details
+    Route::get('delete-ListItemCart/{id}', 'UserController@deleteListItemCart')->name('shopping.delete-ListItemCart');
+    Route::get('save-ListItemCart/{id}/{quanty}', 'UserController@saveListItemCart')->name('shopping.save-ListItemCart');
+    Route::get('save-ListItemCart1/{id}/{quanty}', 'UserController@saveListItemCart1')->name('shopping.save-ListItemCart1');
+    Route::get('chi-tiet/addCart/{id}', 'UserController@AddCart')->name('shopping.addCart');
+    Route::get('tin-tuc/bai-viet/addCart/{id}', 'UserController@AddCart')->name('shopping.addCart');
+
+    Route::get('san-pham/danh-muc/thuong-hieu/{id}', 'ProductController@index')->name('product.show-brand');
+    Route::get('san-pham/danh-muc/addCart/{id}', 'UserController@AddCart')->name('shopping.addCart');
+    Route::get('san-pham/danh-muc/thuong-hieu/addCart/{id}', 'UserController@AddCart')->name('shopping.addCart');
+
+    Route::get('chi-tiet/{id}','ProductController@viewProduct')->name('product.viewProduct');
+    Route::get('chi-tiet/addCart/{id}', 'UserController@AddCart')->name('shopping.addCart');
 
     Route::get('tin-tuc', 'BlogController@index')->name('shopping.blog');
     Route::get('tin-tuc/bai-viet/{id}', 'BlogController@blogdetail')->name('shopping.blog-detail');
@@ -129,41 +140,17 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::get('Lien-he', 'ContactController@showForm')->name('shopping.contact');
     Route::post('dang-ky-lien-he', 'ContactController@storeForm')->name('shopping.addcontact');
 
-    Route::get('san-pham/danh-muc/thuong-hieu/{id}', 'ProductController@index')->name('product.show-brand');
+    Route::get('faq', 'FaqController@index')->name('shopping.faq');
 
-    Route::get('gio-hang', 'CartController@index')->name('shopping.cart');
+    Route::get('coupon','CouponController@index')->name('shopping.coupon');
+
     Route::get('thu-tuc-thanh-toan','CheckoutController@index')->name('shopping.checkout-page');
-
-    Route::get('tim-kiem','HomeController@show_product')->name('product.search');
-
-    Route::get('chi-tiet/{id}','ProductController@viewProduct')->name('product.viewProduct');
-
     Route::post('AddCoupon', 'CouponController@AddCoupon')->name('giamgia');
     Route::get('DeleteCoupon', 'CouponController@DeleteCoupon')->name('delete-coupon');
     Route::post('chon-dia-diem','CheckoutController@select_delivery_home')->name('checkout.dia-chi');
     Route::post('tinh-phi-van-chuyen','CheckoutController@calculate_fee')->name('checkout.tinh-phi');
     Route::post('xac-nhan-dat-hang', 'CheckoutController@checkout')->name('shopping.checkout');
-
-
-    Route::get('thong-tin-tai-khoan','UserController@profiles')->name('customer.profiles');
     Route::get('track-order','UserController@track_order')->name('track-order');
-    Route::get('create-profiles','UserController@create_profiles')->name('create-profiles');
-
-    Route::get('faq', 'FaqController@index')->name('shopping.faq');
-
-    Route::get('addCart/{id}', 'UserController@AddCart')->name('shopping.addCart');
-    Route::get('san-pham/danh-muc/addCart/{id}', 'UserController@AddCart')->name('shopping.addCart');
-    Route::get('san-pham/danh-muc/thuong-hieu/addCart/{id}', 'UserController@AddCart')->name('shopping.addCart');
-    Route::get('tin-tuc/bai-viet/addCart/{id}', 'UserController@AddCart')->name('shopping.addCart');
-    Route::get('tim-kiem/addCart/{id}', 'UserController@AddCart')->name('shopping.addCart');
-    Route::get('chi-tiet/addCart/{id}', 'UserController@AddCart')->name('shopping.addCart');
-    Route::get('deleteItemCart/{id}', 'UserController@deleteItemCart')->name('shopping.deleteItemCart');
-    Route::get('details/deleteItemCart/{id}', 'UserController@deleteItemCart'); //Dung de delete Cart trang details
-    Route::get('delete-ListItemCart/{id}', 'UserController@deleteListItemCart')->name('shopping.delete-ListItemCart');
-    Route::get('save-ListItemCart/{id}/{quanty}', 'UserController@saveListItemCart')->name('shopping.save-ListItemCart');
-    Route::get('save-ListItemCart1/{id}/{quanty}', 'UserController@saveListItemCart1')->name('shopping.save-ListItemCart1');
-
-    Route::get('coupon','CouponController@index')->name('shopping.coupon');
 });
 
 

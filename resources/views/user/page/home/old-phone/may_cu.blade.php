@@ -2,7 +2,7 @@
     <h3 class="section-title">Máy cũ giá rẻ</h3>
     <div class="sidebar-widget-body outer-top-xs">
         <div class="owl-carousel sidebar-carousel special-offer custom-carousel owl-theme outer-top-xs">
-            @foreach($may_cu->chunk(3) as $chunk)
+            @foreach($old_phone->chunk(3) as $chunk)
                 <div class="item">
                     <div class="products special-product">
                         @foreach($chunk as $key => $product)

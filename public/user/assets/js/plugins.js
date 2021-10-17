@@ -156,7 +156,7 @@ $(document).ready(function () {
 
 
 $(window).load(function () {
-	
+
 	// Reviews Carousel
     if ($('.reviewscar').length > 0) {
     	$('.reviewscar').each(function () {
@@ -280,7 +280,7 @@ $(window).load(function () {
 			});
 		});
 	}
-	
+
 	// Select Styles
 	if ($('.chosen-select').length > 0) {
 		$('.chosen-select').chosen();

@@ -18,50 +18,47 @@ class HomeController extends Controller
 {
     //
     public function index(){
+        //chung
         $logos=Logo::first();
         $categorys=Category::where('category_status',1)->orderby('category_position','asc')->limit(4)->get();
+        $cate=Category::orderby('category_position','asc')
+            ->join('product','category.category_id','=','product.idcat')
+            ->join('brands','product.brand_id','=','brands.brand_id')
+            ->get();
+        //trang-chu
         $hot_deals=DB::table('product')->where('status','=',3)->orderby('discount','desc')->get();
         $dong_ho=Product::join('category','category.category_id','=','product.idcat')
             ->where('product.status','<>',0)
             ->where('category.category_name','like','%'.'đồng hồ'.'%')
             ->orderby('view_number','desc')->limit(30)->get();
-        $dien_thoai=Product::join('category','category.category_id','=','product.idcat')
-            ->where('product.status','<>',0)
-            ->where('category.category_name','like','%'.'điện thoại'.'%')
-            ->orderby('view_number','desc')->limit(30)->get();
         $product_tag=Product::where('status','<>',0)->orderby('view_number','desc')->limit(8)->get();
-        $may_cu=Product::join('category','category.category_id','=','product.idcat')
+        $old_phone=Product::join('category','category.category_id','=','product.idcat')
             ->where('product.status','<>',0)
             ->where('category.category_name','like','%'.'cũ'.'%')
             ->orderby('view_number','desc')->limit(30)->get();
+
         $sliders = Slider::all();
         $products = Product::where('status','<>',0)->orderby('id','desc')->limit(30)->get();
-        $cate=Category::orderby('category_position','asc')
-            ->join('product','category.category_id','=','product.idcat')
-            ->join('brands','product.brand_id','=','brands.brand_id')
-            ->get();
+        $featured_phone=Product::join('category','category.category_id','=','product.idcat')
+            ->where('product.status','<>',0)
+            ->where('category.category_name','like','%'.'điện thoại'.'%')
+            ->orderby('view_number','desc')->limit(30)->get();
+        $phu_kien=Product::join('category','category.category_id','=','product.idcat')
+            ->where('product.status','<>',0)
+            ->where('category.category_name','like','%'.'điện tử'.'%')
+            ->orderby('view_number','desc')->limit(60)->get();
+        $featured_laptop=Product::join('category','category.category_id','=','product.idcat')
+            ->where('product.status','<>',0)
+            ->where('category.category_name','like','%'.'laptop'.'%')
+            ->orderby('view_number','desc')->limit(30)->get();
 
-
-
-
-        $categoryss=DB::table('category')->orderby('category_id','desc')->get();
-        $accountcustomers=AccountCustomer::all();
-        $brands=Brand::all();
-        $best_seller=DB::table('product')->where('status','<>',0)->where('idcat',5)->limit(10)->get();
-        $best_seller_2=DB::table('product')->where('status','<>',0)->where('idcat',6)->limit(10)->get();
-        $city=City::all();
-        $productss = Product::all()->sortByDesc("id");
-        $citys=City::orderby('matp','ASC')->get();
-        $results = Product::select('idcat')->orderBy('idcat')->get();
         $blogs = Blog::all();
-        $firsts = $blogs->first();
-        return view('user.page.home.index',
-            compact('cate','products',  'productss', 'results', 'sliders','city',
-                'citys','brands','accountcustomers','hot_deals','product_tag','blogs','firsts',
-                'dong_ho','categoryss','best_seller','best_seller_2','logos','categorys','may_cu','dien_thoai'));
+        $firsts=$blogs->first();
+        return view('user.page.home.index', compact('logos','categorys','cate','hot_deals', 'dong_ho',
+            'product_tag','old_phone','sliders','products','featured_phone','phu_kien','featured_laptop', 'blogs', 'firsts'));
     }
 
-    public function show_product(Request $request){
+    public function search_product(Request $request){
         $logos=Logo::first();
         $categorys=Category::where('category_status',1)->orderby('category_position','asc')->get();
         $brands=Brand::all();

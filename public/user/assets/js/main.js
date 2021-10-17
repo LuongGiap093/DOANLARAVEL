@@ -462,7 +462,7 @@ $(window).load(function () {
                 maxSlides: 5,
                 pager: false,
             });
-        });         
+        });
     }
 
     // Filter
@@ -477,7 +477,7 @@ $(window).load(function () {
             return false;
         });
     }
-    
+
     // Product Countdown
     if ($('.countdown').length > 0) {
         $('.countdown').each(function () {
@@ -788,7 +788,7 @@ $(window).load(function () {
                 }
             });
         });
-        
+
         return compares;
     };
 

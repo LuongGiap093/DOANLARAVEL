@@ -36,10 +36,14 @@ class BlogController extends Controller
     {
         $logos = Logo::first();
         $blogs = Blog::all();
-        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->get();
+        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->limit(4)->get();
+        $cate=Category::orderby('category_position','asc')
+            ->join('product','category.category_id','=','product.idcat')
+            ->join('brands','product.brand_id','=','brands.brand_id')
+            ->get();
         $brands=Brand::all();
 
-        return view('frontend.page.blogs.blog_1', compact('categorys','blogs','brands','logos'));
+        return view('frontend.page.blogs.blog_1', compact('categorys','cate','blogs','brands','logos'));
     }
 
     public function blogdetail($id)
@@ -47,8 +51,13 @@ class BlogController extends Controller
         $logos = Logo::first();
         $product_tag=Product::where('status','<>',0)->orderby('view_number','desc')->limit(8)->get();
         $blog_detail = Blog::find($id);
+        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->limit(4)->get();
+        $cate=Category::orderby('category_position','asc')
+            ->join('product','category.category_id','=','product.idcat')
+            ->join('brands','product.brand_id','=','brands.brand_id')
+            ->get();
 
-        return view('user.page.blog_page.blog_details', compact('blog_detail','logos','product_tag'));
+        return view('user.page.blog_page.blog_details', compact('blog_detail','cate','categorys','logos','product_tag'));
     }
 
     public function show_blog()

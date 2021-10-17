@@ -2,11 +2,10 @@
     <h3 class="section-title">Phụ kiện điện tử</h3>
     <div class="sidebar-widget-body outer-top-xs">
         <div class="owl-carousel best-seller custom-carousel owl-theme outer-top-xs">
-            @foreach($products->chunk(2) as $chunk)
+            @foreach($phu_kien->chunk(2) as $chunk)
                 <div class="item">
                     <div class="products best-product">
                         @foreach($chunk as $key => $product)
-                            @if($product->idcat==5||$product->idcat==6)
                                 <div class="product">
                                     <div class="product-micro">
                                         <div class="row product-micro-row">
@@ -41,7 +40,7 @@
                                     <!-- /.product-micro -->
 
                                 </div>
-                            @endif
+
                         @endforeach
                     </div>
                 </div>
