@@ -30,6 +30,7 @@ Route::group(['middleware' => 'CheckAdminLogin','prefix' => 'panel/user', 'names
   Route::get('search','DashboardController@search_order')->name('order.search');
 
     Route::post('logo/trang-thai','LogoController@hien_thi')->name('logo.trang-thai');
+
 });
 
 Route::resource('panel/product', admin\ProductController::class);
@@ -74,6 +75,9 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::get('loaisp/{id}', 'UserController@getsp')->name('shopping.loaisp');
 });
 
+    Route::get('blog', 'BlogController@index')->name('shopping.blog');
+    Route::get('blogdetail/{id}', 'BlogController@blogdetail')->name('blog.detail');
+    Route::get('coupon','CouponController@index')->name('shopping.coupon');
 
 Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::get('trang-chu', 'UserController@trang_chu')->name('trang-chu');
@@ -150,6 +154,7 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::post('tinh-phi-van-chuyen','CheckoutController@calculate_fee')->name('checkout.tinh-phi');
     Route::post('xac-nhan-dat-hang', 'CheckoutController@checkout')->name('shopping.checkout');
     Route::get('track-order','UserController@track_order')->name('track-order');
+
 });
 
 

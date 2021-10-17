@@ -89,7 +89,7 @@ class DashboardController extends Controller {
           $request->end_date . " 23:59:59",
         ])
         ->get();
-      dump(count($orders));
+
 
 //      foreach($orders as $item){
 //        dump($item);
