@@ -67,7 +67,6 @@ Route::group(['prefix' => 'panel', 'namespace' => 'admin'], function () {
 Route::get('panel/category/productlist/{id}','admin\CategoryController@productlist')->name('category.productlist');
 
 
-
 Route::group(['prefix' => '', 'namespace' => 'user'], function () {
 //    Route::get('', 'UserController@index')->name('shopping.index');
     Route::get('category/{id}', 'UserController@show_category_product')->name('shopping.show-category');
