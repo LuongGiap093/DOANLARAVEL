@@ -359,6 +359,43 @@
     });
 </script>
 
+<script>
+    // Get the modal
+    // var modal = document.getElementById('id01');
+    //
+    // // When the user clicks anywhere outside of the modal, close it
+    // window.onclick = function(event) {
+    //     if (event.target == modal) {
+    //         modal.style.display = "none";
+    //     }
+    // }
+</script>
+<script>
+    $(document).ready(function() {
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    });
+</script>
+
+<script>
+    // copy
+    function myFunction(id) {
+        /* Get the text field */
+        console.log(id);
+        var copyText = document.getElementById('myInput'+ id);
+        /* Select the text field */
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+        /* Copy the text inside the text field */
+        navigator.clipboard.writeText(copyText.value);
+
+        /* Alert the copied text */
+        // alert("Copied the text: " + copyText.value);
+    }
+</script>
+
 </body>
 
 </html>

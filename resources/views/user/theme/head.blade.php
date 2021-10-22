@@ -767,3 +767,85 @@
     }
 </style>
 
+<style>
+    /*Trigger Button*/
+    .login-trigger {
+        background: linear-gradient(to bottom right, #3a85e3, #14c790);
+        padding: 0px 5px;
+        border-radius: 30px;
+    }
+
+    @media (min-width: 576px){
+        .modal-dialog {
+            max-width: 400px;
+
+        .modal-content {
+            padding: 1rem;
+        }
+    }
+    }
+
+
+    .form-title {
+        margin: -2rem 0rem 2rem;
+    }
+
+    .btn-round {
+        border-radius: 3rem;
+    }
+
+    .delimiter {
+        padding: 1rem;
+    }
+
+    .social-buttons {
+    .btn {
+        margin: 0 0.5rem 1rem;
+    }
+    }
+
+    .signup-section {
+        padding: 0.3rem 0rem;
+    }
+
+    .modal-header-login {
+        min-height: 16.43px;
+        padding: 15px;
+    }
+    button.close-login {
+        float: right;
+    }
+    .modal-body-login {
+        padding: 20px 15px;
+    }
+    .form-control-login {
+        font-size: 15px;
+        display: block;
+        width: 100%;
+        padding: 1rem 1.5rem;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+</style>
+<style>
+    .formatForButton {
+        background-color:pink;
+    }
+</style>
+
+<style>
+    .btn-wishlist {
+        padding: 6px 10px;
+        border-radius: 2px;
+        background-color: #108bea;
+    }
+    .btn-wishlist:hover {
+        background-color: red;
+    }
+</style>
+
+

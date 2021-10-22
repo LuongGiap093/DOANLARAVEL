@@ -7,6 +7,7 @@
             type: 'GET',
         }).done(function (response) {
             alertify.success('Thêm thành công!');
+            location.reload();
         });
     }
 
@@ -101,4 +102,9 @@
         // khi thẻ dropdown_menu li bị hover thì submenusubmenu thuộc thẻ li đó sẽ trượt lên(ẩnẩn)
         $('.submenu', this).slideUp();
     });
+
+    function changeClass(){
+        document.getElementById('myButton').className = 'formatForButton';
+    }
+
 </script>

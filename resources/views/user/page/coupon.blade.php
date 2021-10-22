@@ -4,8 +4,8 @@
         <div class="container">
             <div class="breadcrumb-inner">
                 <ul class="list-inline list-unstyled">
-                    <li><a href="home.html">Home</a></li>
-                    <li class='active'>Coupon</li>
+                    <li><a href="{{route('shopping.home')}}">Trang chủ</a></li>
+                    <li class='active'>Mã Giảm giá</li>
                 </ul>
             </div><!-- /.breadcrumb-inner -->
         </div><!-- /.container -->
@@ -24,21 +24,26 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($coupons as $coupon)
-                                <tr>
-                                    <td class="col-md-2"><img src="{!! asset('public\frontend\assets\images\products\voucher.jpg')!!}" alt="imga"></td>
-                                    <td class="col-md-4">
-                                        <div class="product-name"><a href="#">{{$coupon->coupon_name}}</a></div>
-                                        <div class="price">Giảm: {{number_format($coupon->coupon_money)}} VNĐ</div>
-                                        <div class="coupon_qty" style="margin-top: 10px; font-weight: bolder; color: red;">Số lượng: {{($coupon->coupon_qty)}}</div>
-                                    </td>
-                                    <td class="col-md-4" style="padding: 20px 30px;">
-                                        <input type="text" class="form-control" name="contacts_name" id="name" required="" value="{{$coupon->coupon_code}}">
-                                    </td>
-                                    <td class="col-md-2">
-                                        <a href="#" class="btn-upper btn btn-primary">Sao chép mã</a>
-                                    </td>
-                                </tr>
+                                @foreach($coupons as $key => $coupon)
+                                    <tr style="border-top: 1px solid #ddd;">
+                                        <td class="col-md-2"><img
+                                                src="{!! asset('public\frontend\assets\images\products\voucher.jpg')!!}"
+                                                alt="imga"></td>
+                                        <td class="col-md-4">
+                                            <div class="product-name"><a href="#">{{$coupon->coupon_name}}</a></div>
+                                            <div class="price">Giảm: {{number_format($coupon->coupon_money,'0',',','.')}} VNĐ</div>
+                                            <div class="coupon_qty"
+                                                 style="margin-top: 10px; font-weight: bolder; color: red;">Số
+                                                lượng: {{($coupon->coupon_qty)}}</div>
+                                        </td>
+                                        <td class="col-md-4" style="padding: 20px 30px;">
+                                            <input type="text" class="form-control" name="contacts_name" id="myInput{{$key+1}}"
+                                                   required="" value="{{$coupon->coupon_code}}" disabled>
+                                        </td>
+                                        <td class="col-md-2">
+                                            <a href="javascript:" onclick="myFunction({{$key+1}})" class="btn-upper btn btn-primary">Sao chép mã</a>
+                                        </td>
+                                    </tr>
                                 @endforeach
                                 </tbody>
                             </table>

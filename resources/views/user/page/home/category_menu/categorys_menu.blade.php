@@ -6,7 +6,11 @@
                 <li class="dropdown menu-item">
                     <a href="{{route('shopping.loaisp', $category->category_id)}}" class="dropdown-toggle"
                        data-toggle="dropdown">
-                        <i class="{{$category->category_icon}}" aria-hidden="true"></i>
+                        @if($category->category_icon!=null)
+                            <i class="{{$category->category_icon}}" aria-hidden="true"></i>
+                        @else
+                            <i class="icon fa fa-paw" aria-hidden="true"></i>
+                        @endif
                         {{$category->category_name}}
                     </a>
                     <ul class="dropdown-menu mega-menu" style="padding: 0px; min-width: 178%;">
@@ -23,7 +27,7 @@
                                 @endforeach
                                 <div class="col-sm-12 col-md-3">
                                     <ul class="links list-unstyled">
-                                        <li><a href="{{route('shopping.show-category',$category->category_id)}}">Xem tất cả</a></li>
+                                        <li><a href="{{route('product.show-category',$category->category_id)}}?{{$category->category_name}}">Xem tất cả</a></li>
                                     </ul>
                                 </div>
                             <!-- /.col -->

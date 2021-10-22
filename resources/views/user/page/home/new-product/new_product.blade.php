@@ -3,7 +3,6 @@
     <div class="more-info-tab clearfix ">
         <h3 class="new-product-title pull-left">Sản phẩm mới</h3>
         <ul class="nav nav-tabs nav-tab-line pull-right" id="new-products-1">
-
             @foreach($categorys as $key => $cate)
                 @if($key==0)
                     <li class="active"><a data-transition-type="backSlide" href="#{{$cate->category_id}}"
@@ -75,15 +74,36 @@
                                                                     to cart
                                                                 </button>
                                                             </li>
-                                                            <li class="lnk wishlist"><a onclick="AddWishlist({{$product->id}})" data-toggle="tooltip"
-                                                                                        class="add-to-cart"
-                                                                                        href="javascript:"
-                                                                                        title="Yêu thích">
-                                                                    <i class="icon fa fa-heart"></i> </a>
+                                                            <li class="lnk wishlist">
+                                                                @if (Auth::guard('account_customer')->check())
+                                                                    @if(is_null(DB::table('wishlists')->where('customer_id', Auth::guard('account_customer')->id())->where('product_id','=',$product->id)->first()))
+                                                                            <a onclick="AddWishlist({{$product->id}})"
+                                                                               data-toggle="tooltip"
+                                                                               class="add-to-cart"
+                                                                               href="javascript:"
+                                                                               title="Yêu thích">
+                                                                                <i class="icon fa fa-heart"></i>
+                                                                            </a>
+                                                                    @else
+                                                                        <a onclick="AddWishlist({{$product->id}})"
+                                                                           data-toggle="tooltip"
+                                                                           class="add-to-cart"
+                                                                           href="javascript:"
+                                                                           title="Yêu thích">
+                                                                            <i class="icon fa fa-heart" style="color: rgb(255, 66, 79);"></i>
+                                                                        </a>
+                                                                    @endif
+                                                                @else
+                                                                    <a href="javascript:" data-toggle="modal" data-target="#loginModal"
+                                                                       title="Yêu thích">
+                                                                        <i class="icon fa fa-heart"></i>
+                                                                    </a>
+                                                                @endif
                                                             </li>
-                                                            <li class="lnk"><a data-toggle="tooltip" class="add-to-cart"
-                                                                               href="detail.html" title="So sánh"> <i
-                                                                        class="fa fa-signal" aria-hidden="true"></i>
+                                                            <li class="lnk">
+                                                                <a data-toggle="tooltip" class="add-to-cart"
+                                                                   href="detail.html" title="So sánh">
+                                                                    <i class="fa fa-signal" aria-hidden="true"></i>
                                                                 </a>
                                                             </li>
                                                         </ul>

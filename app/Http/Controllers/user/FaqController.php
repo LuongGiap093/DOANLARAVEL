@@ -9,6 +9,8 @@ use App\Models\Logo;
 use App\Models\Order_Detail;
 use App\Models\Product;
 use App\Models\Faq;
+use App\Models\Wishlist;
+use Auth;
 use DB;
 use Illuminate\Http\Request;
 use Session;
@@ -25,7 +27,12 @@ class FaqController extends Controller {
           ->join('brands','product.brand_id','=','brands.brand_id')
           ->get();
       $faqs=Faq::all();
-      return view('user.page.faq',compact('faqs','categorys','cate','logos'));
+      if (Auth::guard('account_customer')->check()) {
+          $wishlists = Wishlist::where('customer_id', Auth::guard('account_customer')->id())->get();
+      }else{
+          $wishlists=null;
+      }
+      return view('user.page.faq',compact('wishlists','faqs','categorys','cate','logos'));
   }
 
 }

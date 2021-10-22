@@ -12,6 +12,8 @@ use App\Models\Logo;
 use App\Models\Product;
 use App\Models\Slider;
 use Illuminate\Http\Request;
+use App\Models\Wishlist;
+use Auth;
 use DB;
 
 class HomeController extends Controller
@@ -54,7 +56,13 @@ class HomeController extends Controller
 
         $blogs = Blog::all();
         $firsts=$blogs->first();
-        return view('user.page.home.index', compact('logos','categorys','cate','hot_deals', 'dong_ho',
+
+        if (Auth::guard('account_customer')->check()) {
+            $wishlists = Wishlist::where('customer_id', Auth::guard('account_customer')->id())->get();
+        }else{
+            $wishlists=null;
+        }
+        return view('user.page.home.index', compact('wishlists','logos','categorys','cate','hot_deals', 'dong_ho',
             'product_tag','old_phone','sliders','products','featured_phone','phu_kien','featured_laptop', 'blogs', 'firsts'));
     }
 

@@ -18,7 +18,7 @@
                         <div class="table-responsive">
                             <table class="table">
                                 @if(Session::has('wishlist'))
-                                    <div class="alert alert-success">
+                                    <div class="alert alert-danger">
                                         {{Session::get('wishlist')}}
                                     </div>
                                 @endif
@@ -43,8 +43,8 @@
                                             <span class="review">( 06 Reviews )</span>
                                         </div>
                                         <div class="price">
-                                            {{number_format($row->product->price)}} VNĐ
-                                            <span>{{number_format($row->product->discount)}}đ</span>
+                                            {{number_format($row->product->price,'0',',','.')}} VNĐ
+                                            <span>{{number_format($row->product->discount,'0',',','.')}}đ</span>
                                         </div>
                                     </td>
                                     <td class="col-md-2">
@@ -52,7 +52,7 @@
                                     </td>
 
                                     <td class="col-md-1 close-btn">
-                                        <a href="{{ url('wishlist/destroy/'.$row->id) }}" class=""><i class="fa fa-times"></i></a>
+                                        <a href="{{ url('danh-sach-yeu-thich/xoa/'.$row->id) }}" class="btn-wishlist"><i class="fa fa-times" style="color: white;"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach

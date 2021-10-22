@@ -1194,7 +1194,7 @@ a {
 header{background:#157ed2}
 
 .main-header {
-    padding: 10px 0px 30px 0px;
+    padding: 10px 0px 20px 0px;
 }
 .main-header .logo-holder {
   margin-top: 20px;
@@ -1314,7 +1314,7 @@ header{background:#157ed2}
   position: relative;
 }
 .top-cart-row .dropdown-cart .lnk-cart .items-cart-inner .total-price-basket {
-    padding: 12px 12px 13px 15px;
+    padding: 12px 3px 13px 10px;
     font-family: 'Open Sans', sans-serif;
     text-transform: uppercase;
     float: left;
@@ -1324,7 +1324,7 @@ header{background:#157ed2}
   float: left;
   padding: 12px;
   border-right: 1px solid rgba(255,255,255,0.2);
-  padding: 12px 18px 13px 12px;
+  padding: 12px 18px 13px 13px;
 }
 .top-cart-row .dropdown-cart .lnk-cart .items-cart-inner .basket-item-count {
   -webkit-border-radius: 100px;
@@ -1333,7 +1333,7 @@ header{background:#157ed2}
     height: 18px;
     position: absolute;
     left: 34px;
-    top: 13px;
+    top: 12px;
     width: 18px;
     background: #fdd922;
     color: #0f6cb2;
@@ -2809,7 +2809,7 @@ age-container #owl-main .owl-next {
 }
 .product:hover .cart {
   opacity: 1;
-  top:25%
+  top:15%
 }
 .best-seller .product .product-info .name,
 .special-offer .product .product-info .name {
@@ -4529,7 +4529,7 @@ age-container #owl-main .owl-next {
 @media (min-width: 320px) and (max-width: 480px) {
 .top-bar .cnt-block {float:none}
 .top-cart-row .dropdown-cart .lnk-cart {display:block; overflow:hidden}
-.top-cart-row {padding-left:15px}
+.top-cart-row {padding-left:22px}
 .top-cart-row .dropdown-cart {
     float: none;
 }
@@ -4572,6 +4572,7 @@ age-container #owl-main .owl-next {
   .main-header .logo-holder {
     text-align: center;
     margin-bottom: 20px;
+      margin-top: 0px;
   }
   .main-header .top-search-holder .contact-row {
     margin-bottom: 20px;

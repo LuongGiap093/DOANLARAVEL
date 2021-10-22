@@ -45,6 +45,7 @@ class Product extends Model
     {
         return $this->hasMany('App\Models\Comment', 'id');
     }
+
     public function wishlist(){
     return $this->hasMany(Wishlist::class);
     }

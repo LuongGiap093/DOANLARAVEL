@@ -14,7 +14,8 @@ use App\Models\Wards;
 use App\Models\Shipping;
 use App\Models\Order;
 use App\Models\Order_Details;
-
+use Auth;
+use App\Models\Wishlist;
 use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Http\Request;
@@ -24,6 +25,11 @@ class CheckoutController extends Controller
 {
     //
     public function index(){
+        if (Auth::guard('account_customer')->check()) {
+            $wishlists = Wishlist::where('customer_id', Auth::guard('account_customer')->id())->get();
+        }else{
+            $wishlists=null;
+        }
         if(Session::has('Cart')){
             $logos=Logo::first();
             $categorys=Category::where('category_status',1)->orderby('category_position','asc')->limit(4)->get();
@@ -38,7 +44,7 @@ class CheckoutController extends Controller
             $thanhpho=City::where('matp',Session::get('fee_matp'))->first();
             $quanhuyen=Province::where('maqh',Session::get('fee_maqh'))->first();
             $xaphuong=Wards::where('xaid',Session::get('fee_xaid'))->first();
-            return view('user.page.checkout_page.checkout',compact('city','thanhpho','quanhuyen','xaphuong',
+            return view('user.page.checkout_page.checkout',compact('wishlists','city','thanhpho','quanhuyen','xaphuong',
                 'categorys','logos','brands','province','wards','cate'));
 
         }else{

@@ -59,12 +59,14 @@
                                     <div class="rating-reviews m-t-20">
                                         <div class="row">
                                             <div class="col-sm-12">
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <a href="#" class="lnk" style="margin-left: 10px;">(13 Đánh Giá)</a>
+                                                @for($i=1;$i<=$star;$i++)
+                                                    <span class="fa fa-star checked"></span>
+                                                @endfor
+                                                @for($i=1;$i<=5-$star;$i++)
+                                                    <span class="fa fa-star"></span>
+                                                @endfor
+                                                <a href="#" class="lnk" style="margin-left: 10px;">({{$countcmt}} Đánh
+                                                    Giá)</a>
                                             </div>
 
                                         </div><!-- /.row -->
@@ -115,24 +117,28 @@
                                     <div class="quantity-container info-container" style="padding: 5px 0px">
                                         <div class="row">
                                             <div class="col-sm-7" style="display: -webkit-inline-box;">
-{{--                                                <div class="cart-quantity">--}}
-{{--                                                    <div class="quant-input">--}}
-{{--                                                        <div class="arrows">--}}
-{{--                                                            <div class="arrow plus gradient"><span class="ir"><i--}}
-{{--                                                                        class="icon fa fa-sort-asc"></i></span></div>--}}
-{{--                                                            <div class="arrow minus gradient"><span class="ir"><i--}}
-{{--                                                                        class="icon fa fa-sort-desc"></i></span></div>--}}
-{{--                                                        </div>--}}
-{{--                                                        <input type="text" value="1">--}}
-{{--                                                    </div>--}}
+                                                {{--                                                <div class="cart-quantity">--}}
+                                                {{--                                                    <div class="quant-input">--}}
+                                                {{--                                                        <div class="arrows">--}}
+                                                {{--                                                            <div class="arrow plus gradient"><span class="ir"><i--}}
+                                                {{--                                                                        class="icon fa fa-sort-asc"></i></span></div>--}}
+                                                {{--                                                            <div class="arrow minus gradient"><span class="ir"><i--}}
+                                                {{--                                                                        class="icon fa fa-sort-desc"></i></span></div>--}}
+                                                {{--                                                        </div>--}}
+                                                {{--                                                        <input type="text" value="1">--}}
+                                                {{--                                                    </div>--}}
+                                                {{--                                                </div>--}}
+
+
+
+{{--                                                <div class="counter">--}}
+{{--                                                    <span class="down" onClick='decreaseCount(event, this)'>-</span>--}}
+{{--                                                    <input type="text" value="1">--}}
+{{--                                                    <span class="up" onClick='increaseCount(event, this)'>+</span>--}}
 {{--                                                </div>--}}
-                                                <div class="counter">
-                                                    <span class="down" onClick='decreaseCount(event, this)'>-</span>
-                                                    <input type="text" value="1">
-                                                    <span class="up"  onClick='increaseCount(event, this)'>+</span>
-                                                </div>
-                                                <a href="javascripts:" onclick="AddCart({{$products->id}})" class="btn btn-primary" style="margin-left: 5px;"><i
-                                                        class="fa fa-shopping-cart inner-right-vs"></i> Thêm vào giỏ</a>
+                                                <a href="javascripts:" onclick="AddCart({{$products->id}})"
+                                                   class="btn btn-primary" style="margin-left: 5px;"><i
+                                                        class="fa fa-shopping-cart inner-right-vs"></i> Thêm vào giỏ hàng</a>
                                             </div>
                                             <div class="col-sm-5">
 
@@ -155,170 +161,226 @@
                     </div>
 
                     <div id="London" class="tabcontent" style="max-height: 650px;overflow-x: auto;">
-                            <p>{!! $products->describe !!}</p>
+                        <p>{!! $products->describe !!}</p>
                     </div>
 
                     <div id="Paris" class="tabcontent">
-                        <iframe style="width: 100%;border: none;height: 455px;" src="https://www.youtube.com/embed/kaOVHSkDoPY?rel=0&amp;showinfo=0" allowfullscreen=""></iframe>
+                        <iframe style="width: 100%;border: none;height: 455px;"
+                                src="https://www.youtube.com/embed/kaOVHSkDoPY?rel=0&amp;showinfo=0"
+                                allowfullscreen=""></iframe>
                     </div>
 
                     <div id="Tokyo" class="tabcontent">
-                        <span class="heading">Đánh giá của khách hàng</span>
-                        <span class="fa fa-star checked" style="font-size: 25px;"></span>
-                        <span class="fa fa-star checked" style="font-size: 25px;"></span>
-                        <span class="fa fa-star checked" style="font-size: 25px;"></span>
-                        <span class="fa fa-star checked" style="font-size: 25px;"></span>
-                        <span class="fa fa-star" style="font-size: 25px;"></span>
-                        <p>4.1 sao trung bình dựa trên 254 nhận xét từ khách hàng.</p>
-                        <hr style="border:3px solid #f1f1f1">
+                        @if($countcmt>0)
+                            @for($i=1;$i<=$star;$i++)
+                                <span class="fa fa-star checked" style="font-size: 15px;"></span>
+                            @endfor
+                            @for($i=1;$i<=5-$star;$i++)
+                                <span class="fa fa-star" style="font-size: 15px;"></span>
+                            @endfor
+                            <span>{{$avgs}} sao trung bình dựa trên {{$countcmt}} nhận xét từ khách hàng.</span>
+                            <hr style="border:1px solid #f1f1f1;margin-top: 10px;margin-bottom: 5px;">
 
-                        <div class="row" style="margin: auto;">
-                            <div class="side">
-                                <div>5 sao</div>
-                            </div>
-                            <div class="middle">
-                                <div class="bar-container">
-                                    <div class="bar-5"></div>
-                                </div>
-                            </div>
-                            <div class="side right">
-                                <div>150 nhận xét</div>
-                            </div>
-                            <div class="side">
-                                <div>4 sao</div>
-                            </div>
-                            <div class="middle">
-                                <div class="bar-container">
-                                    <div class="bar-4"></div>
-                                </div>
-                            </div>
-                            <div class="side right">
-                                <div>63 nhận xét</div>
-                            </div>
-                            <div class="side">
-                                <div>3 sao</div>
-                            </div>
-                            <div class="middle">
-                                <div class="bar-container">
-                                    <div class="bar-3"></div>
-                                </div>
-                            </div>
-                            <div class="side right">
-                                <div>15 nhận xét</div>
-                            </div>
-                            <div class="side">
-                                <div>2 sao</div>
-                            </div>
-                            <div class="middle">
-                                <div class="bar-container">
-                                    <div class="bar-2"></div>
-                                </div>
-                            </div>
-                            <div class="side right">
-                                <div>6 nhận xét</div>
-                            </div>
-                            <div class="side">
-                                <div>1 sao</div>
-                            </div>
-                            <div class="middle">
-                                <div class="bar-container">
-                                    <div class="bar-1"></div>
-                                </div>
-                            </div>
-                            <div class="side right">
-                                <div>20 nhận xét</div>
-                            </div>
-                        </div>
-                        <hr>
-
-                        <div class="product-reviews">
-                            <h4 class="title">NHẬN XÉT CỦA KHÁCH HÀNG</h4>
-                            @foreach($comments as $cmt)
-                            <div class="reviews" style="background: #f8f8f8;padding: 20px;margin-bottom: 10px;">
-                                <div class="review" style="margin-bottom: 5px;">
-                                    <div class="review-title"><span class="summary" style="color: #666666;font-size: 14px;font-weight: normal;margin-right: 10px;font-style: italic;">Tên tài khoản</span><span class="date"><i class="fa fa-calendar"></i><span>1 days ago</span></span></div>
-                                    <div class="text" style="line-height: 18px;">"{{$cmt->comment_content}}"</div>
-                                </div>
-                            </div><!-- /.reviews -->
-                            @endforeach
-                        </div>
-                        <hr>
-
-                        <div class="wrapperReview">
-                            <div class="master">
-                                <h4>Hãy cho chũng tôi biết trải nghiệm của bạn về sản phẩm của chúng tôi?</h4>
-
-                                <div class="rating-component">
-                                    <div class="status-msg">
-                                        <label>
-                                            <input  class="rating_msg" type="hidden" name="rating_msg" value=""/>
-                                        </label>
+                            <div class="row" style="margin: auto;">
+                                <div class="side">
+                                    <div>
+                                        @for($i=1;$i<=5;$i++)
+                                            <span class="fa fa-star checked" style="font-size: 15px;"></span>
+                                        @endfor
                                     </div>
-                                    <div class="stars-box">
-                                        <i class="star fa fa-star" title="1 star" data-message="Sản phẩm quá tệ" data-value="1"></i>
-                                        <i class="star fa fa-star" title="2 stars" data-message="Chất lượng Kém" data-value="2"></i>
-                                        <i class="star fa fa-star" title="3 stars" data-message="Chất lượng trung bình" data-value="3"></i>
-                                        <i class="star fa fa-star" title="4 stars" data-message="Sản phẩm tốt" data-value="4"></i>
-                                        <i class="star fa fa-star" title="5 stars" data-message="Rất tuyệt vời" data-value="5"></i>
-                                    </div>
-{{--                                    <div class="starrate">--}}
-{{--                                        <label>--}}
-{{--                                            <input  class="ratevalue" type="hidden" name="rate_value" value=""/>--}}
-{{--                                        </label>--}}
-{{--                                    </div>--}}
                                 </div>
-
-                                <div class="feedback-tags">
-                                    <div class="tags-container" data-tag-set="1">
-                                        <div class="question-tag">
-                                            Tại sao trải nghiệm của bạn lại tồi tệ như vậy?
+                                <div class="middle">
+                                    <div class="bar-container">
+                                        <div class="bar-5"
+                                             style="width:{{$comments->where('star',5)->count()*100/$countcmt}}%;">{{round($comments->where('star',5)->count()*100/$countcmt,1)}}
+                                            %
                                         </div>
                                     </div>
-                                    <div class="tags-container" data-tag-set="2">
-                                        <div class="question-tag">
-                                            Tại sao trải nghiệm của bạn lại tồi tệ như vậy?
-                                        </div>
-
+                                </div>
+                                <div class="side right">
+                                    <div>{{$comments->where('star',5)->count()}} nhận xét</div>
+                                </div>
+                                <div class="side">
+                                    <div>
+                                        @for($i=1;$i<=4;$i++)
+                                            <span class="fa fa-star checked" style="font-size: 15px;"></span>
+                                        @endfor
                                     </div>
-
-                                    <div class="tags-container" data-tag-set="3">
-                                        <div class="question-tag">
-                                            Tại sao bạn lại xếp hạng trung bình sản phẩm này?
+                                </div>
+                                <div class="middle">
+                                    <div class="bar-container">
+                                        <div class="bar-4"
+                                             style="width:{{$comments->where('star',4)->count()*100/$countcmt}}%;">{{round($comments->where('star',4)->count()*100/$countcmt,1)}}
+                                            %
                                         </div>
                                     </div>
-                                    <div class="tags-container" data-tag-set="4">
-                                        <div class="question-tag">
-                                            Hãy cho tôi biết trải nghiệm của bạn tốt như thế nào?
+                                </div>
+                                <div class="side right">
+                                    <div>{{$comments->where('star',4)->count()}} nhận xét</div>
+                                </div>
+                                <div class="side">
+                                    <div>
+                                        @for($i=1;$i<=3;$i++)
+                                            <span class="fa fa-star checked" style="font-size: 15px;"></span>
+                                        @endfor
+                                    </div>
+                                </div>
+                                <div class="middle">
+                                    <div class="bar-container">
+                                        <div class="bar-3"
+                                             style="width:{{$comments->where('star',3)->count()*100/$countcmt}}%;">{{round($comments->where('star',3)->count()*100/$countcmt,1)}}
+                                            %
                                         </div>
                                     </div>
+                                </div>
+                                <div class="side right">
+                                    <div>{{$comments->where('star',3)->count()}} nhận xét</div>
+                                </div>
+                                <div class="side">
+                                    <div>
+                                        @for($i=1;$i<=2;$i++)
+                                            <span class="fa fa-star checked" style="font-size: 15px;"></span>
+                                        @endfor
+                                    </div>
+                                </div>
+                                <div class="middle">
+                                    <div class="bar-container">
+                                        <div class="bar-2"
+                                             style="width:{{$comments->where('star',2)->count()*100/$countcmt}}%;">{{round($comments->where('star',2)->count()*100/$countcmt,1)}}
+                                            %
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="side right">
+                                    <div>{{$comments->where('star',2)->count()}} nhận xét</div>
+                                </div>
+                                <div class="side">
+                                    <div>
+                                        @for($i=1;$i<=1;$i++)
+                                            <span class="fa fa-star checked" style="font-size: 15px;"></span>
+                                        @endfor
+                                    </div>
+                                </div>
+                                <div class="middle">
+                                    <div class="bar-container">
+                                        <div class="bar-1"
+                                             style="width:{{$comments->where('star',1)->count()*100/$countcmt}}%;">{{round($comments->where('star',1)->count()*100/$countcmt,1)}}
+                                            %
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="side right">
+                                    <div>{{$comments->where('star',1)->count()}} nhận xét</div>
+                                </div>
+                            </div>
+                            <hr>
 
-                                    <div class="tags-container" data-tag-set="5">
-                                        <div class="make-compliment">
-                                            <div class="compliment-container">
-                                                Cảm ơn bạn! Hãy cho tôi biết trải nghiệm của bạn?
+                            <div class="product-reviews" style="overflow: auto;max-height: 300px;}">
+                                <h4 class="title">NHẬN XÉT CỦA KHÁCH HÀNG</h4>
+                                @foreach($comments as $cmt)
+                                    <div class="reviews" style="background: #f8f8f8;padding: 20px;margin-bottom: 10px;">
+                                        <div class="review" style="margin-bottom: 5px;">
+                                            <div class="review-title">
+                                            <span class="summary" style="color: #666666;font-size: 14px;font-weight: normal;margin-right: 10px;font-style: italic;">
+                                                {{$cmt->name}}
+                                            </span>
+                                                <span class="date">
+                                                <i class="fa fa-calendar">
+                                                </i>
+                                            <span>  {{$datenow - date('d', strtotime($cmt->create_date))}} ngày trước</span></span>
+                                            </div>
+                                            <div class="text" style="line-height: 18px;word-break: break-all;">
+                                                "{{$cmt->comment_content}}"
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="tags-box">
-                                        <input type="text" class="tag form-control" name="comment" id="inlineFormInputName" placeholder="vui lòng để lại nhận xét..." style="width: 250px;">
-                                        <input type="hidden" name="product_id" value="{{ $products->id }}" />
-                                    </div>
-
-                                </div>
-
-                                <div class="button-box">
-                                    <input type="submit" class=" done btn btn-warning" value="Gửi đi" />
-                                </div>
-
-                                <div class="submited-box">
-                                    <div class="loader"></div>
-                                    <div class="success-message" style="font-size: 15px;color: forestgreen;font-weight: 800;">
-                                        Cảm ơn quý khách!
-                                    </div>
-                                </div>
+                                    </div><!-- /.reviews -->
+                                @endforeach
                             </div>
+                            <hr>
+                        @endif
+                        <div class="wrapperReview">
+                            <form action="{{ route('customer.postcomment') }}" method="post">
+                                {{ csrf_field() }}
+                                <div class="master">
+                                    <h4>Hãy cho chũng tôi biết trải nghiệm của bạn về sản phẩm của chúng tôi?</h4>
 
+                                    <div class="rating-component">
+                                        <div class="status-msg">
+                                            <label>
+                                                <input class="rating_msg" type="hidden" name="rating_msg" value=""/>
+                                            </label>
+                                        </div>
+                                        <div class="stars-box">
+                                            <i class="star fa fa-star" title="1 star" data-message="Sản phẩm quá tệ"
+                                               data-value="1"></i>
+                                            <i class="star fa fa-star" title="2 stars" data-message="Chất lượng Kém"
+                                               data-value="2"></i>
+                                            <i class="star fa fa-star" title="3 stars"
+                                               data-message="Chất lượng trung bình" data-value="3"></i>
+                                            <i class="star fa fa-star" title="4 stars" data-message="Sản phẩm tốt"
+                                               data-value="4"></i>
+                                            <i class="star fa fa-star" title="5 stars" data-message="Rất tuyệt vời"
+                                               data-value="5"></i>
+                                        </div>
+                                        <div class="starrate" style="align-self: center;font-size: 25px;">
+                                            <label style="margin-bottom: 0px">
+                                                <i class="fa fa-smile-o"></i>
+                                                <input class="ratevalue" type="hidden" name="rate_value" value=""/>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="feedback-tags">
+                                        <div class="tags-container" data-tag-set="1">
+                                            <div class="question-tag">
+                                                Tại sao trải nghiệm của bạn lại tồi tệ như vậy?
+                                            </div>
+                                        </div>
+                                        <div class="tags-container" data-tag-set="2">
+                                            <div class="question-tag">
+                                                Tại sao trải nghiệm của bạn lại tồi tệ như vậy?
+                                            </div>
+                                        </div>
+                                        <div class="tags-container" data-tag-set="3">
+                                            <div class="question-tag">
+                                                Tại sao bạn lại xếp hạng trung bình sản phẩm này?
+                                            </div>
+                                        </div>
+                                        <div class="tags-container" data-tag-set="4">
+                                            <div class="question-tag">
+                                                Hãy cho tôi biết trải nghiệm của bạn tốt như thế nào?
+                                            </div>
+                                        </div>
+                                        <div class="tags-container" data-tag-set="5">
+                                            <div class="make-compliment">
+                                                <div class="compliment-container">
+                                                    Cảm ơn bạn! Hãy cho tôi biết trải nghiệm của bạn?
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="tags-box">
+                                            <input type="text" class="tag form-control" name="comment"
+                                                   id="inlineFormInputName" placeholder="vui lòng để lại nhận xét..."
+                                                   style="width: 250px;text-transform: none;font-size: 12px;">
+                                            <input type="hidden" name="product_id" value="{{ $products->id }}"/>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="button-box">
+                                        <input type="submit" class=" done btn btn-warning" value="Gửi đi"/>
+                                    </div>
+
+                                    <div class="submited-box">
+                                        <div class="loader"></div>
+                                        <div class="success-message"
+                                             style="font-size: 15px;color: forestgreen;font-weight: 800;">
+                                            Cảm ơn quý khách!
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
 

@@ -5,6 +5,7 @@ use App\Models\AccountCustomer;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Logo;
+use App\Models\Wishlist;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -27,33 +28,17 @@ class AccountCustomerController extends Controller
     public function getLogin()
     {
         $logos = Logo::first();
-        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->limit(4)->get();
-        $cate=Category::orderby('category_position','asc')
-            ->join('product','category.category_id','=','product.idcat')
-            ->join('brands','product.brand_id','=','brands.brand_id')
+        $categorys = Category::where('category_status', 1)->orderby('category_position', 'asc')->limit(4)->get();
+        $cate = Category::orderby('category_position', 'asc')
+            ->join('product', 'category.category_id', '=', 'product.idcat')
+            ->join('brands', 'product.brand_id', '=', 'brands.brand_id')
             ->get();
-
         if (Auth::guard('account_customer')->check()) {
-            return view('user.page.home.loginCustomer', compact('logos', 'categorys'));
-
+            return redirect('/');
         } else {
-            return view('user.page.home.loginCustomer', compact('logos','cate', 'categorys'));
+            return view('user.page.home.loginCustomer', compact('logos', 'cate', 'categorys'));
         }
     }
-//
-//    public function index()
-//    {
-//        $logos = Logo::first();
-//        $brands = Brand::all();
-//        $categorys = Category::where('category_status', 1)->orderby('category_position', 'asc')->get();
-//
-//        if (Auth::guard('account_customer')->check()) {
-//            return view('frontend.page.login_page.login', compact('logos', 'brands', 'categorys'));
-//
-//        } else {
-//            return view('frontend.page.login_page.login', compact('logos', 'brands', 'categorys'));
-//        }
-//    }
 
     public function postadd(RegisterRequest $request)
     {
@@ -128,50 +113,16 @@ class AccountCustomerController extends Controller
             return redirect()->back()->with('success', 'Đăng ký không thành công');
 //            echo 'Mail không gửi được. Lỗi: ', $mail->ErrorInfo;
         }
-
-
-//        $user = new AccountCustomer();
-//        $email = $request->email;
-//        $accountcustomer = AccountCustomer::all();
-//        foreach ($accountcustomer as $acc) {
-//            if ($email == $acc->email) {
-//                Session::flash('message', 'Email đã được đăng ký!');
-//                return redirect()
-//                    ->back();
-//            }
-//        }
-//        $user->name = $request->name;
-//        $user->phone = $request->phone;
-//        $user->email = $request->email;
-//        $user->password = Hash::make($request->password);
-//        if ($user->save()) {
-//            $login = [
-//                'email' => $request->email,
-//                'password' => $request->password,
-//            ];
-//
-//            if (Auth::guard('account_customer')->attempt($login)) {
-//                return redirect()->route('shopping.home');
-//            }
-//        } else {
-//            return redirect()->back()->with('success', 'Đăng ký không thành công');
-//        }
-
     }
-
 
     public function postLogin(request $request)
     {
-        $logos = Logo::first();
-        $categorys = Category::all();
         $login = [
             'email' => $request->email,
             'password' => $request->password,
         ];
 
         if (Auth::guard('account_customer')->attempt($login)) {
-
-//      return view('user.page.loginCustomer',compact('logos','categorys'))->with('status', 'Đang nhập thành công');
             return redirect()->route('shopping.home');
         } else {
             return redirect()
@@ -187,15 +138,21 @@ class AccountCustomerController extends Controller
             ->back();
     }
 
-    public function profiles(){
-        $logos = Logo::first();
-        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->limit(4)->get();
-        $cate=Category::orderby('category_position','asc')
-            ->join('product','category.category_id','=','product.idcat')
-            ->join('brands','product.brand_id','=','brands.brand_id')
-            ->get();
-        $accountcustomer=AccountCustomer::all();
-        return view('user.page.profiles',compact('accountcustomer','logos','categorys','cate'));
+    public function profiles()
+    {
+        if (Auth::guard('account_customer')->check()) {
+            $logos = Logo::first();
+            $categorys = Category::where('category_status', 1)->orderby('category_position', 'asc')->limit(4)->get();
+            $cate = Category::orderby('category_position', 'asc')
+                ->join('product', 'category.category_id', '=', 'product.idcat')
+                ->join('brands', 'product.brand_id', '=', 'brands.brand_id')
+                ->get();
+            $accountcustomer = AccountCustomer::all();
+            $wishlists = Wishlist::where('customer_id', Auth::guard('account_customer')->id())->get();
+            return view('user.page.profiles', compact('wishlists', 'accountcustomer', 'logos', 'categorys', 'cate'));
+        } else {
+            return redirect()->route('shopping.home');
+        }
     }
 }
 

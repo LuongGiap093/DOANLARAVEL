@@ -75,10 +75,6 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::get('loaisp/{id}', 'UserController@getsp')->name('shopping.loaisp');
 });
 
-    Route::get('blog', 'BlogController@index')->name('shopping.blog');
-    Route::get('blogdetail/{id}', 'BlogController@blogdetail')->name('blog.detail');
-    Route::get('coupon','CouponController@index')->name('shopping.coupon');
-
 Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::get('trang-chu', 'UserController@trang_chu')->name('trang-chu');
     Route::get('san-pham', 'UserController@san_pham')->name('san-pham');
@@ -130,7 +126,8 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::get('chi-tiet/addCart/{id}', 'UserController@AddCart')->name('shopping.addCart');
     Route::get('tin-tuc/bai-viet/addCart/{id}', 'UserController@AddCart')->name('shopping.addCart');
 
-    Route::get('san-pham/danh-muc/thuong-hieu/{id}', 'ProductController@index')->name('product.show-brand');
+    Route::get('san-pham/danh-muc/thuong-hieu/{id}', 'ProductController@show_brand')->name('product.show-brand');
+    Route::get('san-pham/danh-muc/{id}', 'ProductController@show_category')->name('product.show-category');
     Route::get('san-pham/danh-muc/addCart/{id}', 'UserController@AddCart')->name('shopping.addCart');
     Route::get('san-pham/danh-muc/thuong-hieu/addCart/{id}', 'UserController@AddCart')->name('shopping.addCart');
 
@@ -143,9 +140,9 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::get('Lien-he', 'ContactController@showForm')->name('shopping.contact');
     Route::post('dang-ky-lien-he', 'ContactController@storeForm')->name('shopping.addcontact');
 
-    Route::get('faq', 'FaqController@index')->name('shopping.faq');
+    Route::get('1-van-cau-hoi-vi-sao', 'FaqController@index')->name('shopping.faq');
 
-    Route::get('coupon','CouponController@index')->name('shopping.coupon');
+    Route::get('nhan-ma-giam-gia','CouponController@index')->name('shopping.coupon');
 
     Route::get('thu-tuc-thanh-toan','CheckoutController@index')->name('shopping.checkout-page');
     Route::post('AddCoupon', 'CouponController@AddCoupon')->name('giamgia');
@@ -155,6 +152,7 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::post('xac-nhan-dat-hang', 'CheckoutController@checkout')->name('shopping.checkout');
     Route::get('track-order','UserController@track_order')->name('track-order');
 
+    Route::post('nhan-xet','CommentController@add_comment')->name('customer.postcomment');
 });
 
 

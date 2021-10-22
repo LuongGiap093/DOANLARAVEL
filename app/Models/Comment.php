@@ -15,10 +15,16 @@ class Comment extends Model
         'comment_content',
         'create_date',
         'comment_status',
+        'star',
+        'customer_id',
     ];
     protected $primaryKey = 'comment_id';
     public function product()
     {
         return $this->belongsTo('App\Models\Comment', 'product_id', 'id');
+    }
+    public function account_customers()
+    {
+        return $this->belongsTo('App\Models\AccountCustomer', 'customer_id', 'id');
     }
 }

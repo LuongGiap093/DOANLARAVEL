@@ -5,8 +5,10 @@ namespace App\Http\Controllers\user;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Logo;
+use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use App\Models\Coupon;
+use Auth;
 use DB;
 use Illuminate\Support\Facades\Session;
 
@@ -26,8 +28,13 @@ class CouponController extends Controller
             ->join('product','category.category_id','=','product.idcat')
             ->join('brands','product.brand_id','=','brands.brand_id')
             ->get();
+        if (Auth::guard('account_customer')->check()) {
+            $wishlists = Wishlist::where('customer_id', Auth::guard('account_customer')->id())->get();
+        }else{
+            $wishlists=null;
+        }
         $coupons = Coupon::all();
-        return view('user.page.coupon', compact('coupons','categorys','cate','logos'));
+        return view('user.page.coupon', compact('wishlists','coupons','categorys','cate','logos'));
     }
 //Thêm mã giảm giá
     public function AddCoupon(Request $request)

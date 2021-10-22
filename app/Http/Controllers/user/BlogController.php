@@ -9,6 +9,8 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Blog;
 use App\Models\Logo;
+use App\Models\Wishlist;
+use Auth;
 use DB;
 use Illuminate\Http\Request;
 use Session;
@@ -28,8 +30,12 @@ class BlogController extends Controller
             ->get();
         $product_tag=Product::where('status','<>',0)->orderby('view_number','desc')->limit(8)->get();
         $blogs = Blog::orderby('blog_id','desc')->get();
-
-        return view('user.page.blog_page.blog', compact('logos','cate','categorys','product_tag','blogs'));
+        if (Auth::guard('account_customer')->check()) {
+            $wishlists = Wishlist::where('customer_id', Auth::guard('account_customer')->id())->get();
+        }else{
+            $wishlists=null;
+        }
+        return view('user.page.blog_page.blog', compact('wishlists','logos','cate','categorys','product_tag','blogs'));
     }
 
     public function bai_viet()
@@ -42,8 +48,12 @@ class BlogController extends Controller
             ->join('brands','product.brand_id','=','brands.brand_id')
             ->get();
         $brands=Brand::all();
-
-        return view('frontend.page.blogs.blog_1', compact('categorys','cate','blogs','brands','logos'));
+        if (Auth::guard('account_customer')->check()) {
+            $wishlists = Wishlist::where('customer_id', Auth::guard('account_customer')->id())->get();
+        }else{
+            $wishlists=null;
+        }
+        return view('frontend.page.blogs.blog_1', compact('wishlists','categorys','cate','blogs','brands','logos'));
     }
 
     public function blogdetail($id)

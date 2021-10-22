@@ -8,6 +8,8 @@ use App\Models\Category;
 use App\Models\Contact;
 use App\Models\Logo;
 
+use App\Models\Wishlist;
+use Auth;
 use DB;
 use Illuminate\Http\Request;
 use Mail;
@@ -26,7 +28,12 @@ class ContactController extends Controller
             ->join('brands','product.brand_id','=','brands.brand_id')
             ->get();
         $contacts = Contact::all();
-        return view('user.page.contact_page.contact', compact('categorys','cate','contacts', 'logos'));
+        if (Auth::guard('account_customer')->check()) {
+            $wishlists = Wishlist::where('customer_id', Auth::guard('account_customer')->id())->get();
+        }else{
+            $wishlists=null;
+        }
+        return view('user.page.contact_page.contact', compact('wishlists','categorys','cate','contacts', 'logos'));
     }
 
     public function lien_he(){

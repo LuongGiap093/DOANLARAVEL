@@ -26,6 +26,10 @@ class AccountCustomer extends Authenticatable {
   public function wishlist(){
     return $this->hasMany(Wishlist::class);
   }
+    public function comment()
+    {
+        return $this->hasMany('App\Models\Comment', 'id');
+    }
   /**
    * The attributes that should be hidden for arrays.
    *
