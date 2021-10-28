@@ -10,7 +10,12 @@
             </div><!-- /.breadcrumb-inner -->
         </div><!-- /.container -->
     </div>
+    @if(Session::has('success'))
+        <div class="alert alert-success">
+            {{Session::get('success')}}<br>
 
+        </div
+    @endif
     <div class="body-content">
         <div class="container">
             <div class="sign-in-page">

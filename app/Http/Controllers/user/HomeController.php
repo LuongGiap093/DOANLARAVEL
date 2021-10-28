@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use App\Models\Wishlist;
 use Auth;
 use DB;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -65,27 +66,5 @@ class HomeController extends Controller
         return view('user.page.home.index', compact('wishlists','logos','categorys','cate','hot_deals', 'dong_ho',
             'product_tag','old_phone','sliders','products','featured_phone','phu_kien','featured_laptop', 'blogs', 'firsts'));
     }
-
-    public function search_product(Request $request){
-        $logos=Logo::first();
-        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->get();
-        $brands=Brand::all();
-        $cate=Category::orderby('category_position','asc')
-            ->join('product','category.category_id','=','product.idcat')
-            ->join('brands','product.brand_id','=','brands.brand_id')
-            ->get();
-
-        if(isset($_GET['search_key'])) {
-            $products = DB::table('product')
-                ->where('status', '<>', 0)
-                ->where('name', 'like', '%' . $request->search_key . '%')
-                ->orwhere('keywords', 'like', '%' . $request->search_key . '%')
-                ->paginate(9)->appends(request()->query());
-            return view('user.page.product_page.index', compact('cate','logos','categorys','brands', 'products'));
-        }elseif (empty($_GET['search_key'])){
-            return view('user.page.product_page.index', compact('cate','logos','categorys','brands'));
-        }
-    }
-
 
 }

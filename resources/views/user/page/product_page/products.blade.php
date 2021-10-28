@@ -3,57 +3,58 @@
         <div class="col col-sm-6 col-md-2">
             <div class="filter-tabs">
                 <ul id="filter-tabs" class="nav nav-tabs nav-tab-box nav-tab-fa-icon">
-                    <li class="active"> <a data-toggle="tab" href="#grid-container"><i class="icon fa fa-th-large"></i>Grid</a> </li>
-                    <li><a data-toggle="tab" href="#list-container"><i class="icon fa fa-th-list"></i>List</a></li>
+                    <li class="active"> <a data-toggle="tab" href="#grid-container"><i class="icon fa fa-th-large" style="font-size: 25px;"></i></a> </li>
+                    <li><a data-toggle="tab" href="#list-container"><i class="icon fa fa-th-list" style="font-size: 25px;"></i></a></li>
                 </ul>
             </div>
             <!-- /.filter-tabs -->
         </div>
         <!-- /.col -->
-        <div class="col col-sm-12 col-md-10">
-            <div class="col col-sm-3 col-md-6 no-padding" style="padding: 0px; text-align: right;">
+        <div class="col col-sm-12 col-md-6">
+                <div class="box-checkbox extend" style="padding: 5px 0px;">
+                    <div class="pretty p-icon p-curve" style="display: inline-block;margin-bottom: 0px;">
+                        <input type="checkbox" />
+                        <div class="state p-success">
+                            <i class="icon fa fa-check" aria-hidden="true"></i>
+                            <label> Giảm giá</label>
+                        </div>
+                    </div>
+                    <div class="pretty p-icon p-curve" style="display: inline-block;margin-bottom: 0px;">
+                        <input type="checkbox" />
+                        <div class="state p-success">
+                            <i class="icon fa fa-check" aria-hidden="true"></i>
+                            <label> Đã qua sử dụng</label>
+                        </div>
+                    </div>
+                    <div class="pretty p-icon p-curve" style="display: inline-block;margin-bottom: 0px;">
+                        <input type="checkbox" />
+                        <div class="state p-success">
+                            <i class="icon fa fa-check" aria-hidden="true"></i>
+                            <label> Mới nhất</label>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class="col col-sm-12 col-md-4" style="text-align: right;">
                 <div class="lbl-cnt"> <span class="lbl">Sắp xếp</span>
                     <div class="fld inline">
                         <div class="dropdown dropdown-small dropdown-med dropdown-white inline">
-                            <button data-toggle="dropdown" type="button" class="btn dropdown-toggle"> Sắp xếp mặc định <span class="caret"></span> </button>
+                            <button data-toggle="dropdown" type="button" class="btn dropdown-toggle"> {{$sort}} <span class="caret"></span> </button>
                             <ul role="menu" class="dropdown-menu">
-                                <li role="presentation"><a href="#">Mức độ phổ biến</a></li>
-                                <li role="presentation"><a href="#">Giá thấp đến cao</a></li>
-                                <li role="presentation"><a href="#">Giá cao đến thấp</a></li>
-                                <li role="presentation"><a href="#">Ký tự từ A > Z</a></li>
-                                <li role="presentation"><a href="#">Ký tự từ Z > A</a></li>
-                                <li role="presentation"><a href="#">Sắp xếp mặc định</a></li>
+
+                                <li role="presentation"><a href="{{request()->fullUrlWithQuery(['sort_by'=>'pho_bien'])}}">Mức độ phổ biến</a></li>
+                                <li role="presentation"><a href="{{request()->fullUrlWithQuery(['sort_by'=>'tang_dan'])}}">Giá thấp đến cao</a></li>
+                                <li role="presentation"><a href="{{request()->fullUrlWithQuery(['sort_by'=>'giam_dan'])}}">Giá cao đến thấp</a></li>
+                                <li role="presentation"><a href="{{request()->fullUrlWithQuery(['sort_by'=>'kytu_az'])}}">Ký tự từ A > Z</a></li>
+                                <li role="presentation"><a href="{{request()->fullUrlWithQuery(['sort_by'=>'kytu_za'])}}">Ký tự từ Z > A</a></li>
+                                <li role="presentation"><a href="{{request()->fullUrlWithQuery(['sort_by'=>'none'])}}">Sắp xếp mặc định</a></li>
+
                             </ul>
                         </div>
                     </div>
                     <!-- /.fld -->
                 </div>
                 <!-- /.lbl-cnt -->
-            </div>
-            <!-- /.col -->
-            <div class="col col-sm-3 col-md-6 no-padding" style="padding: 0px;text-align: right;">
-                <div class="lbl-cnt"> <span class="lbl">Show</span>
-                    <div class="fld inline">
-                        <div class="dropdown dropdown-small dropdown-med dropdown-white inline">
-                            <button data-toggle="dropdown" type="button" class="btn dropdown-toggle"> 1 <span class="caret"></span> </button>
-                            <ul role="menu" class="dropdown-menu">
-                                <li role="presentation"><a href="#">1</a></li>
-                                <li role="presentation"><a href="#">2</a></li>
-                                <li role="presentation"><a href="#">3</a></li>
-                                <li role="presentation"><a href="#">4</a></li>
-                                <li role="presentation"><a href="#">5</a></li>
-                                <li role="presentation"><a href="#">6</a></li>
-                                <li role="presentation"><a href="#">7</a></li>
-                                <li role="presentation"><a href="#">8</a></li>
-                                <li role="presentation"><a href="#">9</a></li>
-                                <li role="presentation"><a href="#">10</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- /.fld -->
-                </div>
-                <!-- /.lbl-cnt -->
-            </div>
             <!-- /.col -->
         </div>
         <!-- /.col -->

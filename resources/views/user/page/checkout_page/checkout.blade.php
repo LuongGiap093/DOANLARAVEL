@@ -33,7 +33,7 @@
                                     <!-- panel-heading -->
                                     <div id="collapseOne" class="panel-collapse collapse in">
                                         <form method="POST">
-                                            <input type="hidden" name="_token" value="{{csrf_token()}}"
+                                            <input type="hidden" name="_token" content="{{csrf_token()}}"
                                                    autocomplete="on">
                                             @if(Session::get('fee'))
                                                 <div class="row">
@@ -308,7 +308,7 @@
                                             <input placeholder="Mã giảm giá của bạn" type="text" name="coupon"
                                                    class="coupon"
                                                    style="background: #f8fafc;display: block;height: 40px;border: 1px solid #e0e4f6;padding: 0 15px;color: #373d54;width: 80%;">
-                                            <a href="#" class="cart-coupon-btn add_coupon"
+                                            <a class="cart-coupon-btn add_coupon"
                                                style="position: absolute;top: 0px;right: 0px;border: 1px solid #b3afaa;width: auto;height: 40px;background-color: #fdd922;display: block;transition: all 0.2s;">
                                                 <img src="{!! asset('public\user\assets\img/ok.png') !!}"
                                                      alt="your coupon"
@@ -316,7 +316,6 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="col-md-6"></div>
                                     <div class="col-md-12" style="padding: 0px;">
                                         <div class="col-md-6 col-sm-6"></div>
                                         <div class="col-md-6 col-sm-6">

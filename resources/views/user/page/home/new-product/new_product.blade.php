@@ -77,19 +77,11 @@
                                                             <li class="lnk wishlist">
                                                                 @if (Auth::guard('account_customer')->check())
                                                                     @if(is_null(DB::table('wishlists')->where('customer_id', Auth::guard('account_customer')->id())->where('product_id','=',$product->id)->first()))
-                                                                            <a onclick="AddWishlist({{$product->id}})"
-                                                                               data-toggle="tooltip"
-                                                                               class="add-to-cart"
-                                                                               href="javascript:"
-                                                                               title="Yêu thích">
-                                                                                <i class="icon fa fa-heart"></i>
-                                                                            </a>
+                                                                        <a data-toggle="tooltip" class="add-to-cart" href="{{url('danh-sach-yeu-thich/them/'.$product->id)}}" title="Yêu thích">
+                                                                            <i class="icon fa fa-heart"></i>
+                                                                        </a>
                                                                     @else
-                                                                        <a onclick="AddWishlist({{$product->id}})"
-                                                                           data-toggle="tooltip"
-                                                                           class="add-to-cart"
-                                                                           href="javascript:"
-                                                                           title="Yêu thích">
+                                                                        <a data-toggle="tooltip" class="add-to-cart" href="{{url('danh-sach-yeu-thich/them/'.$product->id)}}" title="" data-original-title="Yêu thích">
                                                                             <i class="icon fa fa-heart" style="color: rgb(255, 66, 79);"></i>
                                                                         </a>
                                                                     @endif
@@ -183,11 +175,24 @@
                                                                     to cart
                                                                 </button>
                                                             </li>
-                                                            <li class="lnk wishlist"><a data-toggle="tooltip"
-                                                                                        class="add-to-cart"
-                                                                                        href="{{ url('add/to-wishlist/'.$product->id) }}"
-                                                                                        title="Yêu thích">
-                                                                    <i class="icon fa fa-heart"></i> </a></li>
+                                                            <li class="lnk wishlist">
+                                                                @if (Auth::guard('account_customer')->check())
+                                                                    @if(is_null(DB::table('wishlists')->where('customer_id', Auth::guard('account_customer')->id())->where('product_id','=',$product->id)->first()))
+                                                                        <a data-toggle="tooltip" class="add-to-cart" href="{{url('danh-sach-yeu-thich/them/'.$product->id)}}" title="Yêu thích">
+                                                                            <i class="icon fa fa-heart"></i>
+                                                                        </a>
+                                                                    @else
+                                                                        <a data-toggle="tooltip" class="add-to-cart" href="{{url('danh-sach-yeu-thich/them/'.$product->id)}}" title="" data-original-title="Yêu thích">
+                                                                            <i class="icon fa fa-heart" style="color: rgb(255, 66, 79);"></i>
+                                                                        </a>
+                                                                    @endif
+                                                                @else
+                                                                    <a href="javascript:" data-toggle="modal" data-target="#loginModal"
+                                                                       title="Yêu thích">
+                                                                        <i class="icon fa fa-heart"></i>
+                                                                    </a>
+                                                                @endif
+                                                            </li>
                                                             <li class="lnk"><a data-toggle="tooltip" class="add-to-cart"
                                                                                href="detail.html" title="So sánh"> <i
                                                                         class="fa fa-signal" aria-hidden="true"></i>

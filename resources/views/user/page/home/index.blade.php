@@ -99,6 +99,17 @@
                     <!-- ============================================== INFO BOXES : END ============================================== -->
 
                     <!-- ============================================== SẢN PHẨM MỚI ============================================== -->
+
+                    @if(Session::has('wishlist'))
+                        <div class="alert alert-success">
+                            {{Session::get('wishlist')}}
+                        </div>
+                @endif
+                    @if(Session::has('wishlist-w'))
+                        <div class="alert alert-warning">
+                            {{Session::get('wishlist-w')}}
+                        </div>
+                @endif
                 @include('user.page.home.new-product.new_product')
                 <!-- ============================================== SẢN PHẨM MỚI: END ============================================== -->
 

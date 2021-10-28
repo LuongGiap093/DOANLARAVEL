@@ -4,7 +4,8 @@
         <div class="modal-content">
             <div class="modal-header-login border-bottom-0">
                 <button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+{{--                    <span aria-hidden="true">&times;</span>--}}
+                    <i aria-hidden="true" class="icon fa fa-times" style="font-size: 18px;"></i>
                 </button>
             </div>
             <div class="modal-body-login">

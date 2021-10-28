@@ -1,6 +1,6 @@
 <!-- ============================================== SIDEBAR CATEGORY ============================================== -->
 <div class="sidebar-widget wow fadeInUp">
-    <h3 class="section-title">shop by</h3>
+    <h3 class="section-title">BỘ LỌC</h3>
     <div class="widget-header">
         <h4 class="widget-title">Category</h4>
     </div>
@@ -123,54 +123,122 @@
 <!-- /.sidebar-widget -->
 <!-- ============================================== SIDEBAR CATEGORY : END ============================================== -->
 <!-- ============================================== PRICE SILDER============================================== -->
-<div class="sidebar-widget wow fadeInUp">
-    <div class="widget-header">
-        <h4 class="widget-title">Price Slider</h4>
-    </div>
-    <div class="sidebar-widget-body m-t-10">
-        <div class="price-range-holder"> <span class="min-max"> <span class="pull-left">1.000.000đ</span> <span class="pull-right">50.000.000đ</span> </span>
-            <input type="text" id="amount" style="border:0; color:#666666; font-weight:bold;text-align:center;">
-            <input type="text" class="price-slider" value="">
-        </div>
-        <!-- /.price-range-holder -->
-        <a href="#" class="lnk btn btn-primary">Show Now</a> </div>
-    <!-- /.sidebar-widget-body -->
-</div>
 <!-- /.sidebar-widget -->
 <!-- ============================================== PRICE SILDER : END ============================================== -->
-<!-- ============================================== MANUFACTURES============================================== -->
-<div class="sidebar-widget wow fadeInUp">
-    <div class="widget-header">
-        <h4 class="widget-title">Manufactures</h4>
-    </div>
-    <div class="sidebar-widget-body">
-        <ul class="list">
-            <li><a href="#">Forever 18</a></li>
-            <li><a href="#">Nike</a></li>
-            <li><a href="#">Dolce & Gabbana</a></li>
-            <li><a href="#">Alluare</a></li>
-            <li><a href="#">Chanel</a></li>
-            <li><a href="#">Other Brand</a></li>
-        </ul>
-        <!--<a href="#" class="lnk btn btn-primary">Show Now</a>-->
-    </div>
-    <!-- /.sidebar-widget-body -->
-</div>
-<!-- /.sidebar-widget -->
-<!-- ============================================== MANUFACTURES: END ============================================== -->
+
+
+{{--<div class="sidebar-widget wow fadeInUp" >--}}
+{{--    <p class="collapsible">Style <i class="fa fa-angle-down" style="float: right;font-size: 20px;"></i></p>--}}
+{{--    <div class="contents">--}}
+{{--        <div class="pretty p-icon p-curve">--}}
+{{--            <input type="checkbox" />--}}
+{{--            <div class="state p-success">--}}
+{{--                <i class="icon fa fa-check" aria-hidden="true"></i>--}}
+{{--                <label> Dưới 2.000.000đ</label>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <div class="pretty p-icon p-curve">--}}
+{{--            <input type="checkbox" />--}}
+{{--            <div class="state p-success">--}}
+{{--                <i class="icon fa fa-check" aria-hidden="true"></i>--}}
+{{--                <label> Từ 2.000.000đ - 4.000.000đ</label>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <div class="pretty p-icon p-curve">--}}
+{{--            <input type="checkbox" />--}}
+{{--            <div class="state p-success">--}}
+{{--                <i class="icon fa fa-check" aria-hidden="true"></i>--}}
+{{--                <label> Từ 4.000.000đ - 7.000.000đ</label>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <div class="pretty p-icon p-curve">--}}
+{{--            <input type="checkbox" />--}}
+{{--            <div class="state p-success">--}}
+{{--                <i class="icon fa fa-check" aria-hidden="true"></i>--}}
+{{--                <label> Từ 7.000.000đ - 13.000.000đ</label>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <div class="pretty p-icon p-curve">--}}
+{{--            <input type="checkbox" />--}}
+{{--            <div class="state p-success">--}}
+{{--                <i class="icon fa fa-check" aria-hidden="true"></i>--}}
+{{--                <label> Từ 13.000.000đ - 20.000.000đ</label>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <div class="pretty p-icon p-curve">--}}
+{{--            <input type="checkbox" />--}}
+{{--            <div class="state p-success">--}}
+{{--                <i class="icon fa fa-check" aria-hidden="true"></i>--}}
+{{--                <label> Trên 20.000.000đ</label>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+
+
+{{--    </div>--}}
+{{--</div>--}}
+{{--<div class="sidebar-widget wow fadeInUp" >--}}
+{{--    <p class="collapsible">Style <i class="fa fa-angle-down" style="float: right;font-size: 20px;"></i></p>--}}
+{{--    <div class="contents">--}}
+{{--        <div class="pretty p-icon p-curve">--}}
+{{--            <input type="checkbox" />--}}
+{{--            <div class="state p-success">--}}
+{{--                <i class="icon fa fa-check" aria-hidden="true"></i>--}}
+{{--                <label> Dưới 2.000.000đ</label>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <div class="pretty p-icon p-curve">--}}
+{{--            <input type="checkbox" />--}}
+{{--            <div class="state p-success">--}}
+{{--                <i class="icon fa fa-check" aria-hidden="true"></i>--}}
+{{--                <label> Từ 2.000.000đ - 4.000.000đ</label>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <div class="pretty p-icon p-curve">--}}
+{{--            <input type="checkbox" />--}}
+{{--            <div class="state p-success">--}}
+{{--                <i class="icon fa fa-check" aria-hidden="true"></i>--}}
+{{--                <label> Từ 4.000.000đ - 7.000.000đ</label>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <div class="pretty p-icon p-curve">--}}
+{{--            <input type="checkbox" />--}}
+{{--            <div class="state p-success">--}}
+{{--                <i class="icon fa fa-check" aria-hidden="true"></i>--}}
+{{--                <label> Từ 7.000.000đ - 13.000.000đ</label>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <div class="pretty p-icon p-curve">--}}
+{{--            <input type="checkbox" />--}}
+{{--            <div class="state p-success">--}}
+{{--                <i class="icon fa fa-check" aria-hidden="true"></i>--}}
+{{--                <label> Từ 13.000.000đ - 20.000.000đ</label>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <div class="pretty p-icon p-curve">--}}
+{{--            <input type="checkbox" />--}}
+{{--            <div class="state p-success">--}}
+{{--                <i class="icon fa fa-check" aria-hidden="true"></i>--}}
+{{--                <label> Trên 20.000.000đ</label>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+
+
+{{--    </div>--}}
+{{--</div>--}}
 <!-- ============================================== COLOR============================================== -->
 <div class="sidebar-widget wow fadeInUp">
     <div class="widget-header">
-        <h4 class="widget-title">Colors</h4>
+        <h4 class="widget-title">GIÁ</h4>
     </div>
     <div class="sidebar-widget-body">
         <ul class="list">
-            <li><a href="#">Red</a></li>
-            <li><a href="#">Blue</a></li>
-            <li><a href="#">Yellow</a></li>
-            <li><a href="#">Pink</a></li>
-            <li><a href="#">Brown</a></li>
-            <li><a href="#">Teal</a></li>
+            <li><a href="{{request()->fullUrlWithQuery(['price'=>1])}}">Dưới 2.000.000đ</a></li>
+            <li><a href="{{request()->fullUrlWithQuery(['price'=>2])}}">Từ 2.000.000đ - 4.000.000đ</a></li>
+            <li><a href="{{request()->fullUrlWithQuery(['price'=>3])}}">Từ 4.000.000đ - 7.000.000đ</a></li>
+            <li><a href="{{request()->fullUrlWithQuery(['price'=>4])}}">Từ 7.000.000đ - 13.000.000đ</a></li>
+            <li><a href="{{request()->fullUrlWithQuery(['price'=>5])}}">Từ 13.000.000đ - 20.000.000đ</a></li>
+            <li><a href="{{request()->fullUrlWithQuery(['price'=>6])}}">Từ 20.000.000đ - 30.000.000đ</a></li>
+            <li><a href="{{request()->fullUrlWithQuery(['price'=>7])}}">Trên 30.000.000đ</a></li>
         </ul>
     </div>
     <!-- /.sidebar-widget-body -->

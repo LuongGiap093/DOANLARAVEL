@@ -20,8 +20,6 @@
                                    href="{{ route('customer.getLogout') }}"><i class="icon fa fa-lock"></i>Đăng xuất</a>
                             </li>
                         @else
-                            <li><a class="login-trigger" style="padding: 0px 5px" href="{{route('shopping.login')}}"><i
-                                        class="icon fa fa-user"></i>Tài khoản</a></li>
                             <li><a class="login-trigger" style="padding: 0px 5px" class="btn btn-info btn-round"
                                    href="javascript:" data-toggle="modal" data-target="#loginModal"><i
                                         class="icon fa fa-heart"></i>Yêu
@@ -37,8 +35,7 @@
                         @endif
                     </ul>
                 </div>
-                <div class="clearfix"
-                     style="display: -webkit-inline-box;padding: 6px 0px;max-width: 50%;line-height: 15px;color: white;font-size: 15px;font-weight: 700;">
+                <div class="clearfix-marquee">
                     <marquee>Come on, you can do it! - Come on, you can do it! - Come on, you can do it! - Come on, you can do it!</marquee>
                 </div>
             </div>
@@ -63,29 +60,12 @@
                 <div class="col-xs-12 col-sm-12 col-md-5 top-search-holder" style="margin-bottom: 10px;">
                     <!-- ============================================================= SEARCH AREA ============================================================= -->
                     <div class="search-area">
-                        <form action="{{route('product.search')}}" method="GET">
-                            @csrf
+                        <form method="get" action="{{route('product.search')}}">
+                            {{ csrf_field() }}
                             <div class="control-group" style="background: #fff;border-radius: 3px;">
-                                {{--                                <div class="row">--}}
-                                {{--                                <div class="col-xs-9">--}}
                                 <input class="search-field" name="search_key" placeholder="Tìm kiếm sản phẩm của bạn..."
                                        autocomplete="off" required>
-                                {{--                                <ul class="hidden" id="myUL">--}}
-                                {{--                                    <li><a href="#">Adele</a></li>--}}
-                                {{--                                    <li><a href="#">Agnes</a></li>--}}
-
-                                {{--                                    <li><a href="#">Billy</a></li>--}}
-                                {{--                                    <li><a href="#">Bob</a></li>--}}
-
-                                {{--                                    <li><a href="#">Calvin</a></li>--}}
-                                {{--                                    <li><a href="#">Christina</a></li>--}}
-                                {{--                                    <li><a href="#">Cindy</a></li>--}}
-                                {{--                                </ul>--}}
-                                {{--                                </div>--}}
-                                {{--                                    <div class="col-xs-3">--}}
                                 <button type="submit" class="search-button">Tìm kiếm</button>
-                                {{--                                    </div>--}}
-                                {{--                                </div>--}}
                             </div>
                         </form>
                     </div>
@@ -121,8 +101,7 @@
                             <a href="{{route('shopping.showWishlist')}}" title="Wishlist" class="my-wishlist"
                                style="float: right;color: #ffffff;background: transparent;border-style: solid;border-color: rgba(244,244,244,0.5);border-width: 1px;width: 47px;height: 47px;line-height: 50px;border-radius: 26px;font-size: 25px;display: inline-block;">
                                 <i class="icon fa fa-heart" style="font-size: 30px;color: #ffffff;"></i>
-                                <span
-                                    style="color: #333;border-radius: 100px;height: 18px;position: absolute;width: 18px;background: #fdd922;color: #0f6cb2;font-size: 11px;text-align: center;line-height: 19px;">
+                                <span id="update-wishlist" style="color: #333;border-radius: 100px;height: 18px;position: absolute;width: 18px;background: #fdd922;color: #0f6cb2;font-size: 11px;text-align: center;line-height: 19px;">
                                     {{$wishlists->count()}}
                                 </span>
                             </a>
@@ -187,11 +166,16 @@
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li>
-                                        @if(Session::has('Cart') != null)
+                                    @if(Session::has('Cart') != null)
+                                        <li>
+                                            <div class="clearfix">
+                                                <span>{{Session::get('Cart')->totalQuanty}} SẢN PHẨM</span>
+                                                <a class="text-v-dark pull-right" href="{{route('shopping.cart')}}">XEM GIỎ HÀNG</a>
+                                            </div>
+                                            <hr style="margin-top: 10px;margin-bottom: 10px;">
                                             @foreach(Session::get('Cart')->products as $item)
                                                 <div class="cart-item product-summary">
-                                                    <div class="row cart-detail">
+                                                    <div class="row cart-detail" style="margin-bottom: 10px;">
                                                         <div class="col-xs-4">
                                                             <div class="image">
                                                                 <a href="detail.html"><img
@@ -211,29 +195,33 @@
                                                         </div>
                                                         <div class="col-xs-2 action"
                                                              style="border-radius: 50%;box-shadow: 0 2px 6px 0 rgb(0 0 0 / 40%);text-align: center;width: 30px;height: 30px;line-height: 30px;margin-left: 10px;">
-                                                            <a href="#"><i class="fa fa-trash"></i></a>
+                                                            <a onclick="DeleteItemCart({{$item['productInfo']->id}})" href="javascript:"><i class="fa fa-trash"></i></a>
                                                         </div>
                                                     </div>
                                                 </div>
+                                            @endforeach
                                             <!-- <input hidden id="total-quanty-card" type="number" value="{{Session::get('Cart')->totalQuanty}}"> -->
-                                                <hr>
-                                        @endforeach
-                                        <!-- /.cart-item -->
-                                            <div class="clearfix"></div>
+                                            <hr style="margin-top: 10px;margin-bottom: 10px;">
                                             <div class="clearfix cart-total">
                                                 <div class="pull-right">
-                                                    <span class="text">Tổng tiền:</span><span class='price'>{{number_format(Session::get('Cart')->totalPrice,'0',',','.')}} VNĐ</span>
+                                                    <span class="text" style="font-size: 14px;font-weight: 700;">Tổng tiền:</span><span class='price'>{{number_format(Session::get('Cart')->totalPrice,'0',',','.')}} VNĐ</span>
                                                 </div>
-                                                @else
-                                                    <span
-                                                        style="color: black;margin-left: 40px;">- Giỏ hàng trống -</span>
-                                                @endif
-                                                <div class="clearfix"></div>
-                                                <a href="{{route('shopping.cart')}}"
-                                                   class="btn btn-upper btn-primary btn-block m-t-20">Mua hàng</a>
                                             </div>
+                                            <a href="{{route('shopping.checkout-page')}}" class="btn btn-upper btn-primary btn-block m-t-20" style="padding: 10px 20px;margin-top: 10px;font-weight: 600">THỦ TỤC THANH TOÁN</a>
                                             <!-- /.cart-total-->
                                     </li>
+                                    @else
+                                        <li>
+                                            <div class="clearfix">
+                                                <span>0 SẢN PHẨM</span>
+                                                <a class="text-v-dark pull-right" href="{{route('shopping.cart')}}">XEM GIỎ HÀNG</a>
+                                            </div>
+                                            <hr>
+                                            <div class="clearfix cart-total" style="text-align: center;">
+                                                <span>Chưa có sản phẩm trong giỏ hàng.</span>
+                                            </div>
+                                        </li>
+                                    @endif
                                 </ul>
                                 <!-- /.dropdown-menu-->
                             </div>
@@ -267,7 +255,7 @@
                                 <li class="active dropdown yamm-fw">
                                     <a href="{{route('shopping.home')}}">Trang chủ</a>
                                 </li>
-                                <li class="dropdown"><a href="{{route('shopping.blog')}}">Giới Thiệu</a></li>
+                                <li class="dropdown"><a href="{{route('shopping.about')}}">Giới Thiệu</a></li>
                                 <li class="dropdown mega-menu">
                                     <a href="#" data-hover="dropdown" class="dropdown-toggle"
                                        data-toggle="dropdown">Sản phẩm <span
@@ -329,7 +317,5 @@
     </div>
     <!-- /.header-nav -->
     <!-- ============================================== NAVBAR : END ============================================== -->
-    {{--    <div id=”backtotop”>--}}
-    {{--        <a href=”javascript:void(0)” class=”backtotop”></a>--}}
-    {{--    </div>--}}
 </header>
+

@@ -66,8 +66,12 @@ class BlogController extends Controller
             ->join('product','category.category_id','=','product.idcat')
             ->join('brands','product.brand_id','=','brands.brand_id')
             ->get();
-
-        return view('user.page.blog_page.blog_details', compact('blog_detail','cate','categorys','logos','product_tag'));
+        if (Auth::guard('account_customer')->check()) {
+            $wishlists = Wishlist::where('customer_id', Auth::guard('account_customer')->id())->get();
+        }else{
+            $wishlists=null;
+        }
+        return view('user.page.blog_page.blog_details', compact('wishlists','blog_detail','cate','categorys','logos','product_tag'));
     }
 
     public function show_blog()

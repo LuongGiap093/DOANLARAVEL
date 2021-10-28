@@ -9,6 +9,20 @@
 @yield('content')
 
 @include('user.theme.footer')
+{{--<div class="loader-container">--}}
+{{--    <img src="public/images/loader.gif" alt="">--}}
+{{--</div>--}}
+{{--<script>--}}
+{{--    function loader(){--}}
+{{--        document.querySelector('.loader-container').classList.add('fade-out');--}}
+{{--    }--}}
+
+{{--    function fadeOut(){--}}
+{{--        setInterval(loader, 3000);--}}
+{{--    }--}}
+
+{{--    window.onload = fadeOut();--}}
+{{--</script>--}}
 @yield('scripts')
 @include('user.page.cart_page.scripts_cart')
 @include('user.page.wishlist_page.scripts_wishlist')
@@ -48,6 +62,7 @@
 
 @include('user.page.checkout_page.scripts_shipping')
 @include('user.page.checkout_page.scripts_checkout')
+@include('user.page.checkout_page.scripts_coupon')
 
 {{--<script type="text/javascript">--}}
 {{--    //sắp xếp theo...--}}
@@ -81,117 +96,6 @@
         });
     });
 </script>
-
-
-{{--<script type="text/javascript">--}}
-{{--    //Xác nhận đơn đặt hàng--}}
-{{--    $(document).ready(function () {--}}
-{{--        $('.checkout-btn').click(function () {--}}
-{{--            swal({--}}
-{{--                title: "Xác nhận đơn hàng",--}}
-{{--                text: "Đơn hàng sẽ không được hoàn trả khi đặt, bạn có chắc muốn đặt không?",--}}
-{{--                icon: "warning",--}}
-{{--                buttons: true,--}}
-{{--                dangerMode: true,--}}
-{{--            })--}}
-{{--                .then((willDelete) => {--}}
-{{--                    if (willDelete) {--}}
-{{--                        var customer_name = $('.customer_name').val();--}}
-{{--                        var customer_email = $('.customer_email').val();--}}
-{{--                        var customer_phone_number = $('.customer_phone_number').val();--}}
-{{--                        var customer_address = $('.customer_address').val();--}}
-{{--                        var customer_note = $('.customer_note').val();--}}
-{{--                        var order_payment = $('.order_payment').val();--}}
-{{--                        var order_coupon = $('.order_coupon').val();--}}
-{{--                        var order_fee = $('.order_fee').val();--}}
-{{--                        var customer_matp = $('.customer_matp').val();--}}
-{{--                        var customer_maqh = $('.customer_maqh').val();--}}
-{{--                        var customer_xaid = $('.customer_xaid').val();--}}
-{{--                        var order_total = $('.order_total').val();--}}
-{{--                        var _token = $('input[name="_token"]').val();--}}
-{{--                        if(customer_name==''||customer_phone_number==''||customer_address==''||order_payment==''){--}}
-{{--                            alert('Làm ơn điền đầy đủ thông tin khách hàng');--}}
-{{--                        }else {--}}
-{{--                            $.ajax({--}}
-{{--                                url: '{{route('dat-hang')}}',--}}
-{{--                                method: 'POST',--}}
-{{--                                data: {customer_name: customer_name, customer_email: customer_email,--}}
-{{--                                    customer_phone_number: customer_phone_number, customer_address: customer_address,--}}
-{{--                                    customer_note: customer_note, order_payment: order_payment, order_coupon: order_coupon--}}
-{{--                                    , order_fee: order_fee,order_total:order_total, customer_matp:customer_matp,--}}
-{{--                                    customer_maqh:customer_maqh, customer_xaid:customer_xaid,_token: _token},--}}
-{{--                                success: function () {--}}
-{{--                                    swal("Cảm ơn! Đơn hàng đã được đặt thành công!", {--}}
-{{--                                        icon: "success",--}}
-{{--                                    });--}}
-{{--                                }--}}
-{{--                            });--}}
-{{--                        }--}}
-{{--                        window.setTimeout(function (){--}}
-{{--                            location.reload();--}}
-{{--                        } ,2000);--}}
-{{--                    } else {--}}
-{{--                        swal("Hủy xác nhận đặt hàng thành công!");--}}
-{{--                    }--}}
-{{--                });--}}
-
-{{--        });--}}
-{{--    });--}}
-{{--</script>--}}
-{{--<script type="text/javascript">--}}
-{{--    //Tính phí vận chuyển--}}
-{{--    $(document).ready(function () {--}}
-{{--        $('.choose').on('change', function () {//khi class choose thay đổi--}}
-{{--            var action = $(this).attr('id'); // this là lấy cái thuộc tính của id="city"--}}
-{{--            var ma_id = $(this).val();// this lấy giá trị value của option--}}
-{{--            var _token = $('input[name="_token"]').val();// gửi bằng form thì phải có token--}}
-{{--            var result = '';--}}
-{{--            // alert(action);--}}
-{{--            // alert(matp);--}}
-{{--            // alert(_token);--}}
-{{--            if (action == 'city') {--}}
-{{--                result = 'province';--}}
-{{--            } else {--}}
-{{--                result = 'wards';--}}
-{{--            }--}}
-{{--            $.ajax({--}}
-{{--                url: '{{route('select-delivery-home')}}',--}}
-{{--                method: 'POST',--}}
-{{--                data: {action: action, ma_id: ma_id, _token: _token},--}}
-{{--                success: function (data) {--}}
-{{--                    $('#' + result).html(data);--}}
-{{--                }--}}
-{{--            });--}}
-{{--        });--}}
-{{--    });--}}
-{{--</script>--}}
-{{--<script type="text/javascript">--}}
-{{--    $(document).ready(function () {--}}
-{{--        $('.calculate_delivery').click(function () {//khi click vào nút--}}
-{{--            var matp = $('.city').val();--}}
-{{--            var maqh = $('.province').val();--}}
-{{--            var xaid = $('.wards').val();--}}
-{{--            var _token = $('input[name="_token"]').val();--}}
-{{--            if (matp == '' || maqh == '' || xaid == '') {--}}
-{{--                swal("Làm ơn nhập địa điểm vận chuyển!");--}}
-{{--            } else {--}}
-{{--                $.ajax({--}}
-{{--                    url: '{{route('calculate-fee')}}',--}}
-{{--                    method: 'POST',--}}
-{{--                    data: {matp: matp, maqh: maqh, xaid: xaid, _token: _token},--}}
-{{--                    success: function (data) {--}}
-{{--                        alertify.success('Tính phí Thành Công!');--}}
-{{--                        location.reload();--}}
-{{--                    }--}}
-{{--                });--}}
-{{--            }--}}
-{{--            window.setTimeout(function (){--}}
-{{--                location.reload();--}}
-{{--            } ,2000);--}}
-{{--        });--}}
-{{--    });--}}
-{{--</script>--}}
-
 
 {{--back to top--}}
 <a id="button"></a>
@@ -393,6 +297,96 @@
 
         /* Alert the copied text */
         // alert("Copied the text: " + copyText.value);
+    }
+</script>
+<div class="hotline-phone-ring-wrap" style="bottom: 285px">
+    <div class="hotline-phone-ring">
+        <div class="hotline-phone-ring-circle"></div>
+        <div class="hotline-phone-ring-circle-fill"></div>
+        <div class="hotline-phone-ring-img-circle">
+            <a href="tel:0987654321" class="pps-btn-img">
+                <img src="https://nguyenhung.net/wp-content/uploads/2019/05/icon-call-nh.png" alt="Gọi điện thoại" width="50">
+            </a>
+        </div>
+    </div>
+    <div class="hotline-bar">
+        <a href="tel:0987654321">
+        </a>
+    </div>
+</div>
+<div class="hotline-phone-ring-wrap">
+    <div class="hotline-phone-ring">
+        <div class="hotline-phone-ring-circle"></div>
+        <div class="hotline-phone-ring-circle-fill"></div>
+        <div class="hotline-phone-ring-img-circle" style="animation: none;">
+            <a href="https://zalo.me/0327355517" target="_blank" class="pps-btn-img">
+                <img src="https://datxanhmd-gemskyworld.com/assets/images/zl.png" alt="chat zalo" width="50">
+            </a>
+        </div>
+    </div>
+    <div class="hotline-bar">
+        <a href="tel:0327355517">
+        </a>
+    </div>
+</div>
+<div class="hotline-phone-ring-wrap" style="bottom: 115px">
+    <div class="hotline-phone-ring">
+        <div class="hotline-phone-ring-circle"></div>
+        <div class="hotline-phone-ring-circle-fill"></div>
+        <div class="hotline-phone-ring-img-circle" style="animation: none;">
+            <a href="https://www.facebook.com/v.luong.giap" target="_blank" class="pps-btn-img">
+                <img src="https://www.mynet.vn/static/thuvienanh/Untitled-3.png" alt="chat zalo" width="50">
+            </a>
+        </div>
+    </div>
+    <div class="hotline-bar">
+        <a href="tel:0327355517">
+        </a>
+    </div>
+</div>
+
+<SCRIPT>
+    const sliderValue = document.querySelector("span");
+    const inputSlider = document.querySelector("input");
+    inputSlider.oninput = (() =>{
+        let value = inputSlider.value;
+        sliderValue.textContent = value;
+        sliderValue.style.left = (value/2) + "%";
+        sliderValue.classList.add("show");
+    })
+    inputSlider.onblur = (()=>{
+        sliderValue.classList.remove("show");
+    });
+</SCRIPT>
+<script type='text/javascript'>
+    function changecolor(id) {
+        console.log(id);
+        $.ajax({
+            url: 'danh-sach-yeu-thich/them/' + id, //Changed--------------------------------------------------------------
+            type: 'GET',
+        }).done(function (response) {
+            var icon = document.getElementById("example"+id);
+            icon.style.color='rgb('+255+','+ 66+','+ 79+')';
+            $("#update-wishlist").load(location.href + " #update-wishlist>*", "");
+
+        });
+    }
+</script>
+
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var contents = this.nextElementSibling;
+            if (contents.style.display === "block") {
+                contents.style.display = "none";
+            } else {
+                contents.style.display = "block";
+            }
+        });
     }
 </script>
 

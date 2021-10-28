@@ -12,6 +12,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Auth;
 use Validator;
+use Illuminate\Support\Facades\Session;
 use App\Http\Requests\RegisterRequest;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -63,6 +64,7 @@ class AccountCustomerController extends Controller
             $mail->Password = $matkhau;   // SMTP password
             $mail->SMTPSecure = 'ssl';  // encryption TLS/SSL
             $mail->Port = 465;  // port to connect to
+            $mail->CharSet = 'UTF-8';
             $mail->setFrom($nguoigui, $tennguoigui);
             $to = $email;
             $to_name = $name;
@@ -72,13 +74,13 @@ class AccountCustomerController extends Controller
             $mail->Subject = "Mail xác nhận đăng ký tài khoản thành viên trên TLmobile";
             $noidungthu = "<b>Chào bạn!</b><br>Chúc an lành!";
             $mail->Body = $noidungthu;
-            $mail->smtpConnect(array(
-                "ssl" => array(
-                    "verify_peer" => false,
-                    "verify_peer_name" => false,
-                    "allow_self_signed" => true
+            $mail->SMTPOptions = array(
+                'ssl' => array(
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true
                 )
-            ));
+            );
             if (!$mail->Send()) {
                 echo "<h1>Loi khi goi mail: " . $mail->ErrorInfo . '</h1>';
             } else {
@@ -87,26 +89,32 @@ class AccountCustomerController extends Controller
                 $accountcustomer = AccountCustomer::all();
                 foreach ($accountcustomer as $acc) {
                     if ($email == $acc->email) {
-                        Session::flash('message', 'Email đã được đăng ký!');
-                        return redirect()
-                            ->back();
+                        $check_email=true;
+                        break;
+
                     }
                 }
-                $user->name = $name;
-                $user->phone = $phone;
-                $user->email = $email;
-                $user->password = Hash::make($pass);
-                if ($user->save()) {
-                    $login = [
-                        'email' => $email,
-                        'password' => $pass,
-                    ];
+                if(isset($check_email)){
+                    Session::flash('message', 'Email đã được đăng ký!');
+                    return redirect()
+                        ->back();
+                }else{
+                    $user->name = $name;
+                    $user->phone = $phone;
+                    $user->email = $email;
+                    $user->password = Hash::make($pass);
+                    if ($user->save()) {
+                        $login = [
+                            'email' => $email,
+                            'password' => $pass,
+                        ];
 
-                    if (Auth::guard('account_customer')->attempt($login)) {
-                        return redirect()->route('shopping.home');
+                        if (Auth::guard('account_customer')->attempt($login)) {
+                            return redirect()->route('shopping.home');
+                        }
+                    } else {
+                        return redirect()->back()->with('success', 'Đăng ký không thành công');
                     }
-                } else {
-                    return redirect()->back()->with('success', 'Đăng ký không thành công');
                 }
             }
         } catch (Exception $e) {

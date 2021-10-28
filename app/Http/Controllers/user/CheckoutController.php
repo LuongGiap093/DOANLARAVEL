@@ -25,30 +25,30 @@ class CheckoutController extends Controller
 {
     //
     public function index(){
+        $logos=Logo::first();
+        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->limit(4)->get();
+        $cate=Category::orderby('category_position','asc')
+            ->join('product','category.category_id','=','product.idcat')
+            ->join('brands','product.brand_id','=','brands.brand_id')
+            ->get();
+        $brands=Brand::all();
+        $city=City::orderby('matp','ASC')->get();
+        $province=Province::where('matp',Session::get('fee_matp'))->orderby('maqh','ASC')->get();
+        $wards=Wards::where('maqh',Session::get('fee_maqh'))->orderby('xaid','ASC')->get();
+        $thanhpho=City::where('matp',Session::get('fee_matp'))->first();
+        $quanhuyen=Province::where('maqh',Session::get('fee_maqh'))->first();
+        $xaphuong=Wards::where('xaid',Session::get('fee_xaid'))->first();
         if (Auth::guard('account_customer')->check()) {
             $wishlists = Wishlist::where('customer_id', Auth::guard('account_customer')->id())->get();
         }else{
             $wishlists=null;
         }
         if(Session::has('Cart')){
-            $logos=Logo::first();
-            $categorys=Category::where('category_status',1)->orderby('category_position','asc')->limit(4)->get();
-            $cate=Category::orderby('category_position','asc')
-                ->join('product','category.category_id','=','product.idcat')
-                ->join('brands','product.brand_id','=','brands.brand_id')
-                ->get();
-            $brands=Brand::all();
-            $city=City::orderby('matp','ASC')->get();
-            $province=Province::where('matp',Session::get('fee_matp'))->orderby('maqh','ASC')->get();
-            $wards=Wards::where('maqh',Session::get('fee_maqh'))->orderby('xaid','ASC')->get();
-            $thanhpho=City::where('matp',Session::get('fee_matp'))->first();
-            $quanhuyen=Province::where('maqh',Session::get('fee_maqh'))->first();
-            $xaphuong=Wards::where('xaid',Session::get('fee_xaid'))->first();
             return view('user.page.checkout_page.checkout',compact('wishlists','city','thanhpho','quanhuyen','xaphuong',
                 'categorys','logos','brands','province','wards','cate'));
-
         }else{
-            return redirect()->back()->with('status','không thể thanh toán khi giỏ hàng trống!');
+            return view('user.page.checkout_page.checkout',compact('wishlists','city','thanhpho','quanhuyen','xaphuong',
+                'categorys','logos','brands','province','wards','cate'));
         }
     }
 
@@ -117,6 +117,7 @@ class CheckoutController extends Controller
     }
 
     public function checkout(Request $request){
+
         $shipping=new Shipping;
         $city=City::where('matp',Session::get('fee_matp'))->first();
         $province=Province::where('maqh',Session::get('fee_maqh'))->first();
@@ -174,21 +175,17 @@ class CheckoutController extends Controller
 
         }
 
-
-
-
-
-        Session::forget('coupon');
-        Session::forget('Cart');
-        Session::forget('fee');
-        Session::forget('fee_matp');
-        Session::forget('fee_maqh');
-        Session::forget('fee_xaid');
-        Session::forget('name');
-        Session::forget('phone');
-        Session::forget('email');
-        Session::forget('note');
-        Session::forget('address');
-        return redirect()->route('shipping.home');
+//        Session::forget('coupon');
+//        Session::forget('Cart');
+//        Session::forget('fee');
+//        Session::forget('fee_matp');
+//        Session::forget('fee_maqh');
+//        Session::forget('fee_xaid');
+//        Session::forget('name');
+//        Session::forget('phone');
+//        Session::forget('email');
+//        Session::forget('note');
+//        Session::forget('address');
+        $request->session()->flush();
     }
 }

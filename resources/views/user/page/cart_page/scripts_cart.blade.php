@@ -12,19 +12,32 @@
         });
     }
 
-    /* //Xóa giỏ hàng khỏi session
-    $("#change-item-cart").on("click","li .cart-item .row .col-xs-1 a", function(){
-      console.log('2')
-      console.log($(this).data("id"));
-      $.ajax({
-        url:'deleteItemCart/'+$(this).data("id"),
-        type: 'GET',
-      }).done(function(response){
-          ShowCart(response);
-          $("#list-cart").load(location.href+" #list-cart>*","");
-          alertify.error('Deleted!');
-      });
-    }); */
+    //  //Xóa giỏ hàng khỏi session
+    // $("#change-item-cart").on("click","li .cart-item .row .col-xs-2 .click-del", function(){
+    //   console.log('2')
+    //   console.log($(this).data("id"));
+    //   $.ajax({
+    //     url:'deleteItemCart/'+$(this).data("id"),
+    //     type: 'GET',
+    //   }).done(function(response){
+    //       ShowCart(response);
+    //       $("#change-item-cart").load(location.href+" #change-item-cart>*","");
+    //       alertify.error('Deleted!');
+    //   });
+    // });
+    function DeleteItemCart(id) {
+        $.ajax({
+            url: 'deleteItemCart/' + id,
+            type: 'GET',
+        }).done(function (response) {
+            alertify.error('Xóa Thành Công!');
+            $("#change-item-cart").load(location.href + " #change-item-cart>*", "");
+            // $("#list-cart").empty();
+            // $("#list-cart").html(response);
+            // $("#total-quanty-show").text($("#total-quanty-card").val());
+
+        });
+    }
 
     function ShowCart(response) {
         $("#change-item-cart").empty();

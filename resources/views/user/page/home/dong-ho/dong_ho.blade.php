@@ -12,7 +12,7 @@
                                             <div class="col col-xs-5">
                                                 <div class="product-image">
                                                     <div class="image"><a
-                                                            href="{{route('shopping.viewProduct', $product->id)}}"> <img
+                                                            href="{{route('product.viewProduct', $product->id)}}"> <img
                                                                 src="{!!asset('public/images/'. $product->image)!!}" alt="">
                                                         </a></div>
                                                     <!-- /.image -->
@@ -24,7 +24,7 @@
                                             <div class="col col-xs-7">
                                                 <div class="product-info" style="padding: 0px 15px 0px 0px;">
                                                     <h3 class="name"><a
-                                                            href="{{route('shopping.viewProduct', $product->id)}}">{{ $product->name }}</a>
+                                                            href="{{route('product.viewProduct', $product->id)}}">{{ $product->name }}</a>
                                                     </h3>
                                                     <div class="rating rateit-small"></div>
                                                     <div class="product-price"><span class="price">{{ number_format($product->price - $product->discount,'0',',','.') }} VNĐ</span>

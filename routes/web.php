@@ -113,7 +113,7 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::get('danh-sach-yeu-thich/them/{id}', 'WishlistController@addToWishlist');
     Route::get('danh-sach-yeu-thich/xoa/{wishlist_id}','WishlistController@destroy');
 
-    Route::get('tim-kiem','HomeController@search_product')->name('product.search');
+    Route::get('tim-kiem','ProductController@search_product')->name('product.search');
     Route::get('tim-kiem/addCart/{id}', 'UserController@AddCart')->name('shopping.addCart');
 
     Route::get('gio-hang', 'CartController@index')->name('shopping.cart');
@@ -153,6 +153,8 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::get('track-order','UserController@track_order')->name('track-order');
 
     Route::post('nhan-xet','CommentController@add_comment')->name('customer.postcomment');
+
+    Route::get('gioi-thieu','AboutController@index')->name('shopping.about');
 });
 
 

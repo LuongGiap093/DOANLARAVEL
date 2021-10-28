@@ -6,7 +6,7 @@
                 <div class="products">
                     <div class="hot-deal-wrapper">
                         <div class="image">
-                            <a href="{{route('shopping.viewProduct', $product->id)}}">
+                            <a href="{{route('product.viewProduct', $product->id)}}">
                                 <img src="{!!asset('public/images/'. $product->image)!!}" alt="">
                             </a>
                         </div>
@@ -35,13 +35,13 @@
                     <!-- /.hot-deal-wrapper -->
 
                     <div class="product-info text-left m-t-20">
-                        <h3 class="name"><a href="detail.html">{{ $product->name }}</a></h3>
+                        <h3 class="name"><a href="{{route('product.viewProduct', $product->id)}}">{{ $product->name }}</a></h3>
                         <div class="rating rateit-small"></div>
                         <div class="product-price">
-                            <span class="price-before-discount"> {{ number_format($product->price) }} VNĐ</span>
+                            <span class="price-before-discount"> {{ number_format($product->price,'0',',','.') }} VNĐ</span>
                         </div>
                         <div class="product-price"><span
-                                class="price">{{ number_format($product->price - $product->discount) }} VNĐ</span>
+                                class="price">{{ number_format($product->price - $product->discount,'0',',','.') }} VNĐ</span>
                         </div>
                         <!-- /.product-price -->
 
@@ -56,7 +56,7 @@
                                         data-text="Add To Cart" data-toggle="dropdown" type="button"><i
                                         class="fa fa-shopping-cart"></i></button>
                                 <button class="btn btn-primary cart-btn" data-toggle="tooltip" type="button"
-                                        title="Add Cart" onclick="AddCart({{$product->id}})" href="javascript:"
+                                        title="+ giỏ hàng" onclick="AddCart({{$product->id}})" href="javascript:"
                                         data-text="Add To Cart" data-text="Add To Cart" style="width: 80%;">Thêm vào giỏ
                                     hàng
                                 </button>

@@ -4,7 +4,7 @@
 
         <div class="tag-list">
             @foreach($product_tag as $product)
-                <a class="item" title="Phone" href="{{route('shopping.viewProduct', $product->id)}}">{{ $product->name }}</a>
+                <a class="item" title="Phone" href="{{route('product.viewProduct', $product->id)}}">{{ $product->name }}</a>
             @endforeach
         </div>
         <!-- /.tag-list -->

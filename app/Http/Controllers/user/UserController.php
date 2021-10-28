@@ -286,7 +286,7 @@ class UserController extends Controller
     } */
 
     //Xóa 1 sp khỏi giỏ hàng nhỏ
-    /*  public function deleteItemCart(Request $request, $id){
+    public function deleteItemCart(Request $request, $id){
         $oldCart = Session('Cart') ? Session('Cart') : null;
         $newCart = new Cart($oldCart);
         $newCart->DeleteItemCart($id);
@@ -297,10 +297,8 @@ class UserController extends Controller
         else{
             $request->Session()->forget('Cart');
         }
-
-        return view('user.page.update.cart');
     }
-  */
+
     //Xóa sản phẩm trong trang giỏ hàng
     public function deleteListItemCart(Request $request, $id)
     {

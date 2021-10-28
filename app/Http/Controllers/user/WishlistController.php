@@ -12,6 +12,7 @@ use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Session;
+use function Sodium\compare;
 
 class WishlistController extends Controller
 {
@@ -32,13 +33,14 @@ class WishlistController extends Controller
     {
         $status = Wishlist::where('customer_id', Auth::guard('account_customer')->id())->where('product_id', $product_id)->first();
         if (isset($status->customer_id) and isset($status->product_id)) {
-            $status->delete();
+            return Redirect()->back()->with('wishlist-w', 'Sản phẩm này đã tồn tại trong danh sách yêu thích!');
         } else {
             if (Auth::guard('account_customer')->check()) {
                 Wishlist::insert([
                     'customer_id' => Auth::guard('account_customer')->id(),
                     'product_id' => $product_id,
                 ]);
+                return Redirect()->back()->with('wishlist', 'Thêm sản phẩm vào danh sách yêu thích thành công!');
             } else {
                 return Redirect()
                     ->route('shopping.login')
@@ -50,7 +52,7 @@ class WishlistController extends Controller
     public function destroy($wishlist_id)
     {
         Wishlist::where('id', $wishlist_id)->where('customer_id', Auth::guard('account_customer')->id())->delete();
-        return Redirect()->back()->with('wishlist', 'Sản phẩm đã được xóa khỏi danh sách yêu thích');
+        return Redirect()->back()->with('wishlist', 'Sản phẩm đã được xóa khỏi danh sách yêu thích!');
     }
 
 }
