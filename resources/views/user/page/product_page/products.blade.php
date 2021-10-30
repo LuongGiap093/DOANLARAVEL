@@ -63,6 +63,7 @@
 </div>
 <div class="search-result-container ">
     <div id="myTabContent" class="tab-content category-list">
+        @if($products->count()>0)
         <div class="tab-pane active " id="grid-container">
             <div class="category-product">
                 <div class="row">
@@ -74,15 +75,36 @@
                                     <div class="image"> <a href="{{route('shopping.viewProduct', $product->id)}}"><img src="{!!asset('public/images/'. $product->image)!!}" alt=""></a> </div>
                                     <!-- /.image -->
 
-                                    <div class="tag new"><span>new</span></div>
+                                    @if(($product->discount*100)/$product->price <=0)
+                                        <div class="tag new"><span>new</span></div>
+                                    @elseif(($product->discount*100)/$product->price > 20)
+                                        <div class="tag hot"><span>Hot</span></div>
+                                    @else
+                                        <div class="tag sale"><span>Sale</span></div>
+                                    @endif
                                 </div>
                                 <!-- /.product-image -->
 
                                 <div class="product-info text-left" style="height: 88px">
                                     <h3 class="name"><a href="{{route('shopping.viewProduct', $product->id)}}">{{ $product->name }}</a></h3>
-                                    <div class="rating rateit-small"></div>
+                                    <?php
+                                    $avg_star=round(DB::table('comment')->where('product_id',$product->id)->avg('star'));
+                                    ?>
+                                    @for($i=1;$i<=$avg_star;$i++)
+                                        <span class="fa fa-star checked"></span>
+                                    @endfor
+                                    @for($i=1;$i<=5-$avg_star;$i++)
+                                        <span class="fa fa-star"></span>
+                                    @endfor
                                     <div class="description"></div>
-                                    <div class="product-price"> <span class="price"> {{ number_format($product->price-$product->discount,'0',',','.')}} VNĐ </span> <span class="price-before-discount">{{ number_format($product->price,'0',',','.')}} VNĐ</span> </div>
+                                    <div class="product-price">
+                                        @if($product->discount!=0)
+                                        <span class="price"> {{ number_format($product->price-$product->discount,'0',',','.')}} VNĐ </span>
+                                        <span class="price-before-discount">{{ number_format($product->price,'0',',','.')}} VNĐ</span>
+                                        @else
+                                            <span class="price"> {{ number_format($product->price,'0',',','.')}} VNĐ </span>
+                                        @endif
+                                    </div>
                                     <!-- /.product-price -->
 
                                 </div>
@@ -94,7 +116,24 @@
                                                 <button onclick="AddCart({{$product->id}})" href="javascript:" class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
                                                 <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                                             </li>
-                                            <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                            <li class="lnk wishlist">
+                                                @if (Auth::guard('account_customer')->check())
+                                                    @if(is_null(DB::table('wishlists')->where('customer_id', Auth::guard('account_customer')->id())->where('product_id','=',$product->id)->first()))
+                                                        <a data-toggle="tooltip" class="add-to-cart" href="{{url('danh-sach-yeu-thich/them/'.$product->id)}}" title="Yêu thích">
+                                                            <i class="icon fa fa-heart"></i>
+                                                        </a>
+                                                    @else
+                                                        <a data-toggle="tooltip" class="add-to-cart" href="{{url('danh-sach-yeu-thich/them/'.$product->id)}}" title="" data-original-title="Yêu thích">
+                                                            <i class="icon fa fa-heart" style="color: rgb(255, 66, 79);"></i>
+                                                        </a>
+                                                    @endif
+                                                @else
+                                                    <a href="javascript:" data-toggle="modal" data-target="#loginModal"
+                                                       title="Yêu thích">
+                                                        <i class="icon fa fa-heart"></i>
+                                                    </a>
+                                                @endif
+                                            </li>
                                             <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
                                         </ul>
                                     </div>
@@ -134,18 +173,50 @@
                                 <div class="col col-sm-8 col-lg-8">
                                     <div class="product-info">
                                         <h3 class="name"><a href="{{route('shopping.viewProduct', $product->id)}}">{{ $product->name }}</a></h3>
-                                        <div class="rating rateit-small"></div>
-                                        <div class="product-price"> <span class="price"> {{ number_format($product->price-$product->discount,'0',',','.')}} VNĐ </span> <span class="price-before-discount">{{ number_format($product->price,'0',',','.')}} VNĐ</span> </div>
+                                        <?php
+                                        $avg_star=round(DB::table('comment')->where('product_id',$product->id)->avg('star'));
+                                        ?>
+                                        @for($i=1;$i<=$avg_star;$i++)
+                                            <span class="fa fa-star checked"></span>
+                                        @endfor
+                                        @for($i=1;$i<=5-$avg_star;$i++)
+                                            <span class="fa fa-star"></span>
+                                        @endfor
+                                        <div class="product-price">
+                                            @if($product->discount!=0)
+                                            <span class="price-before-discount">{{ number_format($product->price,'0',',','.')}} VNĐ</span><br>
+                                            <span class="price"> {{ number_format($product->price-$product->discount,'0',',','.')}} VNĐ </span>
+                                            @else
+                                                <span class="price"> {{ number_format($product->price,'0',',','.')}} VNĐ </span>
+                                            @endif
+                                        </div>
                                         <!-- /.product-price -->
-                                        <div class="description m-t-10">Suspendisse posuere arcu diam, id accumsan eros pharetra ac. Nulla enim risus, facilisis bibendum gravida eget, lacinia id purus. Suspendisse posuere arcu diam, id accumsan eros pharetra ac. Nulla enim risus, facilisis bibendum gravida eget.</div>
+{{--                                        <div class="description m-t-10">Suspendisse posuere arcu diam, id accumsan eros pharetra ac. Nulla enim risus, facilisis bibendum gravida eget, lacinia id purus. Suspendisse posuere arcu diam, id accumsan eros pharetra ac. Nulla enim risus, facilisis bibendum gravida eget.</div>--}}
                                         <div class="cart clearfix animate-effect">
                                             <div class="action">
                                                 <ul class="list-unstyled">
                                                     <li class="add-cart-button btn-group">
-                                                        <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                                                        <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+                                                        <button onclick="AddCart({{$product->id}})" href="javascript:" class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
+                                                        <button onclick="AddCart({{$product->id}})" href="javascript:" class="btn btn-primary cart-btn" type="button">Thêm vào giỏ hàng</button>
                                                     </li>
-                                                    <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                                    <li class="lnk wishlist">
+                                                        @if (Auth::guard('account_customer')->check())
+                                                            @if(is_null(DB::table('wishlists')->where('customer_id', Auth::guard('account_customer')->id())->where('product_id','=',$product->id)->first()))
+                                                                <a data-toggle="tooltip" class="add-to-cart" href="{{url('danh-sach-yeu-thich/them/'.$product->id)}}" title="Yêu thích">
+                                                                    <i class="icon fa fa-heart"></i>
+                                                                </a>
+                                                            @else
+                                                                <a data-toggle="tooltip" class="add-to-cart" href="{{url('danh-sach-yeu-thich/them/'.$product->id)}}" title="" data-original-title="Yêu thích">
+                                                                    <i class="icon fa fa-heart" style="color: rgb(255, 66, 79);"></i>
+                                                                </a>
+                                                            @endif
+                                                        @else
+                                                            <a href="javascript:" data-toggle="modal" data-target="#loginModal"
+                                                               title="Yêu thích">
+                                                                <i class="icon fa fa-heart"></i>
+                                                            </a>
+                                                        @endif
+                                                    </li>
                                                     <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
                                                 </ul>
                                             </div>
@@ -159,7 +230,13 @@
                                 <!-- /.col -->
                             </div>
                             <!-- /.product-list-row -->
-                            <div class="tag new"><span>new</span></div>
+                            @if(($product->discount*100)/$product->price <=0)
+                                <div class="tag new"><span>new</span></div>
+                            @elseif(($product->discount*100)/$product->price > 20)
+                                <div class="tag hot"><span>Hot</span></div>
+                            @else
+                                <div class="tag sale"><span>Sale</span></div>
+                            @endif
                         </div>
                         <!-- /.product-list -->
                     </div>
@@ -171,6 +248,9 @@
             <!-- /.category-product -->
         </div>
         <!-- /.tab-pane #list-container -->
+        @else
+            <p style="width: 100%;text-align: center">Không có sản phẩm nào được tìm thấy!</p>
+        @endif
     </div>
     <!-- /.tab-content -->
     <div class="clearfix filters-container">

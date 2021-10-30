@@ -33,15 +33,17 @@
                                 <tr style="border-top: 1px solid #ddd;">
                                     <td class="col-md-2"><img src="{{asset('public/images/'. $row->product->image)}}" alt="imga"></td>
                                     <td class="col-md-7">
-                                        <div class="product-name"><a href="#">{{$row->product->name}}</a></div>
-                                        <div class="rating">
-                                            <i class="fa fa-star rate"></i>
-                                            <i class="fa fa-star rate"></i>
-                                            <i class="fa fa-star rate"></i>
-                                            <i class="fa fa-star rate"></i>
-                                            <i class="fa fa-star non-rate"></i>
-                                            <span class="review">( 06 Reviews )</span>
-                                        </div>
+                                        <div class="product-name"><a href="{{route('product.viewProduct', $row->product->id)}}">{{$row->product->name}}</a></div>
+                                        <?php
+                                        $avg_star=round(DB::table('comment')->where('product_id',$row->product->id)->avg('star'));
+                                        ?>
+                                        @for($i=1;$i<=$avg_star;$i++)
+                                            <span class="fa fa-star checked"></span>
+                                        @endfor
+                                        @for($i=1;$i<=5-$avg_star;$i++)
+                                            <span class="fa fa-star"></span>
+                                        @endfor
+                                            <span class="review">( có {{DB::table('comment')->where('product_id',$row->product->id)->count()}} nhận xét)</span>
                                         <div class="price">
                                             {{number_format($row->product->price,'0',',','.')}} VNĐ
                                             <span>{{number_format($row->product->discount,'0',',','.')}}đ</span>

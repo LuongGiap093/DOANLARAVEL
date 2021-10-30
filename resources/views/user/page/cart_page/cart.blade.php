@@ -29,62 +29,40 @@
                                         <th class="cart-romove item">XÓA</th>
                                     </tr>
                                     </thead><!-- /thead -->
-                                    <tfoot>
-                                    <tr>
-                                        <td colspan="7" style="padding: 0px;">
-                                            <div class="shopping-cart-btn">
-                                            <span class="">
-                                                <a href="#" class="btn btn-upper btn-primary outer-left-xs">Tiếp tục mua sắm</a>
-                                                <a href="#" class="btn btn-upper btn-primary pull-right outer-right-xs">Xóa tất cả giỏ hàng</a>
-                                            </span>
-                                            </div><!-- /.shopping-cart-btn -->
-                                        </td>
-                                    </tr>
-                                    </tfoot>
+
                                     <tbody>
                                     @foreach(Session::get('Cart')->products as $item)
                                         <tr style="border-bottom: 1px solid #e0e4f6;">
                                             <td class="cart-image">
-                                                <a class="entry-thumbnail" href="detail.html">
+                                                <a class="entry-thumbnail" href="{{route('product.viewProduct', $item['productInfo']->id)}}">
                                                     <img src="{{asset('public/images/'.$item['productInfo']->image)}}"
                                                          alt="">
                                                 </a>
                                             </td>
                                             <td class="cart-product-name-info">
                                                 <h4 class='cart-product-description'><a
-                                                        href="detail.html">{{$item['productInfo']->name}}</a>
+                                                        href="{{route('product.viewProduct', $item['productInfo']->id)}}">{{$item['productInfo']->name}}</a>
                                                 </h4>
                                                 <div class="row">
-                                                    <div class="col-sm-4">
-                                                        <div class="rating rateit-small"></div>
+                                                    <div class="col-sm-5">
+                                                        <?php
+                                                        $avg_star=round(DB::table('comment')->where('product_id',$item['productInfo']->id)->avg('star'));
+                                                        ?>
+                                                        @for($i=1;$i<=$avg_star;$i++)
+                                                            <span class="fa fa-star checked"></span>
+                                                        @endfor
+                                                        @for($i=1;$i<=5-$avg_star;$i++)
+                                                            <span class="fa fa-star"></span>
+                                                        @endfor
                                                     </div>
-                                                    <div class="col-sm-8">
+                                                    <div class="col-sm-7">
                                                         <div class="reviews">
-                                                            (06 Reviews)
+                                                            ( có {{DB::table('comment')->where('product_id',$item['productInfo']->id)->count()}} nhận xét)
                                                         </div>
                                                     </div>
                                                 </div><!-- /.row -->
-                                                <div class="cart-product-info">
-                                                    <span class="product-color">COLOR:<span>Blue</span></span>
-                                                </div>
                                             </td>
                                             <td class="cart-product-quantity">
-{{--                                                <div class="quant-input">--}}
-{{--                                                    <div class="arrows">--}}
-{{--                                                        <div class="arrow plus gradient"><span class="ir"><i--}}
-{{--                                                                    class="icon fa fa-sort-asc"--}}
-{{--                                                                    onclick="SaveListItemCart({{$item['productInfo']->id}})"--}}
-{{--                                                                    href="javascript:"></i></span></div>--}}
-{{--                                                        <div class="arrow minus gradient"><span class="ir"><i--}}
-{{--                                                                    class="icon fa fa-sort-desc"--}}
-{{--                                                                    onclick="SaveListItemCart1({{$item['productInfo']->id}})"--}}
-{{--                                                                    href="javascript:"></i></span></div>--}}
-{{--                                                    </div>--}}
-{{--                                                    <input type="text" data-id="{{$item['productInfo']->id}}"--}}
-{{--                                                           id="quanty-item-{{$item['productInfo']->id}}" type="number"--}}
-{{--                                                           min="1"--}}
-{{--                                                           autocomplete="off" value="{{$item['quanty']}}">--}}
-{{--                                                </div>--}}
                                                 <div class="counter">
                                                     <span onclick="SaveListItemCart1({{$item['productInfo']->id}})" href="javascript:" style="padding-right: 10px;">-</span>
                                                     <input value="{{$item['quanty']}}" type="text" data-id="{{$item['productInfo']->id}}" id="quanty-item-{{$item['productInfo']->id}}" min="1" disabled>

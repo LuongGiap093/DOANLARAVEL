@@ -35,7 +35,7 @@ class AccountCustomerController extends Controller
             ->join('brands', 'product.brand_id', '=', 'brands.brand_id')
             ->get();
         if (Auth::guard('account_customer')->check()) {
-            return redirect('/');
+            return redirect()->route('shopping.home');
         } else {
             return view('user.page.home.loginCustomer', compact('logos', 'cate', 'categorys'));
         }
@@ -72,7 +72,8 @@ class AccountCustomerController extends Controller
             $mail->addAddress($to, $to_name); //mail và tên người nhận
             $mail->isHTML(true);  // Set email format to HTML
             $mail->Subject = "Mail xác nhận đăng ký tài khoản thành viên trên TLmobile";
-            $noidungthu = "<b>Chào bạn!</b><br>Chúc an lành!";
+            $noidungthu = "<p style='display: contents;'>Xin chào, </p> <b>".$name."</b><br><p>Để kích hoạt tài khoản của bạn - vui lòng click vào link bên dưới.</p>
+                                                <a href='".route('shopping.home')."'>".route('shopping.home')."</a><br><p>Xin cảm ơn!</p>";
             $mail->Body = $noidungthu;
             $mail->SMTPOptions = array(
                 'ssl' => array(
@@ -131,19 +132,16 @@ class AccountCustomerController extends Controller
         ];
 
         if (Auth::guard('account_customer')->attempt($login)) {
-            return redirect()->route('shopping.home');
+            return redirect()->back();
         } else {
-            return redirect()
-                ->back()
-                ->with('status', 'Email hoặc Mật khẩu không chính xác');
+            return redirect()->back()->with('status', 'Email hoặc Mật khẩu không chính xác');
         }
     }
 
     public function getLogout()
     {
         Auth::guard('account_customer')->logout();
-        return redirect()
-            ->back();
+        return redirect()->back();
     }
 
     public function profiles()
@@ -159,7 +157,7 @@ class AccountCustomerController extends Controller
             $wishlists = Wishlist::where('customer_id', Auth::guard('account_customer')->id())->get();
             return view('user.page.profiles', compact('wishlists', 'accountcustomer', 'logos', 'categorys', 'cate'));
         } else {
-            return redirect()->route('shopping.home');
+            return redirect()->route('shopping.login');
         }
     }
 }

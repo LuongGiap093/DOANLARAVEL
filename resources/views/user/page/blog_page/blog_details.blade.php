@@ -4,8 +4,9 @@
         <div class="container">
             <div class="breadcrumb-inner">
                 <ul class="list-inline list-unstyled">
-                    <li><a href="#">Home</a></li>
-                    <li class='active'>Blog Details</li>
+                    <li><a href="{{route('shopping.home')}}">Trang chủ</a></li>
+                    <li><a href="{{route('shopping.blog')}}">Tin tức</a></li>
+                    <li class='active'>{!! $blog_detail->blog_title !!}</li>
                 </ul>
             </div><!-- /.breadcrumb-inner -->
         </div><!-- /.container -->
@@ -22,7 +23,23 @@
                             <span class="review">7 Comments</span>
                             <span class="date-time">{{$blog_detail->blog_time}}</span>
                             <p>{!! $blog_detail->blog_description !!}</p>
-                            <div class="addthis_inline_share_toolbox_y76p"><strong>Chia sẻ bài đăng:</strong></div>
+                            <div class="social-media" style="padding: 5px 5px;border: 1px solid #e3e3e3;text-align: center;background: #f5f5f5;margin: 0px;">
+                                <span>Chia sẻ bài viết ngay:</span>
+                                <a onclick="window.open('https://www.facebook.com/sharer.php?s=100&amp;p[url]=http://allstore-html.real-web.pro','sharer', 'toolbar=0,status=0,width=620,height=280');" data-toggle="tooltip" title="Share on Facebook" href="javascript:"><i class="fa fa-facebook"></i></a>
+                                <a onclick="popUp=window.open('http://twitter.com/home?status=Post with Shortcodes http://allstore-html.real-web.pro','sharer','scrollbars=yes,width=800,height=400');popUp.focus();return false;" data-toggle="tooltip" title="Share on Twitter" href="javascript:;"><i class="fa fa-twitter"></i></a>
+                                <a onclick="popUp=window.open('http://vk.com/share.php?url=http://allstore-html.real-web.pro','sharer','scrollbars=yes,width=800,height=400');popUp.focus();return false;" data-toggle="tooltip" title="Share on VK" href="javascript:;">
+                                    <i class="fa fa-vk"></i>
+                                </a>
+                                <a data-toggle="tooltip" title="Share on Pinterest" onclick="popUp=window.open('http://pinterest.com/pin/create/button/?url=http://allstore-html.real-web.pro&amp;description=AllStore HTML Template&amp;media=http://discover.real-web.pro/wp-content/uploads/2016/09/insect-1130497_1920.jpg','sharer','scrollbars=yes,width=800,height=400');popUp.focus();return false;" href="javascript:;">
+                                    <i class="fa fa-pinterest"></i>
+                                </a>
+                                <a data-toggle="tooltip" title="Share on Google +1" href="javascript:;" onclick="popUp=window.open('https://plus.google.com/share?url=http://allstore-html.real-web.pro','sharer','scrollbars=yes,width=800,height=400');popUp.focus();return false;">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                                <a data-toggle="tooltip" title="Share on Linkedin" onclick="popUp=window.open('http://linkedin.com/shareArticle?mini=true&amp;url=http://allstore-html.real-web.pro&amp;title=AllStore HTML Template','sharer','scrollbars=yes,width=800,height=400');popUp.focus();return false;" href="javascript:;">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                            </div>
                         </div>
                         <div class="blog-post-author-details wow fadeInUp">
                             <div class="row">

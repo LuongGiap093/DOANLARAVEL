@@ -114,12 +114,14 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::get('danh-sach-yeu-thich/xoa/{wishlist_id}','WishlistController@destroy');
 
     Route::get('tim-kiem','ProductController@search_product')->name('product.search');
+    Route::get('tim-kiem-tin-tuc','BlogController@index')->name('blog.search');
     Route::get('tim-kiem/addCart/{id}', 'UserController@AddCart')->name('shopping.addCart');
 
     Route::get('gio-hang', 'CartController@index')->name('shopping.cart');
     Route::get('addCart/{id}', 'UserController@AddCart')->name('shopping.addCart');
     Route::get('deleteItemCart/{id}', 'UserController@deleteItemCart')->name('shopping.deleteItemCart');
     Route::get('details/deleteItemCart/{id}', 'UserController@deleteItemCart'); //Dung de delete Cart trang details
+    Route::get('san-pham/danh-muc/deleteItemCart/{id}', 'UserController@deleteItemCart'); //Dung de delete Cart trang details
     Route::get('delete-ListItemCart/{id}', 'UserController@deleteListItemCart')->name('shopping.delete-ListItemCart');
     Route::get('save-ListItemCart/{id}/{quanty}', 'UserController@saveListItemCart')->name('shopping.save-ListItemCart');
     Route::get('save-ListItemCart1/{id}/{quanty}', 'UserController@saveListItemCart1')->name('shopping.save-ListItemCart1');

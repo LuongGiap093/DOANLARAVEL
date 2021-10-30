@@ -4,9 +4,9 @@
         <div class="container">
             <div class="breadcrumb-inner">
                 <ul class="list-inline list-unstyled">
-                    <li><a href="#">Trang chủ</a></li>
-                    <li><a href="#">Điện thoại</a></li>
-                    <li class='active'>Vivo</li>
+                    <li><a href="{{route('shopping.home')}}">Trang chủ</a></li>
+                    <li><a href="">Chi tiết sản phẩm</a></li>
+                    <li class='active'>{{$products->name}}</li>
                 </ul>
             </div><!-- /.breadcrumb-inner -->
         </div><!-- /.container -->
@@ -17,7 +17,7 @@
                 <div class='col-md-3 sidebar'>
                     <div class="sidebar-module-container">
                         <div class="home-banner outer-top-n" style="margin: 0px 0px 30px 0px;">
-                            <img src="{!! asset('public/frontend\assets\images\banners\LHS-banner.jpg') !!}"
+                            <img src="{!! asset('public/frontend\assets\images\banners\Thiet-ke-banner-quang-cao-dien-thoai-1.jpg') !!}"
                                  alt="Image">
                         </div>
                         @include('user.page.home.hot_deals.hotdeals')
@@ -65,7 +65,7 @@
                                                 @for($i=1;$i<=5-$star;$i++)
                                                     <span class="fa fa-star"></span>
                                                 @endfor
-                                                <a href="#" class="lnk" style="margin-left: 10px;">({{$countcmt}} Đánh
+                                                <a style="margin-left: 10px;color: #666666;">({{$countcmt}} Đánh
                                                     Giá)</a>
                                             </div>
 
@@ -76,25 +76,21 @@
                                         <div class="row">
                                             <div class="col-sm-12">
                                                 <div class="stock-box">
-                                                        <span class="label">Thương hiệu: <a class="value"
-                                                                                            href="#">{!! $brand->brand_name !!}</a> </span>
+                                                        <span class="label">Thương hiệu:
+                                                            <a class="value" href="{{route('product.show-brand',$brand->brand_id)}}" style="background: aliceblue;border: 1px solid #e0e0e0;border-radius: 2px;padding: 0px 15px;font-weight: 600;color: #288ad6;">{!! $brand->brand_name !!}</a>
+                                                        </span>
                                                 </div>
                                             </div>
                                         </div><!-- /.row -->
                                     </div><!-- /.stock-container -->
-
-                                    <div class="description-container m-t-20">
+                                    @if($products->content!=null)
+                                    <div class="description-container m-t-20" style="border: 1px solid #e0e0e0;">
+                                        <p style="padding: 10px;background-color: #f6f6f6;border-bottom: 1px solid #e0e0e0;font-weight: 600;color: black;">CẤU HÌNH THIẾT BỊ</p>
+                                        <div style="padding: 0px 10px;overflow: auto;max-height: 250px;">
                                         {!! $products->content !!}
+                                        </div>
                                     </div><!-- /.description-container -->
-                                    <p class="prod-actions" style="margin-top: 20px;">
-                                        <a href="#" class="prod-favorites" data-toggle="tooltip"
-                                           data-placement="top" title="Thêm vào" style="margin: 0 30px 17px 0;"><i
-                                                class="fa fa-heart" style="color: #333;font-size: 15px;"></i> Yêu thích</a>
-                                        <a href="#" class="prod-compare" data-toggle="tooltip"
-                                           data-placement="top" title="Thêm vào" style="margin: 0 30px 17px 0;"><i
-                                                class="fa fa-bar-chart" style="color: #333;font-size: 15px;"></i> So
-                                            sánh</a>
-                                    </p>
+                                    @endif
 
                                     <div class="price-container info-container m-t-20"
                                          style="padding: 0px;border-bottom: none">
@@ -115,33 +111,37 @@
                                     </div><!-- /.price-container -->
 
                                     <div class="quantity-container info-container" style="padding: 5px 0px">
-                                        <div class="row">
-                                            <div class="col-sm-7" style="display: -webkit-inline-box;">
-                                                {{--                                                <div class="cart-quantity">--}}
-                                                {{--                                                    <div class="quant-input">--}}
-                                                {{--                                                        <div class="arrows">--}}
-                                                {{--                                                            <div class="arrow plus gradient"><span class="ir"><i--}}
-                                                {{--                                                                        class="icon fa fa-sort-asc"></i></span></div>--}}
-                                                {{--                                                            <div class="arrow minus gradient"><span class="ir"><i--}}
-                                                {{--                                                                        class="icon fa fa-sort-desc"></i></span></div>--}}
-                                                {{--                                                        </div>--}}
-                                                {{--                                                        <input type="text" value="1">--}}
-                                                {{--                                                    </div>--}}
-                                                {{--                                                </div>--}}
-
-
-
-{{--                                                <div class="counter">--}}
-{{--                                                    <span class="down" onClick='decreaseCount(event, this)'>-</span>--}}
-{{--                                                    <input type="text" value="1">--}}
-{{--                                                    <span class="up" onClick='increaseCount(event, this)'>+</span>--}}
-{{--                                                </div>--}}
+                                        <div class="row" style="display: flex;">
+                                            <div class="col-sm-6">
                                                 <a href="javascripts:" onclick="AddCart({{$products->id}})"
-                                                   class="btn btn-primary" style="margin-left: 5px;"><i
+                                                   class="btn btn-primary"><i
                                                         class="fa fa-shopping-cart inner-right-vs"></i> Thêm vào giỏ hàng</a>
                                             </div>
-                                            <div class="col-sm-5">
-
+                                            <div class="col-sm-6" style="padding: 0px;">
+                                                <p class="prod-actions" style="margin: 0px;">
+                                                    @if (Auth::guard('account_customer')->check())
+                                                        @if(is_null(DB::table('wishlists')->where('customer_id', Auth::guard('account_customer')->id())->where('product_id','=',$products->id)->first()))
+                                                    <a href="{{url('danh-sach-yeu-thich/them/'.$products->id)}}" class="prod-favorites" data-toggle="tooltip"
+                                                       data-placement="top" title="Yêu thích" style="font-size: 25px; margin: 0px 12px;"><i
+                                                            class="icon fa fa-heart" style="color: #333;font-size: 32px;"></i>
+                                                    </a>
+                                                        @else
+                                                            <a href="{{url('danh-sach-yeu-thich/them/'.$products->id)}}" class="prod-favorites" data-toggle="tooltip"
+                                                               data-placement="top" title="Yêu thích" style="font-size: 25px; margin: 0px 12px;"><i
+                                                                    class="icon fa fa-heart" style="color: rgb(255, 66, 79);font-size: 32px;"></i>
+                                                            </a>
+                                                        @endif
+                                                    @else
+                                                        <a href="javascript:" data-toggle="modal" data-target="#loginModal" class="prod-favorites"
+                                                           data-placement="top" title="Yêu thích" style="font-size: 25px; margin: 0px 12px;"><i
+                                                                class="icon fa fa-heart" style="color: #333;font-size: 32px;"></i>
+                                                        </a>
+                                                    @endif
+                                                    <a href="#" class="prod-compare" data-toggle="tooltip"
+                                                       data-placement="top" title="So sánh" style="font-size: 25px;"><i
+                                                            class="fa fa-bar-chart" style="color: #333;font-size: 32px;"></i>
+                                                    </a>
+                                                </p>
                                             </div>
 
 
@@ -157,7 +157,7 @@
                     <div class="tab" style="margin-top: 30px;">
                         <button class="tablinks" onclick="openCity(event, 'London')">Cấu hình</button>
                         <button class="tablinks" onclick="openCity(event, 'Paris')">Videos</button>
-                        <button class="tablinks" onclick="openCity(event, 'Tokyo')" id="defaultOpen">Reviews</button>
+                        <button class="tablinks" onclick="openCity(event, 'Tokyo')" id="defaultOpen">Nhận xét</button>
                     </div>
 
                     <div id="London" class="tabcontent" style="max-height: 650px;overflow-x: auto;">
@@ -178,7 +178,7 @@
                             @for($i=1;$i<=5-$star;$i++)
                                 <span class="fa fa-star" style="font-size: 15px;"></span>
                             @endfor
-                            <span>{{$avgs}} sao trung bình dựa trên {{$countcmt}} nhận xét từ khách hàng.</span>
+                            <span> trung bình dựa trên {{$countcmt}} nhận xét từ khách hàng.</span>
                             <hr style="border:1px solid #f1f1f1;margin-top: 10px;margin-bottom: 5px;">
 
                             <div class="row" style="margin: auto;">
@@ -298,6 +298,7 @@
                             </div>
                             <hr>
                         @endif
+                        @if(Auth::guard('account_customer')->check())
                         <div class="wrapperReview">
                             <form action="{{ route('customer.postcomment') }}" method="post">
                                 {{ csrf_field() }}
@@ -382,6 +383,9 @@
                                 </div>
                             </form>
                         </div>
+                            @else
+                                <h4 style="text-align: center">Đăng nhập để có thể để lại bình luận gói ý với chúng tôi! <a href="javascript:" data-toggle="modal" data-target="#loginModal">đăng nhập tại đây</a> </h4>
+                            @endif
                     </div>
 
 
@@ -410,7 +414,15 @@
                                                 <h3 class="name"><a
                                                         href="{{route('shopping.viewProduct', $product->id)}}">{{ $product->name }}</a>
                                                 </h3>
-                                                <div class="rating rateit-small"></div>
+                                                <?php
+                                                $avg_star=round(DB::table('comment')->where('product_id',$product->id)->avg('star'));
+                                                ?>
+                                                @for($i=1;$i<=$avg_star;$i++)
+                                                    <span class="fa fa-star checked"></span>
+                                                @endfor
+                                                @for($i=1;$i<=5-$avg_star;$i++)
+                                                    <span class="fa fa-star"></span>
+                                                @endfor
                                                 <div class="description"></div>
                                                 <div class="product-price">
                                                     <span class="price">{{ number_format($product->price - $product->discount) }} VNĐ</span>
@@ -421,21 +433,30 @@
                                                 <div class="action">
                                                     <ul class="list-unstyled">
                                                         <li class="add-cart-button btn-group">
-                                                            <button class="btn btn-primary icon" data-toggle="dropdown"
+                                                            <button onclick="AddCart({{$product->id}})"
+                                                                    href="javascript:" class="btn btn-primary icon" data-toggle="dropdown"
                                                                     type="button">
                                                                 <i class="fa fa-shopping-cart"></i>
                                                             </button>
-                                                            <button class="btn btn-primary cart-btn" type="button">Add
-                                                                to
-                                                                cart
-                                                            </button>
-
                                                         </li>
 
                                                         <li class="lnk wishlist">
-                                                            <a class="add-to-cart" href="detail.html" title="Wishlist">
-                                                                <i class="icon fa fa-heart"></i>
-                                                            </a>
+                                                            @if (Auth::guard('account_customer')->check())
+                                                                @if(is_null(DB::table('wishlists')->where('customer_id', Auth::guard('account_customer')->id())->where('product_id','=',$product->id)->first()))
+                                                                    <a data-toggle="tooltip" class="add-to-cart" href="{{url('danh-sach-yeu-thich/them/'.$product->id)}}" title="Yêu thích">
+                                                                        <i class="icon fa fa-heart"></i>
+                                                                    </a>
+                                                                @else
+                                                                    <a data-toggle="tooltip" class="add-to-cart" href="{{url('danh-sach-yeu-thich/them/'.$product->id)}}" title="" data-original-title="Yêu thích">
+                                                                        <i class="icon fa fa-heart" style="color: rgb(255, 66, 79);"></i>
+                                                                    </a>
+                                                                @endif
+                                                            @else
+                                                                <a href="javascript:" data-toggle="modal" data-target="#loginModal"
+                                                                   title="Yêu thích">
+                                                                    <i class="icon fa fa-heart"></i>
+                                                                </a>
+                                                            @endif
                                                         </li>
 
                                                         <li class="lnk">

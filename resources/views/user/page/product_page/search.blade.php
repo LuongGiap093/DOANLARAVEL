@@ -1,235 +1,127 @@
-<!-- ============================================== SIDEBAR CATEGORY ============================================== -->
-<div class="sidebar-widget wow fadeInUp">
-    <h3 class="section-title">BỘ LỌC</h3>
-    <div class="widget-header">
-        <h4 class="widget-title">Category</h4>
-    </div>
+{{--<!-- ============================================== SIDEBAR CATEGORY ============================================== -->--}}
+{{--<div class="sidebar-widget wow fadeInUp">--}}
+{{--    <h3 class="section-title">Lọc theo giá</h3>--}}
 
-    <div class="sidebar-widget-body">
-        <div class="accordion">
-            <div class="accordion-group">
-                <div class="accordion-heading"> <a href="#collapseOne" data-toggle="collapse" class="accordion-toggle collapsed"> Camera </a> </div>
-                <!-- /.accordion-heading -->
-                <div class="accordion-body collapse" id="collapseOne" style="height: 0px;">
-                    <div class="accordion-inner">
-                        <ul>
-                            <li><a href="#">gaming</a></li>
-                            <li><a href="#">office</a></li>
-                            <li><a href="#">kids</a></li>
-                            <li><a href="#">for women</a></li>
-                        </ul>
-                    </div>
-                    <!-- /.accordion-inner -->
-                </div>
-                <!-- /.accordion-body -->
-            </div>
-            <!-- /.accordion-group -->
-
-            <div class="accordion-group">
-                <div class="accordion-heading"> <a href="#collapseTwo" data-toggle="collapse" class="accordion-toggle collapsed"> Desktops </a> </div>
-                <!-- /.accordion-heading -->
-                <div class="accordion-body collapse" id="collapseTwo" style="height: 0px;">
-                    <div class="accordion-inner">
-                        <ul>
-                            <li><a href="#">gaming</a></li>
-                            <li><a href="#">office</a></li>
-                            <li><a href="#">kids</a></li>
-                            <li><a href="#">for women</a></li>
-                        </ul>
-                    </div>
-                    <!-- /.accordion-inner -->
-                </div>
-                <!-- /.accordion-body -->
-            </div>
-            <!-- /.accordion-group -->
-
-            <div class="accordion-group">
-                <div class="accordion-heading"> <a href="#collapseThree" data-toggle="collapse" class="accordion-toggle collapsed"> Pants </a> </div>
-                <!-- /.accordion-heading -->
-                <div class="accordion-body collapse" id="collapseThree" style="height: 0px;">
-                    <div class="accordion-inner">
-                        <ul>
-                            <li><a href="#">gaming</a></li>
-                            <li><a href="#">office</a></li>
-                            <li><a href="#">kids</a></li>
-                            <li><a href="#">for women</a></li>
-                        </ul>
-                    </div>
-                    <!-- /.accordion-inner -->
-                </div>
-                <!-- /.accordion-body -->
-            </div>
-            <!-- /.accordion-group -->
-
-            <div class="accordion-group">
-                <div class="accordion-heading"> <a href="#collapseFour" data-toggle="collapse" class="accordion-toggle collapsed"> Bags </a> </div>
-                <!-- /.accordion-heading -->
-                <div class="accordion-body collapse" id="collapseFour" style="height: 0px;">
-                    <div class="accordion-inner">
-                        <ul>
-                            <li><a href="#">gaming</a></li>
-                            <li><a href="#">office</a></li>
-                            <li><a href="#">kids</a></li>
-                            <li><a href="#">for women</a></li>
-                        </ul>
-                    </div>
-                    <!-- /.accordion-inner -->
-                </div>
-                <!-- /.accordion-body -->
-            </div>
-            <!-- /.accordion-group -->
-
-            <div class="accordion-group">
-                <div class="accordion-heading"> <a href="#collapseFive" data-toggle="collapse" class="accordion-toggle collapsed"> Hats </a> </div>
-                <!-- /.accordion-heading -->
-                <div class="accordion-body collapse" id="collapseFive" style="height: 0px;">
-                    <div class="accordion-inner">
-                        <ul>
-                            <li><a href="#">gaming</a></li>
-                            <li><a href="#">office</a></li>
-                            <li><a href="#">kids</a></li>
-                            <li><a href="#">for women</a></li>
-                        </ul>
-                    </div>
-                    <!-- /.accordion-inner -->
-                </div>
-                <!-- /.accordion-body -->
-            </div>
-            <!-- /.accordion-group -->
-
-            <div class="accordion-group">
-                <div class="accordion-heading"> <a href="#collapseSix" data-toggle="collapse" class="accordion-toggle collapsed"> Accessories </a> </div>
-                <!-- /.accordion-heading -->
-                <div class="accordion-body collapse" id="collapseSix" style="height: 0px;">
-                    <div class="accordion-inner">
-                        <ul>
-                            <li><a href="#">gaming</a></li>
-                            <li><a href="#">office</a></li>
-                            <li><a href="#">kids</a></li>
-                            <li><a href="#">for women</a></li>
-                        </ul>
-                    </div>
-                    <!-- /.accordion-inner -->
-                </div>
-                <!-- /.accordion-body -->
-            </div>
-            <!-- /.accordion-group -->
-
-        </div>
-        <!-- /.accordion -->
-    </div>
-    <!-- /.sidebar-widget-body -->
-</div>
-<!-- /.sidebar-widget -->
-<!-- ============================================== SIDEBAR CATEGORY : END ============================================== -->
-<!-- ============================================== PRICE SILDER============================================== -->
-<!-- /.sidebar-widget -->
-<!-- ============================================== PRICE SILDER : END ============================================== -->
-
-
-{{--<div class="sidebar-widget wow fadeInUp" >--}}
-{{--    <p class="collapsible">Style <i class="fa fa-angle-down" style="float: right;font-size: 20px;"></i></p>--}}
-{{--    <div class="contents">--}}
-{{--        <div class="pretty p-icon p-curve">--}}
-{{--            <input type="checkbox" />--}}
-{{--            <div class="state p-success">--}}
-{{--                <i class="icon fa fa-check" aria-hidden="true"></i>--}}
-{{--                <label> Dưới 2.000.000đ</label>--}}
+{{--    <div class="sidebar-widget-body">--}}
+{{--        <div class="accordion">--}}
+{{--            <div class="accordion-group">--}}
+{{--                <div class="accordion-heading"> <a href="#collapseOne" data-toggle="collapse" class="accordion-toggle collapsed"> Camera </a> </div>--}}
+{{--                <!-- /.accordion-heading -->--}}
+{{--                <div class="accordion-body collapse" id="collapseOne" style="height: 0px;">--}}
+{{--                    <div class="accordion-inner">--}}
+{{--                        <ul>--}}
+{{--                            <li><a href="#">gaming</a></li>--}}
+{{--                            <li><a href="#">office</a></li>--}}
+{{--                            <li><a href="#">kids</a></li>--}}
+{{--                            <li><a href="#">for women</a></li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
+{{--                    <!-- /.accordion-inner -->--}}
+{{--                </div>--}}
+{{--                <!-- /.accordion-body -->--}}
 {{--            </div>--}}
-{{--        </div>--}}
-{{--        <div class="pretty p-icon p-curve">--}}
-{{--            <input type="checkbox" />--}}
-{{--            <div class="state p-success">--}}
-{{--                <i class="icon fa fa-check" aria-hidden="true"></i>--}}
-{{--                <label> Từ 2.000.000đ - 4.000.000đ</label>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--        <div class="pretty p-icon p-curve">--}}
-{{--            <input type="checkbox" />--}}
-{{--            <div class="state p-success">--}}
-{{--                <i class="icon fa fa-check" aria-hidden="true"></i>--}}
-{{--                <label> Từ 4.000.000đ - 7.000.000đ</label>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--        <div class="pretty p-icon p-curve">--}}
-{{--            <input type="checkbox" />--}}
-{{--            <div class="state p-success">--}}
-{{--                <i class="icon fa fa-check" aria-hidden="true"></i>--}}
-{{--                <label> Từ 7.000.000đ - 13.000.000đ</label>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--        <div class="pretty p-icon p-curve">--}}
-{{--            <input type="checkbox" />--}}
-{{--            <div class="state p-success">--}}
-{{--                <i class="icon fa fa-check" aria-hidden="true"></i>--}}
-{{--                <label> Từ 13.000.000đ - 20.000.000đ</label>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--        <div class="pretty p-icon p-curve">--}}
-{{--            <input type="checkbox" />--}}
-{{--            <div class="state p-success">--}}
-{{--                <i class="icon fa fa-check" aria-hidden="true"></i>--}}
-{{--                <label> Trên 20.000.000đ</label>--}}
-{{--            </div>--}}
-{{--        </div>--}}
+{{--            <!-- /.accordion-group -->--}}
 
+{{--            <div class="accordion-group">--}}
+{{--                <div class="accordion-heading"> <a href="#collapseTwo" data-toggle="collapse" class="accordion-toggle collapsed"> Desktops </a> </div>--}}
+{{--                <!-- /.accordion-heading -->--}}
+{{--                <div class="accordion-body collapse" id="collapseTwo" style="height: 0px;">--}}
+{{--                    <div class="accordion-inner">--}}
+{{--                        <ul>--}}
+{{--                            <li><a href="#">gaming</a></li>--}}
+{{--                            <li><a href="#">office</a></li>--}}
+{{--                            <li><a href="#">kids</a></li>--}}
+{{--                            <li><a href="#">for women</a></li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
+{{--                    <!-- /.accordion-inner -->--}}
+{{--                </div>--}}
+{{--                <!-- /.accordion-body -->--}}
+{{--            </div>--}}
+{{--            <!-- /.accordion-group -->--}}
 
+{{--            <div class="accordion-group">--}}
+{{--                <div class="accordion-heading"> <a href="#collapseThree" data-toggle="collapse" class="accordion-toggle collapsed"> Pants </a> </div>--}}
+{{--                <!-- /.accordion-heading -->--}}
+{{--                <div class="accordion-body collapse" id="collapseThree" style="height: 0px;">--}}
+{{--                    <div class="accordion-inner">--}}
+{{--                        <ul>--}}
+{{--                            <li><a href="#">gaming</a></li>--}}
+{{--                            <li><a href="#">office</a></li>--}}
+{{--                            <li><a href="#">kids</a></li>--}}
+{{--                            <li><a href="#">for women</a></li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
+{{--                    <!-- /.accordion-inner -->--}}
+{{--                </div>--}}
+{{--                <!-- /.accordion-body -->--}}
+{{--            </div>--}}
+{{--            <!-- /.accordion-group -->--}}
+
+{{--            <div class="accordion-group">--}}
+{{--                <div class="accordion-heading"> <a href="#collapseFour" data-toggle="collapse" class="accordion-toggle collapsed"> Bags </a> </div>--}}
+{{--                <!-- /.accordion-heading -->--}}
+{{--                <div class="accordion-body collapse" id="collapseFour" style="height: 0px;">--}}
+{{--                    <div class="accordion-inner">--}}
+{{--                        <ul>--}}
+{{--                            <li><a href="#">gaming</a></li>--}}
+{{--                            <li><a href="#">office</a></li>--}}
+{{--                            <li><a href="#">kids</a></li>--}}
+{{--                            <li><a href="#">for women</a></li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
+{{--                    <!-- /.accordion-inner -->--}}
+{{--                </div>--}}
+{{--                <!-- /.accordion-body -->--}}
+{{--            </div>--}}
+{{--            <!-- /.accordion-group -->--}}
+
+{{--            <div class="accordion-group">--}}
+{{--                <div class="accordion-heading"> <a href="#collapseFive" data-toggle="collapse" class="accordion-toggle collapsed"> Hats </a> </div>--}}
+{{--                <!-- /.accordion-heading -->--}}
+{{--                <div class="accordion-body collapse" id="collapseFive" style="height: 0px;">--}}
+{{--                    <div class="accordion-inner">--}}
+{{--                        <ul>--}}
+{{--                            <li><a href="#">gaming</a></li>--}}
+{{--                            <li><a href="#">office</a></li>--}}
+{{--                            <li><a href="#">kids</a></li>--}}
+{{--                            <li><a href="#">for women</a></li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
+{{--                    <!-- /.accordion-inner -->--}}
+{{--                </div>--}}
+{{--                <!-- /.accordion-body -->--}}
+{{--            </div>--}}
+{{--            <!-- /.accordion-group -->--}}
+
+{{--            <div class="accordion-group">--}}
+{{--                <div class="accordion-heading"> <a href="#collapseSix" data-toggle="collapse" class="accordion-toggle collapsed"> Accessories </a> </div>--}}
+{{--                <!-- /.accordion-heading -->--}}
+{{--                <div class="accordion-body collapse" id="collapseSix" style="height: 0px;">--}}
+{{--                    <div class="accordion-inner">--}}
+{{--                        <ul>--}}
+{{--                            <li><a href="#">gaming</a></li>--}}
+{{--                            <li><a href="#">office</a></li>--}}
+{{--                            <li><a href="#">kids</a></li>--}}
+{{--                            <li><a href="#">for women</a></li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
+{{--                    <!-- /.accordion-inner -->--}}
+{{--                </div>--}}
+{{--                <!-- /.accordion-body -->--}}
+{{--            </div>--}}
+{{--            <!-- /.accordion-group -->--}}
+
+{{--        </div>--}}
+{{--        <!-- /.accordion -->--}}
 {{--    </div>--}}
+{{--    <!-- /.sidebar-widget-body -->--}}
 {{--</div>--}}
-{{--<div class="sidebar-widget wow fadeInUp" >--}}
-{{--    <p class="collapsible">Style <i class="fa fa-angle-down" style="float: right;font-size: 20px;"></i></p>--}}
-{{--    <div class="contents">--}}
-{{--        <div class="pretty p-icon p-curve">--}}
-{{--            <input type="checkbox" />--}}
-{{--            <div class="state p-success">--}}
-{{--                <i class="icon fa fa-check" aria-hidden="true"></i>--}}
-{{--                <label> Dưới 2.000.000đ</label>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--        <div class="pretty p-icon p-curve">--}}
-{{--            <input type="checkbox" />--}}
-{{--            <div class="state p-success">--}}
-{{--                <i class="icon fa fa-check" aria-hidden="true"></i>--}}
-{{--                <label> Từ 2.000.000đ - 4.000.000đ</label>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--        <div class="pretty p-icon p-curve">--}}
-{{--            <input type="checkbox" />--}}
-{{--            <div class="state p-success">--}}
-{{--                <i class="icon fa fa-check" aria-hidden="true"></i>--}}
-{{--                <label> Từ 4.000.000đ - 7.000.000đ</label>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--        <div class="pretty p-icon p-curve">--}}
-{{--            <input type="checkbox" />--}}
-{{--            <div class="state p-success">--}}
-{{--                <i class="icon fa fa-check" aria-hidden="true"></i>--}}
-{{--                <label> Từ 7.000.000đ - 13.000.000đ</label>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--        <div class="pretty p-icon p-curve">--}}
-{{--            <input type="checkbox" />--}}
-{{--            <div class="state p-success">--}}
-{{--                <i class="icon fa fa-check" aria-hidden="true"></i>--}}
-{{--                <label> Từ 13.000.000đ - 20.000.000đ</label>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--        <div class="pretty p-icon p-curve">--}}
-{{--            <input type="checkbox" />--}}
-{{--            <div class="state p-success">--}}
-{{--                <i class="icon fa fa-check" aria-hidden="true"></i>--}}
-{{--                <label> Trên 20.000.000đ</label>--}}
-{{--            </div>--}}
-{{--        </div>--}}
+{{--<!-- /.sidebar-widget -->--}}
 
-
-{{--    </div>--}}
-{{--</div>--}}
-<!-- ============================================== COLOR============================================== -->
+{{--<!-- ============================================== COLOR============================================== -->--}}
 <div class="sidebar-widget wow fadeInUp">
-    <div class="widget-header">
-        <h4 class="widget-title">GIÁ</h4>
-    </div>
+    <h3 class="section-title">Lọc sản phẩm theo giá</h3>
     <div class="sidebar-widget-body">
         <ul class="list">
             <li><a href="{{request()->fullUrlWithQuery(['price'=>1])}}">Dưới 2.000.000đ</a></li>
