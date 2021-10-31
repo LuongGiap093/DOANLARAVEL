@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 Route::group(['prefix' => 'panel', 'namespace' => 'admin'], function() {
 	Route::get('login','LoginController@getLogin')->name('getLogin');
@@ -106,12 +108,17 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::get('create-profiles','UserController@create_profiles')->name('create-profiles');
     Route::get('dang-ky-dang-nhap', 'AccountCustomerController@getLogin')->name('shopping.login');
     Route::post('dang-ky','AccountCustomerController@postadd')->name('customer.postadd');
+    Route::get('kich-hoat-tai-khoan/{customer}/{token}','AccountCustomerController@actived')->name('customer.actived');
     Route::post('dang-nhap','AccountCustomerController@postLogin')->name('customer.postLogin');
     Route::get('dang-xuat','AccountCustomerController@getLogout')->name('customer.getLogout');
 
     Route::get('danh-sach-yeu-thich', 'WishlistController@index')->name('shopping.showWishlist');
     Route::get('danh-sach-yeu-thich/them/{id}', 'WishlistController@addToWishlist');
     Route::get('danh-sach-yeu-thich/xoa/{wishlist_id}','WishlistController@destroy');
+
+    Route::get('so-sanh-san-pham', 'ComparisonController@index')->name('shopping.showComparison');
+    Route::get('so-sanh-san-pham/them/{id}', 'ComparisonController@addToComparison');
+    Route::get('so-sanh-san-pham/xoa/{comparison_id}','ComparisonController@destroy');
 
     Route::get('tim-kiem','ProductController@search_product')->name('product.search');
     Route::get('tim-kiem-tin-tuc','BlogController@index')->name('blog.search');
@@ -157,6 +164,8 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::post('nhan-xet','CommentController@add_comment')->name('customer.postcomment');
 
     Route::get('gioi-thieu','AboutController@index')->name('shopping.about');
+
+
 });
 
 

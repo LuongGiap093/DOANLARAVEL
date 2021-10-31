@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+
 class AccountCustomer extends Authenticatable {
 
   use HasFactory, Notifiable;
@@ -21,6 +22,7 @@ class AccountCustomer extends Authenticatable {
     'email',
     'password',
     'phone',
+      'status',
   ];
   protected $primaryKey = 'id';
   public function wishlist(){

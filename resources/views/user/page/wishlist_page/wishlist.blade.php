@@ -45,7 +45,7 @@
                                         @endfor
                                             <span class="review">( có {{DB::table('comment')->where('product_id',$row->product->id)->count()}} nhận xét)</span>
                                         <div class="price">
-                                            {{number_format($row->product->price,'0',',','.')}} VNĐ
+                                            {{number_format($row->product->price - $row->product->discount,'0',',','.')}} VNĐ
                                             <span>{{number_format($row->product->discount,'0',',','.')}}đ</span>
                                         </div>
                                     </td>
