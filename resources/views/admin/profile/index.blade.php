@@ -5,7 +5,7 @@
         <!-- start page title -->
         <div class="row">
             <div class="col-sm-12">
-                <div class="profile-bg-picture" style="background-image:url({!!asset('admin/assets/images/bg-profile.jpg') !!}">
+                <div class="profile-bg-picture" style="background-image:url({!!asset('public/admin/assets/images/bg-profile.jpg') !!}">
                     <span class="picture-bg-overlay"></span>
                     <!-- overlay -->
                 </div>

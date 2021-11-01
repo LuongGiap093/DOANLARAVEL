@@ -52,11 +52,6 @@
                             <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Đăng nhập
                             </button>
                         </form>
-                        <div class="social-sign-in outer-top-xs" style="border: none; padding: 0px;">
-                            <a href="#" class="facebook-sign-in" style="width: 100%;"><i class="fa fa-facebook"></i> Đăng nhập với
-                                Facebook</a>
-                            <a href="#" class="google-sign-in" style="width: 100%;"><i class="fa fa-google"></i> Đăng nhập với Google</a>
-                        </div>
                     </div>
 
                     <!-- Sign-in -->

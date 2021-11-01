@@ -11,8 +11,12 @@ use App\Models\Logo;
 use App\Models\Wishlist;
 use Auth;
 use DB;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Mail;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
 use Session;
 
 class ContactController extends Controller
@@ -36,44 +40,69 @@ class ContactController extends Controller
         return view('user.page.contact_page.contact', compact('wishlists','categorys','cate','contacts', 'logos'));
     }
 
-    public function lien_he(){
-        $logos = Logo::first();
-        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->get();
-        $brands=Brand::all();
-        $contacts = Contact::all();
-        return view('frontend.page.contacts_page.contacts', compact('brands','logos','contacts', 'categorys'));
-    }
 
     public function storeForm(Request $request)
     {
-        $data=Request::all();
+
         $this->validate($request, [
             'contacts_name' => 'required',
             'contacts_email' => 'required|email',
             'contacts_title' => 'required',
             'contacts_comment' => '',
         ]);
-        Contact::create($request->all());
-//        $to_name = "TLMobile";
-//        $to_email = $data['contacts_email'];//send to this email
-//        $data = array("name"=>"Mail từ tài khoản khách hàng","body"=>'Mail gửi về vấn đề hàng hóa'); //body of mail.blade.php
-//        Mail::send('user.page.send_mail',$data,function($message) use ($to_name,$to_email){
-//            $message->to($to_email)->subject('test mail nhé');//send this mail with subject
-//            $message->from($to_email,$to_name);//send from this mail
-//        });
+        $lien_he=Contact::get();
+        foreach ($lien_he as $contact) {
+            if($contact->contacts_email === $request->contacts_email){
+                return back()->with('danger', 'Đăng ký nhận tin không thành công. Tài khoản email đã tồn tại!');
+            }
+        }
+        $name = $request->contacts_name;
+        $email = $request->contacts_email;
+        $title=$request->contacts_title;
+        require "app/PHPMailer-master/src/PHPMailer.php";  //nhúng thư viện vào để dùng, sửa lại đường dẫn cho đúng nếu bạn lưu vào chỗ khác
+        require "app/PHPMailer-master/src/SMTP.php"; //nhúng thư viện vào để dùng
+        require 'app/PHPMailer-master/src/Exception.php'; //nhúng thư viện vào để dùng
+        $mail = new PHPMailer(true);  //true: enables exceptions
+        try {
+            $mail->SMTPDebug = 2;  // 0,1,2: chế độ debug. khi mọi cấu hình đều tớt thì chỉnh lại 0 nhé
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';  //SMTP servers
+            $mail->SMTPAuth = true; // Enable authentication
+            $nguoigui = 'dinhtrongak123@gmail.com';
+            $matkhau = 'Honghao170400';
+            $tennguoigui = 'TLmobile';
+            $mail->Username = $nguoigui; // SMTP username
+            $mail->Password = $matkhau;   // SMTP password
+            $mail->SMTPSecure = 'ssl';  // encryption TLS/SSL
+            $mail->Port = 465;  // port to connect to
+            $mail->CharSet = 'UTF-8';
+            $mail->setFrom($nguoigui, $tennguoigui);
+            $to = $email;
+            $to_name = $name;
 
-        \Mail::send('user.page.mail', [
-            'contacts_name' => $request->get('contacts_name'),
-            'contacts_email' => $request->get('contacts_email'),
-            'contacts_title' => $request->get('contacts_title'),
-            'contacts_comment' => $request->get('contacts_comment'),
-        ], function ($message) use ($request) {
-            $message->from($request->contacts_email);
-            $message->to('luong12cb2@gmail.com', 'Hello Admin')
-                ->subject($request->get('contacts_comment'));
-        });
-        return back()->with('success', 'Thanks for contacting us.');
-
+            $mail->addAddress($to, $to_name); //mail và tên người nhận
+            $mail->isHTML(true);  // Set email format to HTML
+            $mail->Subject = "Mail xác nhận đã đăng ký liên hệ thành công";
+            $noidungthu = "<p style='display: contents;'>Xin chào, </p> <b>".$name."</b><br>
+                            <p>Cảm ơn bạn đã quan tâm đến TLmobile, chúng tôi sẽ liên hệ để hỗ trợ cho bạn sớm nhất.</p><p>Xin cảm ơn!</p>";
+            $mail->Body = $noidungthu;
+            $mail->SMTPOptions = array(
+                'ssl' => array(
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true
+                )
+            );
+            if (!$mail->Send()) {
+                echo "<h1>Loi khi goi mail: " . $mail->ErrorInfo . '</h1>';
+            } else {
+                Contact::create($request->all());
+                return back()->with('success', 'Đăng ký nhận tin thành công. Cảm ơn quý khách!');
+            }
+        } catch (Exception $e) {
+            return redirect()->back()->with('danger', 'Đăng ký không thành công');
+//            echo 'Mail không gửi được. Lỗi: ', $mail->ErrorInfo;
+        }
     }
 
 

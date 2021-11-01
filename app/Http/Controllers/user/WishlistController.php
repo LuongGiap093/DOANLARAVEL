@@ -26,13 +26,18 @@ class WishlistController extends Controller
             ->join('brands','product.brand_id','=','brands.brand_id')
             ->get();
         $wishlists = Wishlist::where('customer_id', Auth::guard('account_customer')->id())->latest()->get();
-        return view('user.page.wishlist_page.wishlist', compact('wishlists', 'logos','cate','categorys'));
+        if (Auth::guard('account_customer')->check()) {
+            return view('user.page.wishlist_page.wishlist', compact('wishlists', 'logos','cate','categorys'));
+        }else{
+            return Redirect()->route('shopping.home');
+        }
     }
 
     public function addToWishlist($product_id)
     {
         $status = Wishlist::where('customer_id', Auth::guard('account_customer')->id())->where('product_id', $product_id)->first();
         if (isset($status->customer_id) and isset($status->product_id)) {
+            $status->delete();
             return Redirect()->back()->with('wishlist-w', 'Sản phẩm này đã tồn tại trong danh sách yêu thích!');
         } else {
             if (Auth::guard('account_customer')->check()) {

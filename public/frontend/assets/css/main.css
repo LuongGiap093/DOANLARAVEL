@@ -4828,7 +4828,8 @@ age-container #owl-main .owl-next {
   margin-bottom: 0px;
 }
 .blog-page .blog-post a {
-  margin-top: 20px;
+  margin-top: 10px;
+    display: table;
 }
 .blog-page .blog-post .blog-pagination .pagination {
   -webkit-border-radius: 0px;

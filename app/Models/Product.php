@@ -49,4 +49,7 @@ class Product extends Model
     public function wishlist(){
     return $this->hasMany(Wishlist::class);
     }
+    public function comparison(){
+        return $this->hasMany(Comparison::class);
+    }
 }

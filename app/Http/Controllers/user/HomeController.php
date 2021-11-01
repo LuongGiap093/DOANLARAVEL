@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\City;
 use App\Models\Logo;
 use App\Models\Product;
+    use App\Models\Comment;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 use App\Models\Wishlist;
@@ -63,7 +64,8 @@ class HomeController extends Controller
         }else{
             $wishlists=null;
         }
-        return view('user.page.home.index', compact('wishlists','logos','categorys','cate','hot_deals', 'dong_ho',
+        $comments=Comment::all();
+        return view('user.page.home.index', compact('comments','wishlists','logos','categorys','cate','hot_deals', 'dong_ho',
             'product_tag','old_phone','sliders','products','featured_phone','phu_kien','featured_laptop', 'blogs', 'firsts'));
     }
 

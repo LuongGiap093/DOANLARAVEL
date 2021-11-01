@@ -72,19 +72,6 @@
 @include('user.page.checkout_page.scripts_checkout')
 @include('user.page.checkout_page.scripts_coupon')
 
-{{--<script type="text/javascript">--}}
-{{--    //sắp xếp theo...--}}
-{{--    $(document).ready(function() {--}}
-{{--        $('#sort').on('change',function (){--}}
-{{--            var url = $(this).val();--}}
-{{--            if(url){--}}
-{{--                window.location = url;--}}
-{{--            }--}}
-{{--            return false;--}}
-{{--        })--}}
-{{--    })--}}
-{{--</script>--}}
-
 <script type="text/javascript">
     //show product gallery
     $(document).ready(function() {
@@ -304,7 +291,7 @@
         navigator.clipboard.writeText(copyText.value);
 
         /* Alert the copied text */
-        // alert("Copied the text: " + copyText.value);
+        alert("Đã sao chép mã: " + copyText.value);
     }
 </script>
 <div class="hotline-phone-ring-wrap" style="bottom: 285px">

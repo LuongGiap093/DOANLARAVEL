@@ -1,5 +1,15 @@
 @extends('user.theme.layout')
 @section('content')
+    <div class="breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-inner">
+                <ul class="list-inline list-unstyled">
+                    <li><a href="{{route('shopping.home')}}">Trang chủ</a></li>
+                    <li class="active">Hỗ trợ</li>
+                </ul>
+            </div><!-- /.breadcrumb-inner -->
+        </div><!-- /.container -->
+    </div>
     <div class="body-content">
         <div class="container">
             <div class="checkout-box faq-page">

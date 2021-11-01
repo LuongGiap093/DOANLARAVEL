@@ -4,7 +4,8 @@
 <meta name="author" content="">
 <meta name="keywords" content="MediaCenter, Template, eCommerce">
 <meta name="robots" content="all">
-<title>FlipmartShop</title>
+<title>TLmobile</title>
+<link href="https://datxanhmd-gemskyworld.com/upload/photo/keo-sam-xtreme-chinh-hang-300x300-4665.png" rel="shortcut icon" type="image/x-icon" />
 <link rel="stylesheet" href="{!! asset('public\frontend\assets\css\bootstrap.min.css') !!}">
 <link rel="stylesheet" href="{!! asset('public\frontend\assets\css\main.css') !!}">
 <link rel="stylesheet" href="{!! asset('public\frontend\assets\css\blue.css') !!}">
@@ -1080,3 +1081,4 @@
         content: "\f107";
     }
 </style>
+

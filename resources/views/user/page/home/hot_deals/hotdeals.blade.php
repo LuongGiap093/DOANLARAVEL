@@ -13,30 +13,38 @@
                         <div class="sale-offer-tag"><span>Đến<br>
                             {{ number_format(($product->discount*100)/$product->price) }}%</span>
                         </div>
-                        <div class="timing-wrapper">
-                            <div class="box-wrapper">
-                                <div class="date box"><span class="key">120</span> <span class="value">NGÀY</span>
-                                </div>
-                            </div>
-                            <div class="box-wrapper">
-                                <div class="hour box"><span class="key">20</span> <span class="value">GIỜ</span>
-                                </div>
-                            </div>
-                            <div class="box-wrapper">
-                                <div class="minutes box"><span class="key">36</span> <span class="value">PHÚT</span>
-                                </div>
-                            </div>
-                            <div class="box-wrapper hidden-md">
-                                <div class="seconds box"><span class="key">60</span> <span class="value">GIÂY</span>
-                                </div>
-                            </div>
-                        </div>
+{{--                        <div class="timing-wrapper">--}}
+{{--                            <div class="box-wrapper">--}}
+{{--                                <div class="date box"><span class="key">120</span> <span class="value">NGÀY</span>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="box-wrapper">--}}
+{{--                                <div class="hour box"><span class="key">20</span> <span class="value">GIỜ</span>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="box-wrapper">--}}
+{{--                                <div class="minutes box"><span class="key">36</span> <span class="value">PHÚT</span>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="box-wrapper hidden-md">--}}
+{{--                                <div class="seconds box"><span class="key">60</span> <span class="value">GIÂY</span>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </div>
                     <!-- /.hot-deal-wrapper -->
 
                     <div class="product-info text-left m-t-20">
                         <h3 class="name"><a href="{{route('product.viewProduct', $product->id)}}">{{ $product->name }}</a></h3>
-                        <div class="rating rateit-small"></div>
+                            <?php
+                            $avg_star=round(DB::table('comment')->where('product_id',$product->id)->avg('star'));
+                            ?>
+                            @for($i=1;$i<=$avg_star;$i++)
+                                <span class="fa fa-star checked"></span>
+                            @endfor
+                            @for($i=1;$i<=5-$avg_star;$i++)
+                                <span class="fa fa-star"></span>
+                            @endfor
                         <div class="product-price">
                             <span class="price-before-discount"> {{ number_format($product->price,'0',',','.') }} VNĐ</span>
                         </div>

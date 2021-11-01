@@ -10,24 +10,24 @@
                             <li><a class="login-trigger" style="padding: 0px 5px" href="{{route('customer.profiles')}}"><i
                                         class="icon fa fa-user"></i>Tài khoản</a>
                             </li>
-                            <li><a class="login-trigger" style="padding: 0px 5px"
-                                   href="{{route('shopping.showWishlist')}}"><i class="icon fa fa-heart"></i>Yêu
-                                    thích</a></li>
-                            <li><a class="login-trigger" style="padding: 0px 5px" href="{{route('shopping.cart')}}"><i
-                                        class="icon fa fa-shopping-cart"></i>Giỏ
-                                    hàng</a></li>
+{{--                            <li><a class="login-trigger" style="padding: 0px 5px"--}}
+{{--                                   href="{{route('shopping.showWishlist')}}"><i class="icon fa fa-heart"></i>Yêu--}}
+{{--                                    thích</a></li>--}}
+{{--                            <li><a class="login-trigger" style="padding: 0px 5px" href="{{route('shopping.cart')}}"><i--}}
+{{--                                        class="icon fa fa-shopping-cart"></i>Giỏ--}}
+{{--                                    hàng</a></li>--}}
                             <li><a class="login-trigger" style="padding: 0px 5px"
                                    href="{{ route('customer.getLogout') }}"><i class="icon fa fa-lock"></i>Đăng xuất</a>
                             </li>
                         @else
-                            <li><a class="login-trigger" style="padding: 0px 5px" class="btn btn-info btn-round"
-                                   href="javascript:" data-toggle="modal" data-target="#loginModal"><i
-                                        class="icon fa fa-heart"></i>Yêu
-                                    thích</a></li>
+{{--                            <li><a class="login-trigger" style="padding: 0px 5px" class="btn btn-info btn-round"--}}
+{{--                                   href="javascript:" data-toggle="modal" data-target="#loginModal"><i--}}
+{{--                                        class="icon fa fa-heart"></i>Yêu--}}
+{{--                                    thích</a></li>--}}
                             @include('user.page.home.popup_login')
-                            <li><a class="login-trigger" style="padding: 0px 5px" href="{{route('shopping.cart')}}"><i
-                                        class="icon fa fa-shopping-cart"></i>Giỏ
-                                    hàng</a></li>
+{{--                            <li><a class="login-trigger" style="padding: 0px 5px" href="{{route('shopping.cart')}}"><i--}}
+{{--                                        class="icon fa fa-shopping-cart"></i>Giỏ--}}
+{{--                                    hàng</a></li>--}}
                             <li><a class="login-trigger" style="padding: 0px 5px" href="{{route('shopping.login')}}"><i
                                         class="icon fa fa-lock"></i>Đăng nhập</a></li>
                             <li><a class="login-trigger" style="padding: 0px 5px" href="{{route('shopping.login')}}"><i
@@ -36,7 +36,7 @@
                     </ul>
                 </div>
                 <div class="clearfix-marquee">
-                    <marquee>Come on, you can do it! - Come on, you can do it! - Come on, you can do it! - Come on, you can do it!</marquee>
+                    <marquee> CHÀO MỪNG BẠN ĐÃ ĐẾN VỚI TLMOBILE!</marquee>
                 </div>
             </div>
             <!-- /.header-top-inner -->
@@ -258,8 +258,8 @@
                                 <li class="dropdown"><a href="{{route('shopping.about')}}">Giới Thiệu</a></li>
                                 <li class="dropdown mega-menu">
                                     <a href="#" data-hover="dropdown" class="dropdown-toggle"
-                                       data-toggle="dropdown">Sản phẩm <span
-                                            class="menu-label new-menu hidden-xs">sale</span>
+                                       data-toggle="dropdown">Sản phẩm
+{{--                                        <span class="menu-label new-menu hidden-xs">sale</span>--}}
                                     </a>
                                     <ul class="dropdown-menu container">
                                         <li>
@@ -291,9 +291,10 @@
                                             <!-- /.yamm-content --> </li>
                                     </ul>
                                 </li>
-                                <li class="dropdown"><a href="category.html">Sửa chữa & bảo trì</a></li>
-                                <li class="dropdown hidden-sm"><a href="{{route('shopping.blog')}}">Tin Tức<span
-                                            class="menu-label hot-menu hidden-xs">hot</span> </a></li>
+                                <li class="dropdown hidden-sm"><a href="{{route('shopping.blog')}}">Tin Tức
+{{--                                        <span class="menu-label hot-menu hidden-xs">hot</span> --}}
+                                    </a>
+                                </li>
                                 <li class="dropdown"><a href="{{route('shopping.contact')}}">Liên hệ</a></li>
                                 <li class="dropdown"><a href="{{route('shopping.faq')}}">Hỗ trợ</a></li>
                                 <li class="dropdown  navbar-right special-menu"><a

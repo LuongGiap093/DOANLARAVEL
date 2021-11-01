@@ -23,20 +23,6 @@
                         </div>
                         <button type="submit" class="btn btn-info btn-block btn-round">Đăng nhập</button>
                     </form>
-
-                    <div class="text-center text-muted delimiter">hoặc sử dụng mạng xã hội</div>
-                    <div class="d-flex justify-content-center social-buttons">
-                        <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Twitter">
-                            <i class="fa fa-twitter"></i>
-                        </button>
-                        <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Facebook">
-                            <i class="fa fa-facebook"></i>
-                        </button>
-                        <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Linkedin">
-                            <i class="fa fa-linkedin"></i>
-                        </button>
-                        </di>
-                    </div>
                 </div>
             </div>
             <div class="modal-footer d-flex justify-content-center">

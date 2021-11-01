@@ -25,7 +25,15 @@
                             <h3 class="name"><a
                                     href="{{route('product.viewProduct', $product->id)}}">{{ $product->name }}</a>
                             </h3>
-                            <div class="rating rateit-small"></div>
+                            <?php
+                            $avg_star=round(DB::table('comment')->where('product_id',$product->id)->avg('star'));
+                            ?>
+                            @for($i=1;$i<=$avg_star;$i++)
+                                <span class="fa fa-star checked"></span>
+                            @endfor
+                            @for($i=1;$i<=5-$avg_star;$i++)
+                                <span class="fa fa-star"></span>
+                            @endfor
                             <div class="product-price">
                                 Giảm: <span
                                     class="price-before-discount"> {{ number_format($product->price,'0',',','.') }}đ</span>

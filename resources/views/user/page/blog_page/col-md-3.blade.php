@@ -1,137 +1,41 @@
 <div class="col-md-3 sidebar">
     <div class="sidebar-module-container">
         <div class="search-area outer-bottom-small">
-            <form>
+            <form method="get" action="{{route('blog.search')}}">
                 <div class="control-group">
-                    <input placeholder="Type to search" class="search-field">
-                    <a href="#" class="search-button"></a>
+                    <input name="search_key" placeholder="Từ khóa tìm kiếm..." class="search-field" required>
+                    <button type="submit" class="search-button" style="display: contents"></button>
                 </div>
             </form>
         </div>
 
         <div class="home-banner outer-top-n outer-bottom-xs">
-            <img style="width: 100%;" src="{{asset('public/frontend/assets\images\banners\LHS-banner.jpg')}}" alt="Image">
+            <img style="width: 100%;" src="{{asset('public/frontend/assets\images\banners\Thiet-ke-banner-quang-cao-dien-thoai-2.jpg')}}" alt="Image">
         </div>
         <!-- ==============================================CATEGORY============================================== -->
         <div class="sidebar-widget outer-bottom-xs wow fadeInUp">
-            <h3 class="section-title">Category</h3>
+            <h3 class="section-title">Danh mục sản phẩm</h3>
             <div class="sidebar-widget-body m-t-10">
                 <div class="accordion">
+                    @foreach($cate->unique('category_id') as $key => $category)
                     <div class="accordion-group">
                         <div class="accordion-heading">
-                            <a href="#collapseOne" data-toggle="collapse"
+                            <a href="#collapse{{$key}}" data-toggle="collapse"
                                class="accordion-toggle collapsed">
-                                Camera
+                                {{$category->category_name}}
                             </a>
                         </div><!-- /.accordion-heading -->
-                        <div class="accordion-body collapse" id="collapseOne" style="height: 0px;">
+                        <div class="accordion-body collapse" id="collapse{{$key}}" style="height: 0px;">
                             <div class="accordion-inner">
                                 <ul>
-                                    <li><a href="#">gaming</a></li>
-                                    <li><a href="#">office</a></li>
-                                    <li><a href="#">kids</a></li>
-                                    <li><a href="#">for women</a></li>
+                                    @foreach($cate->unique('brand_id')->where('idcat',$category->category_id) as $brand)
+                                    <li><a href="{{route('product.show-brand',$brand->brand_id)}}">{{$brand->brand_name}}</a></li>
+                                    @endforeach
                                 </ul>
                             </div><!-- /.accordion-inner -->
                         </div><!-- /.accordion-body -->
                     </div><!-- /.accordion-group -->
-
-                    <div class="accordion-group">
-                        <div class="accordion-heading">
-                            <a href="#collapseTwo" data-toggle="collapse"
-                               class="accordion-toggle collapsed">
-                                Desktops
-                            </a>
-                        </div><!-- /.accordion-heading -->
-                        <div class="accordion-body collapse" id="collapseTwo" style="height: 0px;">
-                            <div class="accordion-inner">
-                                <ul>
-                                    <li><a href="#">gaming</a></li>
-                                    <li><a href="#">office</a></li>
-                                    <li><a href="#">kids</a></li>
-                                    <li><a href="#">for women</a></li>
-                                </ul>
-                            </div><!-- /.accordion-inner -->
-                        </div><!-- /.accordion-body -->
-                    </div><!-- /.accordion-group -->
-
-                    <div class="accordion-group">
-                        <div class="accordion-heading">
-                            <a href="#collapseThree" data-toggle="collapse"
-                               class="accordion-toggle collapsed">
-                                Pants
-                            </a>
-                        </div><!-- /.accordion-heading -->
-                        <div class="accordion-body collapse" id="collapseThree"
-                             style="height: 0px;">
-                            <div class="accordion-inner">
-                                <ul>
-                                    <li><a href="#">gaming</a></li>
-                                    <li><a href="#">office</a></li>
-                                    <li><a href="#">kids</a></li>
-                                    <li><a href="#">for women</a></li>
-                                </ul>
-                            </div><!-- /.accordion-inner -->
-                        </div><!-- /.accordion-body -->
-                    </div><!-- /.accordion-group -->
-
-                    <div class="accordion-group">
-                        <div class="accordion-heading">
-                            <a href="#collapseFour" data-toggle="collapse"
-                               class="accordion-toggle collapsed">
-                                Bags
-                            </a>
-                        </div><!-- /.accordion-heading -->
-                        <div class="accordion-body collapse" id="collapseFour" style="height: 0px;">
-                            <div class="accordion-inner">
-                                <ul>
-                                    <li><a href="#">gaming</a></li>
-                                    <li><a href="#">office</a></li>
-                                    <li><a href="#">kids</a></li>
-                                    <li><a href="#">for women</a></li>
-                                </ul>
-                            </div><!-- /.accordion-inner -->
-                        </div><!-- /.accordion-body -->
-                    </div><!-- /.accordion-group -->
-
-                    <div class="accordion-group">
-                        <div class="accordion-heading">
-                            <a href="#collapseFive" data-toggle="collapse"
-                               class="accordion-toggle collapsed">
-                                Hats
-                            </a>
-                        </div><!-- /.accordion-heading -->
-                        <div class="accordion-body collapse" id="collapseFive" style="height: 0px;">
-                            <div class="accordion-inner">
-                                <ul>
-                                    <li><a href="#">gaming</a></li>
-                                    <li><a href="#">office</a></li>
-                                    <li><a href="#">kids</a></li>
-                                    <li><a href="#">for women</a></li>
-                                </ul>
-                            </div><!-- /.accordion-inner -->
-                        </div><!-- /.accordion-body -->
-                    </div><!-- /.accordion-group -->
-
-                    <div class="accordion-group">
-                        <div class="accordion-heading">
-                            <a href="#collapseSix" data-toggle="collapse"
-                               class="accordion-toggle collapsed">
-                                Accessories
-                            </a>
-                        </div><!-- /.accordion-heading -->
-                        <div class="accordion-body collapse" id="collapseSix" style="height: 0px;">
-                            <div class="accordion-inner">
-                                <ul>
-                                    <li><a href="#">gaming</a></li>
-                                    <li><a href="#">office</a></li>
-                                    <li><a href="#">kids</a></li>
-                                    <li><a href="#">for women</a></li>
-                                </ul>
-                            </div><!-- /.accordion-inner -->
-                        </div><!-- /.accordion-body -->
-                    </div><!-- /.accordion-group -->
-
+                    @endforeach
                 </div><!-- /.accordion -->
             </div><!-- /.sidebar-widget-body -->
         </div><!-- /.sidebar-widget -->
@@ -144,45 +48,30 @@
             </ul>
             <div class="tab-content" style="padding-left:0">
                 <div class="tab-pane active m-t-20" id="popular">
+                    @foreach($pho_bien as $blog)
                     <div class="blog-post inner-bottom-30 ">
-                        <img class="img-responsive" src="{{asset('public/frontend/assets\images\blog-post\blog_big_01.jpg')}}"
+                        <img class="img-responsive" src="{{asset('public/images/'.$blog->image)}}"
                              alt="">
-                        <h4><a href="blog-details.html">Simple Blog Post</a></h4>
+                        <h5><a href="{{route('shopping.blog-detail',$blog->blog_id)}}">{{$blog->blog_title}}</a></h5>
                         <span class="review">6 Comments</span>
-                        <span class="date-time">12/06/16</span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-
+                        <span class="date-time">{{date('d-m-Y', strtotime($blog->blog_time))}}</span>
+{{--                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>--}}
                     </div>
-                    <div class="blog-post">
-                        <img class="img-responsive" src="{{asset('public/frontend/assets\images\blog-post\blog_big_02.jpg')}}"
-                             alt="">
-                        <h4><a href="blog-details.html">Simple Blog Post</a></h4>
-                        <span class="review">6 Comments</span>
-                        <span class="date-time">23/06/16</span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-
-                    </div>
+                    @endforeach
                 </div>
 
                 <div class="tab-pane m-t-20" id="recent">
+                    @foreach($moi_nhat as $blog)
                     <div class="blog-post inner-bottom-30">
-                        <img class="img-responsive" src="{{asset('public/frontend/assets\images\blog-post\blog_big_03.jpg')}}"
+                        <img class="img-responsive" src="{{asset('public/images/'.$blog->image)}}"
                              alt="">
-                        <h4><a href="blog-details.html">Simple Blog Post</a></h4>
+                        <h4><a href="{{route('shopping.blog-detail',$blog->blog_id)}}">{{$blog->blog_title}}</a></h4>
                         <span class="review">6 Comments</span>
-                        <span class="date-time">5/06/16</span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                        <span class="date-time">{{date('d-m-Y', strtotime($blog->blog_time))}}</span>
+{{--                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>--}}
 
                     </div>
-                    <div class="blog-post">
-                        <img class="img-responsive" src="{{asset('public/frontend/assets\images\blog-post\blog_big_01.jpg')}}"
-                             alt="">
-                        <h4><a href="blog-details.html">Simple Blog Post</a></h4>
-                        <span class="review">6 Comments</span>
-                        <span class="date-time">10/07/16</span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

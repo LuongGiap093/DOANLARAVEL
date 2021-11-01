@@ -27,8 +27,7 @@
                                 <span class="author">{{$blog->blog_author}}</span>
                                 <span class="review">6 Comments</span>
                                 <span class="date-time">{{$blog->blog_time}}</span>
-                                {{--                            <p>{!!str_split($blog->blog_description,10)!!}</p>--}}
-                                <p>{!! \Illuminate\Support\Str::limit($blog->blog_description,1000,$end="...") !!}</p>
+{{--                                <p>{!! \Illuminate\Support\Str::limit($blog->blog_description,500,$end="...") !!}</p>--}}
                                 <a href="{{route('shopping.blog-detail',$blog->blog_id)}}"
                                    class="btn btn-upper btn-primary read-more">Đọc thêm...</a>
                             </div>
@@ -37,16 +36,8 @@
                         <div class="clearfix blog-pagination filters-container  wow fadeInUp"
                              style="padding:0px; background:none; box-shadow:none; margin-top:15px; border:none">
                             <div class="text-right">
-                                <div class="pagination-container">
-                                    <ul class="list-inline list-unstyled">
-                                        <li class="prev"><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                                        <li><a href="#">1</a></li>
-                                        <li class="active"><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li class="next"><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                                    </ul><!-- /.list-inline -->
-                                </div><!-- /.pagination-container -->    </div><!-- /.text-right -->
+                                {!! $blogs->links() !!}
+                            </div><!-- /.text-right -->
 
                         </div><!-- /.filters-container -->
                     </div>

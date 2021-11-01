@@ -7,6 +7,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Logo;
 use App\Models\Wishlist;
+use App\Models\About;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Auth;
@@ -29,6 +30,7 @@ class AboutController extends Controller
         } else {
             $wishlists = null;
         }
-        return view('user.page.about_page.gioi-thieu', compact('wishlists', 'brands', 'cate', 'logos', 'categorys'));
+        $gioi_thieu=About::where('about_status','<>',0)->first();
+        return view('user.page.about_page.gioi-thieu', compact('gioi_thieu','wishlists', 'brands', 'cate', 'logos', 'categorys'));
     }
 }
