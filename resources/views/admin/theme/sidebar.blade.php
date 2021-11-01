@@ -5,9 +5,7 @@
         <!--- Sidemenu -->
         <div id="sidebar-menu">
             <ul class="metismenu" id="side-menu">
-
                 <li class="menu-title">Điều hướng</li>
-
                 <li>
                     <a href="{{route('dashboard.index')}}" class="waves-effect">
                         <i class="ion-md-speedometer"></i>
@@ -18,7 +16,7 @@
 
                 <li>
                     <a href="javascript: void(0);" class="waves-effect">
-                        <i class="ion-md-basket"></i>
+                        <i class="ion-md-phone-portrait"></i>
                         <span> Quản lý sản phẩm </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -31,19 +29,19 @@
 
                 <li>
                     <a href="javascript: void(0);" class="waves-effect">
-                        <i class="ion-md-basket"></i>
+                        <i class="ion-md-book"></i>
                         <span> Quản lý bài viết </span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
                         <li><a href="{{route('blog.index')}}">Tin tức</a></li>
-                        <li><a href="{{route('faq.index')}}">Faq</a></li>
+                        <li><a href="{{route('faq.index')}}">Câu hỏi thường gặp</a></li>
                     </ul>
                 </li>
 
                 <li>
                     <a href="javascript: void(0);" class="waves-effect">
-                        <i class="ion-md-basket"></i>
+                        <i class="ion-md-images"></i>
                         <span> Quản lý hình ảnh </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -55,7 +53,7 @@
 
                 <li>
                     <a href="javascript: void(0);" class="waves-effect">
-                        <i class="ion-md-basket"></i>
+                        <i class="ion-ios-cart"></i>
                         <span> Quản lý đơn hàng </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -68,7 +66,7 @@
 
                 <li>
                     <a href="javascript: void(0);" class="waves-effect">
-                        <i class="ion-md-basket"></i>
+                        <i class="ion-md-people"></i>
                         <span> Quản lý khách hàng </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -79,21 +77,21 @@
 
                 <li>
                     <a href="{{route('user.index')}}" class="waves-effect">
-                        <i class="ion-ios-apps"></i>
+                        <i class="ion-ios-eye"></i>
                         <span> Tài khoản quản trị </span>
                         {{--                        <span class="menu-arrow"></span>--}}
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('filemanager.index')}}" class="waves-effect">
-                        <i class="ion-ios-apps"></i>
-                        <span> File manager </span>
-                        {{--                        <span class="menu-arrow"></span>--}}
-                    </a>
+{{--                    <a href="{{route('filemanager.index')}}" class="waves-effect">--}}
+{{--                        <i class="ion-ios-apps"></i>--}}
+{{--                        <span> File manager </span>--}}
+{{--                        --}}{{--                        <span class="menu-arrow"></span>--}}
+{{--                    </a>--}}
                 </li>
                 <li>
                     <a href="{{route('contact.index')}}" class="waves-effect">
-                        <i class="ion-ios-apps"></i>
+                        <i class="ion-ios-document"></i>
                         <span>Form liên hệ</span>
                         {{--                        <span class="menu-arrow"></span>--}}
                     </a>
