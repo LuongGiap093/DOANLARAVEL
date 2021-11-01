@@ -29,7 +29,7 @@ Route::group(['middleware' => 'CheckAdminLogin','prefix' => 'panel/user', 'names
 
   Route::get('search','DashboardController@search_order')->name('order.search');
 
-    Route::post('logo/trang-thai','LogoController@hien_thi')->name('logo.trang-thai');
+  Route::post('logo/trang-thai','LogoController@hien_thi')->name('logo.trang-thai');
 
 });
 

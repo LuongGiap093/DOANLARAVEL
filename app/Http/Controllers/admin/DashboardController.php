@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\admin;
 
+use Spatie\Analytics\Period;
+use Analytics;
 use App\Http\Controllers\Controller;
 use App\Models\AccountCustomer;
 use App\Models\Customer;
@@ -26,6 +28,18 @@ class DashboardController extends Controller {
   }
 
   public function index(Request $request) {
+
+
+    $analyticsData = Analytics::fetchTotalVisitorsAndPageViews(Period::days(28));
+    $visitor = $analyticsData->pluck("visitors");
+    $date_time_add = $analyticsData->pluck("date");
+    $pageview = $analyticsData->pluck("pageViews");
+    $topBrowers = Analytics::fetchTopBrowsers(Period::days(28));
+
+    $topViewPage = Analytics::fetchMostVisitedPages(Period::days(28));
+//    dump($topViewPage);
+
+
     $users = DB::table('order')
       ->join('order_details', 'order.order_id', '=', 'order_details.order_id')
       ->join('customer', 'order.customer_id', '=', 'customer.customer_id')
@@ -33,16 +47,10 @@ class DashboardController extends Controller {
       ->get();
     //         dump($users);
     $abc = [];
-
-    foreach ($users as $item) {
-      //         dump($item);
-
-    }
     $account = AccountCustomer::all();
     $count = count($account);
     $order = Order::all();
     $order_detail = Order_Details::all();
-
     $quantity = [];
     foreach ($order_detail as $count_quantity) {
       $quantity[] = $count_quantity->quantity;
@@ -56,8 +64,8 @@ class DashboardController extends Controller {
     }
     $total_order_money = array_sum($aa);
     //          $total_order_money = count($a);
-    return view($this->viewprefix . 'index',
-      compact('count', 'count_order', 'total_order_money', 'total_quantity'));
+    return view($this->viewprefix . 'layout',
+      compact('count', 'count_order', 'total_order_money', 'total_quantity','visitor','date_time_add','pageview','topBrowers','topViewPage'));
   }
 
   public function search_order(Request $request) {
@@ -95,8 +103,11 @@ class DashboardController extends Controller {
 //        dump($item);
 //      }
     }
+
+
+//    dd($orders);
     //    dump($orders);
-    return view($this->viewprefix . 'index',
+    return view($this->viewprefix . 'layout',
       compact('orders', 'customers', 'count', 'count_order',
         'total_order_money', 'total_quantity','date_start','date_end'));
   }

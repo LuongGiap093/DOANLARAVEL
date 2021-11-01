@@ -110,18 +110,24 @@
     <link href="{!! asset('public\admin/assets/css/bootstrap.min.css') !!}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
     <link href="{!! asset('public\admin/assets/css/icons.min.css')!!}" rel="stylesheet" type="text/css">
     <link href="{!! asset('public\admin/assets/css/app.min.css') !!}" rel="stylesheet" type="text/css" id="app-stylesheet">
-
+{{--    <style>--}}
+{{--        body.authentication-page {--}}
+{{--            background-image: url({!! asset('public\admin/assets/images/background_admin.jpg') !!});--}}
+{{--            background-repeat: no-repeat;--}}
+{{--            background-attachment: fixed;--}}
+{{--            background-size: 100% 100%;--}}
+{{--        }--}}
+{{--    </style>--}}
 </head>
 
 <body class="authentication-page">
-
 <div class="account-pages my-5">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8 col-lg-6 col-xl-5">
                 <div class="card mt-4">
                     <div class="card-header p-4 bg-primary">
-                        <h4 class="text-white text-center mb-0 mt-0">Velonic</h4>
+                        <h4 class="text-white text-center mb-0 mt-0">TL Mobile</h4>
                     </div>
                     <div class="card-body">
                         @if (count($errors) >0)
@@ -140,35 +146,35 @@
                         <form action="{{ route('getLogin') }}" method="post" class="p-2">
                             {{ csrf_field() }}
                             <div class="form-group mb-3">
-                                <label for="emailaddress">Email Address :</label>
+                                <label for="emailaddress">Email:</label>
                                 <input class="form-control" type="email" name="email" placeholder="jonh@gmail.com" >
                             </div>
                             <div class="form-group mb-3">
-                                <label for="password">Password :</label>
+                                <label for="password">Mật khẩu :</label>
                                 <input class="form-control" type="password" name="password" placeholder="Enter your password" >
                             </div>
 
-                            <div class="form-group mb-4">
-                                <div class="checkbox checkbox-success">
-                                    <input id="remember" type="checkbox" checked="">
-                                    <label for="remember">
-                                        Remember me
-                                    </label>
-                                    <a href="pages-recoverpw.html" class="text-muted float-right">Forgot your password?</a>
-                                </div>
-                            </div>
+{{--                            <div class="form-group mb-4">--}}
+{{--                                <div class="checkbox checkbox-success">--}}
+{{--                                    <input id="remember" type="checkbox" checked="">--}}
+{{--                                    <label for="remember">--}}
+{{--                                        Remember me--}}
+{{--                                    </label>--}}
+{{--                                    <a href="pages-recoverpw.html" class="text-muted float-right">Forgot your password?</a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
                             <div class="form-group row text-center mt-4 mb-4">
                                 <div class="col-12">
-                                    <button class="btn btn-md btn-block btn-primary waves-effect waves-light" type="submit">Sign In</button>
+                                    <button class="btn btn-md btn-block btn-primary waves-effect waves-light" type="submit">Đăng Nhập</button>
                                 </div>
                             </div>
 
-                            <div class="form-group row mb-0">
-                                <div class="col-sm-12 text-center">
-                                    <p class="text-muted mb-0">Don't have an account? <a href="pages-register.html" class="text-dark m-l-5"><b>Sign Up</b></a></p>
-                                </div>
-                            </div>
+{{--                            <div class="form-group row mb-0">--}}
+{{--                                <div class="col-sm-12 text-center">--}}
+{{--                                    <p class="text-muted mb-0">Don't have an account? <a href="pages-register.html" class="text-dark m-l-5"><b>Sign Up</b></a></p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                         </form>
 
                     </div>
