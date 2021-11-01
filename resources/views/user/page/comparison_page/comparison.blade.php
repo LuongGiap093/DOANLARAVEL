@@ -31,14 +31,14 @@
                                         <div class="product-image">
                                             <div class="image">
                                                 <a href="{{route('product.viewProduct', $col->product_id)}}">
-                                                    <img alt="" style="margin: auto 15px auto 15px;" src="{{asset('public/images/'. $col->product->image)}}">
+                                                    <img alt="" src="{{asset('public/images/'. $col->product->image)}}">
                                                 </a>
                                             </div>
 
                                             <div class="product-info text-left">
-                                                <h3 style="text-align: center;" class="name"><a href="{{route('product.viewProduct', $col->product_id)}}">{{$col->product->name}}</a></h3>
+                                                <h3 class="name"><a href="{{route('product.viewProduct', $col->product_id)}}">{{$col->product->name}}</a></h3>
                                                 <div class="action">
-                                                    <a style="width: 100%;" class="lnk btn btn-primary" onclick="AddCart({{$col->product->id}})" href="javascript:">Thêm vào giỏ hàng</a>
+                                                    <a style="width: 100%;max-width: 200px;" class="lnk btn btn-primary" onclick="AddCart({{$col->product->id}})" href="javascript:">Thêm vào giỏ hàng</a>
                                                 </div>
 
                                             </div>

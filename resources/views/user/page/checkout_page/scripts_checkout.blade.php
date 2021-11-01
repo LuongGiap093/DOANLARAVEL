@@ -11,7 +11,7 @@
                     headers: {'X-CSRF-TOKEN': $('input[name="_token"]').attr('content')},
                     data: {check_payment:check_payment,_token: _token},
                     success: function (data) {
-                        location.reload();
+                        window.location.href = "{{route('shopping.check')}}";
                     }
                 });
             }else{

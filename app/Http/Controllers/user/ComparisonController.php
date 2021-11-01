@@ -42,18 +42,18 @@ class ComparisonController extends Controller
     public function addToComparison($product_id)
     {
         $count_col=Comparison::count();
-        if($count_col<3) {
+        if($count_col<4) {
             $status = Comparison::where('customer_id', Auth::guard('account_customer')->id())->where('product_id', $product_id)->first();
             if (isset($status->customer_id) and isset($status->product_id)) {
                 $status->delete();
-                return Redirect()->back()->with('comparison', 'Sản phẩm này đã tồn tại trong danh sách yêu thích!');
+                return Redirect()->back()->with('comparison', 'Đã bỏ sản phẩm ra khỏi danh sách so sánh!');
             } else {
                 if (Auth::guard('account_customer')->check()) {
                     Comparison::insert([
                         'customer_id' => Auth::guard('account_customer')->id(),
                         'product_id' => $product_id,
                     ]);
-                    return Redirect()->back()->with('comparison', 'Thêm sản phẩm vào danh sách yêu thích thành công!');
+                    return Redirect()->back()->with('comparison', 'Sản phẩm đã được thêm vào danh sách so sánh!');
                 } else {
                     return Redirect()
                         ->route('shopping.login')

@@ -187,5 +187,21 @@ class CheckoutController extends Controller
 //        Session::forget('note');
 //        Session::forget('address');
         $request->session()->flush();
+//        Session::put('thanh-cong',true);
+    }
+    public function thanh_cong()
+    {
+        $logos = Logo::first();
+        $categorys = Category::where('category_status', 1)->orderby('category_position', 'asc')->limit(4)->get();
+        $cate = Category::orderby('category_position', 'asc')
+            ->join('product', 'category.category_id', '=', 'product.idcat')
+            ->join('brands', 'product.brand_id', '=', 'brands.brand_id')
+            ->get();
+        if (Auth::guard('account_customer')->check()) {
+            $wishlists = Wishlist::where('customer_id', Auth::guard('account_customer')->id())->get();
+        } else {
+            $wishlists = null;
+        }
+        return view('user.page.check_checkout_page.check', compact('wishlists',  'cate', 'logos', 'categorys'));
     }
 }

@@ -7,6 +7,8 @@
                 <div class="cnt-account">
                     <ul class="list-unstyled">
                         @if(Auth::guard('account_customer')->check())
+                            <li><a class="login-trigger" style="padding: 0px 5px" href="{{route('shopping.showComparison')}}"><i
+                                        class="icon fa fa-signal"></i>So sánh</a></li>
                             <li><a class="login-trigger" style="padding: 0px 5px" href="{{route('customer.profiles')}}"><i
                                         class="icon fa fa-user"></i>Tài khoản</a>
                             </li>
@@ -16,6 +18,8 @@
 {{--                            <li><a class="login-trigger" style="padding: 0px 5px" href="{{route('shopping.cart')}}"><i--}}
 {{--                                        class="icon fa fa-shopping-cart"></i>Giỏ--}}
 {{--                                    hàng</a></li>--}}
+                            <li><a class="login-trigger" style="padding: 0px 5px" href="{{route('customer.change_pass')}}"><i
+                                        class="icon fa fa-key"></i>Đổi mật khẩu</a></li>
                             <li><a class="login-trigger" style="padding: 0px 5px"
                                    href="{{ route('customer.getLogout') }}"><i class="icon fa fa-lock"></i>Đăng xuất</a>
                             </li>
@@ -28,10 +32,14 @@
 {{--                            <li><a class="login-trigger" style="padding: 0px 5px" href="{{route('shopping.cart')}}"><i--}}
 {{--                                        class="icon fa fa-shopping-cart"></i>Giỏ--}}
 {{--                                    hàng</a></li>--}}
-                            <li><a class="login-trigger" style="padding: 0px 5px" href="{{route('shopping.login')}}"><i
-                                        class="icon fa fa-lock"></i>Đăng nhập</a></li>
+                            <li><a class="login-trigger" style="padding: 0px 5px" href="javascript:" data-toggle="modal" data-target="#loginModal"><i
+                                        class="icon fa fa-signal"></i>So sánh</a></li>
                             <li><a class="login-trigger" style="padding: 0px 5px" href="{{route('shopping.login')}}"><i
                                         class="icon fa fa-lock"></i>Đăng ký</a></li>
+                            <li><a class="login-trigger" style="padding: 0px 5px" href="{{route('shopping.login')}}"><i
+                                        class="icon fa fa-key"></i>Đăng nhập</a></li>
+                            <li><a class="login-trigger" style="padding: 0px 5px" href="{{route('customer.forgot')}}"><i
+                                        class="icon fa fa-key"></i>Quên mật khẩu</a></li>
                         @endif
                     </ul>
                 </div>

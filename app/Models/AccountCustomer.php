@@ -22,6 +22,8 @@ class AccountCustomer extends Authenticatable {
     'email',
     'password',
     'phone',
+      'token',
+      'forgot',
       'status',
   ];
   protected $primaryKey = 'id';

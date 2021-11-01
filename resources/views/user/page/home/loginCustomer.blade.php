@@ -18,6 +18,11 @@
     @endif
     <div class="body-content">
         <div class="container">
+            @if (session('message'))
+                <div class="alert alert-warning">
+                    <p>{{ session('message') }}</p>
+                </div>
+            @endif
             <div class="sign-in-page">
                 <div class="row">
                     <!-- Sign-in -->
@@ -47,7 +52,7 @@
                                     <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Ghi
                                     nhớ!
                                 </label>
-                                <a href="#" class="forgot-password pull-right">Quên mật khẩu?</a>
+                                <a href="{{route('customer.forgot')}}" class="forgot-password pull-right">Quên mật khẩu?</a>
                             </div>
                             <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Đăng nhập
                             </button>

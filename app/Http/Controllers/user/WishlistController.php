@@ -38,14 +38,14 @@ class WishlistController extends Controller
         $status = Wishlist::where('customer_id', Auth::guard('account_customer')->id())->where('product_id', $product_id)->first();
         if (isset($status->customer_id) and isset($status->product_id)) {
             $status->delete();
-            return Redirect()->back()->with('wishlist-w', 'Sản phẩm này đã tồn tại trong danh sách yêu thích!');
+            return Redirect()->back()->with('wishlist', 'Đã xóa sản phẩm khỏi danh sách yêu thích!');
         } else {
             if (Auth::guard('account_customer')->check()) {
                 Wishlist::insert([
                     'customer_id' => Auth::guard('account_customer')->id(),
                     'product_id' => $product_id,
                 ]);
-                return Redirect()->back()->with('wishlist', 'Thêm sản phẩm vào danh sách yêu thích thành công!');
+                return Redirect()->back()->with('wishlist', 'Sản phẩm đã được thêm vào danh sách yêu thích!');
             } else {
                 return Redirect()
                     ->route('shopping.login')

@@ -3,6 +3,16 @@
     <!-- ============================================== HEADER : END ============================================== -->
     <div class="body-content outer-top-xs" id="top-banner-and-menu">
         <div class="container">
+            @if(Session::has('wishlist'))
+                <div class="alert alert-success">
+                    {{Session::get('wishlist')}}
+                </div>
+            @endif
+            @if(Session::has('comparison'))
+                <div class="alert alert-success">
+                    {{Session::get('comparison')}}
+                </div>
+            @endif
             <div class="row">
                 <!-- ============================================== SIDEBAR ============================================== -->
                 <div class="col-xs-12 col-sm-12 col-md-3 sidebar">
@@ -36,7 +46,7 @@
                 @include('user.page.comment.testimonials')
                 <!-- ============================================== Testimonials: END ============================================== -->
 
-                    <div class="home-banner"><img src="{{asset('public/frontend/assets\images\banners\LHS-banner.jpg')}}" alt="Image"></div>
+                    <div class="home-banner"><img src="{{asset('public/frontend/assets\images\banners\mau-thiet-ke-giam-gia-iphone.jpg')}}" alt="Image"></div>
 
                     <!-- /.sidemenu-holder -->
                     <!-- ============================================== SIDEBAR : END ============================================== -->
@@ -100,16 +110,6 @@
 
                     <!-- ============================================== SẢN PHẨM MỚI ============================================== -->
 
-                    @if(Session::has('wishlist'))
-                        <div class="alert alert-success">
-                            {{Session::get('wishlist')}}
-                        </div>
-                @endif
-                    @if(Session::has('wishlist-w'))
-                        <div class="alert alert-warning">
-                            {{Session::get('wishlist-w')}}
-                        </div>
-                @endif
                 @include('user.page.home.new-product.new_product')
                 <!-- ============================================== SẢN PHẨM MỚI: END ============================================== -->
 

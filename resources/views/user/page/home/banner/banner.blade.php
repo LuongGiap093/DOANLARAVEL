@@ -7,12 +7,12 @@
                 </div>
                 <div class="strip strip-text">
                     <div class="strip-inner">
-                        <h2 class="text-right">New Mens Fashion<br>
-                            <span class="shopping-needs">Save up to 40% off</span></h2>
+{{--                        <h2 class="text-right">New Mens Fashion<br>--}}
+{{--                            <span class="shopping-needs">Save up to 40% off</span></h2>--}}
                     </div>
                 </div>
                 <div class="new-label">
-                    <div class="text">NEW</div>
+{{--                    <div class="text">NEW</div>--}}
                 </div>
                 <!-- /.new-label -->
             </div>

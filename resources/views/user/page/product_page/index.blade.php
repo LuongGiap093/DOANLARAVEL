@@ -15,6 +15,16 @@
     </div>
     <div class="body-content outer-top-xs" id="top-banner-and-menu">
         <div class="container" style="margin-bottom: 30px;">
+            @if(Session::has('wishlist'))
+                <div class="alert alert-success">
+                    {{Session::get('wishlist')}}
+                </div>
+            @endif
+            @if(Session::has('comparison'))
+                <div class="alert alert-success">
+                    {{Session::get('comparison')}}
+                </div>
+            @endif
             <div class="row">
                 <!-- ============================================== SIDEBAR ============================================== -->
                 <div class="col-xs-12 col-sm-12 col-md-3 sidebar">

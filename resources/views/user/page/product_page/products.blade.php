@@ -116,8 +116,8 @@
                                                 <button onclick="AddCart({{$product->id}})" href="javascript:" class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
                                                 <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                                             </li>
-                                            <li class="lnk wishlist">
-                                                @if (Auth::guard('account_customer')->check())
+                                            @if (Auth::guard('account_customer')->check())
+                                                <li class="lnk wishlist">
                                                     @if(is_null(DB::table('wishlists')->where('customer_id', Auth::guard('account_customer')->id())->where('product_id','=',$product->id)->first()))
                                                         <a data-toggle="tooltip" class="add-to-cart" href="{{url('danh-sach-yeu-thich/them/'.$product->id)}}" title="Yêu thích">
                                                             <i class="icon fa fa-heart"></i>
@@ -127,14 +127,25 @@
                                                             <i class="icon fa fa-heart" style="color: rgb(255, 66, 79);"></i>
                                                         </a>
                                                     @endif
-                                                @else
+                                                </li>
+                                                <li class="lnk"><a data-toggle="tooltip" class="add-to-cart"
+                                                                   href="{{url('so-sanh-san-pham/them/'.$product->id)}}" title="So sánh"> <i
+                                                            class="fa fa-signal" aria-hidden="true"></i>
+                                                    </a>
+                                                </li>
+                                            @else
+                                                <li class="lnk wishlist">
                                                     <a href="javascript:" data-toggle="modal" data-target="#loginModal"
                                                        title="Yêu thích">
                                                         <i class="icon fa fa-heart"></i>
                                                     </a>
-                                                @endif
-                                            </li>
-                                            <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+                                                </li>
+                                                <li class="lnk"><a class="add-to-cart"
+                                                                   href="javascript:" data-toggle="modal" data-target="#loginModal" title="So sánh"> <i
+                                                            class="fa fa-signal" aria-hidden="true"></i>
+                                                    </a>
+                                                </li>
+                                            @endif
                                         </ul>
                                     </div>
                                     <!-- /.action -->
@@ -199,8 +210,8 @@
                                                         <button onclick="AddCart({{$product->id}})" href="javascript:" class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
                                                         <button onclick="AddCart({{$product->id}})" href="javascript:" class="btn btn-primary cart-btn" type="button">Thêm vào giỏ hàng</button>
                                                     </li>
-                                                    <li class="lnk wishlist">
-                                                        @if (Auth::guard('account_customer')->check())
+                                                    @if (Auth::guard('account_customer')->check())
+                                                        <li class="lnk wishlist">
                                                             @if(is_null(DB::table('wishlists')->where('customer_id', Auth::guard('account_customer')->id())->where('product_id','=',$product->id)->first()))
                                                                 <a data-toggle="tooltip" class="add-to-cart" href="{{url('danh-sach-yeu-thich/them/'.$product->id)}}" title="Yêu thích">
                                                                     <i class="icon fa fa-heart"></i>
@@ -210,14 +221,25 @@
                                                                     <i class="icon fa fa-heart" style="color: rgb(255, 66, 79);"></i>
                                                                 </a>
                                                             @endif
-                                                        @else
+                                                        </li>
+                                                        <li class="lnk"><a data-toggle="tooltip" class="add-to-cart"
+                                                                           href="{{url('so-sanh-san-pham/them/'.$product->id)}}" title="So sánh"> <i
+                                                                    class="fa fa-signal" aria-hidden="true"></i>
+                                                            </a>
+                                                        </li>
+                                                    @else
+                                                        <li class="lnk wishlist">
                                                             <a href="javascript:" data-toggle="modal" data-target="#loginModal"
                                                                title="Yêu thích">
                                                                 <i class="icon fa fa-heart"></i>
                                                             </a>
-                                                        @endif
-                                                    </li>
-                                                    <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+                                                        </li>
+                                                        <li class="lnk"><a class="add-to-cart"
+                                                                           href="javascript:" data-toggle="modal" data-target="#loginModal" title="So sánh"> <i
+                                                                    class="fa fa-signal" aria-hidden="true"></i>
+                                                            </a>
+                                                        </li>
+                                                    @endif
                                                 </ul>
                                             </div>
                                             <!-- /.action -->

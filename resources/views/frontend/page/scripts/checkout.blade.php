@@ -1,6 +1,6 @@
 <script type="text/javascript">
     $(document).ready(function () {
-        $('.check_checkout').click(function () {//khi click vào nút
+        $('.check_checkout_page').click(function () {//khi click vào nút
 
             var fee=$('.fee').val();
 

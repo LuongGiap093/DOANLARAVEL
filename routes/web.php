@@ -111,6 +111,12 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::get('kich-hoat-tai-khoan/{customer}/{token}','AccountCustomerController@actived')->name('customer.actived');
     Route::post('dang-nhap','AccountCustomerController@postLogin')->name('customer.postLogin');
     Route::get('dang-xuat','AccountCustomerController@getLogout')->name('customer.getLogout');
+    Route::get('quen-mat-khau','AccountCustomerController@forgot_page')->name('customer.forgot');
+    Route::post('lay-lai-mat-khau','AccountCustomerController@forgot')->name('customer.postemail');
+    Route::get('xac-minh-tai-khoan/{customer}/{forgot}','AccountCustomerController@actived_forgot')->name('customer.activedforgot');
+    Route::get('doi-mat-khau','AccountCustomerController@change_pass_page')->name('customer.change_pass');
+    Route::post('xac-nhan-doi-mat-khau','AccountCustomerController@check_change_pass')->name('customer.check_change_pass');
+    Route::post('check-doi-mat-khau','AccountCustomerController@check_change_pass1')->name('customer.check_change_pass1');
 
     Route::get('danh-sach-yeu-thich', 'WishlistController@index')->name('shopping.showWishlist');
     Route::get('danh-sach-yeu-thich/them/{id}', 'WishlistController@addToWishlist');
@@ -160,6 +166,7 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::post('tinh-phi-van-chuyen','CheckoutController@calculate_fee')->name('checkout.tinh-phi');
     Route::post('xac-nhan-dat-hang', 'CheckoutController@checkout')->name('shopping.checkout');
     Route::get('track-order','UserController@track_order')->name('track-order');
+    Route::get('dat-hang-thanh-cong','CheckoutController@thanh_cong')->name('shopping.check');
 
     Route::post('nhan-xet','CommentController@add_comment')->name('customer.postcomment');
 

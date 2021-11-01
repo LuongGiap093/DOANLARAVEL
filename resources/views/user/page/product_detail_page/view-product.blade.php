@@ -13,6 +13,16 @@
     </div><!-- /.breadcrumb -->
     <div class="body-content outer-top-xs">
         <div class='container'>
+            @if(Session::has('wishlist'))
+                <div class="alert alert-success">
+                    {{Session::get('wishlist')}}
+                </div>
+            @endif
+            @if(Session::has('comparison'))
+                <div class="alert alert-success">
+                    {{Session::get('comparison')}}
+                </div>
+            @endif
             <div class='row single-product'>
                 <div class='col-md-3 sidebar'>
                     <div class="sidebar-module-container">
@@ -121,26 +131,38 @@
                                                 <p class="prod-actions" style="margin: 0px;">
                                                     @if (Auth::guard('account_customer')->check())
                                                         @if(is_null(DB::table('wishlists')->where('customer_id', Auth::guard('account_customer')->id())->where('product_id','=',$products->id)->first()))
-                                                    <a href="{{url('danh-sach-yeu-thich/them/'.$products->id)}}" class="prod-favorites" data-toggle="tooltip"
-                                                       data-placement="top" title="Yêu thích" style="font-size: 25px; margin: 0px 12px;"><i
-                                                            class="icon fa fa-heart" style="color: #333;font-size: 32px;"></i>
-                                                    </a>
+                                                            <a href="{{url('danh-sach-yeu-thich/them/'.$products->id)}}" class="prod-favorites" data-toggle="tooltip"
+                                                               data-placement="top" title="Yêu thích" style="font-size: 25px; margin: 0px 12px;"><i
+                                                                    class="icon fa fa-heart" style="color: #333;font-size: 32px;"></i>
+                                                            </a>
                                                         @else
                                                             <a href="{{url('danh-sach-yeu-thich/them/'.$products->id)}}" class="prod-favorites" data-toggle="tooltip"
                                                                data-placement="top" title="Yêu thích" style="font-size: 25px; margin: 0px 12px;"><i
                                                                     class="icon fa fa-heart" style="color: rgb(255, 66, 79);font-size: 32px;"></i>
                                                             </a>
                                                         @endif
+                                                        @if(is_null(DB::table('comparisons')->where('customer_id', Auth::guard('account_customer')->id())->where('product_id','=',$products->id)->first()))
+                                                            <a href="{{url('so-sanh-san-pham/them/'.$products->id)}}" class="prod-compare" data-toggle="tooltip"
+                                                               data-placement="top" title="So sánh" style="font-size: 25px;"><i
+                                                                    class="fa fa-bar-chart" style="color: #333;font-size: 32px;"></i>
+                                                            </a>
+                                                            @else
+                                                                <a href="{{url('so-sanh-san-pham/them/'.$products->id)}}" class="prod-compare" data-toggle="tooltip"
+                                                                   data-placement="top" title="So sánh" style="font-size: 25px;"><i
+                                                                        class="fa fa-bar-chart" style="color: #157ed2;font-size: 32px;"></i>
+                                                                </a>
+                                                            @endif
                                                     @else
                                                         <a href="javascript:" data-toggle="modal" data-target="#loginModal" class="prod-favorites"
                                                            data-placement="top" title="Yêu thích" style="font-size: 25px; margin: 0px 12px;"><i
                                                                 class="icon fa fa-heart" style="color: #333;font-size: 32px;"></i>
                                                         </a>
+                                                        <a href="javascript:" data-toggle="modal" data-target="#loginModal" class="prod-compare" data-toggle="tooltip"
+                                                           data-placement="top" title="So sánh" style="font-size: 25px;"><i
+                                                                class="fa fa-bar-chart" style="color: #333;font-size: 32px;"></i>
+                                                        </a>
                                                     @endif
-                                                    <a href="#" class="prod-compare" data-toggle="tooltip"
-                                                       data-placement="top" title="So sánh" style="font-size: 25px;"><i
-                                                            class="fa fa-bar-chart" style="color: #333;font-size: 32px;"></i>
-                                                    </a>
+
                                                 </p>
                                             </div>
 
