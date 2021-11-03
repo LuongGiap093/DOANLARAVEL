@@ -13,6 +13,7 @@ class Faq extends Model
         'faq_serial',
         'faq_title',
         'faq_description',
+        'status',
     ];
     protected $primaryKey = 'faq_id';
     public function owner(){

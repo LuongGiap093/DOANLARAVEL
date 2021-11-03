@@ -50,6 +50,7 @@ class FaqController extends Controller {
       'faq_serial' => 'required',
       'faq_title' => 'required',
       'faq_description' => 'required',
+      'status' => 'required',
     ]);
     if (Faq::create($data)) {
       Session::flash('message', 'successfully!');
@@ -81,6 +82,7 @@ class FaqController extends Controller {
       'faq_serial' => 'required',
       'faq_title' => 'required',
       'faq_description' => 'required',
+      'status' => 'required',
     ]);
     $data['image'] = Helper::imageUpload($request);
     if ($faq->update($data)) {
@@ -100,5 +102,14 @@ class FaqController extends Controller {
       Session::flash('message', 'Failure!');
     return redirect()->route('faq.index');
   }
-
+  public function changestatusfaq($id) {
+    $faq = Faq::find($id);
+    $faq->status = !$faq->status;
+    if ($faq->save()) {
+      return redirect()->back();
+    }
+    else {
+      return redirect(route('changestatusfaq'));
+    }
+  }
 }

@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Data Table | Velonic - Responsive Bootstrap 4 Admin Dashboard</title>
+    <title>TLmobile | Admin Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Responsive bootstrap 4 admin template" name="description">
     <meta content="Coderthemes" name="author">
@@ -12,26 +11,37 @@
     <link rel="shortcut icon" href="{!! asset('public\admin/assets/images/favicon.ico') !!}">
 
     <!-- third party css -->
-    <link href="{!! asset('public\admin/assets/libs/datatables/dataTables.bootstrap4.min.css') !!}" rel="stylesheet" type="text/css">
-    <link href="{!! asset('public\admin/assets/libs/datatables/buttons.bootstrap4.min.css') !!}" rel="stylesheet" type="text/css">
-    <link href="{!! asset('public\admin/assets/libs/datatables/responsive.bootstrap4.min.css') !!}" rel="stylesheet" type="text/css">
-    <link href="{!! asset('public\admin/assets/libs/datatables/select.bootstrap4.min.css') !!}" rel="stylesheet" type="text/css">
+    <link href="{!! asset('public\admin/assets/libs/datatables/dataTables.bootstrap4.min.css') !!}" rel="stylesheet"
+          type="text/css">
+    <link href="{!! asset('public\admin/assets/libs/datatables/buttons.bootstrap4.min.css') !!}" rel="stylesheet"
+          type="text/css">
+    <link href="{!! asset('public\admin/assets/libs/datatables/responsive.bootstrap4.min.css') !!}" rel="stylesheet"
+          type="text/css">
+    <link href="{!! asset('public\admin/assets/libs/datatables/select.bootstrap4.min.css') !!}" rel="stylesheet"
+          type="text/css">
 
     <!-- App css -->
-    <link href="{!! asset('public\admin/assets/css/bootstrap.min.css') !!}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
+    <link href="{!! asset('public\admin/assets/css/bootstrap.min.css') !!}" rel="stylesheet" type="text/css"
+          id="bootstrap-stylesheet">
     <link href="{!! asset('public\admin/assets/css/icons.min.css') !!}" rel="stylesheet" type="text/css">
-    <link href="{!! asset('public\admin/assets/css/app.min.css') !!}" rel="stylesheet" type="text/css" id="app-stylesheet">
+    <link href="{!! asset('public\admin/assets/css/app.min.css') !!}" rel="stylesheet" type="text/css"
+          id="app-stylesheet">
     <link rel="shortcut icon" href="{!! asset('admin/assets/images/favicon.ico') !!}">
 
 
     <!-- third party css -->
-    <link href="{!! asset('admin/assets/libs/datatables/dataTables.bootstrap4.min.css') !!}" rel="stylesheet" type="text/css">
-    <link href="{!! asset('admin/assets/libs/datatables/buttons.bootstrap4.min.css') !!}" rel="stylesheet" type="text/css">
-    <link href="{!! asset('admin/assets/libs/datatables/responsive.bootstrap4.min.css') !!}" rel="stylesheet" type="text/css">
-    <link href="{!! asset('admin/assets/libs/datatables/select.bootstrap4.min.css') !!}" rel="stylesheet" type="text/css">
+    <link href="{!! asset('admin/assets/libs/datatables/dataTables.bootstrap4.min.css') !!}" rel="stylesheet"
+          type="text/css">
+    <link href="{!! asset('admin/assets/libs/datatables/buttons.bootstrap4.min.css') !!}" rel="stylesheet"
+          type="text/css">
+    <link href="{!! asset('admin/assets/libs/datatables/responsive.bootstrap4.min.css') !!}" rel="stylesheet"
+          type="text/css">
+    <link href="{!! asset('admin/assets/libs/datatables/select.bootstrap4.min.css') !!}" rel="stylesheet"
+          type="text/css">
 
     <!-- App css -->
-    <link href="{!! asset('admin/assets/css/bootstrap.min.css') !!}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
+    <link href="{!! asset('admin/assets/css/bootstrap.min.css') !!}" rel="stylesheet" type="text/css"
+          id="bootstrap-stylesheet">
     <link href="{!! asset('admin/assets/css/icons.min.css') !!}" rel="stylesheet" type="text/css">
     <link href="{!! asset('admin/assets/css/app.min.css') !!}" rel="stylesheet" type="text/css" id="app-stylesheet">
     <script src="//cdn.ckeditor.com/4.16.1/full/ckeditor.js"></script>
@@ -42,54 +52,18 @@
 
 <!-- Begin page -->
 <div id="wrapper">
-@include('admin.theme.nav')
+    @include('admin.theme.nav')
 
-@include('admin.theme.sidebar')
+    @include('admin.theme.sidebar')
 
     <div class="content-page">
         <div class="content">
             @yield('content')
         </div>
-
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="page-title-box">
-                            <h4 class="page-title">Data Table</h4>
-                            <div class="page-title-right">
-                                <ol class="breadcrumb p-0 m-0">
-                                    <li class="breadcrumb-item"><a href="#">Velonic</a></li>
-                                    <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                                    <li class="breadcrumb-item active">Data Table</li>
-                                </ol>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </div>
+    </div>
 
 
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body table-responsive">
-                                <h4 class="m-t-0 header-title mb-4"><b>Default Example</b></h4>
-                                <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a href="{{ url(Request::route()->getPrefix()) }}" class="btn btn-primary">Quản lý</a>
-                                    <a href="{{route('blog.create')}}" class="btn btn-success">Thêm mới</a>
-                                </div>
-                                @yield('content')
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-
-<!-- Footer Start -->
+    <!-- Footer Start -->
     <!-- end Footer -->
 
 </div>
@@ -113,7 +87,8 @@
                 <strong>Customize </strong> the overall color scheme, layout, etc.
             </div>
             <div class="mb-2">
-                <img src="{!! asset('public\admin/assets/images/layouts/light.png') !!}" class="img-fluid img-thumbnail" alt="">
+                <img src="{!! asset('public\admin/assets/images/layouts/light.png') !!}" class="img-fluid img-thumbnail"
+                     alt="">
                 <img src="assets/images/layouts/light.png" class="img-fluid img-thumbnail" alt="">
             </div>
             <div class="custom-control custom-switch mb-3">
@@ -122,30 +97,35 @@
             </div>
 
             <div class="mb-2">
-                <img src="{!! asset('public\admin/assets/images/layouts/dark.png') !!}" class="img-fluid img-thumbnail" alt="">
+                <img src="{!! asset('public\admin/assets/images/layouts/dark.png') !!}" class="img-fluid img-thumbnail"
+                     alt="">
             </div>
             <div class="custom-control custom-switch mb-3">
-                <input type="checkbox" class="custom-control-input theme-choice" id="dark-mode-switch" data-bsstyle="{!!asset(' admin/assets/css/bootstrap-dark.min.css') !!}" data-appstyle="{!! asset('public\admin/assets/css/app-dark.min.css') !!}">
+                <input type="checkbox" class="custom-control-input theme-choice" id="dark-mode-switch"
+                       data-bsstyle="{!!asset(' admin/assets/css/bootstrap-dark.min.css') !!}"
+                       data-appstyle="{!! asset('public\admin/assets/css/app-dark.min.css') !!}">
                 <label class="custom-control-label" for="dark-mode-switch">Dark Mode</label>
             </div>
 
-                <img src="assets/images/layouts/dark.png" class="img-fluid img-thumbnail" alt="">
-            </div>
-            <div class="custom-control custom-switch mb-3">
-                <input type="checkbox" class="custom-control-input theme-choice" id="dark-mode-switch" data-bsstyle="assets/css/bootstrap-dark.min.css" data-appstyle="assets/css/app-dark.min.css">
-                <label class="custom-control-label" for="dark-mode-switch">Dark Mode</label>
-            </div>
-
-            <div class="mb-2">
-                <img src="assets/images/layouts/rtl.png" class="img-fluid img-thumbnail" alt="">
-            </div>
-            <div class="custom-control custom-switch mb-5">
-                <input type="checkbox" class="custom-control-input theme-choice" id="rtl-mode-switch" data-appstyle="assets/css/app-rtl.min.css">
-                <label class="custom-control-label" for="rtl-mode-switch">RTL Mode</label>
-            </div>
-
+            <img src="assets/images/layouts/dark.png" class="img-fluid img-thumbnail" alt="">
         </div>
-    </div> <!-- end slimscroll-menu-->
+        <div class="custom-control custom-switch mb-3">
+            <input type="checkbox" class="custom-control-input theme-choice" id="dark-mode-switch"
+                   data-bsstyle="assets/css/bootstrap-dark.min.css" data-appstyle="assets/css/app-dark.min.css">
+            <label class="custom-control-label" for="dark-mode-switch">Dark Mode</label>
+        </div>
+
+        <div class="mb-2">
+            <img src="assets/images/layouts/rtl.png" class="img-fluid img-thumbnail" alt="">
+        </div>
+        <div class="custom-control custom-switch mb-5">
+            <input type="checkbox" class="custom-control-input theme-choice" id="rtl-mode-switch"
+                   data-appstyle="assets/css/app-rtl.min.css">
+            <label class="custom-control-label" for="rtl-mode-switch">RTL Mode</label>
+        </div>
+
+    </div>
+</div> <!-- end slimscroll-menu-->
 </div>
 <!-- /Right-bar -->
 

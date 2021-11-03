@@ -15,6 +15,7 @@ class Blog extends Model
         'blog_author',
         'blog_time',
         'blog_description',
+        'status',
     ];
     protected $primaryKey = 'blog_id';
     public function owner(){

@@ -17,6 +17,7 @@ class Slider extends Model
         'slider_description',
         'slider_link',
         'slider_title_button',
+        'status',
     ];
     protected $primaryKey = 'slider_id';
     public function owner(){

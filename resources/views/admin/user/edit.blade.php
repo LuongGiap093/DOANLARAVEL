@@ -12,7 +12,7 @@
           </div>
           <div class="form-group">
             <label for="pwd">Password:</label>
-            <input type="password" class="form-control" id="pwd" name="password">
+            <input type="password" class="form-control" id="pwd" name="password" value="{{$user->password}}">
           </div>
              <div class="form-group">
                  <label for="title">Công việc:</label>

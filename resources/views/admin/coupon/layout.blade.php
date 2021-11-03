@@ -1,58 +1,9 @@
-{{--<!DOCTYPE html>--}}
-{{--<html lang="en">--}}
-{{--<head>--}}
-{{--    <meta charset="utf-8">--}}
-{{--    <meta http-equiv="X-UA-Compatible" content="IE=edge">--}}
-{{--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">--}}
-{{--    <meta name="description" content="">--}}
-{{--    <meta name="author" content="">--}}
-{{--    <title>SB Admin 2 - Dashboard</title>--}}
-{{--    <link href="{!! asset('public\admin/vendor/fontawesome-free/css/all.min.css') !!}" rel="stylesheet" type="text/css">--}}
-{{--    <link--}}
-{{--        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"--}}
-{{--        rel="stylesheet">--}}
-{{--    <link href="{!! asset('public\admin/css/sb-admin-2.min.css') !!}" rel="stylesheet">--}}
-{{--    <script src="{!! asset('public\admin/js/jquery.min.js') !!}"></script>--}}
-{{--  <script src="{!! asset('public\admin/ckeditor/ckeditor.js') !!}"></script>--}}
-{{--</head>--}}
-{{--<body id="page-top">--}}
-{{--    <div id="wrapper">--}}
-{{--        @include('admin.theme.sidebar')--}}
-{{--        <div id="content-wrapper" class="d-flex flex-column">--}}
-{{--            <div id="content">--}}
-{{--                @include('admin.theme.nav')--}}
-{{--                @if(Session::has('message'))--}}
-{{--                <div class="alert alert-success">--}}
-{{--                  {{ Session::get('message') }}--}}
-{{--                </div>--}}
-{{--                @endif--}}
-{{--                <div class="btn-group" role="group" aria-label="Basic example">--}}
-{{--                    <a href="{{ url(Request::route()->getPrefix()) }}" class="btn btn-primary">Quản lý</a>--}}
-{{--                    <a href="{{route('slider.create')}}" class="btn btn-success">Thêm mới</a>--}}
-{{--                </div>--}}
-{{--        @yield('content')--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--	</div>--}}
-
-{{--    <script src="{!! asset('public\admin/vendor/jquery/jquery.min.js') !!}"></script>--}}
-{{--  <script src="{!! asset('public\admin/vendor/bootstrap/js/bootstrap.bundle.min.js') !!}"></script>--}}
-{{--  <script src="{!! asset('public\admin/vendor/jquery-easing/jquery.easing.min.js') !!}"></script>--}}
-{{--  <script src="{!! asset('public\admin/js/sb-admin-2.min.js') !!}"></script>--}}
-{{--  <script src="{!! asset('public\admin/vendor/chart.js/Chart.min.js') !!}"></script>--}}
-{{--  <script src="{!! asset('public\admin/js/demo/chart-area-demo.js') !!}"></script>--}}
-{{--  <script src="{!! asset('public\admin/js/demo/chart-pie-demo.js') !!}"></script>--}}
-{{--  <script>CKEDITOR.replace('contents')</script>--}}
-{{--  </body>--}}
-{{--</html>--}}
-
-
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>Data Table | Velonic - Responsive Bootstrap 4 Admin Dashboard</title>
+    <title>TLmobile | Admin Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Responsive bootstrap 4 admin template" name="description">
     <meta content="Coderthemes" name="author">
@@ -93,14 +44,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box">
-                            <h4 class="page-title">Data Table</h4>
-                            <div class="page-title-right">
-                                <ol class="breadcrumb p-0 m-0">
-                                    <li class="breadcrumb-item"><a href="#">Velonic</a></li>
-                                    <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                                    <li class="breadcrumb-item active">Data Table</li>
-                                </ol>
-                            </div>
+                            <h4 class="page-title">Quản Lý Đơn Hàng</h4>
                             <div class="clearfix"></div>
                         </div>
                     </div>
@@ -111,10 +55,9 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body table-responsive">
-                                <h4 class="m-t-0 header-title mb-4"><b>Default Example</b></h4>
+                                <h4 class="m-t-0 header-title mb-4"><b>Voucher Giảm Giá </b></h4>
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a href="{{ url(Request::route()->getPrefix()) }}" class="btn btn-primary">Quản
-                                        lý</a>
+                                    <a href="{{ url(Route::current()->uri()) }}" class="btn btn-primary">Quản lý</a>
                                     <a href="{{route('coupon.create')}}" class="btn btn-success">Thêm mới</a>
                                 </div>
                                 @yield('content')

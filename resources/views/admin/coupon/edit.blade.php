@@ -20,15 +20,10 @@
             <input type="text" class="form-control" name="coupon_qty"value="{{$coupon->coupon_qty}}">
         </div>
         <div class="form-group">
-            <label for="status">Trạng thái:</label>
-            <select name="status" class="form-control" id="status">
-                @if($coupon->status==1)
-                    <option value="1">true</option>
-                    <option value="0">flase</option>
-                @else
-                    <option value="0">flase</option>
-                    <option value="1">true</option>
-                @endif
+            <label for="exampleInputPassword1">Trạng thái</label>
+            <select name="status" class="form-control input-sm m-bot15">
+                <option value="1">Hiển Thị</option>
+                <option value="0">Ẩn</option>
             </select>
         </div>
 

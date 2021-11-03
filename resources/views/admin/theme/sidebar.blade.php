@@ -47,7 +47,7 @@
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
                         <li><a href="{{route('logo.index')}}">Logo</a></li>
-                        <li><a href="{{route('slider.index')}}">slider</a></li>
+                        <li><a href="{{route('slider.index')}}">Slider</a></li>
                     </ul>
                 </li>
 
