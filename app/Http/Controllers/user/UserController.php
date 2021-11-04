@@ -273,11 +273,10 @@ class UserController extends Controller
     {
         $products = DB::table('product')->where('id', $id)->first();
         if ($products != NULL) {
-            $oldCart = Session('Cart') ? Session('Cart') : NULL;
-            $newCart = new Cart($oldCart);
-            $newCart->AddCart($products, $id);
-
-            $request->session()->put('Cart', $newCart);
+            $oldCart = Session('Cart') ? Session('Cart') : NULL;//Nếu Session('Cart') != null thì giỏ hàng hiện tại sẽ bằng Session('Cart') nguwowci lại thì bằng null
+            $newCart = new Cart($oldCart);// tạo 1 cái giỏ hàng mới gọi đến __constant qua cart.php và truyền oldcart vào
+            $newCart->AddCart($products, $id);// gọi đến phương thức addcart của cart.php truyền $product và $id qua
+            $request->session()->put('Cart', $newCart);// $request cập nhật session
         }
     }
 
@@ -302,7 +301,7 @@ class UserController extends Controller
     //Xóa sản phẩm trong trang giỏ hàng
     public function deleteListItemCart(Request $request, $id)
     {
-        $city=City::orderby('matp','ASC')->get();
+
         $oldCart = Session('Cart') ? Session('Cart') : NULL;
         $newCart = new Cart($oldCart);
         $newCart->DeleteItemCart($id);
@@ -310,8 +309,8 @@ class UserController extends Controller
         if (Count($newCart->products) > 0) {
             $request->Session()->put('Cart', $newCart);
         } else {
-//            $request->Session()->forget('Cart');
-            $request->Session()->flush();
+            $request->Session()->forget('Cart');
+            //$request->Session()->flush();
         }
 
         //return view('user.page.update.view-cart-update',compact('city'));

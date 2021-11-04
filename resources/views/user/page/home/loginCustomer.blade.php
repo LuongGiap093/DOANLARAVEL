@@ -1,5 +1,13 @@
 @extends('user.theme.layout')
 @section('content')
+    <style>
+        .alert-success {
+            text-align: center;
+        }
+        . alert-danger {
+            text-align: center;
+        }
+    </style>
     <div class="breadcrumb">
         <div class="container">
             <div class="breadcrumb-inner">
@@ -10,19 +18,19 @@
             </div><!-- /.breadcrumb-inner -->
         </div><!-- /.container -->
     </div>
-    @if(Session::has('success'))
-        <div class="alert alert-success">
-            {{Session::get('success')}}<br>
 
-        </div
-    @endif
     <div class="body-content">
         <div class="container">
-            @if (session('message'))
-                <div class="alert alert-warning">
-                    <p>{{ session('message') }}</p>
+            @if (session('success'))
+                <div class="alert alert-success">
+                    <p>{{ session('success') }}</p>
                 </div>
             @endif
+                @if (session('error'))
+                    <div class="alert alert-danger">
+                        <p>{{ session('error') }}</p>
+                    </div>
+                @endif
             <div class="sign-in-page">
                 <div class="row">
                     <!-- Sign-in -->

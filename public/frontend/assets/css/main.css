@@ -2749,7 +2749,7 @@ age-container #owl-main .owl-next {
   left: 50%;
   position:absolute;
    top:0;
-    margin-left:-58.5px
+    margin-left:-39px;
 
 }
 .product .cart .action ul li {
@@ -2776,7 +2776,7 @@ age-container #owl-main .owl-next {
 .product .cart .action ul li.lnk.wishlist {
 	background:#0f6cb2;
 	margin:0px;
-	border-radius:0px
+	border-radius:0px 2px 2px 0px;
 
 
 }

@@ -44,12 +44,18 @@
             <div class="sign-in-page">
                 <div class="row forgot-password">
                     <div class="col-md-12 create-new-account">
-                        @if(Session::has('forgot'))
-                            <div class="alert alert-success">
-                                {{Session::get('forgot')}}<br>
+                        @if(Session::has('success'))
+                            <div class="alert alert-warning">
+                                {{Session::get('success')}}<br>
 
                             </div
                         @endif
+                            @if(Session::has('error'))
+                                <div class="alert alert-danger">
+                                    {{Session::get('error')}}<br>
+
+                                </div
+                            @endif
                         <div class="forgot-form">
                             <div class="forgot">
                                 <h3>Quên mật khẩu?</h3>

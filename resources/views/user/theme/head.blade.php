@@ -264,7 +264,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: #f3f3f3;
+        /*background-color: #f3f3f3;*/
     }
     .counter input {
         width: 45px;
@@ -1046,7 +1046,7 @@
     .clearfix-marquee {
         display: -webkit-inline-box;
         padding: 6px 0px;
-        line-height: 15px;
+        line-height: 16px;
         color: white;
         font-size: 15px;
         font-weight: 700;
