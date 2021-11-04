@@ -54,7 +54,7 @@
                                 <h3>Đổi Mật Khẩu?</h3>
                                 <p style="text-align: left">Thay đổi mật khẩu của bạn trong ba bước đơn giản. Điều này sẽ giúp bạn bảo mật mật khẩu của mình!</p>
                                 <ol class="list-unstyled">
-                                    <li><span class="text-primary text-medium">1. </span>Nhập địa chỉ email của bạn vào bên dưới.</li>
+                                    <li><span class="text-primary text-medium">1. </span>Nhập mật khẩu cũ của bạn vào ô bên dưới.</li>
                                     <li><span class="text-primary text-medium">2. </span>Nhập mật khẩu mới -> nhập lại mật khẩu.</li>
                                     <li><span class="text-primary text-medium">3. </span>Nhấn nút đổi mật khẩu.</li>
                                 </ol>
