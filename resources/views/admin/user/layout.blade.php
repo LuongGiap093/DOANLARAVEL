@@ -48,7 +48,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Data Table | Velonic - Responsive Bootstrap 4 Admin Dashboard</title>
+    <title>TLmobile | Admin Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Responsive bootstrap 4 admin template" name="description">
     <meta content="Coderthemes" name="author">
@@ -84,14 +84,14 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box">
-                            <h4 class="page-title">Data Table</h4>
-                            <div class="page-title-right">
-                                <ol class="breadcrumb p-0 m-0">
-                                    <li class="breadcrumb-item"><a href="#">Velonic</a></li>
-                                    <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                                    <li class="breadcrumb-item active">Data Table</li>
-                                </ol>
-                            </div>
+                            <h4 class="page-title">Tài khoản quản trị</h4>
+{{--                            <div class="page-title-right">--}}
+{{--                                <ol class="breadcrumb p-0 m-0">--}}
+{{--                                    <li class="breadcrumb-item"><a href="#">Velonic</a></li>--}}
+{{--                                    <li class="breadcrumb-item"><a href="#">Tables</a></li>--}}
+{{--                                    <li class="breadcrumb-item active">Data Table</li>--}}
+{{--                                </ol>--}}
+{{--                            </div>--}}
                             <div class="clearfix"></div>
                         </div>
                     </div>
@@ -102,7 +102,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body table-responsive">
-                                <h4 class="m-t-0 header-title mb-4"><b>Default Example</b></h4>
+                                <h2 class="m-t-0 header-title mb-4"><b>Tài Khoản Quản Trị </b></h2>
                                 <div class="btn-group" role="group" aria-label="Basic example">
                                     <a href="{{ url(Request::route()->getPrefix()) }}" class="btn btn-primary">Quản lý</a>
                                     <a href="{{route('user.getadd')}}" class="btn btn-success">Thêm mới</a>

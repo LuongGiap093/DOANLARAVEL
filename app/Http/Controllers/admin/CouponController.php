@@ -134,4 +134,14 @@ class CouponController extends Controller
             Session::flash('message', 'Failure!');
         return redirect()->route('coupon.index');
     }
+  public function changestatuscoupon($id) {
+    $coupon = Coupon::find($id);
+    $coupon->status = !$coupon->status;
+    if ($coupon->save()) {
+      return redirect()->back();
+    }
+    else {
+      return redirect(route('changestatuscoupon'));
+    }
+  }
 }

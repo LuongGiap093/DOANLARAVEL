@@ -24,10 +24,10 @@
             <input type="text" class="form-control" name="coupon_qty">
         </div>
         <div class="form-group">
-            <label for="status">Trạng thái:</label>
-            <select name="status" class="form-control" id="status">
-                <option value='1'>True</option>
-                <option value='0'>False</option>
+            <label for="exampleInputPassword1">Trạng thái</label>
+            <select name="status" class="form-control input-sm m-bot15">
+                <option value="1">Hiển Thị</option>
+                <option value="0">Ẩn</option>
             </select>
         </div>
         <button type="submit" name="btn_coupon" class="btn btn-primary">Thực Hiện</button>

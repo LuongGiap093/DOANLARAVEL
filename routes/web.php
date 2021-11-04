@@ -27,7 +27,13 @@ Route::group(['middleware' => 'CheckAdminLogin','prefix' => 'panel/user', 'names
 	Route::get('edit/{id}','UserController@getedit')->name('user.getedit');
 	Route::post('edit/{id}','UserController@postedit')->name('user.postedit');
 	Route::get('delete/{id}','UserController@delete')->name('user.delete');
+
+
   Route::get('changestatus/{id}','UserController@changestatus')->name('user.changestatus');
+  Route::get('changestatusblog/{id}','BlogController@changestatusblog')->name('blog.changestatus');
+  Route::get('changestatusfaq/{id}','FaqController@changestatusfaq')->name('faq.changestatus');
+  Route::get('changestatusslider/{id}','SliderController@changestatusslider')->name('slider.changestatus');
+  Route::get('changestatuscoupon/{id}','CouponController@changestatuscoupon')->name('coupon.changestatus');
 
   Route::get('search','DashboardController@search_order')->name('order.search');
 

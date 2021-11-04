@@ -51,6 +51,7 @@ class BlogController extends Controller
             'blog_author' => 'required',
             'blog_time' => 'required',
             'blog_description' => 'required',
+            'status' => 'required',
         ]);
         $data['image'] = Helper::imageUpload($request);
         if(Blog::create($data))
@@ -82,6 +83,7 @@ class BlogController extends Controller
           'blog_author' => 'required',
           'blog_time' => 'required',
           'blog_description' => 'required',
+          'status' => 'required',
         ]);
         $data['image'] = Helper::imageUpload($request);
         if($blog->update($data))
@@ -121,7 +123,14 @@ class BlogController extends Controller
 //            return redirect(route('changestatus'));
 //        }
 //    }
-
-
-
+  public function changestatusblog($id) {
+    $blog = Blog::find($id);
+    $blog->status = !$blog->status;
+    if ($blog->save()) {
+      return redirect()->back();
+    }
+    else {
+      return redirect(route('changestatusblog'));
+    }
+  }
 }
