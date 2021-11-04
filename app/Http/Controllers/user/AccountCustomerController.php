@@ -383,7 +383,6 @@ class AccountCustomerController extends Controller
     public function check_change_pass1(Request $request)
     {
         $email = $request->email;
-//        $old_pass = $request->old_password;
         $pass = $request->password;
         $comfirm_pass = $request->comfirm_password;
         $login = [
@@ -411,7 +410,6 @@ class AccountCustomerController extends Controller
         }else{
             return redirect()->back()->with('change','Mật khẩu cũ không chính xác!');
         }
-
     }
 
 }
