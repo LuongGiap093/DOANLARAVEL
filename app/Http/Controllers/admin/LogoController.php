@@ -26,8 +26,9 @@ class LogoController extends Controller
     public function index()
     {
         //
-        $logos = Logo::all();
-        return view($this->viewprefix.'index' ,compact('logos'));
+        $logo=Logo::first();
+        $count_logo=Logo::all()->count();
+        return view($this->viewprefix.'index' ,compact('logo','count_logo'));
     }
 
     /**
@@ -71,16 +72,7 @@ class LogoController extends Controller
      */
     public function show(Request $request,$id)
     {
-//        //
-//        $data = $request->all();
-//        if($data['checkBox'].checked==true){
-//            $status=1;
-//        }else{
-//            $status=0;
-//        }
-//        $logo=Logo::find($id);
-//        $logo->logo_status=$status;
-//        $logo->save();
+
     }
 
     public function hien_thi(Request $request)
@@ -114,17 +106,27 @@ class LogoController extends Controller
      */
     public function update(Request $request, Logo $logo)
     {
-        //
-        $data=$request->validate([
-            'logo_image' => 'required',
-            'logo_status' => 'required',
-        ]);
-        $data['logo_image'] = Helper::background_imageUpload($request);
-        if($logo->update($data))
-            Session::flash('message', ' Update successfully!');
-        else
-            Session::flash('message', 'Failure!');
-        return redirect()->route('logo.index');
+        if($request->logo_image===null){
+            $logo->logo_image = $request->image;
+            $logo->logo_status = $request->logo_status;
+            if ($logo->save()) {
+                return redirect()->route('logo.index')->with('message', 'Cập nhật thành công!');
+            } else {
+                return redirect()->route('logo.index')->with('message', 'Cập nhật thất bại!');
+            }
+        }else{
+            $data=$request->validate([
+                'logo_image' => '',
+                'logo_status' => '',
+            ]);
+            $data['logo_image'] = Helper::background_imageUpload($request);
+            if($logo->update($data))
+                Session::flash('message', ' Update successfully!');
+            else
+                Session::flash('message', 'Failure!');
+            return redirect()->route('logo.index');
+        }
+
     }
 
     /**

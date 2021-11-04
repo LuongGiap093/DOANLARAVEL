@@ -1,50 +1,80 @@
 @extends('admin.logo.layout')
 @section('content')
-    <div style="padding: 20px;border: 1px solid #eaeaea;">
-        <table id="datatable" class="table table-bordered dt-responsive nowrap"
-               style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-            <thead>
-            <th>Hình ảnh</th>
-            <th>Hiển thị</th>
-            <th>Khóa</th>
-            <th>Sửa</th>
-            <th>Xóa</th>
-            </thead>
-            <tbody>
-            @foreach($logos as $logo)
-                <tr>
-                    <td><img src="{{asset('public/images/'. $logo->logo_image)}}" style="height: 50px;width: 200px;"/>
-                    </td>
-                    <td style="width: 10%">
-                        <form method="POST">
-                            <input type="hidden" name="_token" value="{{csrf_token()}}" autocomplete="on">
-                            <label class="switch">
-                                @if($logo->logo_status !=0)
-                                    <input type="checkbox" checked id="myCheck" class="checkBox" value="{{$logo->logo_id}}" checked>
-                                @else
-                                    <input type="checkbox" id="myCheck" class="checkBox" value="{{$logo->logo_id}}">
-                                @endif
-                                <span class="slider round"></span>
-                            </label>
-                        </form>
-                    </td>
-                    <td style="width: 10%"><a href="" class="btn btn-warning"><i class="fa fa-unlock"></i></a></td>
-                    <td style="width: 10%">
-                        <a href="{{route('logo.edit', $logo->logo_id)}}" class="btn btn-primary"><i
-                                class="fa fa-edit"></i></a>
-                    </td>
-                    <td style="width: 10%">
-                        <form action="{{route('logo.destroy', $logo->logo_id)}}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                        </form>
-                    </td>
+    @if (session('message'))
+        <div class="alert alert-success">
+            <p>{{ session('message') }}</p>
+        </div>
+    @endif
 
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
-        {{----}}
-    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            @if($count_logo >0)
+                <form action="{{route('logo.update', $logo->logo_id)}}" method="POST" enctype="multipart/form-data">
+                @csrf
+                    @method('PUT')
+                <div class="image-crop-preview clearfix">
+                    <div class="img-container">
+                        <img id="blah" src="{{asset('public\images/'. $logo->logo_image)}}"
+                             alt="your image" style="width: 140px;height: 45px;"/>
+                    </div>
+                </div>
+                <div class="form-group"
+                     style="margin: 30px 0px">
+                    <input style="border: none;padding: 10px 0px" type="file" onchange="readURL(this);" class="form-control" name="logo_image"
+                           value="{{$logo->logo_image}}">
+                    <input type="text" class="form-control" name="image"
+                           value="{{$logo->logo_image}}" hidden>
+                    <p style="font-weight: 900;">Width: 140 px - Height: 45 px (.jpg|.gif|.png|.jpeg|.gif|.JPG|.PNG|.JPEG|.Png|.GIF)</p>
+                </div>
+                <div class="form-group" style="margin-bottom: 10px">
+                    <label for="status">Trạng thái:</label>
+                    <select name="logo_status" class="form-control" id="status">
+                        @if($logo->logo_status==1)
+                            <option value='1'>Hiển thị</option>
+                            <option value='0'>Ẩn đi</option>
+                        @else
+                            <option value='0'>Ẩn đi</option>
+                            <option value='1'>Hiển thị</option>
+                        @endif
+                    </select>
+                </div>
+                <div class="form-group" style="margin-bottom: 10px">
+                    <button type="submit" name="btn_logo" class="btn btn-primary">Thực Hiện</button>
+                    <button type="reset" class="btn btn-secondary waves-effect waves-light">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+            @else
+                <form action="{{route('logo.store')}}" method="POST" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <div class="image-crop-preview clearfix">
+                        <div class="img-container">
+                            <img id="blah" src="{{asset('public\admin\assets\images\logoll.png')}}"
+                                 alt="your image" style="width: 140px;height: 45px;"/>
+                        </div>
+                    </div>
+                    <div class="form-group"
+                         style="margin: 30px 0px">
+                        <input style="border: none;padding: 10px 0px" type="file" onchange="readURL(this);" class="form-control" name="logo_image"
+                               value=""/>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 10px">
+                        <label for="status">Trạng thái:</label>
+                        <select name="logo_status" class="form-control" id="status">
+                                <option value='1'>Hiển thị</option>
+                                <option value='0'>Ẩn đi</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 10px">
+                        <button type="submit" name="btn_logo" class="btn btn-primary">Thực Hiện</button>
+                        <button type="reset" class="btn btn-secondary waves-effect waves-light">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            @endif
+        </div>
+    </div><!--end row-->
 @stop
+

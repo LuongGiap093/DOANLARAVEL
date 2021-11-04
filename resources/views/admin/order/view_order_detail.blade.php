@@ -5,21 +5,21 @@
 {{--            <h4 class="text-right"><img src="assets\images\logo-dark.png" height="18" alt="moltran"></h4>--}}
         </div>
         <div class="float-right">
-            <h5>Hóa đơn: HDBH{{$ord_id}}<br>
-                <strong>2015-04-23654789</strong>
+            <h5>Mã hóa đơn: HDBH{{$ord_id}}
             </h5>
         </div>
     </div>
-    <hr>
+    <hr style="margin-top: 0px">
     <div class="row">
         <div class="col-md-12">
 
             <div class="float-left mt-6">
                 <address>
-                    <strong>{{$customer->customer_name}}.</strong><br>
-                        {{$customer->customer_address}}<br>
-                        {{$customer->customer_note}}<br>
-                    <abbr title="Phone">P:</abbr> {{$customer->customer_phone_number}}
+                    Tên khách hàng:<strong> {{$customer->customer_name}}.</strong><br>
+                       Địa chỉ: {{$customer->customer_address}}, {{$customer->shipping_wards}}
+                    , {{$customer->shipping_province}}, {{$customer->shipping_city}}<br>
+                        Note: {{$customer->customer_note}}<br>
+                    <abbr title="Phone">P:</abbr> {{$customer->customer_phone}}
                 </address>
             </div>
             <div class="float-right mt-6">
@@ -35,7 +35,6 @@
                             Hoàn thành
                         @endif
                     </span></p>
-                <p class="mt-2"><strong>Order ID: </strong> #123456</p>
             </div>
         </div>
     </div>
@@ -55,17 +54,17 @@
                     </thead>
                     <tbody style="text-align: center;">
                     <?php
-                        $i=0;
                         $total=0;
+                        $i=1;
                         ?>
-                    @foreach($order_detail as $Key => $value)
+                    @foreach($order_detail as $value)
                         <?php
                         $subtotal = $value->total_price;
                         $total+=$subtotal;
                         ?>
                     <tr>
-                        <td>{{$i++}}</td>
-                        <td>{{$value->name}}</td>
+                        <td>{!! $i++ !!}</td>
+                        <td style="text-align: left;">{{$value->name}}</td>
                         <td>{{$value->quantity}}</td>
                         <td>{{number_format($value->unit_price,0,',','.')}}</td>
                         <td>{{number_format($subtotal,0,',','.')}}</td>
@@ -80,7 +79,7 @@
         <div class="col-md-7 offset-md-12"></div>
         <div class="col-md-5 offset-md-12">
             <p class="text-right"><b>Tổng tiền: </b>{{number_format($total,0,',','.')}} VNĐ</p>
-            <p class="text-right">Phí vận chuyển: {{number_format($shipping->shipping_fee,0,',','.')}} VNĐ</p>
+            <p class="text-right">Phí vận chuyển: {{number_format($customer->shipping_fee,0,',','.')}} VNĐ</p>
             @if($order->coupon_id==null)
             @else
                 <p class="text-right">Phiếu giảm giá: -{{number_format($coupon->coupon_money,0,',','.')}} VNĐ</p>
