@@ -14,7 +14,7 @@
         <div class="container" >
             <div class="x-page inner-bottom-sm" style="background: #fff;margin-bottom: 30px;padding-bottom: 30px;">
                 <div class="row">
-                    <div class="col-md-12 x-text text-center">
+                    <div class="col-md-12 x-text text-center" style="margin: 50px 0px;">
                         <i class="icon fa fa-shopping-cart" style="font-size: 150px;"></i>
                         <p style="font-size: 15px;margin-bottom: 20px;">Không có sản phẩm nào được thêm vào giỏ hàng. </p>
 

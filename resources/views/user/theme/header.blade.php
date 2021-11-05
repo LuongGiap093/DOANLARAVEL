@@ -7,8 +7,6 @@
                 <div class="cnt-account">
                     <ul class="list-unstyled">
                         @if(Auth::guard('account_customer')->check())
-                            <li><a class="login-trigger" style="padding: 0px 5px" href="{{route('shopping.showComparison')}}"><i
-                                        class="icon fa fa-signal"></i>So sánh</a></li>
                             <li><a class="login-trigger" style="padding: 0px 5px" href="{{route('customer.profiles')}}"><i
                                         class="icon fa fa-user"></i>Tài khoản</a>
                             </li>
@@ -32,12 +30,9 @@
 {{--                            <li><a class="login-trigger" style="padding: 0px 5px" href="{{route('shopping.cart')}}"><i--}}
 {{--                                        class="icon fa fa-shopping-cart"></i>Giỏ--}}
 {{--                                    hàng</a></li>--}}
-                            <li><a class="login-trigger" style="padding: 0px 5px" href="javascript:" data-toggle="modal" data-target="#loginModal"><i
-                                        class="icon fa fa-signal"></i>So sánh</a></li>
+
                             <li><a class="login-trigger" style="padding: 0px 5px" href="{{route('shopping.login')}}"><i
-                                        class="icon fa fa-lock"></i>Đăng ký</a></li>
-                            <li><a class="login-trigger" style="padding: 0px 5px" href="{{route('shopping.login')}}"><i
-                                        class="icon fa fa-key"></i>Đăng nhập</a></li>
+                                        class="icon fa fa-lock"></i>Đăng ký - đăng nhập</a></li>
                             <li><a class="login-trigger" style="padding: 0px 5px" href="{{route('customer.forgot')}}"><i
                                         class="icon fa fa-key"></i>Quên mật khẩu</a></li>
                         @endif
@@ -186,14 +181,14 @@
                                                     <div class="row cart-detail" style="margin-bottom: 10px;">
                                                         <div class="col-xs-4">
                                                             <div class="image">
-                                                                <a href="detail.html"><img
+                                                                <a href="{{route('product.viewProduct', $item['productInfo']->id)}}"><img
                                                                         src="{{asset('public/images/'.$item['productInfo']->image)}}"
                                                                         alt=""></a>
                                                             </div>
                                                         </div>
                                                         <div class="col-xs-6" style="padding: 0px;">
                                                             <h3 class="name"><a
-                                                                    href="index.php?page-detail">{{$item['productInfo']->name}}</a>
+                                                                    href="{{route('product.viewProduct', $item['productInfo']->id)}}">{{$item['productInfo']->name}}</a>
                                                             </h3>
                                                             <div
                                                                 class="price">{{number_format(($item['productInfo']->price - $item['productInfo']->discount),'0',',','.')}}
@@ -215,7 +210,7 @@
                                                     <span class="text" style="font-size: 14px;font-weight: 700;">Tổng tiền:</span><span class='price'>{{number_format(Session::get('Cart')->totalPrice,'0',',','.')}} VNĐ</span>
                                                 </div>
                                             </div>
-                                            <a href="{{route('shopping.checkout-page')}}" class="btn btn-upper btn-primary btn-block m-t-20" style="padding: 10px 20px;margin-top: 10px;font-weight: 600">THỦ TỤC THANH TOÁN</a>
+                                            <a href="{{route('shopping.checkout-page')}}" class="btn btn-upper btn-primary btn-block m-t-20" style="background: #fdd922;padding: 10px 20px;margin-top: 10px;font-weight: 900">ĐẶT HÀNG NGAY</a>
                                             <!-- /.cart-total-->
                                     </li>
                                     @else

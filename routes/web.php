@@ -55,6 +55,7 @@ Route::resource('panel/delivery', admin\DeliveryController::class);
 Route::resource('panel/brand',admin\BrandController::class);
 Route::resource('panel/logo',admin\LogoController::class);
 Route::resource('panel/dashboard',admin\DashboardController::class);
+Route::resource('panel/gioi-thieu', admin\AboutController::class);
 
 
 
@@ -70,7 +71,7 @@ Route::group(['prefix' => 'panel', 'namespace' => 'admin'], function () {
     Route::post('delete-gallery', 'GalleryController@delete_gallery')->name('delete-gallery');
 
     Route::get('chi-tiet-hoa-don/{id}','OrderController@view_order_detail')->name('chi-tiet-hoa-don');
-    Route::get('cap-nhat-trang-thai/{id}','OrderController@order_status')->name('cap-nhat-trang-thai');
+    Route::get('huy-don-hang/{id}','OrderController@order_status')->name('admin.delete-order');
 });
 
 Route::get('panel/category/productlist/{id}','admin\CategoryController@productlist')->name('category.productlist');

@@ -39,12 +39,12 @@
                                                          alt="">
                                                 </a>
                                             </td>
-                                            <td class="cart-product-name-info">
+                                            <td class="cart-product-name-info" style="text-align: center">
                                                 <h4 class='cart-product-description'><a
                                                         href="{{route('product.viewProduct', $item['productInfo']->id)}}">{{$item['productInfo']->name}}</a>
                                                 </h4>
                                                 <div class="row">
-                                                    <div class="col-sm-5">
+                                                    <div class="col-sm-12">
                                                         <?php
                                                         $avg_star=round(DB::table('comment')->where('product_id',$item['productInfo']->id)->avg('star'));
                                                         ?>
@@ -55,11 +55,11 @@
                                                             <span class="fa fa-star"></span>
                                                         @endfor
                                                     </div>
-                                                    <div class="col-sm-7">
-                                                        <div class="reviews">
-                                                            ( có {{DB::table('comment')->where('product_id',$item['productInfo']->id)->count()}} nhận xét)
-                                                        </div>
-                                                    </div>
+{{--                                                    <div class="col-sm-5">--}}
+{{--                                                        <div class="reviews">--}}
+{{--                                                            ( có {{DB::table('comment')->where('product_id',$item['productInfo']->id)->count()}} nhận xét)--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
                                                 </div><!-- /.row -->
                                             </td>
                                             <td class="cart-product-quantity">
@@ -72,7 +72,7 @@
                                             <td class="cart-product-sub-total"><span class="cart-sub-total-price">{{number_format($item['productInfo']->price - $item['productInfo']->discount,'0',',','.')}} VNĐ</span>
                                             </td>
                                             <td class="cart-product-grand-total"><span
-                                                    class="cart-grand-total-price">{{number_format($item['price'])}} VNĐ</span>
+                                                    class="cart-grand-total-price">{{number_format($item['price'],'0',',','.')}} VNĐ</span>
                                             </td>
                                             <td class="romove-item"><a
                                                     onclick="DeleteListItemCart({{$item['productInfo']->id}})"
@@ -94,7 +94,7 @@
                                 <th style="padding: 20px;border-bottom: 2px solid white;">
                                     <div class="cart-grand-total">
                                         @if(Session::has('Cart') != null)
-                                            TỔNG CỘNG:<span class="inner-left-md" style="color: #3a89cf;">{{number_format(Session::get('Cart')->totalPrice,'0',',','.' )}} VNĐ</span>
+                                            TỔNG CỘNG:<span class="inner-left-md" style="color: #3a89cf;">{{number_format(Session::get('Cart')->totalPrice,'0',',','.')}} VNĐ</span>
                                         @else
                                             TỔNG CỘNG:<span class="inner-left-md" style="color: #3a89cf;">0 VNĐ</span>
                                         @endif

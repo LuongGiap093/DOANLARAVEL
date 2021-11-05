@@ -32,8 +32,9 @@ class OrderController extends Controller
     }
     public function index()
     {
-        $customers = Customer::all();
-        $orders = Order::where('order_status','<>',0)->get();
+        $customers = Shipping::all();
+        $orders = Order::where('order_status','<>',0)
+            ->join('shipping','order.shipping_id','=','shipping.shipping_id')->get();
         $order_details = Order_Details::all();
         return view($this->viewprefix.'index', compact('orders','order_details','customers'));
     }
@@ -45,27 +46,25 @@ class OrderController extends Controller
             ->join('product','order_details.id','=','product.id')
             ->where('order_id','=',$order_id)->get();
 
-        $order=DB::table('order')->where('order_id','=',$order_id)->first();
+        $order=Order::where('order_id','=',$order_id)->first();
 
-            $customer_id=$order->customer_id;
+            $customer_id=$order->shipping_id;
             $coupon_id=$order->coupon_id;
             $shipping_id=$order->shipping_id;
 
-        $customer=Customer::where('customer_id',$customer_id)->first();
+        $customer=Shipping::where('shipping_id',$customer_id)->first();
         $coupon=Coupon::where('coupon_id',$coupon_id)->first();
-        $shipping=Shipping::where('shipping_id',$shipping_id)->first();
 
         return view('admin.order.view_order_detail', compact('order_detail','ord_id'
-        ,'order','customer','coupon','shipping','shipping_id'));
+        ,'order','customer','coupon','shipping_id'));
     }
 
     public function order_status($order_id){
-        $orders= DB::table('order')
-            ->where('order_id', $order_id)
+            Order::where('order_id', $order_id)
             ->update([
                 'order_status'	=>	0,
             ]);
-        return redirect()->route('order.index',compact('orders'));
+        return redirect()->back();
     }
 
     /**
@@ -108,8 +107,7 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        return view('admin.order.edit',compact('order'));
-        //
+
     }
 
     /**
@@ -150,6 +148,5 @@ class OrderController extends Controller
     else
         Session::flash('message', 'Failure!');
     return redirect()->route('order.index');
-        //
     }
 }

@@ -18,11 +18,7 @@
                 <td>HDBH{{$order->order_id}} </td>
                 <td>{{date('d-m-Y',strtotime($order->created_at))}}</td>
                 <td>
-                    @foreach ($customers as $customer)
-                        @if($customer->customer_id==$order->customer_id)
-                            {{$customer->customer_name}}
-                        @endif
-                    @endforeach
+                    {{$order->customer_name}}
                 </td>
                 <td>{{$order->order_payment}} </td>
                 <td>{{number_format($order->order_total)}}đ</td>
@@ -39,7 +35,7 @@
                 </td>
                 <td><a href="{{route('chi-tiet-hoa-don', $order->order_id)}}" class="btn btn-outline-primary"><i
                             class="fa fa-eye"></i></a></td>
-                <td><a href="{{route('cap-nhat-trang-thai', $order->order_id)}}" class="btn btn-danger"><i
+                <td><a href="{{route('order.destroy', $order->order_id)}}" class="btn btn-danger"><i
                             class="fa fa-trash"></i></a></td>
         @endforeach
         </tbody>

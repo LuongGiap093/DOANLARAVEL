@@ -7,7 +7,7 @@ class Cart{
     public $coupons=null;
     public $couponPrice=0;
 
-    public function __construct($cart){
+    public function __construct($cart){//Hàm dựng->khi người dùng tạo giỏ hàng thì sẽ truyền vào giỏ hàng hiện tại
         if($cart){
             $this->products = $cart->products;
             $this->totalPrice = $cart->totalPrice;
@@ -17,11 +17,13 @@ class Cart{
         }
     }
 
+    // Thêm vào giỏ hàng
     public function AddCart($product, $id){
+        //tạo mới 1sp là 1 mảng
         $newProduct = ['quanty' => 0, 'price' => $product->price, 'productInfo' => $product];
-        if($this->products){
-            if(array_key_exists($id, $this->products)){
-                $newProduct = $this->products[$id];
+        if($this->products){//nếu sp tồn tại
+            if(array_key_exists($id, $this->products)){//Nếu sản phẩm có $id đã tồn tại
+                $newProduct = $this->products[$id]; // sp mới tạo sẽ bằng chính sp vừa truyền vào
             }
         }
         $newProduct['quanty']++;
