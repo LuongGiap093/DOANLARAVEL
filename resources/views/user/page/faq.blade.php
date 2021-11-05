@@ -16,17 +16,18 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h2 class="heading-title">Câu hỏi thường gặp</h2>
-                        <span class="title-tag">Cập nhật lần cuối on November 02, 2014</span>
                         <div class="panel-group checkout-steps" id="accordion">
                             <!-- checkout-step-01  -->
-                            @foreach($faqs as $faq)
+                            @foreach($faqs as $key => $faq)
+{{--                                    {{dd($key)}}--}}
+                            @if($faq->status == '1')
                                 <div class="panel panel-default checkout-step-01">
                                     <!-- panel-heading -->
                                     <div class="panel-heading">
                                         <h4 class="unicase-checkout-title">
                                             <a data-toggle="collapse" class="" data-parent="#accordion"
                                                href="#{{$faq->faq_id}}">
-                                                <span>{{ $faq->faq_serial }}</span> {!! $faq->faq_title !!}
+                                                <span>{{ $key + 1  }}</span> {!! $faq->faq_title !!}
                                             </a>
                                         </h4>
                                     </div>
@@ -39,7 +40,7 @@
                                         <!-- panel-body  -->
                                     </div><!-- row -->
                                 </div>
-
+                            @endif
                         @endforeach
                         <!-- checkout-step-01  -->
                             <!-- checkout-step-02  -->

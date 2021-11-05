@@ -52,10 +52,10 @@
         <th>Xóa</th>
         </thead>
         <tbody>
-        @foreach($faqs as $faq)
+        @foreach($faqs as $key => $faq)
             <tr>
-                <td width="5%" >{{$faq->faq_serial}} </td>
-                <td width="200px" style="white-space: normal" >{!! $faq->faq_title !!} </td>
+                <td width="5%" >{{ $key +1  }} </td>
+                <td width="400px" style="white-space: normal" >{!! $faq->faq_title !!} </td>
                 <td>
                     @if($faq->status==1)
                         <a href="{{route('faq.changestatus',$faq->faq_id)}}" class="btn btn-success"><i

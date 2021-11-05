@@ -3,10 +3,10 @@
 <form action="{{route('faq.update', $faq->faq_id)}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
-    <div class="form-group">
-        <label for="faq_serial">Số thứ tự </label>
-        <input type="text" class="form-control" name="faq_serial" value="{{$faq->faq_serial}}">
-    </div>
+{{--    <div class="form-group">--}}
+{{--        <label for="faq_serial">Số thứ tự </label>--}}
+{{--        <input type="text" class="form-control" name="faq_serial" value="{{$faq->faq_serial}}">--}}
+{{--    </div>--}}
     <div class="form-group">
         <label for="faq_title">Tiêu đề </label>
         <input type="text" class="form-control" name="faq_title" value="{{$faq->faq_title}}">

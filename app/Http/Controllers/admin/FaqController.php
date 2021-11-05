@@ -47,7 +47,7 @@ class FaqController extends Controller {
    */
   public function store(Request $request) {
     $data = $request->validate([
-      'faq_serial' => 'required',
+      'faq_serial' => '',
       'faq_title' => 'required',
       'faq_description' => 'required',
       'status' => 'required',
@@ -79,7 +79,7 @@ class FaqController extends Controller {
 
   public function update(Request $request, Faq $faq) {
     $data = $request->validate([
-      'faq_serial' => 'required',
+      'faq_serial' => '',
       'faq_title' => 'required',
       'faq_description' => 'required',
       'status' => 'required',

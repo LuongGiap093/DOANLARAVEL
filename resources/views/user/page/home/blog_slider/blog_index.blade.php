@@ -3,7 +3,9 @@
     <div class="blog-slider-container outer-top-xs">
         <div class="owl-carousel blog-slider custom-carousel">
             @foreach($blogs as $blog)
-            <div class="item">
+{{--                {{dd($blog->status)}}--}}
+                @if($blog->status=='1')
+                 <div class="item">
                 <div class="blog-post">
                     <div class="blog-post-image">
                         <div class="image" ><a href="{{route('shopping.blog-detail',$firsts->blog_id)}}"><img
@@ -19,6 +21,7 @@
                 </div>
                 <!-- /.blog-post -->
             </div>
+                @endif
             <!-- /.item -->
             @endforeach
 

@@ -49,6 +49,7 @@
             <div class="tab-content" style="padding-left:0">
                 <div class="tab-pane active m-t-20" id="popular">
                     @foreach($pho_bien as $blog)
+                        @if($blog->status == '1')
                     <div class="blog-post inner-bottom-30 ">
                         <img class="img-responsive" src="{{asset('public/images/'.$blog->image)}}"
                              alt="">
@@ -57,12 +58,14 @@
                         <span class="date-time">{{date('d-m-Y', strtotime($blog->blog_time))}}</span>
 {{--                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>--}}
                     </div>
+                        @endif
                     @endforeach
                 </div>
 
                 <div class="tab-pane m-t-20" id="recent">
                     @foreach($moi_nhat as $blog)
-                    <div class="blog-post inner-bottom-30">
+                        @if($blog->status == '1')
+                            <div class="blog-post inner-bottom-30">
                         <img class="img-responsive" src="{{asset('public/images/'.$blog->image)}}"
                              alt="">
                         <h4><a href="{{route('shopping.blog-detail',$blog->blog_id)}}">{{$blog->blog_title}}</a></h4>
@@ -71,6 +74,7 @@
 {{--                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>--}}
 
                     </div>
+                        @endif
                     @endforeach
                 </div>
             </div>
