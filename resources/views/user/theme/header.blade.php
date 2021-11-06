@@ -7,9 +7,9 @@
                 <div class="cnt-account">
                     <ul class="list-unstyled">
                         @if(Auth::guard('account_customer')->check())
-                            <li><a class="login-trigger" style="padding: 0px 5px" href="{{route('customer.profiles')}}"><i
-                                        class="icon fa fa-user"></i>Tài khoản</a>
-                            </li>
+{{--                            <li><a class="login-trigger" style="padding: 0px 5px" href="{{route('customer.profiles')}}"><i--}}
+{{--                                        class="icon fa fa-user"></i>Tài khoản</a>--}}
+{{--                            </li>--}}
 {{--                            <li><a class="login-trigger" style="padding: 0px 5px"--}}
 {{--                                   href="{{route('shopping.showWishlist')}}"><i class="icon fa fa-heart"></i>Yêu--}}
 {{--                                    thích</a></li>--}}
@@ -51,10 +51,10 @@
     <div class="main-header">
         <div class="container">
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-3 logo-holder">
+                <div class="col-xs-12 col-sm-12 col-md-3 logo-holder" style="margin-top: 8px">
                     <!-- ============================================================= LOGO ============================================================= -->
                     <div class="logo">
-                        <a href="{{route('shopping.home')}}"> <img src="{{asset('public/images/'. $logos->logo_image)}}"
+                        <a href="{{route('shopping.home')}}"> <img style="max-height: 46px; max-width: 200px" src="{{asset('public/images/'. $logos->logo_image)}}"
                                                                    alt="logo"></a>
                     </div>
                     <!-- ============================================================= LOGO : END ============================================================= -->

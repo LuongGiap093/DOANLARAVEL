@@ -6,7 +6,7 @@
                 <ul class="list-inline list-unstyled">
                     <li><a href="{{route('shopping.home')}}">Trang chủ</a></li>
                     <li><a href="{{route('shopping.cart')}}">Giỏ hàng</a></li>
-                    <li class='active'>Thanh toán</li>
+                    <li class='active'>Đặt hàng</li>
                 </ul>
             </div><!-- /.breadcrumb-inner -->
         </div><!-- /.container -->
@@ -26,7 +26,7 @@
                                         <h4 class="unicase-checkout-title">
                                             <a data-toggle="collapse" class="" data-parent="#accordion"
                                                href="#collapseOne">
-                                                <span>1</span>Thông tin thanh toán
+                                                <span>1</span>Thông tin giao hàng
                                             </a>
                                         </h4>
                                     </div>
@@ -331,7 +331,7 @@
                                                 <div class="order_button" style="margin-bottom: 10px;">
                                                     <button type="button" name="checkout-btn" class="check_checkout"
                                                             style="width: 100%;display: block;border: none;transition: all 0.2s;font-weight: 600;background: #157ed2;padding: 10px 0px;color: #ffffff;letter-spacing: 0.01em;cursor: pointer;text-transform: uppercase;letter-spacing: 1px;font-size: 14px;">
-                                                        Xác nhận thanh toán
+                                                        Xác nhận đặt hàng
                                                     </button>
                                                 </div>
                                             </div>

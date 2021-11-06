@@ -120,7 +120,7 @@
 {{--<!-- /.sidebar-widget -->--}}
 
 {{--<!-- ============================================== COLOR============================================== -->--}}
-<div class="sidebar-widget wow fadeInUp">
+<div class="sidebar-widget wow fadeInUp" style="margin-bottom: 30px;">
     <h3 class="section-title">Lọc sản phẩm theo giá</h3>
     <div class="sidebar-widget-body">
         <ul class="list">
