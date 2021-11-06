@@ -6,7 +6,6 @@
             <label for="idcat">Danh Mục:</label>
             <select name="idcat" class="form-control">
                 <option value=''>---Vui lòng chọn danh mục sản phẩm---</option>
-                >
                 @foreach ($categorys as $key =>$cat)
                     <option value="{{$cat->category_id}}">{{($key+1).'. '.$cat->category_name}}</option>
                 @endforeach
@@ -56,12 +55,19 @@
             <textarea class="form-control" name="describe" id="describe"></textarea>
         </div>
         <div class="form-group">
-            <label for="status">Trạng thái:</label>
+            <label for="status">Tình trạng sản phẩm:</label>
             <select name="status" class="form-control" id="product_status">
                 <option value='1'>Sản phẩm mới</option>
                 <option value='0'>Hết hàng</option>
                 <option value='2'>Sản phẩm nổi bậc</option>
                 <option value='3'>Sản phẩm Big sale</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Trạng thái: </label>
+            <select name="status_product" class="form-control input-sm m-bot15">
+                <option value="1">Hiển Thị</option>
+                <option value="0">Ẩn</option>
             </select>
         </div>
 

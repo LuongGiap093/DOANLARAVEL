@@ -61,7 +61,6 @@
         <thead>
         <th>Hình ảnh</th>
         <th>Tiêu đề </th>
-        <th>Thời gian tạo</th>
         <th>Trạng Thái</th>
         <th>Xem chi tiết</th>
         <th>Sửa</th>

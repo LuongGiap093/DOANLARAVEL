@@ -59,6 +59,7 @@ class ProductController extends Controller
             'status' => 'required',
             'idcat' => 'required',
             'brand_id' => 'required',
+            'status_product' => 'required',
 
 
         ]);
@@ -69,6 +70,7 @@ class ProductController extends Controller
         $product->content = $request->product_content;
         $product->describe = $request->describe;
         $product->status = $request->status;
+        $product->status_product = $request->status_product;
         $product->idcat = $request->idcat;
         $product->brand_id = $request->brand_id;
         if ($product->save()) {
@@ -167,6 +169,7 @@ class ProductController extends Controller
         $product->content = $request->product_content;
         $product->describe = $request->describe;
         $product->status = $request->status;
+        $product->status_product = $request->status_product;
         $product->idcat = $request->idcat;
         // if(Product::create($request->all()))
         if ($product->save()) {
@@ -204,5 +207,16 @@ class ProductController extends Controller
         $images1 = Product:: all();
         return view('view_uploads')->with('images', $images1);
     }
+
+  public function changestatusproduct($id) {
+    $product = Product::find($id);
+    $product->status_product = !$product->status_product;
+    if ($product->save()) {
+      return redirect()->back();
+    }
+    else {
+      return redirect(route('changestatusproduct'));
+    }
+  }
 
 }

@@ -110,7 +110,15 @@
                 </td>
                 <td><a href="{{route('product.edit', $product->id)}}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                 </td>
-                <td><a href="" class="btn btn-warning"><i class="fa fa-lock"></i></a></td>
+                <td>
+                    @if($product->status_product == 1)
+                        <a href="{{route('product.changestatus',$product->id)}}" class="btn btn-success"><i
+                                    class="fa fa-unlock"></i></a>
+                    @else
+                        <a href="{{route('product.changestatus',$product->id)}}" class="btn btn-warning"> <i
+                                    class="fa fa-lock"></i></a>
+                    @endif
+                </td>
                 <td>
                     <form action="{{route('product.destroy', $product->id)}}" method="POST">
                         @csrf

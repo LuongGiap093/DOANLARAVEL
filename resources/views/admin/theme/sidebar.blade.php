@@ -63,6 +63,17 @@
                         <li><a href="{{route('delivery.index')}}">Phí vận chuyển</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="javascript: void(0);" class="waves-effect">
+                        <i class="ion-ios-person"></i>
+                        <span> Quản lý Nhân Sự </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="{{route('empcategory.index')}}">Danh mục nhân sự</a></li>
+                        <li><a href="{{route('employee.index')}}">Nhân sự</a></li>
+                    </ul>
+                </li>
 
                 <li>
                     <a href="javascript: void(0);" class="waves-effect">
@@ -96,6 +107,8 @@
                         {{--                        <span class="menu-arrow"></span>--}}
                     </a>
                 </li>
+
+
             </ul>
 
         </div>

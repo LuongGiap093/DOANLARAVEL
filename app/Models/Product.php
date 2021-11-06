@@ -22,7 +22,8 @@ class Product extends Model
         'brand_id',
         'keywords',
         'view_number',
-        'collection_id'
+        'collection_id',
+        'status_product',
     ];
     protected $primaryKey = 'id';
     public function category()

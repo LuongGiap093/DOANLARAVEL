@@ -53,6 +53,7 @@
                             <li><a href="{{route('shopping.faq')}}" title="faq">Hướng dẫn mua hàng</a></li>
                             <li class="last"><a href="{{route('shopping.faq')}}" title="Where is my order?">Câu hỏi thường gặp</a></li>
                         </ul>
+                        <ul><img src="{!! asset('public\images\logo-dang-ky.png') !!}"></ul>
                     </div>
                     <!-- /.module-body -->
                 </div>
@@ -69,6 +70,8 @@
                             <li><a href="{{route('shopping.faq')}}" title="Popular Searches">Chính sách bảo hành</a></li>
                             <li><a href="{{route('shopping.faq')}}" title="About us">chính sách đổi trả</a></li>
                         </ul>
+                        <ul><img src="{!! asset('public\images\logo-bocongthuong.png') !!}"></ul>
+
                     </div>
                     <!-- /.module-body -->
                 </div>

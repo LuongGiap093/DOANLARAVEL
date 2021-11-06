@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Cart;
 use App\Models\Category;
 use App\Models\Comment;
+use App\Models\Empcategory;
+use App\Models\Employee;
 use App\Models\Logo;
 use App\Models\Product;
 use App\Models\Brand;
@@ -339,6 +341,9 @@ class ProductController extends Controller
         $hot_deals=Product::where('status','=',3)->orderby('discount','desc')->get();
         $member=DB::table('employee')->get();
 
+        $employee = Employee::all();
+        $empcategory = Empcategory::all();
+
         $brand_id=$products->brand_id;
         $brand=Brand::find($brand_id);
         $category_id=$products->idcat;
@@ -351,7 +356,7 @@ class ProductController extends Controller
         $star=round($avgstar);//Làm tròn số
         $avgs=round($avgstar,1);//Làm tròn số
         $datenow=Carbon::now()->day;//Lấy ngày hiện tại
-        return view('user.page.product_detail_page.view-product', compact('product_tag','comment','member','wishlists','avgs','star','countcmt','datenow','comments','cate','brand','hot_deals','logos','categorys','gallerys','products','related_product'));
+        return view('user.page.product_detail_page.view-product', compact('product_tag','comment','member','wishlists','avgs','star','countcmt','datenow','comments','cate','brand','hot_deals','logos','categorys','gallerys','products','related_product','employee','empcategory'));
 
     }
 }

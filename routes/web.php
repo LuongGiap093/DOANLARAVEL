@@ -33,7 +33,9 @@ Route::group(['middleware' => 'CheckAdminLogin','prefix' => 'panel/user', 'names
   Route::get('changestatusblog/{id}','BlogController@changestatusblog')->name('blog.changestatus');
   Route::get('changestatusfaq/{id}','FaqController@changestatusfaq')->name('faq.changestatus');
   Route::get('changestatusslider/{id}','SliderController@changestatusslider')->name('slider.changestatus');
+  Route::get('changestatusemployee/{id}','EmployeeController@changestatusemployee')->name('employee.changestatus');
   Route::get('changestatuscoupon/{id}','CouponController@changestatuscoupon')->name('coupon.changestatus');
+  Route::get('changestatusproduct/{id}','ProductController@changestatusproduct')->name('product.changestatus');
 
   Route::get('search','DashboardController@search_order')->name('order.search');
 
@@ -55,6 +57,8 @@ Route::resource('panel/delivery', admin\DeliveryController::class);
 Route::resource('panel/brand',admin\BrandController::class);
 Route::resource('panel/logo',admin\LogoController::class);
 Route::resource('panel/dashboard',admin\DashboardController::class);
+Route::resource('panel/empcategory',admin\EmpcategoryController::class);
+Route::resource('panel/employee',admin\EmployeeController::class);
 Route::resource('panel/gioi-thieu', admin\AboutController::class);
 
 

@@ -8,12 +8,14 @@ use App\Models\Blog;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\City;
+use App\Models\Empcategory;
 use App\Models\Logo;
 use App\Models\Product;
     use App\Models\Comment;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 use App\Models\Wishlist;
+use App\Models\Employee;
 use Auth;
 use DB;
 use Illuminate\Support\Facades\Session;
@@ -59,6 +61,9 @@ class HomeController extends Controller
         $blogs = Blog::all();
         $firsts=$blogs->first();
 
+        $employee = Employee::all();
+        $empcategory = Empcategory::all();
+
         if (Auth::guard('account_customer')->check()) {
             $wishlists = Wishlist::where('customer_id', Auth::guard('account_customer')->id())->get();
         }else{
@@ -66,7 +71,7 @@ class HomeController extends Controller
         }
         $comments=Comment::all();
         return view('user.page.home.index', compact('comments','wishlists','logos','categorys','cate','hot_deals', 'dong_ho',
-            'product_tag','old_phone','sliders','products','featured_phone','phu_kien','featured_laptop', 'blogs', 'firsts'));
+            'product_tag','old_phone','sliders','products','featured_phone','phu_kien','featured_laptop', 'blogs', 'firsts','employee','empcategory'));
     }
 
 }
