@@ -12,7 +12,7 @@
     </div><!-- /.breadcrumb -->
 
     <div class="body-content outer-top-xs">
-        <div class="container">
+        <div class="container" style="margin-bottom: 30px">
             <div class="row " style="padding: 0px 20px;">
                 <div class="shopping-cart">
                     <div class="shopping-cart-table ">
