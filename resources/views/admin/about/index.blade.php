@@ -11,12 +11,13 @@
         </div>
     @endif
     @if($count>0)
-    <form action="{{route('gioi-thieu.update', $about->about_id)}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('about.update', $about->about_id)}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="form-group">
             <label for="image">Hình ảnh:</label>
-            <input type="text" class="form-control" name="image" value="{{$about->about_image}}"/>
+            <input type="file" class="form-control" name="image" value=""/>
+            <input type="text" class="form-control" name="about_image" value="{{$about->about_image}}" hidden/>
             @error('image')
             <p class="text-danger">{{$message}}</p>
             @enderror

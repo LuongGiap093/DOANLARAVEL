@@ -286,7 +286,7 @@
                                                 <!-- /.col -->
                                                     <div class="col-xs-12 col-sm-12 col-md-4 col-menu custom-banner"><a
                                                             href="#"><img alt=""
-                                                                          src="{!! asset('public\frontend\assets\images\banners\banner-side.png') !!}"></a>
+                                                                          src="{!! asset('public\frontend\assets\images\banners\img.png') !!}"></a>
                                                     </div>
                                                 </div>
                                                 <!-- /.row -->

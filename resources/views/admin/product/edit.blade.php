@@ -1,6 +1,16 @@
 @extends('admin.product.layout')
 @section('content')
-    <form action="{{route('product.update', $product->id)}}" method="POST">
+    @if (session('message'))
+        <div class="alert alert-success">
+            <p>{{ session('message') }}</p>
+        </div>
+    @endif
+    @if (session('error'))
+        <div class="alert alert-danger">
+            <p>{{ session('error') }}</p>
+        </div>
+    @endif
+    <form action="{{route('product.update', $product->id)}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="form-group">
@@ -40,7 +50,14 @@
         </div>
         <div class="form-group">
             <label for="image">Hình ảnh sản phẩm:</label>
-            <input type="text" class="form-control" name="image" value="{{$product->image}}">
+            <input type="file" class="form-control" name="image" value="{{$product->image}}"/>
+            @error('image')
+            <p class="text-danger">{{$message}}</p>
+            @enderror
+        </div>
+        <div class="form-group">
+
+            <input type="text" class="form-control" name="product_image" value="{{$product->image}}" hidden>
         </div>
         <div class="form-group">
             <label for="price">Đơn giá:</label>
@@ -58,6 +75,10 @@
         <div class="form-group">
             <label for="describe">Mô tả:</label>
             <textarea class="form-control" name="describe" id="describe">{{$product->describe}}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="keywords">Keywords:</label>
+            <input type="text" class="form-control" name="keywords" value="{{$product->keywords}}">
         </div>
         <div class="form-group">
             <label for="status">Tình trạng sản phẩm:</label>
@@ -85,13 +106,13 @@
                 @endif
             </select>
         </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Trạng thái: </label>
-            <select name="status_product" class="form-control input-sm m-bot15">
-                <option value="1">Hiển Thị</option>
-                <option value="0">Ẩn</option>
-            </select>
-        </div>
+{{--        <div class="form-group">--}}
+{{--            <label for="exampleInputPassword1">Trạng thái: </label>--}}
+{{--            <select name="status_product" class="form-control input-sm m-bot15">--}}
+{{--                <option value="1">Hiển Thị</option>--}}
+{{--                <option value="0">Ẩn</option>--}}
+{{--            </select>--}}
+{{--        </div>--}}
         <button type="submit" name="btn_editor's" class="btn btn-primary">Thực Hiện</button>
     </form>
     </div>

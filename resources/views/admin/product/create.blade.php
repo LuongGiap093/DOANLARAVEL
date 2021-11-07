@@ -1,5 +1,15 @@
 @extends('admin.product.layout')
 @section('content')
+    @if (session('message'))
+        <div class="alert alert-success">
+            <p>{{ session('message') }}</p>
+        </div>
+    @endif
+    @if (session('error'))
+        <div class="alert alert-danger">
+            <p>{{ session('error') }}</p>
+        </div>
+    @endif
     <form action="{{route('product.store')}}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="form-group">
@@ -34,10 +44,7 @@
             <input type="file" class="form-control" id="file" name="files[]" accept="image/*" multiple>
             <span id="error_gallery"></span>
         </div>
-        <!--<div class="form-group" >
-            <label>Choose Images</label>
-            <input type="file" class="form-control" name="images[]" id="images" multiple >
-        </div>-->
+
         <div class="form-group">
             <label for="price">Đơn giá:</label>
             <input type="text" class="form-control" name="price">
@@ -55,19 +62,16 @@
             <textarea class="form-control" name="describe" id="describe"></textarea>
         </div>
         <div class="form-group">
+            <label for="keywords">Keywords:</label>
+            <input type="text" class="form-control" name="keywords">
+        </div>
+        <div class="form-group">
             <label for="status">Tình trạng sản phẩm:</label>
-            <select name="status" class="form-control" id="product_status">
+            <select name="status" class="form-control" id="status">
                 <option value='1'>Sản phẩm mới</option>
                 <option value='0'>Hết hàng</option>
                 <option value='2'>Sản phẩm nổi bậc</option>
                 <option value='3'>Sản phẩm Big sale</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Trạng thái: </label>
-            <select name="status_product" class="form-control input-sm m-bot15">
-                <option value="1">Hiển Thị</option>
-                <option value="0">Ẩn</option>
             </select>
         </div>
 

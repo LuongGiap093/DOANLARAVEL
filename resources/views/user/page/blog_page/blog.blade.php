@@ -17,7 +17,6 @@
                 <div class="blog-page">
                     <div class="col-md-9">
                         @foreach($blogs as $blog)
-                            @if($blog->status == '1')
                             <div class="blog-post outer-top-bd  wow fadeInUp" style="margin-top: 0px;margin-bottom: 30px;">
                                 <a href="{{route('shopping.blog-detail',$blog->blog_id)}}"><img class="img-responsive"
                                                                                           src="{!!asset('public/images/'. $blog->image) !!}"
@@ -32,7 +31,6 @@
                                 <a href="{{route('shopping.blog-detail',$blog->blog_id)}}"
                                    class="btn btn-upper btn-primary read-more">Đọc thêm...</a>
                             </div>
-                            @endif
                         @endforeach
 
                         <div class="clearfix blog-pagination filters-container  wow fadeInUp"

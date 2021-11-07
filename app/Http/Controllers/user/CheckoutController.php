@@ -175,19 +175,19 @@ class CheckoutController extends Controller
 
         }
 
-//        Session::forget('coupon');
-//        Session::forget('Cart');
-//        Session::forget('fee');
-//        Session::forget('fee_matp');
-//        Session::forget('fee_maqh');
-//        Session::forget('fee_xaid');
-//        Session::forget('name');
-//        Session::forget('phone');
-//        Session::forget('email');
-//        Session::forget('note');
-//        Session::forget('address');
-        $request->session()->flush();
-//        Session::put('thanh-cong',true);
+        Session::forget('coupon');
+        Session::forget('Cart');
+        Session::forget('fee');
+        Session::forget('fee_matp');
+        Session::forget('fee_maqh');
+        Session::forget('fee_xaid');
+        Session::forget('name');
+        Session::forget('phone');
+        Session::forget('email');
+        Session::forget('note');
+        Session::forget('address');
+//        $request->session()->flush();
+
     }
     public function thanh_cong()
     {

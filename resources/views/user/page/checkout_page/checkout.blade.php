@@ -26,7 +26,7 @@
                                         <h4 class="unicase-checkout-title">
                                             <a data-toggle="collapse" class="" data-parent="#accordion"
                                                href="#collapseOne">
-                                                <span>1</span>Thông tin giao hàng
+                                                <span>*</span>Thông tin giao hàng
                                             </a>
                                         </h4>
                                     </div>
@@ -317,15 +317,14 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12" style="padding: 0px;">
-                                        <div class="col-md-6 col-sm-6"></div>
                                         <div class="col-md-6 col-sm-6">
                                             <div class="payment_method" style="text-align: -webkit-right;">
-                                                <div class="panel-default" style="margin-bottom: 10px;">
-                                                    <input id="payment" name="check_method" type="radio"
-                                                           data-target="createp_account" class="check_payment">
-                                                    <label for="payment" data-toggle="collapse" data-target="#method"
-                                                           aria-controls="method">Thanh toán khi giao hàng</label>
-                                                </div>
+{{--                                                <div class="panel-default" style="margin-bottom: 10px;">--}}
+{{--                                                    <input id="payment" name="check_method" type="radio"--}}
+{{--                                                           data-target="createp_account" class="check_payment">--}}
+{{--                                                    <label for="payment" data-toggle="collapse" data-target="#method"--}}
+{{--                                                           aria-controls="method">Thanh toán khi giao hàng</label>--}}
+{{--                                                </div>--}}
                                                 <input type="hidden" name="fee" class="fee"
                                                        value="{{Session::get('fee')}}">
                                                 <div class="order_button" style="margin-bottom: 10px;">
@@ -338,6 +337,11 @@
                                         </div>
                                     </div>
                                 </div>
+                                @if (session('message'))
+                                    <div class="alert alert-success">
+                                        <p>{{ session('message') }}</p>
+                                    </div>
+                                @endif
                             </form>
                         </div>
                     </div>

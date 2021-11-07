@@ -19,7 +19,7 @@ class CreateCouponTable extends Migration
             $table->string('coupon_name');
             $table->string('coupon_code');
             $table->string('coupon_money');
-            $table->string('coupon_qty');
+            $table->integer('coupon_qty');
             $table->integer('status')->default(0);
             $table->timestamps();
         });

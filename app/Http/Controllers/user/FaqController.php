@@ -26,7 +26,7 @@ class FaqController extends Controller {
           ->join('product','category.category_id','=','product.idcat')
           ->join('brands','product.brand_id','=','brands.brand_id')
           ->get();
-      $faqs=Faq::all();
+      $faqs=Faq::where('status','=',1)->get();
       if (Auth::guard('account_customer')->check()) {
           $wishlists = Wishlist::where('customer_id', Auth::guard('account_customer')->id())->get();
       }else{

@@ -33,7 +33,7 @@ class CouponController extends Controller
         }else{
             $wishlists=null;
         }
-        $coupons = Coupon::all();
+        $coupons = Coupon::where('status',1)->where('coupon_pty','>',0)->get();
         return view('user.page.coupon', compact('wishlists','coupons','categorys','cate','logos'));
     }
 //Thêm mã giảm giá
@@ -41,52 +41,55 @@ class CouponController extends Controller
     {
         $data = $request->all();
         $coupon = Coupon::where('coupon_code', $data['coupon_code'])->first();
-        if ($coupon == true) {
-            $count_coupon = $coupon->count();
-            if ($count_coupon > 0) {
-                $coupon_session = Session::get('coupon');
-                if ($coupon_session == true) {
+        if($coupon->status!=0 && $coupon->coupon_qty>0) {
+            if ($coupon == true) {
+                $count_coupon = $coupon->count();
+                if ($count_coupon > 0) {
+                    $coupon_session = Session::get('coupon');
+                    if ($coupon_session == true) {
 
-                    $is_avaiable = 0;
-                    if ($is_avaiable == 0) {
-                        $cou[] = array(
-                            'coupon_code' => $coupon->coupon_code,
-                            'coupon_qty' => $coupon->coupon_qty,
-                            'coupon_money' => $coupon->coupon_money,
-                        );
-                        Session::put('coupon', $cou);
+                        $is_avaiable = 0;
+                        if ($is_avaiable == 0) {
+                            $cou[] = array(
+                                'coupon_code' => $coupon->coupon_code,
+                                'coupon_qty' => $coupon->coupon_qty,
+                                'coupon_money' => $coupon->coupon_money,
+                            );
+                            Session::put('coupon', $cou);
+                        } else {
+                            $cou[] = array(
+                                'coupon_code' => $coupon->coupon_code,
+                                'coupon_qty' => $coupon->coupon_qty,
+                                'coupon_money' => $coupon->coupon_money,
+                            );
+                            Session::put('coupon', $cou);
+                        }
                     } else {
-                        $cou[] = array(
-                            'coupon_code' => $coupon->coupon_code,
-                            'coupon_qty' => $coupon->coupon_qty,
-                            'coupon_money' => $coupon->coupon_money,
-                        );
-                        Session::put('coupon', $cou);
-                    }
-                }else{
 
-                    $is_avaiable = 0;
-                    if ($is_avaiable == 0) {
-                        $cou[] = array(
-                            'coupon_code' => $coupon->coupon_code,
-                            'coupon_qty' => $coupon->coupon_qty,
-                            'coupon_money' => $coupon->coupon_money,
-                        );
-                        Session::put('coupon', $cou);
-                    } else {
-                        $cou[] = array(
-                            'coupon_code' => $coupon->coupon_code,
-                            'coupon_qty' => $coupon->coupon_qty,
-                            'coupon_money' => $coupon->coupon_money,
-                        );
-                        Session::put('coupon', $cou);
+                        $is_avaiable = 0;
+                        if ($is_avaiable == 0) {
+                            $cou[] = array(
+                                'coupon_code' => $coupon->coupon_code,
+                                'coupon_qty' => $coupon->coupon_qty,
+                                'coupon_money' => $coupon->coupon_money,
+                            );
+                            Session::put('coupon', $cou);
+                        } else {
+                            $cou[] = array(
+                                'coupon_code' => $coupon->coupon_code,
+                                'coupon_qty' => $coupon->coupon_qty,
+                                'coupon_money' => $coupon->coupon_money,
+                            );
+                            Session::put('coupon', $cou);
+                        }
                     }
+                    Session::save();
                 }
-                Session::save();
-//                return redirect()->back()->with('message', 'Thêm mã giảm giá thành công');
+            } else {
+                return redirect()->back()->with('message', 'Mã giảm giá không đúng');
             }
-        } else {
-            return redirect()->back()->with('message', 'Mã giảm giá không đúng');
+        }else{
+            return redirect()->back()->with('message', 'Mã giảm giá đã hết hạng!');
         }
     }
 //Xóa mã giảm giá

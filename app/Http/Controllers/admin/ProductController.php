@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Classes\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Category;
@@ -9,6 +10,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
+use PHPMailer\PHPMailer\Exception;
 use Session;
 
 class ProductController extends Controller
@@ -33,7 +35,7 @@ class ProductController extends Controller
     public function index()
     {
         $categorys = Category::all();
-        $products = Product::where('status','<>','0')->get();
+        $products = Product::where('status','<>','0')->orderby('id','desc')->get();
 
         return view($this->viewprefix.'index', compact('products', 'categorys'));
 
@@ -53,30 +55,38 @@ class ProductController extends Controller
             'name' => 'required',
             'image' => 'required',
             'price' => 'required',
-            'discount' => 'required',
-            'product_content' => 'required',
-            'describe' => 'required',
             'status' => 'required',
             'idcat' => 'required',
             'brand_id' => 'required',
-            'status_product' => 'required',
-
-
         ]);
+
         $product->name = $request->name;
         $product->image = $this->imageUpload($request);
         $product->price = $request->price;
-        $product->discount = $request->discount;
+
+        if($request->discount>=$request->price){
+            return redirect()->back()->with('error', 'Giảm giá phải nhỏ hơn giá bán');
+        }elseif($request->discount==null){
+            $product->discount = 0;
+        }else{
+            $product->discount = $request->discount;
+        }
         $product->content = $request->product_content;
         $product->describe = $request->describe;
         $product->status = $request->status;
-        $product->status_product = $request->status_product;
         $product->idcat = $request->idcat;
         $product->brand_id = $request->brand_id;
+        if($request->keywords===null){
+            $product->keywords = $request->name;
+        }else{
+            $product->keywords = $request->keywords;
+        }
+        $product->view_number=0;
         if ($product->save()) {
             Session::flash('message', 'Thêm sản phẩm thành công!');
         } else {
             Session::flash('message', 'Thêm thất bại!');
+            return redirect()->route('product.index');
         }
 
         $pro_id=$product->id;
@@ -160,24 +170,69 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $product->name = $request->name;
-        if ($request->hasFile('image')) {
-            $product->image = $this->imageUpload($request);
+        if($request->image===null){
+            $product->image = $request->product_image;
+            $product->name = $request->name;
+            $product->price = $request->price;
+            if($request->discount>=$request->price){
+                return redirect()->back()->with('error', 'Giảm giá phải nhỏ hơn giá bán');
+            }elseif($request->discount==null){
+                $product->discount = 0;
+            }else{
+                $product->discount = $request->discount;
+            }
+            $product->content = $request->product_content;
+
+            $product->describe = $request->describe;
+            $product->status = $request->status;
+            $product->status = $request->status;
+            $product->idcat = $request->idcat;
+            $product->brand_id = $request->brand_id;
+            if($request->keywords===null){
+                $product->keywords = $request->name;
+            }else{
+                $product->keywords = $request->keywords;
+            }
+            if ($product->save()) {
+                return redirect()->route('product.index')->with('message', 'Sửa thành công!');
+            } else {
+                return redirect()->back()->with('error', 'Sửa thất bại!');
+            }
+
+        }else{
+            $data=$request->validate([
+                'name' => 'required',
+                'image' => 'required',
+                'price' => 'required',
+                'discount' => 'required',
+                'product_content' => 'required',
+                'describe' => 'required',
+                'status' => 'required',
+                'idcat' => 'required',
+                'brand_id' => 'required',
+                'keywords' => 'required',
+            ]);
+
+            $data['image'] = $this->imageUpload($request);
+            if($request->discount>=$request->price){
+                return redirect()->back()->with('error', 'Giảm giá phải nhỏ hơn giá bán');
+            }elseif($request->discount==null){
+                $data['discount'] = 0;
+            }else{
+                $data['discount'] = $request->discount;
+            }
+            if($request->keywords===null){
+                $data['keywords'] = $request->name;
+            }else{
+                $data['keywords'] = $request->keywords;
+            }
+            if ($product->update($data)) {
+                return redirect()->route('product.index')->with('message', 'Sửa thành công!');
+            } else {
+                return redirect()->back()->with('error', 'Sửa thất bại!');
+            }
         }
-        $product->price = $request->price;
-        $product->discount = $request->discount;
-        $product->content = $request->product_content;
-        $product->describe = $request->describe;
-        $product->status = $request->status;
-        $product->status_product = $request->status_product;
-        $product->idcat = $request->idcat;
-        // if(Product::create($request->all()))
-        if ($product->save()) {
-            Session::flash('message', 'Sửa thành công!');
-        } else {
-            Session::flash('message', 'Sửa thất bại!');
-        }
-        return redirect()->route('product.index');
+
     }
 
     /**
@@ -189,17 +244,26 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-//        $product_id=$product->id;
-////        $gallery=Gallery::where('product_id',$product_id)->get();
-//        Gallery::where('product_id',$product_id)->delete();
-//        $product->delete();
-//        if($gallery->delete()){
-//            $product->delete();
-//            ession::flash('message', 'successfully!');
-//        }else {
-//            Session::flash('message', 'Failure!');
-//        }
-//        return redirect()->route('product.index');
+            $product_id=$product->id;
+            $gallery=Gallery::where('product_id',$product_id)->get();
+            if($gallery){
+                $gallery->delete();
+                if($product){
+                    if($product->delete()){
+                        return redirect()->route('product.index')->with('message','xóa sản phẩm thành công!');
+                    }else{
+                        return redirect()->route('product.index')->with('error','Không thể xóa sản phẩm này!');
+                    }
+                }else{
+                    return redirect()->route('product.index')->with('error','Không thể xóa sản phẩm này!');
+                }
+            }
+            if($product->delete()){
+                return redirect()->route('product.index')->with('message','xóa sản phẩm thành công!');
+            }else{
+                return redirect()->route('product.index')->with('error','Không thể xóa sản phẩm này!');
+            }
+
     }
 
     public function viewUploads()
@@ -210,7 +274,7 @@ class ProductController extends Controller
 
   public function changestatusproduct($id) {
     $product = Product::find($id);
-    $product->status_product = !$product->status_product;
+    $product->status = !$product->status;
     if ($product->save()) {
       return redirect()->back();
     }

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Models\About;
 use Session;
+use DB;
 
 class AboutController extends Controller
 {
@@ -18,7 +19,7 @@ class AboutController extends Controller
     {
         $this->middleware('CheckAdminLogin');
         $this->viewprefix='admin.about.';
-        $this->viewnamespace='panel/gioi-thieu';
+        $this->viewnamespace='panel/about';
         $this->index = 'about.index';
 
     }
@@ -126,18 +127,52 @@ class AboutController extends Controller
      */
     public function update(Request $request, About $about)
     {
-
-        if ($request->hasFile('image')) {
-            $about->about_image = $this->imageUpload($request);
-        }
-        $about->about_title = $request->about_title;
-        $about->about_content = $request->about_content;
-        $about->about_status = $request->about_status;
-        if ($about->save()) {
+        if($request->image===null){
+            $about->about_image = $request->about_image;
+            $about->about_title = $request->about_title;
+            $about->about_content = $request->about_content;
+            $about->about_status = $request->about_status;
+            if($about->save()){
+                return redirect()->back()->with('status', 'Cập nhật thành công!');
+            }else {
+                return redirect()->back()->with('error', 'Cập nhật thất bại!');
+            }
+        }else{
+            $data=$request->validate([
+            'image' => 'required',
+            'about_title' => 'required',
+            'about_content' => 'required',
+            'about_status' => 'required',
+        ]);
+        $data['about_image'] = Helper::imageUpload($request);
+        if ($about->update($data)) {
             return redirect()->back()->with('status','sửa thành công!');
         } else {
             return redirect()->back()->with('error','Sửa thất bại!');
         }
+        }
+
+
+//        if ($about->update(['about_image'=>$request->image,
+//            'about_title'=>$request->about_title,
+//            'about_content'=>$request->about_content,
+//            'about_status'=>$request->about_status])) {
+//            return redirect()->back()->with('status', 'Cập nhật thành công!');
+//        } else {
+//            return redirect()->back()->with('error', 'Cập nhật thất bại!');
+//        }
+//        $data=$request->validate([
+//            'image' => 'required',
+//            'about_title' => 'required',
+//            'about_content' => 'required',
+//            'about_status' => 'required',
+//        ]);
+////        $data['about_image'] = Helper::imageUpload($request);
+//        if ($about->update($data)) {
+//            return redirect()->back()->with('status','sửa thành công!');
+//        } else {
+//            return redirect()->back()->with('error','Sửa thất bại!');
+//        }
     }
 
     /**

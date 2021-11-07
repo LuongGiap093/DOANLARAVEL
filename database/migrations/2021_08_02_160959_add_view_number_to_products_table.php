@@ -14,7 +14,7 @@ class AddViewNumberToProductsTable extends Migration
     public function up()
     {
         Schema::table('product', function (Blueprint $table) {
-            $table->string('keywords')->nullable();
+            $table->longText('keywords')->nullable();
             $table->integer('view_number')->default(0);
         });
     }

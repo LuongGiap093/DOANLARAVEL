@@ -38,9 +38,9 @@ class BlogController extends Controller
             $wishlists=null;
         }
         if(isset($_GET['search_key'])) {
-            $blogs = Blog::where('blog_title','like', '%' . $request->search_key . '%')->orderby('blog_id','desc')->paginate(3)->appends(request()->query());
+            $blogs = Blog::where('status','<>',0)->where('blog_title','like', '%' . $request->search_key . '%')->orderby('blog_id','desc')->paginate(3)->appends(request()->query());
         }else{
-            $blogs = Blog::orderby('blog_id','desc')->paginate(3)->appends(request()->query());
+            $blogs = Blog::where('status','<>',0)->orderby('blog_id','desc')->paginate(3)->appends(request()->query());
         }
         return view('user.page.blog_page.blog', compact('moi_nhat','pho_bien','wishlists','logos','cate','categorys','product_tag','blogs'));
     }
@@ -60,13 +60,16 @@ class BlogController extends Controller
         }else{
             $wishlists=null;
         }
+        $views=$blog_detail->view;
+        $blog_detail->update(['view' => $views+1]);
+
         if(isset($_GET['search_key'])) {
-            $blogs = Blog::where('blog_title','like', '%' . $request->search_key . '%')->orderby('blog_id','desc')->paginate(3)->appends(request()->query());
+            $blogs = Blog::where('status','<>',0)->where('blog_title','like', '%' . $request->search_key . '%')->orderby('blog_id','desc')->paginate(3)->appends(request()->query());
         }else{
-            $blogs = Blog::orderby('blog_id','desc')->paginate(3)->appends(request()->query());
+            $blogs = Blog::where('status','<>',0)->orderby('blog_id','desc')->paginate(3)->appends(request()->query());
         }
-        $pho_bien=DB::table('blog')->orderby('view','desc')->limit(2)->get();
-        $moi_nhat = Blog::orderby('blog_id','desc')->limit(2)->get();
+        $pho_bien=Blog::where('status','<>',0)->orderby('view','desc')->limit(2)->get();
+        $moi_nhat = Blog::where('status','<>',0)->orderby('blog_id','desc')->limit(2)->get();
         return view('user.page.blog_page.blog_details', compact('blogs','moi_nhat','pho_bien','wishlists','blog_detail','cate','categorys','logos','product_tag'));
     }
 

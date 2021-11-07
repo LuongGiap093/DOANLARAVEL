@@ -1,5 +1,15 @@
 @extends('admin.product.layout')
 @section('content')
+    @if (session('message'))
+        <div class="alert alert-success">
+            <p>{{ session('message') }}</p>
+        </div>
+    @endif
+    @if (session('error'))
+        <div class="alert alert-danger">
+            <p>{{ session('error') }}</p>
+        </div>
+    @endif
 
     @foreach($products as $product)
         <div class="modal fade" id="exampleModal{{$product->id}}" tabindex="-1" role="dialog"
@@ -84,9 +94,9 @@
         <th>Giảm giá</th>
         <th>Trạng thái</th>
         <th>Xem chi tiết</th>
-        <th>Edit</th>
-        <th>Lock</th>
-        <th>Delete</th>
+        <th>sửa</th>
+        <th>Xóa</th>
+
         </thead>
         <tbody>
         @foreach($products ?? '' as $product)
@@ -111,22 +121,22 @@
                 <td><a href="{{route('product.edit', $product->id)}}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                 </td>
                 <td>
-                    @if($product->status_product == 1)
-                        <a href="{{route('product.changestatus',$product->id)}}" class="btn btn-success"><i
-                                    class="fa fa-unlock"></i></a>
+                    @if($product->status <> 0)
+                        <a href="{{route('product.changestatus',$product->id)}}" class="btn btn-danger"><i
+                                class="fa fa-trash"></i></a>
                     @else
-                        <a href="{{route('product.changestatus',$product->id)}}" class="btn btn-warning"> <i
-                                    class="fa fa-lock"></i></a>
+                        <a href="{{route('product.changestatus',$product->id)}}" class="btn btn-danger"> <i
+                                class="fa fa-trash"></i></a>
                     @endif
                 </td>
-                <td>
-                    <form action="{{route('product.destroy', $product->id)}}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+{{--                <td>--}}
+{{--                    <form action="{{route('product.destroy', $product->id)}}" method="POST">--}}
+{{--                        @csrf--}}
+{{--                        @method('DELETE')--}}
+{{--                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>--}}
 
-                    </form>
-                </td>
+{{--                    </form>--}}
+{{--                </td>--}}
             </tr>
         @endforeach
         </tbody>

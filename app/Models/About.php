@@ -16,4 +16,7 @@ class About extends Model
         'about_status',
     ];
     protected $primaryKey = 'about_id';
+    public function owner(){
+        return $this->belongsTo('User');
+    }
 }

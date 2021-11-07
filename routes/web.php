@@ -36,6 +36,9 @@ Route::group(['middleware' => 'CheckAdminLogin','prefix' => 'panel/user', 'names
   Route::get('changestatusemployee/{id}','EmployeeController@changestatusemployee')->name('employee.changestatus');
   Route::get('changestatuscoupon/{id}','CouponController@changestatuscoupon')->name('coupon.changestatus');
   Route::get('changestatusproduct/{id}','ProductController@changestatusproduct')->name('product.changestatus');
+    Route::get('changestatuscustomerlock/{id}','AccountcustomerController@changestatuscustomerlock')->name('customer.changestatuslock');
+    Route::get('changestatuscustomerunlock/{id}','AccountcustomerController@changestatuscustomerunlock')->name('customer.changestatusunlock');
+
 
   Route::get('search','DashboardController@search_order')->name('order.search');
 
@@ -45,7 +48,7 @@ Route::group(['middleware' => 'CheckAdminLogin','prefix' => 'panel/user', 'names
 
 Route::resource('panel/product', admin\ProductController::class);
 Route::resource('panel/category', admin\CategoryController::class);
-Route::resource('panel/customer', admin\CustomerController::class);
+Route::resource('panel/customer', admin\AccountcustomerController::class);
 Route::resource('panel/order', admin\OrderController::class);
 Route::resource('panel/slider', admin\SliderController::class);
 Route::resource('panel/blog', admin\BlogController::class);
@@ -59,7 +62,7 @@ Route::resource('panel/logo',admin\LogoController::class);
 Route::resource('panel/dashboard',admin\DashboardController::class);
 Route::resource('panel/empcategory',admin\EmpcategoryController::class);
 Route::resource('panel/employee',admin\EmployeeController::class);
-Route::resource('panel/gioi-thieu', admin\AboutController::class);
+Route::resource('panel/about', admin\AboutController::class);
 
 
 
