@@ -7,6 +7,7 @@ use Analytics;
 use App\Http\Controllers\Controller;
 use App\Models\AccountCustomer;
 use App\Models\Customer;
+use App\Models\Shipping;
 use App\Models\Order;
 use App\Models\Order_Details;
 use DB;
@@ -47,6 +48,7 @@ class DashboardController extends Controller {
       ->get();
     //         dump($users);
     $abc = [];
+      $customers = Shipping::all();
     $account = AccountCustomer::all();
     $count = count($account);
     $order = Order::all();
@@ -65,10 +67,17 @@ class DashboardController extends Controller {
     $total_order_money = array_sum($aa);
     //          $total_order_money = count($a);
     return view($this->viewprefix . 'layout',
-      compact('count', 'count_order', 'total_order_money', 'total_quantity','visitor','date_time_add','pageview','topBrowers','topViewPage'));
+      compact('count','customers', 'count_order', 'total_order_money', 'total_quantity','visitor','date_time_add','pageview','topBrowers','topViewPage'));
   }
 
   public function search_order(Request $request) {
+      $analyticsData = Analytics::fetchTotalVisitorsAndPageViews(Period::days(28));
+      $visitor = $analyticsData->pluck("visitors");
+      $date_time_add = $analyticsData->pluck("date");
+      $pageview = $analyticsData->pluck("pageViews");
+      $topBrowers = Analytics::fetchTopBrowsers(Period::days(28));
+
+      $topViewPage = Analytics::fetchMostVisitedPages(Period::days(28));
     $account = AccountCustomer::all();
     $count = count($account);
     $order = Order::all();
@@ -89,7 +98,8 @@ class DashboardController extends Controller {
     $st_end=$request->end_date;
     $date_end=date('d/m/Y',  strtotime($st_end));
 
-    $customers = Customer::all();
+    $customers = Shipping::all();
+
     if ( isset ($request->start_date) && isset($request->end_date)) {
       $orders = Order::select("order.*")
         ->whereBetween('created_at', [
@@ -109,7 +119,7 @@ class DashboardController extends Controller {
     //    dump($orders);
     return view($this->viewprefix . 'layout',
       compact('orders', 'customers', 'count', 'count_order',
-        'total_order_money', 'total_quantity','date_start','date_end'));
+        'total_order_money', 'total_quantity','date_start','date_end','visitor','date_time_add','pageview','topBrowers','topViewPage'));
   }
 
   /**

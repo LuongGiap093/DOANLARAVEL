@@ -294,9 +294,9 @@
                                                         {{--            {{dump($order)}}--}}
 
                                                         <tr>
-                                                            <td>{{$order->order_id}}</td>
+                                                            <td>HĐBH{{$order->order_id}}</td>
                                                             <td>@foreach ($customers as $customer)
-                                                                    @if($customer->customer_id==$order->customer_id)
+                                                                    @if($customer->shipping_id==$order->shipping_id)
                                                                         {{$customer->customer_name}}
                                                                     @endif
                                                                 @endforeach</td>

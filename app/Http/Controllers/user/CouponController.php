@@ -33,7 +33,7 @@ class CouponController extends Controller
         }else{
             $wishlists=null;
         }
-        $coupons = Coupon::where('status',1)->where('coupon_pty','>',0)->get();
+        $coupons = Coupon::where('status',1)->where('coupon_qty','>',0)->get();
         return view('user.page.coupon', compact('wishlists','coupons','categorys','cate','logos'));
     }
 //Thêm mã giảm giá
