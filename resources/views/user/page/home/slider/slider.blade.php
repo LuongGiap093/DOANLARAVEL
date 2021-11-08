@@ -1,6 +1,7 @@
 <div id="hero">
     <div id="owl-main" class="owl-carousel owl-inner-nav owl-ui-sm">
         @foreach($sliders as $slider)
+            @if($slider->status == '1')
             @if($slider->slider_title_button)
                 <div class="item" style="background-image: url({!!asset('public/images/'. $slider->image) !!});">
                     <div class="container-fluid">
@@ -35,6 +36,7 @@
                     </div>
                     <!-- /.container-fluid -->
                 </div>
+            @endif
         @endif
     @endforeach
     <!-- /.item -->

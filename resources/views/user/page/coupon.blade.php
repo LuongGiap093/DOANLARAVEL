@@ -25,6 +25,7 @@
                                 </thead>
                                 <tbody>
                                 @foreach($coupons as $key => $coupon)
+                                    @if($coupon->status=='1')
                                     <tr style="border-top: 1px solid #ddd;">
                                         <td class="col-md-2"><img
                                                 src="{!! asset('public\frontend\assets\images\products\voucher.jpg')!!}"
@@ -44,6 +45,7 @@
                                             <a href="javascript:" onclick="myFunction({{$key+1}})" class="btn-upper btn btn-primary">Sao chép mã</a>
                                         </td>
                                     </tr>
+                                    @endif
                                 @endforeach
                                 </tbody>
                             </table>
