@@ -18,7 +18,7 @@ class CreateAboutsTable extends Migration
             $table->Increments('about_id')->unsigned();
             $table->string('about_image');
             $table->string('about_title');
-            $table->string('about_content');
+            $table->longText('about_content');
             $table->integer('about_status')->default(0);
             $table->timestamps();
         });

@@ -15,6 +15,7 @@ class Blog extends Model
         'blog_author',
         'blog_time',
         'blog_description',
+        'view',
         'status',
     ];
     protected $primaryKey = 'blog_id';

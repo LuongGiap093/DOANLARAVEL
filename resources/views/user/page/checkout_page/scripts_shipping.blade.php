@@ -52,13 +52,13 @@
                             text: "Tính phí thành công!",
                             icon: "success",
                         });
-                        // location.reload();
+                        location.reload();
                     }
                 });
             }
-            window.setTimeout(function (){
-                location.reload();
-            } ,2000);
+            // window.setTimeout(function (){
+            //     location.reload();
+            // } ,2000);
         });
     });
 </script>

@@ -34,6 +34,7 @@
                         <span class="menu-arrow"></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="{{route('about.index')}}">Trang giới thiệu</a></li>
                         <li><a href="{{route('blog.index')}}">Tin tức</a></li>
                         <li><a href="{{route('faq.index')}}">Câu hỏi thường gặp</a></li>
                     </ul>
@@ -82,7 +83,7 @@
                         <span class="menu-arrow"></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href="{{route('order.index')}}">Thành viên</a></li>
+                        <li><a href="{{route('customer.index')}}">Thành viên</a></li>
                     </ul>
                 </li>
 

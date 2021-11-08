@@ -209,11 +209,11 @@
                                                                         </a>
                                                                     @endif
                                                             </li>
-                                                            <li class="lnk"><a data-toggle="tooltip" class="add-to-cart"
-                                                                               href="{{url('so-sanh-san-pham/them/'.$product->id)}}" title="So sánh"> <i
-                                                                        class="fa fa-signal" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
+{{--                                                            <li class="lnk"><a data-toggle="tooltip" class="add-to-cart"--}}
+{{--                                                                               href="{{url('so-sanh-san-pham/them/'.$product->id)}}" title="So sánh"> <i--}}
+{{--                                                                        class="fa fa-signal" aria-hidden="true"></i>--}}
+{{--                                                                </a>--}}
+{{--                                                            </li>--}}
                                                             @else
                                                                 <li class="lnk wishlist">
                                                                         <a href="javascript:" data-toggle="modal" data-target="#loginModal"
@@ -221,11 +221,11 @@
                                                                             <i class="icon fa fa-heart"></i>
                                                                         </a>
                                                                 </li>
-                                                                <li class="lnk"><a class="add-to-cart"
-                                                                                   href="javascript:" data-toggle="modal" data-target="#loginModal" title="So sánh"> <i
-                                                                            class="fa fa-signal" aria-hidden="true"></i>
-                                                                    </a>
-                                                                </li>
+{{--                                                                <li class="lnk"><a class="add-to-cart"--}}
+{{--                                                                                   href="javascript:" data-toggle="modal" data-target="#loginModal" title="So sánh"> <i--}}
+{{--                                                                            class="fa fa-signal" aria-hidden="true"></i>--}}
+{{--                                                                    </a>--}}
+{{--                                                                </li>--}}
                                                             @endif
                                                         </ul>
                                                     </div>

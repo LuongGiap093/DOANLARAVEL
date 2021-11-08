@@ -12,7 +12,7 @@
         </div><!-- /.container -->
     </div><!-- /.breadcrumb -->
     <div class="body-content outer-top-xs">
-        <div class='container'>
+        <div class='container' style="margin-bottom: 30px">
             @if(Session::has('wishlist'))
                 <div class="alert alert-success">
                     {{Session::get('wishlist')}}
@@ -32,7 +32,7 @@
                         </div>
                         @include('user.page.home.hot_deals.hotdeals')
 
-                        @include('user.page.home.newsletter.newsletter')
+{{--                        @include('user.page.home.newsletter.newsletter')--}}
 
                         @include('user.page.comment.testimonials')
                     </div>
@@ -141,26 +141,26 @@
                                                                     class="icon fa fa-heart" style="color: rgb(255, 66, 79);font-size: 32px;"></i>
                                                             </a>
                                                         @endif
-                                                        @if(is_null(DB::table('comparisons')->where('customer_id', Auth::guard('account_customer')->id())->where('product_id','=',$products->id)->first()))
-                                                            <a href="{{url('so-sanh-san-pham/them/'.$products->id)}}" class="prod-compare" data-toggle="tooltip"
-                                                               data-placement="top" title="So sánh" style="font-size: 25px;"><i
-                                                                    class="fa fa-bar-chart" style="color: #333;font-size: 32px;"></i>
-                                                            </a>
-                                                            @else
-                                                                <a href="{{url('so-sanh-san-pham/them/'.$products->id)}}" class="prod-compare" data-toggle="tooltip"
-                                                                   data-placement="top" title="So sánh" style="font-size: 25px;"><i
-                                                                        class="fa fa-bar-chart" style="color: #157ed2;font-size: 32px;"></i>
-                                                                </a>
-                                                            @endif
+{{--                                                        @if(is_null(DB::table('comparisons')->where('customer_id', Auth::guard('account_customer')->id())->where('product_id','=',$products->id)->first()))--}}
+{{--                                                            <a href="{{url('so-sanh-san-pham/them/'.$products->id)}}" class="prod-compare" data-toggle="tooltip"--}}
+{{--                                                               data-placement="top" title="So sánh" style="font-size: 25px;"><i--}}
+{{--                                                                    class="fa fa-bar-chart" style="color: #333;font-size: 32px;"></i>--}}
+{{--                                                            </a>--}}
+{{--                                                            @else--}}
+{{--                                                                <a href="{{url('so-sanh-san-pham/them/'.$products->id)}}" class="prod-compare" data-toggle="tooltip"--}}
+{{--                                                                   data-placement="top" title="So sánh" style="font-size: 25px;"><i--}}
+{{--                                                                        class="fa fa-bar-chart" style="color: #157ed2;font-size: 32px;"></i>--}}
+{{--                                                                </a>--}}
+{{--                                                            @endif--}}
                                                     @else
                                                         <a href="javascript:" data-toggle="modal" data-target="#loginModal" class="prod-favorites"
                                                            data-placement="top" title="Yêu thích" style="font-size: 25px; margin: 0px 12px;"><i
                                                                 class="icon fa fa-heart" style="color: #333;font-size: 32px;"></i>
                                                         </a>
-                                                        <a href="javascript:" data-toggle="modal" data-target="#loginModal" class="prod-compare" data-toggle="tooltip"
-                                                           data-placement="top" title="So sánh" style="font-size: 25px;"><i
-                                                                class="fa fa-bar-chart" style="color: #333;font-size: 32px;"></i>
-                                                        </a>
+{{--                                                        <a href="javascript:" data-toggle="modal" data-target="#loginModal" class="prod-compare" data-toggle="tooltip"--}}
+{{--                                                           data-placement="top" title="So sánh" style="font-size: 25px;"><i--}}
+{{--                                                                class="fa fa-bar-chart" style="color: #333;font-size: 32px;"></i>--}}
+{{--                                                        </a>--}}
                                                     @endif
 
                                                 </p>
@@ -338,8 +338,8 @@
                                                data-value="1"></i>
                                             <i class="star fa fa-star" title="2 stars" data-message="Chất lượng Kém"
                                                data-value="2"></i>
-                                            <i class="star fa fa-star" title="3 stars"
-                                               data-message="Chất lượng trung bình" data-value="3"></i>
+                                            <i class="star fa fa-star" title="3 stars" data-message="Chất lượng trung bình"
+                                               data-value="3"></i>
                                             <i class="star fa fa-star" title="4 stars" data-message="Sản phẩm tốt"
                                                data-value="4"></i>
                                             <i class="star fa fa-star" title="5 stars" data-message="Rất tuyệt vời"
@@ -385,7 +385,7 @@
                                         <div class="tags-box">
                                             <input type="text" class="tag form-control" name="comment"
                                                    id="inlineFormInputName" placeholder="vui lòng để lại nhận xét..."
-                                                   style="width: 250px;text-transform: none;font-size: 12px;">
+                                                   style="width: 250px;text-transform: none;font-size: 12px;" required>
                                             <input type="hidden" name="product_id" value="{{ $products->id }}"/>
                                         </div>
 

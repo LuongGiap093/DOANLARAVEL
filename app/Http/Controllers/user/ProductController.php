@@ -24,7 +24,7 @@ class ProductController extends Controller
 {
     public function index($id){
         $logos=Logo::first();
-        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->get();
+        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->limit(4)->get();
         $brands=Brand::all();
         $valible=0;
         $products = DB::table('product')->where('status','<>',0)->where('brand_id', $id)->paginate(9);
@@ -43,7 +43,7 @@ class ProductController extends Controller
     }
     public function search_product(Request $request){
         $logos=Logo::first();
-        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->get();
+        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->limit(4)->get();
         $brands=Brand::all();
         $cate=Category::orderby('category_position','asc')
             ->join('product','category.category_id','=','product.idcat')
@@ -91,15 +91,13 @@ class ProductController extends Controller
                     $sort='Giá cao đến thấp';
                     $products = DB::table('product')
                         ->where('status', '<>', 0)->whereBetween('price',$filter)
-                        ->where('name', 'like', '%' . $request->search_key . '%')
-                        ->orwhere('keywords', 'like', '%' . $request->search_key . '%')
+                        ->where('keywords', 'like', '%' . $request->search_key . '%')
                         ->orderby('price','desc')
                         ->paginate(9)->appends(request()->query());
                 }elseif ($sort_by=='tang_dan'){
                     $products = DB::table('product')
                         ->where('status', '<>', 0)->whereBetween('price',$filter)
-                        ->where('name', 'like', '%' . $request->search_key . '%')
-                        ->orwhere('keywords', 'like', '%' . $request->search_key . '%')
+                        ->where('keywords', 'like', '%' . $request->search_key . '%')
                         ->orderby('price','asc')
                         ->paginate(9)->appends(request()->query());
                     $sort='Giá thấp đến cao';
@@ -107,16 +105,14 @@ class ProductController extends Controller
                     $sort='Ký tự từ A > Z';
                     $products = DB::table('product')
                         ->where('status', '<>', 0)->whereBetween('price',$filter)
-                        ->where('name', 'like', '%' . $request->search_key . '%')
-                        ->orwhere('keywords', 'like', '%' . $request->search_key . '%')
+                        ->where('keywords', 'like', '%' . $request->search_key . '%')
                         ->orderby('name','asc')
                         ->paginate(9)->appends(request()->query());
                 }elseif ($sort_by=='kytu_za'){
                     $sort='Ký tự từ Z > A';
                     $products = DB::table('product')
                         ->where('status', '<>', 0) ->whereBetween('price',$filter)
-                        ->where('name', 'like', '%' . $request->search_key . '%')
-                        ->orwhere('keywords', 'like', '%' . $request->search_key . '%')
+                        ->where('keywords', 'like', '%' . $request->search_key . '%')
                         ->orderby('name','desc')
                         ->paginate(9)->appends(request()->query());
                 }
@@ -124,16 +120,14 @@ class ProductController extends Controller
                     $sort='Mức độ phổ biến';
                     $products = DB::table('product')
                         ->where('status', '<>', 0)->whereBetween('price',$filter)
-                        ->where('name', 'like', '%' . $request->search_key . '%')
-                        ->orwhere('keywords', 'like', '%' . $request->search_key . '%')
+                        ->where('keywords', 'like', '%' . $request->search_key . '%')
                         ->orderby('view_number','desc')
                         ->paginate(9)->appends(request()->query());
                 }else{
                     $sort='Sắp xếp mặc định';
                     $products = DB::table('product')
                         ->where('status', '<>', 0)->whereBetween('price',$filter)
-                        ->where('name', 'like', '%' . $request->search_key . '%')
-                        ->orwhere('keywords', 'like', '%' . $request->search_key . '%')
+                        ->where('keywords', 'like', '%' . $request->search_key . '%')
                         ->paginate(9)->appends(request()->query());
                 }
             }else{
@@ -141,8 +135,7 @@ class ProductController extends Controller
                 $products = DB::table('product')
                     ->where('status', '<>', 0)
                     ->whereBetween('price',$filter)
-                    ->where('name', 'like', '%' . $request->search_key . '%')
-                    ->orwhere('keywords', 'like', '%' . $request->search_key . '%')
+                    ->where('keywords', 'like', '%' . $request->search_key . '%')
                     ->paginate(9)->appends(request()->query());}
             if ($products == NULL) {
                 return abort(404);
@@ -154,8 +147,7 @@ class ProductController extends Controller
             $products = DB::table('product')
                 ->where('status', '<>', 0)
                 ->whereBetween('price',$filter)
-                ->where('name', 'like', '%' . $request->search_key . '%')
-                ->orwhere('keywords', 'like', '%' . $request->search_key . '%')
+                ->where('keywords', 'like', '%' . $request->search_key . '%')
                 ->paginate(9)->appends(request()->query());
             return view('user.page.product_page.index', compact('name_page','product_tag','products','wishlists','sort','cate','logos','categorys','brands'));
         }
@@ -337,6 +329,8 @@ class ProductController extends Controller
         }
         $product_tag=Product::where('status','<>',0)->orderby('view_number','desc')->limit(8)->get();
         $products = Product::find($id);
+        $view=$products->view_number;
+        $products->update(['view_number' => $view+1]);
         $gallerys=DB::table('gallery')->where('product_id','=',$id)->get();
         $hot_deals=Product::where('status','=',3)->orderby('discount','desc')->get();
         $member=DB::table('employee')->get();

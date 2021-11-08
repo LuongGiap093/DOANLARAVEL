@@ -1,4 +1,4 @@
-<div class="sidebar-widget outer-bottom-small wow fadeInUp">
+<div class="sidebar-widget outer-bottom-small wow fadeInUp" style="margin-top: 30px">
     <h3 class="section-title">Máy cũ giá rẻ</h3>
     <div class="sidebar-widget-body outer-top-xs">
         <div class="owl-carousel sidebar-carousel special-offer custom-carousel owl-theme outer-top-xs">

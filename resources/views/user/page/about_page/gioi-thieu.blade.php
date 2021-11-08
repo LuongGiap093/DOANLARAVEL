@@ -26,7 +26,7 @@
                     <div class="col-md-12 terms-conditions">
                         <h2 style="text-align: center;border-bottom: 1px #e5e5e5 solid!important;font-weight: bold!important;padding-bottom: 10px;">{{$gioi_thieu->about_title}}</h2>
                         <div class="">
-                            <p>{{$gioi_thieu->about_content}}</p>
+                            <p>{!! $gioi_thieu->about_content !!}</p>
                         </div>
                     </div>
                 </div><!-- /.row -->

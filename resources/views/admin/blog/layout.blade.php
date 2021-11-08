@@ -63,7 +63,7 @@
                             <div class="card-body table-responsive">
                                 <h4 class="m-t-0 header-title mb-4" style="font-size: 18px"><b>Tin Tức</b></h4>
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a href="{{ url(Route::current()->uri()) }}" class="btn btn-primary">Quản
+                                    <a href="{{ route('blog.index') }}" class="btn btn-primary">Quản
                                         lý</a>
                                     <a href="{{route('blog.create')}}" class="btn btn-success">Thêm mới</a>
                                 </div>

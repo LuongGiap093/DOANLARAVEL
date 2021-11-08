@@ -12,19 +12,25 @@
                     method: 'POST',
                     data: {coupon_code:coupon_code,_token: _token},
                     success: function (data) {
-                        // alertify.success('Thêm mã thành công!');
-                        // location.reload();
-                        swal({
-                            title: "",
-                            text: "Thêm mã giảm giá thành công!",
-                            icon: "success",
-                        });
+{{--                        @if(Session::get('coupon'))--}}
+{{--                        swal({--}}
+{{--                            title: "",--}}
+{{--                            text: "Thêm mã giảm giá thành công!",--}}
+{{--                            icon: "success",--}}
+{{--                        });--}}
+{{--                        @else--}}
+{{--                        swal({--}}
+{{--                            title: "",--}}
+{{--                            text: "Thêm mã giảm giá thất bại hãy kiểm tra lại mã của bạn!",--}}
+{{--                        });--}}
+{{--                        @endif--}}
+location.reload();
                     }
                 });
             }
-            window.setTimeout(function (){
-                location.reload();
-            } ,2000);
+            // window.setTimeout(function (){
+            //     location.reload();
+            // } ,2000);
         });
     });
 

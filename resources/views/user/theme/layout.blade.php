@@ -195,7 +195,7 @@
 
         $(".button-box .done").show();
 
-        if (onStar === 5) {
+        if (onStar === 6) {
             $(".button-box .done").removeAttr("disabled");
         } else {
             $(".button-box .done").attr("disabled", "true");
