@@ -14,6 +14,11 @@
 
     <div class="body-content" style="margin-bottom: 20px;">
         <div class="container">
+            @if (session('message'))
+                <div class="alert alert-danger">
+                    <p>{{ session('message') }}</p>
+                </div>
+            @endif
             <div class="checkout_form">
                 <div class="checkout-box ">
                     <div class="row">
@@ -35,25 +40,27 @@
                                         <form method="POST">
                                             <input type="hidden" name="_token" content="{{csrf_token()}}"
                                                    autocomplete="on">
-                                            @if(Session::get('fee'))
+                                            @if(Session::get('shipping'))
+
+                                                @foreach(Session::get('shipping') as $key => $fee)
                                                 <div class="row">
                                                     <div class="col-md-6 col-sm-6" style="padding-bottom: 15px;">
                                                         <label>Họ và tên <span style="color: red;">*</span></label>
                                                         <input type="text" class="fullname" required
                                                                style="display: block;padding: 0 15px;color: #373d54;width: 100%;background: #f8fafc;font-size: 14px;height: 40px;border: 1px solid #e0e4f6;transition: all 0.2s;"
-                                                               value="{{Session::get('name')}}">
+                                                               value="{{$fee['name']}}">
                                                     </div>
                                                     <div class="col-md-6 col-sm-6" style="padding-bottom: 15px;">
                                                         <label>Số điện thoại <span style="color: red;">*</span></label>
                                                         <input type="number" class="phone" required
                                                                style="display: block;padding: 0 15px;color: #373d54;width: 100%;background: #f8fafc;font-size: 14px;height: 40px;border: 1px solid #e0e4f6;transition: all 0.2s;"
-                                                               value="{{Session::get('phone')}}">
+                                                               value="{{$fee['phone']}}">
                                                     </div>
                                                     <div class="col-md-12" style="padding-bottom: 15px;">
                                                         <label>Địa chỉ Email <span style="color: red;">*</span></label>
                                                         <input type="email" class="email" required
                                                                style="display: block;padding: 0 15px;color: #373d54;width: 100%;background: #f8fafc;font-size: 14px;height: 40px;border: 1px solid #e0e4f6;transition: all 0.2s;"
-                                                               value="{{Session::get('email')}}">
+                                                               value="{{$fee['email']}}">
                                                     </div>
                                                     <div class="col-md-6 col-sm-6" style="padding-bottom: 15px;">
                                                         <label for="city">Tỉnh/Thành phố <span
@@ -98,7 +105,7 @@
                                                         <label>Địa chỉ cụ thể <span style="color: red;">*</span></label>
                                                         <input type="text" class="address" required
                                                                style="display: block;padding: 0 15px;color: #373d54;width: 100%;background: #f8fafc;font-size: 14px;height: 40px;border: 1px solid #e0e4f6;transition: all 0.2s;"
-                                                               value="{{Session::get('address')}}">
+                                                               value="{{$fee['address']}}">
                                                     </div>
                                                     <div class="col-md-12" style="padding-bottom: 15px;">
                                                         <div class="order-notes">
@@ -108,7 +115,7 @@
                                                                 style="overflow: auto;height: 100px;width: 100%;border: 1px solid #e0e4f6;background: #f8fafc;padding: 15px 15px;"
                                                                 id="order_note"
                                                                 placeholder="Ghi chú về đơn đặt hàng của bạn."
-                                                                class="note">{{Session::get('note')}}</textarea>
+                                                                class="note">{{$fee['note']}}</textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-sm-6" style="padding-bottom: 15px;">
@@ -121,6 +128,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @endforeach
                                             @else
                                                 <div class="row">
                                                     <div class="col-md-6 col-sm-6" style="padding-bottom: 15px;">
@@ -316,15 +324,21 @@
                                             </a>
                                         </div>
                                     </div>
+                                    <div class="col-md-12">
+                                        <div class="panel-default" style="margin-bottom: 10px; float: right">
+                                            <input id="payment" name="check_method" type="checkbox"
+                                                   data-target="createp_account" class="check_payment">
+                                            <label for="payment" data-toggle="collapse" data-target="#method"
+                                                   aria-controls="method">Tôi đã đọc và đồng ý với <a href="{{route('shopping.dieukhoan')}}">điều khoản và điều kiện</a> của website</label>
+                                        </div>
+                                    </div>
                                     <div class="col-md-12" style="padding: 0px;">
                                         <div class="col-md-6 col-sm-6">
+
+                                        </div>
+                                        <div class="col-md-6 col-sm-6">
                                             <div class="payment_method" style="text-align: -webkit-right;">
-{{--                                                <div class="panel-default" style="margin-bottom: 10px;">--}}
-{{--                                                    <input id="payment" name="check_method" type="radio"--}}
-{{--                                                           data-target="createp_account" class="check_payment">--}}
-{{--                                                    <label for="payment" data-toggle="collapse" data-target="#method"--}}
-{{--                                                           aria-controls="method">Thanh toán khi giao hàng</label>--}}
-{{--                                                </div>--}}
+
                                                 <input type="hidden" name="fee" class="fee"
                                                        value="{{Session::get('fee')}}">
                                                 <div class="order_button" style="margin-bottom: 10px;">

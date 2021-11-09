@@ -30,9 +30,15 @@ class AboutController extends Controller
      */
     public function index()
     {
-        $count=About::count();
+        $count=About::where('about_status','<>',2)->count();
         $about=About::first();
         return view($this->viewprefix . 'index', compact('about','count'));
+    }
+    public function dieukhoan()
+    {
+        $count=About::where('about_status','=',2)->count();
+        $dieu_khoan=About::where('about_status','=',2)->first();
+        return view('admin.dieu_khoan.index', compact('dieu_khoan','count'));
     }
 
     /**

@@ -14,9 +14,9 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function() {
     Route::get('tai-khoan','AccountCustomerController@index')->name('dang-nhap');
 });
 
-Route::group(['middleware' => 'CheckAdminLogin','prefix' => 'admin'], function() {
-    Route::get('/', function() {return view('admin.home');})->name('welcome');
-});
+//Route::group(['middleware' => 'CheckAdminLogin','prefix' => 'admin'], function() {
+//    Route::get('/', function() {return view('admin.home');})->name('welcome');
+//});
 
 Route::group(['middleware' => 'CheckAdminLogin','prefix' => 'panel/user', 'namespace' => 'admin'], function() {
 	Route::get('/', 'UserController@index')->name('user.index');
@@ -38,6 +38,7 @@ Route::group(['middleware' => 'CheckAdminLogin','prefix' => 'panel/user', 'names
   Route::get('changestatusproduct/{id}','ProductController@changestatusproduct')->name('product.changestatus');
     Route::get('changestatuscustomerlock/{id}','AccountcustomerController@changestatuscustomerlock')->name('customer.changestatuslock');
     Route::get('changestatuscustomerunlock/{id}','AccountcustomerController@changestatuscustomerunlock')->name('customer.changestatusunlock');
+    Route::get('changestatusorder/{order_id}','OrderController@changestatusorder')->name('order.changestatus');
 
 
   Route::get('search','DashboardController@search_order')->name('order.search');
@@ -63,6 +64,7 @@ Route::resource('panel/dashboard',admin\DashboardController::class);
 Route::resource('panel/empcategory',admin\EmpcategoryController::class);
 Route::resource('panel/employee',admin\EmployeeController::class);
 Route::resource('panel/about', admin\AboutController::class);
+Route::get('panel/dieu-khoan', 'admin\AboutController@dieukhoan')->name('admin.dieukhoan');
 
 
 
@@ -84,42 +86,42 @@ Route::group(['prefix' => 'panel', 'namespace' => 'admin'], function () {
 Route::get('panel/category/productlist/{id}','admin\CategoryController@productlist')->name('category.productlist');
 
 
-Route::group(['prefix' => '', 'namespace' => 'user'], function () {
-//    Route::get('', 'UserController@index')->name('shopping.index');
-    Route::get('category/{id}', 'UserController@show_category_product')->name('shopping.show-category');
-    Route::get('show-brand/{id}', 'UserController@show_brand')->name('shopping.show-brand');
-    Route::get('loaisp/{id}', 'UserController@getsp')->name('shopping.loaisp');
-});
+//Route::group(['prefix' => '', 'namespace' => 'user'], function () {
+////    Route::get('', 'UserController@index')->name('shopping.index');
+//    Route::get('category/{id}', 'UserController@show_category_product')->name('shopping.show-category');
+//    Route::get('show-brand/{id}', 'UserController@show_brand')->name('shopping.show-brand');
+//    Route::get('loaisp/{id}', 'UserController@getsp')->name('shopping.loaisp');
+//});
 
-Route::group(['prefix' => '', 'namespace' => 'user'], function () {
-    Route::get('trang-chu', 'UserController@trang_chu')->name('trang-chu');
-    Route::get('san-pham', 'UserController@san_pham')->name('san-pham');
-    Route::get('bai-viet', 'BlogController@bai_viet')->name('bai-viet');
-    Route::get('lien-he', 'ContactController@lien_he')->name('lien-he');
-    Route::get('danh-sach-yeu-thich', 'WishlistController@yeu_thich')->name('yeu-thich');
-    Route::get('so-sanh-san-pham', 'CompareController@index')->name('so-sanh');
-    Route::get('trang-gio-hang', 'CartController@viewCart')->name('gio-hang');
-    Route::get('tim-kiem/san-pham','UserController@tim_kiem')->name('tim-kiem');
-    Route::get('thanh-toan','CheckoutController@index')->name('thanh-toan');
-//    Route::get('san-pham/chi-tiet-san-pham/{id}','UserController@chi_tiet')->name('chi-tiet-sp');
-    Route::get('details/{id}','UserController@viewProduct')->name('shopping.viewProduct');
-    Route::post('nhan-xet/{id}','CommentController@add_comment')->name('nhan-xet');
-    Route::get('san-pham/danh-muc/{id}', 'UserController@danh_muc')->name('danh-muc');
-    Route::get('san-pham/danh-muc/thuong-hieu/{id}', 'UserController@thuong_hieu')->name('thuong-hieu');
-    Route::get('tin-tuc/bai-viet/{id}', 'BlogController@blogdetail')->name('blog.detail');
-
-    Route::post('select-delivery-home','CheckoutController@select_delivery_home')->name('chon-van-chuyen');
-    Route::post('calculate-fee','CheckoutController@calculate_fee')->name('tinh-van-chuyen');
-
-    Route::post('xac-nhan-dat-hang', 'CheckoutController@checkout')->name('shopping.checkout');
-
-});
+//Route::group(['prefix' => '', 'namespace' => 'user'], function () {
+//    Route::get('trang-chu', 'UserController@trang_chu')->name('trang-chu');
+//    Route::get('san-pham', 'UserController@san_pham')->name('san-pham');
+//    Route::get('bai-viet', 'BlogController@bai_viet')->name('bai-viet');
+//    Route::get('lien-he', 'ContactController@lien_he')->name('lien-he');
+//    Route::get('danh-sach-yeu-thich', 'WishlistController@yeu_thich')->name('yeu-thich');
+//    Route::get('so-sanh-san-pham', 'CompareController@index')->name('so-sanh');
+//    Route::get('trang-gio-hang', 'CartController@viewCart')->name('gio-hang');
+//    Route::get('tim-kiem/san-pham','UserController@tim_kiem')->name('tim-kiem');
+//    Route::get('thanh-toan','CheckoutController@index')->name('thanh-toan');
+////    Route::get('san-pham/chi-tiet-san-pham/{id}','UserController@chi_tiet')->name('chi-tiet-sp');
+//    Route::get('details/{id}','UserController@viewProduct')->name('shopping.viewProduct');
+//    Route::post('nhan-xet/{id}','CommentController@add_comment')->name('nhan-xet');
+//    Route::get('san-pham/danh-muc/{id}', 'UserController@danh_muc')->name('danh-muc');
+//    Route::get('san-pham/danh-muc/thuong-hieu/{id}', 'UserController@thuong_hieu')->name('thuong-hieu');
+//    Route::get('tin-tuc/bai-viet/{id}', 'BlogController@blogdetail')->name('blog.detail');
+//
+//    Route::post('select-delivery-home','CheckoutController@select_delivery_home')->name('chon-van-chuyen');
+//    Route::post('calculate-fee','CheckoutController@calculate_fee')->name('tinh-van-chuyen');
+//
+//    Route::post('xac-nhan-dat-hang', 'CheckoutController@checkout')->name('shopping.checkout');
+//
+//});
 
 Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::get('/', 'HomeController@index')->name('shopping.home');
 
-    Route::get('thong-tin-tai-khoan','AccountCustomerController@profiles')->name('customer.profiles');
-    Route::get('create-profiles','UserController@create_profiles')->name('create-profiles');
+//    Route::get('thong-tin-tai-khoan','AccountCustomerController@profiles')->name('customer.profiles');
+//    Route::get('create-profiles','UserController@create_profiles')->name('create-profiles');
     Route::get('dang-ky-dang-nhap', 'AccountCustomerController@getLogin')->name('shopping.login');
     Route::post('dang-ky','AccountCustomerController@postadd')->name('customer.postadd');
     Route::get('kich-hoat-tai-khoan/{customer}/{token}','AccountCustomerController@actived')->name('customer.actived');
@@ -179,13 +181,13 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::post('chon-dia-diem','CheckoutController@select_delivery_home')->name('checkout.dia-chi');
     Route::post('tinh-phi-van-chuyen','CheckoutController@calculate_fee')->name('checkout.tinh-phi');
     Route::post('xac-nhan-dat-hang', 'CheckoutController@checkout')->name('shopping.checkout');
-    Route::get('track-order','UserController@track_order')->name('track-order');
+//    Route::get('track-order','UserController@track_order')->name('track-order');
     Route::get('dat-hang-thanh-cong','CheckoutController@thanh_cong')->name('shopping.check');
 
     Route::post('nhan-xet','CommentController@add_comment')->name('customer.postcomment');
 
     Route::get('gioi-thieu','AboutController@index')->name('shopping.about');
-
+    Route::get('dieu-khoan','AboutController@dieukhoan')->name('shopping.dieukhoan');
 
 });
 

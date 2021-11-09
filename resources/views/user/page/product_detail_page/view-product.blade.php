@@ -34,7 +34,7 @@
 
 {{--                        @include('user.page.home.newsletter.newsletter')--}}
 
-                        @include('user.page.comment.testimonials')
+                        @include('user.page.employee.testimonials')
                     </div>
                 </div><!-- /.sidebar -->
                 <div class='col-md-9'>
@@ -187,9 +187,11 @@
                     </div>
 
                     <div id="Paris" class="tabcontent">
-                        <iframe style="width: 100%;border: none;height: 455px;"
-                                src="https://www.youtube.com/embed/kaOVHSkDoPY?rel=0&amp;showinfo=0"
-                                allowfullscreen=""></iframe>
+                        @if($products->link!=null)
+                            {!! $products->link !!}
+                        @else
+                            <p style="text-align: center">Không có videos để hiển thị.</p>
+                        @endif
                     </div>
 
                     <div id="Tokyo" class="tabcontent">
@@ -434,7 +436,7 @@
 
                                             <div class="product-info text-left" s>
                                                 <h3 class="name"><a
-                                                        href="{{route('shopping.viewProduct', $product->id)}}">{{ $product->name }}</a>
+                                                        href="{{route('product.viewProduct', $product->id)}}">{{ $product->name }}</a>
                                                 </h3>
                                                 <?php
                                                 $avg_star=round(DB::table('comment')->where('product_id',$product->id)->avg('star'));
@@ -481,11 +483,6 @@
                                                             @endif
                                                         </li>
 
-                                                        <li class="lnk">
-                                                            <a class="add-to-cart" href="detail.html" title="Compare">
-                                                                <i class="fa fa-signal"></i>
-                                                            </a>
-                                                        </li>
                                                     </ul>
                                                 </div><!-- /.action -->
                                             </div><!-- /.cart -->

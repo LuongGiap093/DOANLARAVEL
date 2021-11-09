@@ -33,147 +33,147 @@ class UserController extends Controller
 {
 
     //
-    public function index()
-    {
-        $logos=Logo::all();
-        $categorys=Category::all();
-        $accountcustomers=AccountCustomer::all();
-        $brands=Brand::all();
-        $sliders = Slider::all();
-        $categoryss=DB::table('category')->orderby('category_id','desc')->get();
-        $special_offer=DB::table('product')->orderby('id','desc')->get();
+//    public function index()
+//    {
+//        $logos=Logo::all();
+//        $categorys=Category::all();
+//        $accountcustomers=AccountCustomer::all();
+//        $brands=Brand::all();
+//        $sliders = Slider::all();
+//        $categoryss=DB::table('category')->orderby('category_id','desc')->get();
+//        $special_offer=DB::table('product')->orderby('id','desc')->get();
+//
+//        $products = DB::table('product')->where('status','<>',0)->orderby('id','desc')->get();
+//        $best_seller=DB::table('product')->where('status','<>',0)->where('idcat',5)->limit(10)->get();
+//        $best_seller_2=DB::table('product')->where('status','<>',0)->where('idcat',6)->limit(10)->get();
+//        $hot_deals=DB::table('product')->where('status','=',3)->orderby('discount','desc')->get();
+//        $product_tag=DB::table('product')->where('status','=',2)->orderby('id','desc')->limit(8)->get();
+//        $city=City::all();
+//        $productss = Product::all()->sortByDesc("id");
+//        $citys=City::orderby('matp','ASC')->get();
+//        $results = Product::select('idcat')->orderBy('idcat')->get();
+//        $blogs = Blog::all();
+//        $firsts = $blogs->first();
+//        return view('user.page.index',
+//            compact('products',  'productss', 'results', 'sliders','city',
+//                'citys','brands','accountcustomers','hot_deals','product_tag','blogs','firsts',
+//                'special_offer','categoryss','best_seller','best_seller_2','logos','categorys'));
+//    }
+//
+//    public function trang_chu(){
+//        $logos=Logo::first();
+//        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->get();
+//        $brands=Brand::all();
+//        $products = DB::table('product')->where('status','<>',0)->get();
+//        $blogs = Blog::orderby('blog_id','desc')->limit(3)->get();
+//        $collection=Collection::all();
+//        return view('frontend.page.index',compact('products','categorys','blogs','logos','brands','collection'));
+//    }
 
-        $products = DB::table('product')->where('status','<>',0)->orderby('id','desc')->get();
-        $best_seller=DB::table('product')->where('status','<>',0)->where('idcat',5)->limit(10)->get();
-        $best_seller_2=DB::table('product')->where('status','<>',0)->where('idcat',6)->limit(10)->get();
-        $hot_deals=DB::table('product')->where('status','=',3)->orderby('discount','desc')->get();
-        $product_tag=DB::table('product')->where('status','=',2)->orderby('id','desc')->limit(8)->get();
-        $city=City::all();
-        $productss = Product::all()->sortByDesc("id");
-        $citys=City::orderby('matp','ASC')->get();
-        $results = Product::select('idcat')->orderBy('idcat')->get();
-        $blogs = Blog::all();
-        $firsts = $blogs->first();
-        return view('user.page.index',
-            compact('products',  'productss', 'results', 'sliders','city',
-                'citys','brands','accountcustomers','hot_deals','product_tag','blogs','firsts',
-                'special_offer','categoryss','best_seller','best_seller_2','logos','categorys'));
-    }
+//    public function profiles(){
+//        $logos=Logo::first();
+//        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->get();
+//        $brands=Brand::all();
+//        $accountcustomer=AccountCustomer::all();
+//        return view('user.page.profiles',compact('accountcustomer','logos','categorys','brands'));
+//    }
+//
+//    public function create_profiles(){
+//        return view('user.page.account_customer.create_profiles');
+//    }
+//    public function track_order(){
+//        return view('user.page.track_order');
+//    }
 
-    public function trang_chu(){
-        $logos=Logo::first();
-        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->get();
-        $brands=Brand::all();
-        $products = DB::table('product')->where('status','<>',0)->get();
-        $blogs = Blog::orderby('blog_id','desc')->limit(3)->get();
-        $collection=Collection::all();
-        return view('frontend.page.index',compact('products','categorys','blogs','logos','brands','collection'));
-    }
-
-    public function profiles(){
-        $logos=Logo::first();
-        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->get();
-        $brands=Brand::all();
-        $accountcustomer=AccountCustomer::all();
-        return view('user.page.profiles',compact('accountcustomer','logos','categorys','brands'));
-    }
-
-    public function create_profiles(){
-        return view('user.page.account_customer.create_profiles');
-    }
-    public function track_order(){
-        return view('user.page.track_order');
-    }
-
-    public function category()
-    {
-        $logos=Logo::all();
-        $categorys=Category::all();
-        $products = Product::all();
-        $brands=Brand::all();
-        return view('user.page.category', compact('products', 'brands','logos','categorys'));
-    }
-//show tất cả sản phẩm
-    public  function show_product(){
-        $logos=Logo::all();
-        $categorys=Category::all();
-        $valible=0;
-
-//        $products = Product::paginate(9);
-        $brands=Brand::all();
-        $min_product=DB::table('product')->min('price');
-        $max_product=DB::table('product')->max('price');
-        if(isset($_GET['sort_by'])){
-            $sort_by =$_GET['sort_by'];
-            if($sort_by=='giam_dan'){
-                $products = Product::orderby('price','desc')->paginate(9)->appends(request()->query());
-            }elseif ($sort_by=='tang_dan'){
-                $products = Product::orderby('price','asc')->paginate(9)->appends(request()->query());
-            }elseif ($sort_by=='kytu_az'){
-                $products = Product::orderby('name','asc')->paginate(9)->appends(request()->query());
-            }elseif ($sort_by=='kytu_za'){
-                $products = Product::orderby('name','desc')->paginate(9)->appends(request()->query());
-            }
-        }else{
-            $products = Product::paginate(9);
-        }
-        return view('user.page.product_page.products', compact('products','brands','min_product','max_product','valible','logos','categorys'));
-    }
-
-    public function san_pham(){
-        $logos=Logo::first();
-        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->get();
-        $brands=Brand::all();
-        $sort='Sắp xếp mặc định';
-        if(isset($_GET['sort_by'])){
-            $sort_by =$_GET['sort_by'];
-            if($sort_by=='giam_dan'){
-                $sort='Giá cao đến thấp';
-                $products = Product::orderby('price','desc')->paginate(9)->appends(request()->query());
-            }elseif ($sort_by=='tang_dan'){
-                $sort='Giá thấp đến cao';
-                $products = Product::orderby('price','asc')->paginate(9)->appends(request()->query());
-            }elseif ($sort_by=='kytu_az'){
-                $sort='Ký tự: từ A > Z';
-                $products = Product::orderby('name','asc')->paginate(9)->appends(request()->query());
-            }elseif ($sort_by=='kytu_za'){
-                $sort='Ký tự: từ Z > A';
-                $products = Product::orderby('name','desc')->paginate(9)->appends(request()->query());
-            }else{
-                $products = DB::table('product')->where('status','<>',0)->paginate(9)->appends(request()->query());;
-            }
-        }else{
-            $products = DB::table('product')->where('status','<>',0)->paginate(9);
-        }
-        return view('frontend.page.products_page.show_products',compact('sort','categorys','products','logos','brands'));
-    }
-
-
-    //show sản phẩm theo danh mục
-    public function danh_muc($idcat){
-        $logos=Logo::first();
-        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->get();
-        $brands=Brand::all();
-//        $products = DB::table('product')->where('status','<>',0)->where('idcat', $idcat)->paginate(9);
-        if(isset($_GET['sort_by'])){
-            $sort_by =$_GET['sort_by'];
-            if($sort_by=='giam_dan'){
-                $products = Product::where('idcat', $idcat)->orderby('price','desc')->paginate(9)->appends(request()->query());
-            }elseif ($sort_by=='tang_dan'){
-                $products = Product::where('idcat', $idcat)->orderby('price','asc')->paginate(9)->appends(request()->query());
-            }elseif ($sort_by=='kytu_az'){
-                $products = Product::where('idcat', $idcat)->orderby('name','asc')->paginate(9)->appends(request()->query());
-            }elseif ($sort_by=='kytu_za'){
-                $products = Product::where('idcat', $idcat)->orderby('name','desc')->paginate(9)->appends(request()->query());
-            }
-        }else{
-            $products = DB::table('product')->where('idcat', $idcat)->paginate(9);
-            if ($products == NULL) {
-                return abort(404);
-            }
-        }
-        return view('frontend.page.products_page.show_products',compact('categorys','products','logos','brands'));
-    }
+//    public function category()
+//    {
+//        $logos=Logo::all();
+//        $categorys=Category::all();
+//        $products = Product::all();
+//        $brands=Brand::all();
+//        return view('user.page.category', compact('products', 'brands','logos','categorys'));
+//    }
+////show tất cả sản phẩm
+//    public  function show_product(){
+//        $logos=Logo::all();
+//        $categorys=Category::all();
+//        $valible=0;
+//
+////        $products = Product::paginate(9);
+//        $brands=Brand::all();
+//        $min_product=DB::table('product')->min('price');
+//        $max_product=DB::table('product')->max('price');
+//        if(isset($_GET['sort_by'])){
+//            $sort_by =$_GET['sort_by'];
+//            if($sort_by=='giam_dan'){
+//                $products = Product::orderby('price','desc')->paginate(9)->appends(request()->query());
+//            }elseif ($sort_by=='tang_dan'){
+//                $products = Product::orderby('price','asc')->paginate(9)->appends(request()->query());
+//            }elseif ($sort_by=='kytu_az'){
+//                $products = Product::orderby('name','asc')->paginate(9)->appends(request()->query());
+//            }elseif ($sort_by=='kytu_za'){
+//                $products = Product::orderby('name','desc')->paginate(9)->appends(request()->query());
+//            }
+//        }else{
+//            $products = Product::paginate(9);
+//        }
+//        return view('user.page.product_page.products', compact('products','brands','min_product','max_product','valible','logos','categorys'));
+//    }
+//
+//    public function san_pham(){
+//        $logos=Logo::first();
+//        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->get();
+//        $brands=Brand::all();
+//        $sort='Sắp xếp mặc định';
+//        if(isset($_GET['sort_by'])){
+//            $sort_by =$_GET['sort_by'];
+//            if($sort_by=='giam_dan'){
+//                $sort='Giá cao đến thấp';
+//                $products = Product::orderby('price','desc')->paginate(9)->appends(request()->query());
+//            }elseif ($sort_by=='tang_dan'){
+//                $sort='Giá thấp đến cao';
+//                $products = Product::orderby('price','asc')->paginate(9)->appends(request()->query());
+//            }elseif ($sort_by=='kytu_az'){
+//                $sort='Ký tự: từ A > Z';
+//                $products = Product::orderby('name','asc')->paginate(9)->appends(request()->query());
+//            }elseif ($sort_by=='kytu_za'){
+//                $sort='Ký tự: từ Z > A';
+//                $products = Product::orderby('name','desc')->paginate(9)->appends(request()->query());
+//            }else{
+//                $products = DB::table('product')->where('status','<>',0)->paginate(9)->appends(request()->query());;
+//            }
+//        }else{
+//            $products = DB::table('product')->where('status','<>',0)->paginate(9);
+//        }
+//        return view('frontend.page.products_page.show_products',compact('sort','categorys','products','logos','brands'));
+//    }
+//
+//
+//    //show sản phẩm theo danh mục
+//    public function danh_muc($idcat){
+//        $logos=Logo::first();
+//        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->get();
+//        $brands=Brand::all();
+////        $products = DB::table('product')->where('status','<>',0)->where('idcat', $idcat)->paginate(9);
+//        if(isset($_GET['sort_by'])){
+//            $sort_by =$_GET['sort_by'];
+//            if($sort_by=='giam_dan'){
+//                $products = Product::where('idcat', $idcat)->orderby('price','desc')->paginate(9)->appends(request()->query());
+//            }elseif ($sort_by=='tang_dan'){
+//                $products = Product::where('idcat', $idcat)->orderby('price','asc')->paginate(9)->appends(request()->query());
+//            }elseif ($sort_by=='kytu_az'){
+//                $products = Product::where('idcat', $idcat)->orderby('name','asc')->paginate(9)->appends(request()->query());
+//            }elseif ($sort_by=='kytu_za'){
+//                $products = Product::where('idcat', $idcat)->orderby('name','desc')->paginate(9)->appends(request()->query());
+//            }
+//        }else{
+//            $products = DB::table('product')->where('idcat', $idcat)->paginate(9);
+//            if ($products == NULL) {
+//                return abort(404);
+//            }
+//        }
+//        return view('frontend.page.products_page.show_products',compact('categorys','products','logos','brands'));
+//    }
     //show sản phẩm theo thương hiệu
 //    public  function show_brand($brand_id){
 //        $logos=Logo::all();
@@ -209,59 +209,59 @@ class UserController extends Controller
 //        }
 //        return view('user.page.product_page.products', compact('products', 'brands','min_product','max_product','valible','logos','categorys'));
 //    }
-    public function thuong_hieu($brand_id){
-        $logos=Logo::first();
-        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->get();
-        $brands=Brand::all();
-        $products = DB::table('product')->where('status','<>',0)->where('brand_id', $brand_id)->paginate(9);
-        return view('frontend.page.products_page.show_products',compact('categorys','products','logos','brands'));
-    }
-
-
-    public function tim_kiem(Request $request){
-        $valible=1;
-        $logos=Logo::first();
-        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->get();
-        $brands=Brand::all();
-        $products=DB::table('product')
-            ->join('brands','product.brand_id','=','brands.brand_id')
-            ->join('category','product.idcat','=','category.category_id')
-            ->where('product.name','like','%'.$request->keyword_search.'%')
-            ->orwhere('category.category_name','like','%'.$request->keyword_search.'%')
-            ->orwhere('brands.brand_name','like','%'.$request->keyword_search.'%')->paginate(9)->appends(request()->query());
-        return view('frontend.page.products_page.show_products', compact('logos','categorys','brands', 'products','valible'));
-    }
-
-
-
-
-// Trang chi tiết sản phẩm
-    public function viewProduct($id)
-    {
-        $logos=Logo::first();
-        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->get();
-        $brands=Brand::all();
-        $products = Product::find($id);
-        $gallerys=DB::table('gallery')->where('product_id','=',$id)->get();
-        $hot_deals=DB::table('product')->where('status','=',3)->orderby('discount','desc')->get();
-        $brand=DB::table('brands')->where('brand_id','=',$products->brand_id)->first();
-        $cate=Category::where('category_id',$products->idcat)->first();
-        $brand_id=$products->brand_id;
-        $category_id=$products->idcat;
-        $related_product=DB::table('product')
-            ->where('idcat',$category_id)
-            ->where('brand_id',$brand_id)
-            ->whereNotIn('id',[$id])->orderby('id','desc')->get();
-        $count=$related_product->count();
-        return view('frontend.page.products_page.product_detail', compact('count','logos','categorys','gallerys','brands','products','related_product','brand','cate'));
-
-    }
-
-
-    public function blog()
-    {
-        return view('user.page.blog');
-    }
+//    public function thuong_hieu($brand_id){
+//        $logos=Logo::first();
+//        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->get();
+//        $brands=Brand::all();
+//        $products = DB::table('product')->where('status','<>',0)->where('brand_id', $brand_id)->paginate(9);
+//        return view('frontend.page.products_page.show_products',compact('categorys','products','logos','brands'));
+//    }
+//
+//
+//    public function tim_kiem(Request $request){
+//        $valible=1;
+//        $logos=Logo::first();
+//        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->get();
+//        $brands=Brand::all();
+//        $products=DB::table('product')
+//            ->join('brands','product.brand_id','=','brands.brand_id')
+//            ->join('category','product.idcat','=','category.category_id')
+//            ->where('product.name','like','%'.$request->keyword_search.'%')
+//            ->orwhere('category.category_name','like','%'.$request->keyword_search.'%')
+//            ->orwhere('brands.brand_name','like','%'.$request->keyword_search.'%')->paginate(9)->appends(request()->query());
+//        return view('frontend.page.products_page.show_products', compact('logos','categorys','brands', 'products','valible'));
+//    }
+//
+//
+//
+//
+//// Trang chi tiết sản phẩm
+//    public function viewProduct($id)
+//    {
+//        $logos=Logo::first();
+//        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->get();
+//        $brands=Brand::all();
+//        $products = Product::find($id);
+//        $gallerys=DB::table('gallery')->where('product_id','=',$id)->get();
+//        $hot_deals=DB::table('product')->where('status','=',3)->orderby('discount','desc')->get();
+//        $brand=DB::table('brands')->where('brand_id','=',$products->brand_id)->first();
+//        $cate=Category::where('category_id',$products->idcat)->first();
+//        $brand_id=$products->brand_id;
+//        $category_id=$products->idcat;
+//        $related_product=DB::table('product')
+//            ->where('idcat',$category_id)
+//            ->where('brand_id',$brand_id)
+//            ->whereNotIn('id',[$id])->orderby('id','desc')->get();
+//        $count=$related_product->count();
+//        return view('frontend.page.products_page.product_detail', compact('count','logos','categorys','gallerys','brands','products','related_product','brand','cate'));
+//
+//    }
+//
+//
+//    public function blog()
+//    {
+//        return view('user.page.blog');
+//    }
 
     /*  public function getCheckout(){
          return view('user.page.checkout');

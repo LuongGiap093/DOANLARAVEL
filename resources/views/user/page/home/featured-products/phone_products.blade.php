@@ -53,12 +53,12 @@
                             <div class="action">
                                 <ul class="list-unstyled">
                                     <li class="add-cart-button btn-group">
-                                        <button data-toggle="tooltip" class="btn btn-primary icon"
-                                                type="button" title="giỏ hàng">
-                                            <a onclick="AddCart({{$product->id}})" href="javascript:"
-                                               data-text="Add To Cart" data-text="Add To Cart"><i
-                                                    class="fa fa-shopping-cart"></i></a>
-                                        </button>
+                                        <button onclick="AddCart({{$product->id}})"
+                                                href="javascript:"
+                                                data-text="Add To Cart" data-toggle="tooltip"
+                                                class="btn btn-primary icon"
+                                                type="button" title="giỏ hàng"><i
+                                                class="fa fa-shopping-cart"></i></button>
                                     </li>
                                     @if (Auth::guard('account_customer')->check())
                                         <li class="lnk wishlist">

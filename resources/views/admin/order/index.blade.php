@@ -1,5 +1,10 @@
 @extends('admin.order.layout')
 @section('content')
+    @if (session('message'))
+        <div class="alert alert-success">
+            <p>{{ session('message') }}</p>
+        </div>
+    @endif
     <table id="datatable" class="table table-bordered dt-responsive nowrap"
            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
         <thead>
@@ -35,7 +40,7 @@
                 </td>
                 <td><a href="{{route('chi-tiet-hoa-don', $order->order_id)}}" class="btn btn-outline-primary"><i
                             class="fa fa-eye"></i></a></td>
-                <td><a href="{{route('order.destroy', $order->order_id)}}" class="btn btn-danger"><i
+                <td><a href="{{route('order.changestatus', $order->order_id)}}" class="btn btn-danger"><i
                             class="fa fa-trash"></i></a></td>
         @endforeach
         </tbody>

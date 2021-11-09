@@ -78,7 +78,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-4" style="padding-top: 8px;display: -webkit-inline-box;">
                     @if(Auth::guard('account_customer')->check())
                         <div class="col-ms-6" style="width: 60%;">
-                            <a class="porto-sicon-box-link" href="{{route('customer.profiles')}}">
+                            <a class="porto-sicon-box-link">
                                 <div class="porto-sicon-box mb-0 style_1 default-icon"
                                      style="display: -webkit-inline-box;">
                                     <div class="porto-sicon-default">
@@ -111,8 +111,7 @@
                         </div>
                     @else
                         <div class="col-ms-6" style="width: 60%;">
-                            <a class="porto-sicon-box-link" href="javascript:" data-toggle="modal"
-                               data-target="#loginModal">
+                            <a class="porto-sicon-box-link">
                                 <div class="porto-sicon-box mb-0 style_1 default-icon"
                                      style="display: -webkit-inline-box;">
                                     <div class="porto-sicon-default">

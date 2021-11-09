@@ -81,6 +81,7 @@ class ProductController extends Controller
         }else{
             $product->keywords = $request->keywords;
         }
+        $product->link = $request->link;
         $product->view_number=0;
         if ($product->save()) {
             Session::flash('message', 'Thêm sản phẩm thành công!');
@@ -193,6 +194,7 @@ class ProductController extends Controller
             }else{
                 $product->keywords = $request->keywords;
             }
+            $product->link = $request->link;
             if ($product->save()) {
                 return redirect()->route('product.index')->with('message', 'Sửa thành công!');
             } else {
@@ -207,6 +209,7 @@ class ProductController extends Controller
                 'discount' => 'required',
                 'product_content' => 'required',
                 'describe' => 'required',
+                'link' => 'required',
                 'status' => 'required',
                 'idcat' => 'required',
                 'brand_id' => 'required',
@@ -225,6 +228,11 @@ class ProductController extends Controller
                 $data['keywords'] = $request->name;
             }else{
                 $data['keywords'] = $request->keywords;
+            }
+            if($request->link===null){
+                $data['link'] = null;
+            }else{
+                $data['link'] = $request->link;
             }
             if ($product->update($data)) {
                 return redirect()->route('product.index')->with('message', 'Sửa thành công!');

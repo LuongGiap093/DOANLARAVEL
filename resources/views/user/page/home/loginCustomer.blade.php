@@ -55,15 +55,16 @@
                                     <p>{{ session('status') }}</p>
                                 </div>
                             @endif
-                            <div class="radio outer-xs">
-                                <label>
-                                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Ghi
-                                    nhớ!
-                                </label>
-                                <a href="{{route('customer.forgot')}}" class="forgot-password pull-right">Quên mật khẩu?</a>
-                            </div>
+{{--                            <div class="radio outer-xs">--}}
+{{--                                <label>--}}
+{{--                                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Ghi--}}
+{{--                                    nhớ!--}}
+{{--                                </label>--}}
+{{--                                <a href="{{route('customer.forgot')}}" class="forgot-password pull-right">Quên mật khẩu?</a>--}}
+{{--                            </div>--}}
                             <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Đăng nhập
                             </button>
+                            <a href="{{route('customer.forgot')}}" class="forgot-password pull-right" style="padding: 10px 0px">Quên mật khẩu?</a>
                         </form>
                     </div>
 

@@ -4,7 +4,7 @@
         <ul class="nav">
             @foreach($cate->unique('category_id') as $category)
                 <li class="dropdown menu-item">
-                    <a href="{{route('shopping.loaisp', $category->category_id)}}" class="dropdown-toggle"
+                    <a href="" class="dropdown-toggle"
                        data-toggle="dropdown">
                         @if($category->category_icon!=null)
                             <i class="{{$category->category_icon}}" aria-hidden="true"></i>

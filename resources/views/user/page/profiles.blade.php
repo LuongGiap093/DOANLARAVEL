@@ -1,5 +1,45 @@
 @extends('user.theme.layout')
 @section('content')
+    <style>
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%;
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
     <?php
     $id = Auth::guard('account_customer')->id();
     ?>
@@ -18,10 +58,96 @@
                             </div>
 
                             <ul class="nav nav-pills nav-stacked">
-                                <li class="active"><a href="#"> <i class="fa fa-user"></i> Profile</a></li>
+                                <li class="active"><a href="#"> <i class="fa fa-user"></i> Hồ sơ</a></li>
                                 <li><a href="#"> <i class="fa fa-calendar"></i> Recent Activity <span
                                             class="label label-warning pull-right r-activity">9</span></a></li>
-                                <li><a href="#"> <i class="fa fa-edit"></i> Edit profile</a></li>
+                                <li><a id="myBtn" href="javascript:"> <i class="fa fa-edit"></i> Chỉnh sửa hồ sơ</a></li>
+                                <div id="myModal" class="modal">
+
+                                    <!-- Modal content -->
+                                    <div class="modal-content">
+                                        <span class="close">&times;</span>
+                                            <div class="row">
+                                                    <div class="col-md-12">
+                                                        <form>
+                                                                    <div class="row gutters">
+                                                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                                            <div class="form-group">
+                                                                                <label for="image" style="font-weight: 600;">Ảnh đại diện:</label>
+                                                                                <input type="file" class="image" id="image" style="display: block;padding: 8px 15px;color: #373d54;width: 100%;background: #f8fafc;font-size: 14px;height: 40px;border: 1px solid #e0e4f6;transition: all 0.2s;">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                                            <div class="form-group">
+                                                                                <label for="fullName" style="font-weight: 600;">Họ và tên:</label>
+                                                                                <input type="text" class="fullname" id="fullName" placeholder="Nhập họ vào tên" style="display: block;padding: 0 15px;color: #373d54;width: 100%;background: #f8fafc;font-size: 14px;height: 40px;border: 1px solid #e0e4f6;transition: all 0.2s;">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                                            <div class="form-group">
+                                                                                <label for="eMail" style="font-weight: 600;">Email:</label>
+                                                                                <input type="email" class="email" id="eMail" placeholder="Nhập email" style="display: block;padding: 0 15px;color: #373d54;width: 100%;background: #f8fafc;font-size: 14px;height: 40px;border: 1px solid #e0e4f6;transition: all 0.2s;">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                                            <div class="form-group">
+                                                                                <label for="phone" style="font-weight: 600;">Số điện thoại:</label>
+                                                                                <input type="text" class="phone" id="phone" placeholder="Nhập số điện thoại" style="display: block;padding: 0 15px;color: #373d54;width: 100%;background: #f8fafc;font-size: 14px;height: 40px;border: 1px solid #e0e4f6;transition: all 0.2s;">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row gutters">
+                                                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                                            <div class="form-group">
+                                                                                <label for="Street" style="font-weight: 600;">Tỉnh/thành phố:</label>
+                                                                                <select name="city" id="city" class="choose city"
+                                                                                        style="width: 100%;display: block;padding: 0 15px;color: #373d54;  background: #f8fafc;font-size: 14px;height: 40px;border: 1px solid #e0e4f6;transition: all 0.2s;">
+                                                                                    <option value="">tp1</option>
+                                                                                    <option value=''>tp2</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                                            <div class="form-group">
+                                                                                <label for="ciTy" style="font-weight: 600;">Quận/huyện:</label>
+                                                                                <select name="province" id="city" class="province choose"
+                                                                                        style="width: 100%;display: block;padding: 0 15px;color: #373d54;  background: #f8fafc;font-size: 14px;height: 40px;border: 1px solid #e0e4f6;transition: all 0.2s;">
+                                                                                    <option value="">tp1</option>
+                                                                                    <option value=''>tp2</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                                            <div class="form-group">
+                                                                                <label for="sTate" style="font-weight: 600;">Xã/phường:</label>
+                                                                                <select name="wards" id="city" class="wards"
+                                                                                        style="width: 100%;display: block;padding: 0 15px;color: #373d54;  background: #f8fafc;font-size: 14px;height: 40px;border: 1px solid #e0e4f6;transition: all 0.2s;">
+                                                                                    <option value="">tp1</option>
+                                                                                    <option value=''>tp2</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                                            <div class="form-group">
+                                                                                <label for="address" style="font-weight: 600;">Địa chỉ cụ thể:</label>
+                                                                                <input type="text" class="address" id="zIp" placeholder="Số nhà.." style="width: 100%;display: block;padding: 0 15px;color: #373d54;  background: #f8fafc;font-size: 14px;height: 40px;border: 1px solid #e0e4f6;transition: all 0.2s;">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row gutters">
+                                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                                            <div class="text-right">
+                                                                                <button type="button" id="submit" name="submit" class="btn btn-primary">Cập nhật</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                        </form>
+                                                    </div>
+
+                                            </div>
+                                    </div>
+
+                                </div>
                             </ul>
                         </div>
                     </div>

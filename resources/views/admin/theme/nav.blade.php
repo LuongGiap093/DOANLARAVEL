@@ -1,90 +1,8 @@
 <div class="navbar-custom">
     <ul class="list-unstyled topnav-menu float-right mb-0">
-
-        <li class="dropdown d-none d-lg-block">
-            <a class="nav-link dropdown-toggle mr-0 waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                <img src="{!! asset('public\admin/assets/images/flags/us.jpg') !!}" alt="user-image" class="mr-2" height="12"> <span class="align-middle">English <i class="mdi mdi-chevron-down"></i> </span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right">
-                <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                    <img src="{!! asset('public\admin/assets/images/flags/germany.jpg') !!}" alt="user-image" class="mr-2" height="12"> <span class="align-middle">German</span>
-                </a>
-
-            </div>
-        </li>
-
         <li class="dropdown notification-list">
-            <a class="nav-link dropdown-toggle  waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                <i class="mdi mdi-email-outline noti-icon"></i>
-                <span class="badge badge-purple rounded-circle noti-icon-badge">3</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right dropdown-lg">
-
-                <!-- item-->
-                <div class="dropdown-item noti-title">
-                    <h5 class="font-16 m-0">
-                                    <span class="float-right">
-                                        <a href="" class="text-dark">
-                                            <small>Clear All</small>
-                                        </a>
-                                    </span>Chat
-                    </h5>
-                </div>
-
-                <div class="slimscroll noti-scroll">
-
-                    <div class="inbox-widget">
-                        <a href="#">
-                            <div class="inbox-item">
-                                <div class="inbox-item-img"><img src="{!! asset('public\admin/assets/images/users/avatar-1.jpg') !!}" class="rounded-circle" alt=""></div>
-                                <p class="inbox-item-author">Cristina Pride</p>
-                                <p class="inbox-item-text text-truncate">Hi, How are you? What about our next meeting</p>
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div class="inbox-item">
-                                <div class="inbox-item-img"><img src="assets/images/users/avatar-2.jpg" class="rounded-circle" alt=""></div>
-                                <p class="inbox-item-author">Sam Garret</p>
-                                <p class="inbox-item-text text-truncate">Yeah everything is fine</p>
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div class="inbox-item">
-                                <div class="inbox-item-img"><img src="assets/images/users/avatar-3.jpg" class="rounded-circle" alt=""></div>
-                                <p class="inbox-item-author">Karen Robinson</p>
-                                <p class="inbox-item-text text-truncate">Wow that's great</p>
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div class="inbox-item">
-                                <div class="inbox-item-img"><img src="assets/images/users/avatar-4.jpg" class="rounded-circle" alt=""></div>
-                                <p class="inbox-item-author">Sherry Marshall</p>
-                                <p class="inbox-item-text text-truncate">Hi, How are you? What about our next meeting</p>
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div class="inbox-item">
-                                <div class="inbox-item-img"><img src="assets/images/users/avatar-5.jpg" class="rounded-circle" alt=""></div>
-                                <p class="inbox-item-author">Shawn Millard</p>
-                                <p class="inbox-item-text text-truncate">Yeah everything is fine</p>
-
-                            </div>
-                        </a>
-                    </div> <!-- end inbox-widget -->
-
-                </div>
-                <!-- All-->
-                <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
-                    View all
-                    <i class="fi-arrow-right"></i>
-                </a>
-
-            </div>
-        </li>
-
-        <li class="dropdown notification-list">
-            <a class="nav-link dropdown-toggle  waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+            <a class="nav-link dropdown-toggle  waves-effect" data-toggle="dropdown" href="#" role="button"
+               aria-haspopup="false" aria-expanded="false">
                 <i class="mdi mdi-bell-outline noti-icon"></i>
                 <span class="badge badge-pink rounded-circle noti-icon-badge">4</span>
             </a>
@@ -95,9 +13,9 @@
                     <h5 class="font-16 m-0">
                                     <span class="float-right">
                                         <a href="" class="text-dark">
-                                            <small>Clear All</small>
+                                            <small>Xóa tất cả</small>
                                         </a>
-                                    </span>Notification
+                                    </span>Thông báo
                     </h5>
                 </div>
 
@@ -173,7 +91,8 @@
         </li>
 
         <li class="dropdown notification-list">
-            <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+            <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button"
+               aria-haspopup="false" aria-expanded="false">
                 <img src="{{asset('public/images/'. Auth::User()->image)}}" alt="user-image" class="rounded-circle">
                 <span class="pro-user-name ml-1">
                                 {{Auth::User()->name}} <i class="mdi mdi-chevron-down"></i>
@@ -182,60 +101,33 @@
             <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                 <!-- item-->
                 <div class="dropdown-header noti-title">
-                    <h6 class="text-overflow m-0">Welcome !</h6>
+                    <h6 class="text-overflow m-0">Chào mừng !</h6>
                 </div>
 
                 <!-- item-->
                 <a href="{{ route('user.profile') }}" class="dropdown-item notify-item">
                     <i class="mdi mdi-account-outline"></i>
-                    <span>Profile</span>
+                    <span>Hồ sơ</span>
                 </a>
 
                 <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                    <i class="mdi mdi-settings-outline"></i>
-                    <span>Settings</span>
-                </a>
-
                 <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                    <i class="mdi mdi-lock-outline"></i>
-                    <span>Lock Screen</span>
-                </a>
 
                 <div class="dropdown-divider"></div>
 
                 <!-- item-->
                 <a href="{{ route('getLogout') }}" class="dropdown-item notify-item">
                     <i class="mdi mdi-logout-variant"></i>
-                    <span>Logout</span>
+                    <span>Đăng xuất</span>
                 </a>
 
             </div>
         </li>
-
-{{--        <li class="dropdown notification-list">--}}
-{{--            <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect">--}}
-{{--                <i class="mdi mdi-settings-outline noti-icon"></i>--}}
-{{--            </a>--}}
-{{--        </li>--}}
-
     </ul>
 
     <!-- LOGO -->
     <div class="logo-box">
-{{--        <a href="index.html" class="logo text-center logo-dark">--}}
-{{--                        <span class="logo-lg">--}}
-{{--                            <img src="{!! asset('public\admin/assets/images/logo-dark.png') !!}" alt="" height="18">--}}
-{{--                            <!-- <span class="logo-lg-text-dark">Velonic</span> -->--}}
-{{--                        </span>--}}
-{{--            <span class="logo-sm">--}}
-{{--                            <!-- <span class="logo-lg-text-dark">V</span> -->--}}
-{{--                            <img src="{!! asset('public\admin/assets/images/logo-sm.png') !!}" alt="" height="22">--}}
-{{--                        </span>--}}
-{{--        </a>--}}
-
-        <a href="#" class="logo text-center logo-light">
+        <a href="{{route('dashboard.index')}}" class="logo text-center logo-light">
                         <span class="logo-lg">
                             <img src="{!! asset('public\admin/assets/images/logo-light.png') !!}" alt="" height="18">
                             <!-- <span class="logo-lg-text-dark">Velonic</span> -->
@@ -256,20 +148,9 @@
                 <i class="mdi mdi-menu"></i>
             </button>
         </li>
-
-        <li class="d-none d-lg-block">
-            <form class="app-search">
-                <div class="app-search-box">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search...">
-                        <div class="input-group-append">
-                            <button class="btn" type="submit">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </form>
+        <li class="d-none d-lg-block" style="margin-top: 25px;margin-left: 30px;">
+            <a href="{{route('shopping.home')}}" style="padding: 10px;border: 1px solid whitesmoke;">Xem trang người dùng</a>
         </li>
+
     </ul>
 </div>

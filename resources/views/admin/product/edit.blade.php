@@ -81,6 +81,10 @@
             <input type="text" class="form-control" name="keywords" value="{{$product->keywords}}">
         </div>
         <div class="form-group">
+            <label for="link">Link videos:</label>
+            <input type="text" class="form-control" name="link" value="{{$product->link}}">
+        </div>
+        <div class="form-group">
             <label for="status">Tình trạng sản phẩm:</label>
             <select name="status" class="form-control" id="status">
                 @if($product->status==1)

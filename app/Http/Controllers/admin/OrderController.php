@@ -119,18 +119,13 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-
-        $orders= DB::table('order')
-            ->where('order_id', $order)
-            ->update([
-                'order_status'	=>	0,
-            ]);
-        $order->order_status = 0;
-
-       if($order->save())
-            Session::flash('message', 'successfully!');
-        else
-            Session::flash('message', 'Failure!');
+        $order->update(['order_status'	=>	0]);
+//        $order->order_status = 0;
+//
+//       if($order->save())
+//            Session::flash('message', 'successfully!');
+//        else
+//            Session::flash('message', 'Failure!');
         return redirect()->route('order.index');
         //
     }
@@ -148,5 +143,9 @@ class OrderController extends Controller
     else
         Session::flash('message', 'Failure!');
     return redirect()->route('order.index');
+    }
+    public function changestatusorder($order_id) {
+        DB::table('order')->where('order_id',$order_id)->update(['order_status'=>0]);
+        return back()->with('message','Xóa đơn hàng thành công!');
     }
 }

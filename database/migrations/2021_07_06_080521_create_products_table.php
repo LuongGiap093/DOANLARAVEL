@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->string('discount')->default(0);
             $table->text('content')->nullable();
             $table->text('describe')->nullable();
+            $table->longText('link')->nullable();
             $table->integer('status')->default(0);
             $table->timestamps();
             $table->integer('idcat')->unsigned();

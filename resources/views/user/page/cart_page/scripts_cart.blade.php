@@ -32,9 +32,7 @@
         }).done(function (response) {
             alertify.error('Xóa Thành Công!');
             $("#change-item-cart").load(location.href + " #change-item-cart>*", "");
-            // $("#list-cart").empty();
-            // $("#list-cart").html(response);
-            // $("#total-quanty-show").text($("#total-quanty-card").val());
+            location.reload();
 
         });
     }

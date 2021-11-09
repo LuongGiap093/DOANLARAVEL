@@ -66,6 +66,10 @@
             <input type="text" class="form-control" name="keywords">
         </div>
         <div class="form-group">
+            <label for="link">link videos:</label>
+            <input type="text" class="form-control" name="link">
+        </div>
+        <div class="form-group">
             <label for="status">Tình trạng sản phẩm:</label>
             <select name="status" class="form-control" id="status">
                 <option value='1'>Sản phẩm mới</option>

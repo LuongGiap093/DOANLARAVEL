@@ -35,6 +35,7 @@
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
                         <li><a href="{{route('about.index')}}">Trang giới thiệu</a></li>
+                        <li><a href="{{route('admin.dieukhoan')}}">Trang điều khoản</a></li>
                         <li><a href="{{route('blog.index')}}">Tin tức</a></li>
                         <li><a href="{{route('faq.index')}}">Câu hỏi thường gặp</a></li>
                     </ul>

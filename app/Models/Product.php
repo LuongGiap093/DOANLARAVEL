@@ -17,6 +17,7 @@ class Product extends Model
         'discount',
         'content',
         'describe',
+        'link',
         'status',
         'idcat',
         'brand_id',
