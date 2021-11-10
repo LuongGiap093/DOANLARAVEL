@@ -29,7 +29,7 @@ class BrandController extends Controller
     public function index()
     {
         //
-        $brands = Brand::all();
+        $brands = Brand::where('brand_status','<>',0)->orderby('brand_id','desc')->get();
         return view($this->viewprefix . 'index', compact('brands'));
     }
 
@@ -57,20 +57,18 @@ class BrandController extends Controller
         $brand = new Brand();
         $request->validate([
             'brand_name' => 'required',
-            'brand_desc' => 'required',
+            'brand_desc' => '',
             'brand_status' => 'required',
-            'category_id' => 'required',
         ]);
         $brand->brand_name = $request->brand_name;
         $brand->brand_desc = $request->brand_desc;
         $brand->brand_status = $request->brand_status;
-        $brand->category_id = $request->category_id;
         if ($brand->save()) //if(Category::create($request->all()))
         {
-            Session::flash('message', 'successfully!');
+            Session::flash('message', 'Thêm thành công!');
         }
         else {
-            Session::flash('message', 'Failure!');
+            Session::flash('error', 'Thêm thất bại!');
         }
         return redirect()->route('brand.index');
     }
@@ -84,7 +82,7 @@ class BrandController extends Controller
     public function show($id)
     {
         //
-        $products = Product::where('brand_id',$id)->where('status','<>','0')->get();
+        $products = Product::where('brand_id',$id)->where('status','<>','0')->orderby('id','desc')->get();
         return view('admin.brand.productlist',compact('products'));
     }
 
@@ -114,13 +112,12 @@ class BrandController extends Controller
         $brand->brand_name = $request->brand_name;
         $brand->brand_desc = $request->brand_desc;
         $brand->brand_status = $request->brand_status;
-        $brand->category_id = $request->category_id;
         if ($brand->save()) //if(Category::create($request->all()))
         {
-            Session::flash('message', 'successfully!');
+            Session::flash('message', 'Sửa thành công!');
         }
         else {
-            Session::flash('message', 'Failure!');
+            Session::flash('error', 'Sửa thất bại!');
         }
         return redirect()->route('brand.index');
     }
@@ -134,11 +131,12 @@ class BrandController extends Controller
     public function destroy(Brand $brand)
     {
         //
-        if ($brand->delete()) {
-            Session::flash('message', 'successfully!');
+
+        if ($brand->update(['brand_status'=>0])) {
+            Session::flash('message', 'Xóa thành công!');
         }
         else {
-            Session::flash('message', 'Failure!');
+            Session::flash('error', 'Xóa thất bại!');
         }
         return redirect()->route('brand.index');
     }

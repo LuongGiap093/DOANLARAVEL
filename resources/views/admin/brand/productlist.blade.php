@@ -1,4 +1,4 @@
-@extends('admin.product.layout')
+@extends('admin.brand.layout')
 @section('content')
     <div style="padding: 20px;border: 1px solid #eaeaea;">
         <table id="datatable" class="table table-bordered dt-responsive nowrap"
@@ -8,9 +8,9 @@
                 <th>Tên</th>
                 <th>Giá</th>
                 <th>Giảm giá</th>
-                <th>Edit</th>
-                <th>Lock</th>
-                <th>Delete</th>
+                <th>Sửa</th>
+
+                <th>Xóa</th>
               </thead>
               <tbody>
                 @foreach($products ?? '' as $product)
@@ -20,14 +20,8 @@
                     <td>{{$product->price}} </td>
                     <td>{{$product->discount}} </td>
                     <td><a href="{{route('product.edit', $product->id)}}" class="btn btn-primary"><i class="fa fa-edit"></i></a></td>
-                    <td><a href="" class="btn btn-warning"><i class="fa fa-lock"></i></a></td>
-                    <td>
-                    <form action="{{route('product.destroy', $product->id)}}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                    </form>
-                    </td>
+                    <td><a href="{{route('product.changestatus',$product->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+
                   </tr>
                 @endforeach
               </tbody>

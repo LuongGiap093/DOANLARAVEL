@@ -1707,6 +1707,7 @@ header{background:#157ed2}
   font-family: FontAwesome;
 }
 .sidebar .side-menu nav .nav > li > a .icon {
+    width: 10%;
   font-size: 16px;
   margin-right: 12px;
 }

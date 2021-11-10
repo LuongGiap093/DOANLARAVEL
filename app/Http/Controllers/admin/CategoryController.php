@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Session;
 
@@ -26,7 +27,7 @@ class CategoryController extends Controller {
 
   public function index() {
     //
-    $categorys = Category::all();
+    $categorys = Category::where('category_status','<>',0)->orderby('category_position','desc')->get();
     return view($this->viewprefix . 'index', compact('categorys'));
   }
 
@@ -49,24 +50,27 @@ class CategoryController extends Controller {
    */
   public function store(Request $request) {
     //
-
+      $max=Category::max('category_position');
     $category = new Category;
     $request->validate([
       'name' => 'required',
-      'category_content' => 'required',
+      'category_content' => '',
         'status'=> 'required',
-        'icon' => 'required'
+        'position'=> '',
+        'icon' => ''
     ]);
     $category->category_name = $request->name;
     $category->category_content = $request->category_content;
     $category->category_status = $request->status;
-      $category->category_icon = $request->icon;
+        $category->category_icon = $request->icon;
+
+      $category->category_position = $max+1;
       if ($category->save()) //if(Category::create($request->all()))
     {
       Session::flash('message', 'Thêm danh mục thành công!');
     }
     else {
-      Session::flash('message', 'Thêm danh mục thất bại!');
+      Session::flash('error', 'Thêm danh mục thất bại!');
     }
     return redirect()->route('category.index');
   }
@@ -78,8 +82,9 @@ class CategoryController extends Controller {
    *
    * @return \Illuminate\Http\Response
    */
-  public function show(Category $category) {
-    //
+  public function show($id) {
+      $products = Product::where('idcat',$id)->where('status','<>','0')->orderby('id','desc')->get();
+      return view('admin.category.productlist',compact('products'));
   }
 
   /**
@@ -109,12 +114,13 @@ class CategoryController extends Controller {
     $category->category_content = $request->category_content;
     $category->category_status = $request->status;
       $category->category_icon = $request->icon;
+      $category->category_position = $request->position;
     if ($category->save()) //if(Category::create($request->all()))
     {
       Session::flash('message', 'Sửa thành công!');
     }
     else {
-      Session::flash('message', 'Sửa thất bại!');
+      Session::flash('error', 'Sửa thất bại!');
     }
     return redirect()->route('category.index');
   }
@@ -128,18 +134,14 @@ class CategoryController extends Controller {
    */
   public function destroy(Category $category) {
     //
-    if ($category->delete()) {
-      Session::flash('message', 'successfully!');
+    if ($category->update(['category_status'=>0])) {
+      Session::flash('message', 'Xóa thành công!');
     }
     else {
-      Session::flash('message', 'Failure!');
+      Session::flash('error', 'Xóa thất bại!');
     }
     return redirect()->route('category.index');
   }
 
-  public function productlist($id) {
-    $products = Category::Find($id)->product;
-    return view('admin.category.productlist', compact('products'));
-  }
 
 }

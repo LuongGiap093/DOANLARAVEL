@@ -82,7 +82,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box">
-                            <h4 class="page-title">HÓA ĐƠN</h4>
+
                             <div class="page-title-right">
 
                             </div>
@@ -96,7 +96,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body table-responsive">
-                                <h4 class="m-t-0 header-title mb-4"><b>Default Example</b></h4>
+                                <h4 class="m-t-0 header-title mb-4"><b>QUẢN LÝ ĐƠN HÀNG</b></h4>
                                 <div class="btn-group" role="group" aria-label="Basic example">
                                     <a href="{{route('order.index')}}" class="btn btn-primary">Quản lý</a>
                                 </div>
@@ -188,6 +188,24 @@
 <!-- App js -->
 <script src="{!! asset('public\admin/assets/js/app.min.js') !!}"></script>
 <script>CKEDITOR.replace('contents')</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.choose').on('change', function () {
+            var status = $(this).val();
+            var order_id=$(this).data('order_id');
+
+            $.ajax({
+                url: '{{route('order.changestatus-detail')}}',
+                method: 'GET',
+                data: {order_id:order_id, status:status, "_token": "{{ csrf_token() }}"},
+                success: function (data) {
+                    location.reload();
+                }
+            });
+        });
+    });
+
+</script>
 </body>
 
 </html>

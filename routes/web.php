@@ -39,6 +39,7 @@ Route::group(['middleware' => 'CheckAdminLogin','prefix' => 'panel/user', 'names
     Route::get('changestatuscustomerlock/{id}','AccountcustomerController@changestatuscustomerlock')->name('customer.changestatuslock');
     Route::get('changestatuscustomerunlock/{id}','AccountcustomerController@changestatuscustomerunlock')->name('customer.changestatusunlock');
     Route::get('changestatusorder/{order_id}','OrderController@changestatusorder')->name('order.changestatus');
+    Route::get('changestatusorder-detail','OrderController@changestatusorder_detail')->name('order.changestatus-detail');
 
 
   Route::get('search','DashboardController@search_order')->name('order.search');
@@ -138,9 +139,9 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::get('danh-sach-yeu-thich/them/{id}', 'WishlistController@addToWishlist');
     Route::get('danh-sach-yeu-thich/xoa/{wishlist_id}','WishlistController@destroy');
 
-    Route::get('so-sanh-san-pham', 'ComparisonController@index')->name('shopping.showComparison');
-    Route::get('so-sanh-san-pham/them/{id}', 'ComparisonController@addToComparison');
-    Route::get('so-sanh-san-pham/xoa/{comparison_id}','ComparisonController@destroy');
+//    Route::get('so-sanh-san-pham', 'ComparisonController@index')->name('shopping.showComparison');
+//    Route::get('so-sanh-san-pham/them/{id}', 'ComparisonController@addToComparison');
+//    Route::get('so-sanh-san-pham/xoa/{comparison_id}','ComparisonController@destroy');
 
     Route::get('tim-kiem','ProductController@search_product')->name('product.search');
     Route::get('tim-kiem-tin-tuc','BlogController@index')->name('blog.search');

@@ -24,17 +24,25 @@
             </div>
             <div class="float-right mt-6">
                 <p><strong>Ngày đặt hàng: </strong> {{date('d-m-Y',strtotime($order->created_at))}}</p>
-                <p class="mt-2"><strong>Tình trạng đơn hàng: </strong> <span class="badge badge-pink">
+                <p class="mt-2">
+                    <strong>Tình trạng đơn hàng: </strong>
+                    <select name="status" id="status" data-order_id="{{$order->order_id}}" class="badge badge-pink choose">
                         @if($order->order_status==0)
-                            Đã hủy
+                            <option value='0'>Đã hủy</option>
                         @elseif($order->order_status==1)
-                            Đơn mới
+                            <option value='1'>Đơn mới</option>
+                            <option value='2'>Xác nhận đơn</option>
                         @elseif($order->order_status==2)
-                            Đang xử lý
+                            <option value='2'>Đang chờ xử lý</option>
+                            <option value='3'>Vận chuyển</option>
                         @elseif($order->order_status==3)
-                            Hoàn thành
+                            <option value='3'>Đang vận chuyển</option>
+                            <option value='4'>Hoàn thành</option>
+                        @elseif($order->order_status==4)
+                            <option value='4'>Đã hoàn thành</option>
                         @endif
-                    </span></p>
+                    </select>
+                </p>
             </div>
         </div>
     </div>

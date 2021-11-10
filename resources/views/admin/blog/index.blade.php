@@ -62,6 +62,7 @@
         <th>Hình ảnh</th>
         <th>Tiêu đề </th>
         <th>Trạng Thái</th>
+        <th>Khóa</th>
         <th>Xem chi tiết</th>
         <th>Sửa</th>
         <th>Xóa</th>

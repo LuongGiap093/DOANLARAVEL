@@ -93,13 +93,9 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box">
-                            <h4 class="page-title">Data Table</h4>
+
                             <div class="page-title-right">
-                                <ol class="breadcrumb p-0 m-0">
-                                    <li class="breadcrumb-item"><a href="#">Velonic</a></li>
-                                    <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                                    <li class="breadcrumb-item active">Data Table</li>
-                                </ol>
+
                             </div>
                             <div class="clearfix"></div>
                         </div>
@@ -230,8 +226,6 @@
             var feeship_id=$(this).data('feeship_id');
             var fee_value=$(this).text();
             var _token=$('input[name="_token"]').val();
-            // alert(feeship_id);
-            // alert(fee_value);
             $.ajax({
                 url: '{{route('update-delivery')}}',
                 method: 'POST',

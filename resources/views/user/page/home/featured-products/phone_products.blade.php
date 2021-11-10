@@ -34,11 +34,13 @@
                             @for($i=1;$i<=5-$avg_star;$i++)
                                 <span class="fa fa-star"></span>
                             @endfor
-                            <div class="product-price">
-                                Giảm: <span
-                                    class="price-before-discount"> {{ number_format($product->price,'0',',','.') }}đ</span>
-                                <span style="position: absolute;">-{{ number_format(($product->discount*100)/$product->price) }}%</span>
-                            </div>
+                            @if($product->discount>0)
+                                <div class="product-price">Giảm:
+                                    <span class="price-before-discount">{{ number_format($product->price,'0',',','.') }}đ</span>
+                                    <span style="position: absolute;">-{{ number_format(($product->discount*100)/$product->price) }}%</span>
+                                </div>
+                            @else
+                            @endif
                             <div class="description"></div>
                             <div class="product-price">
                                     <span

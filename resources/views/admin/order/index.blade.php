@@ -5,6 +5,18 @@
             <p>{{ session('message') }}</p>
         </div>
     @endif
+    <div class="dropdown" style="top: -8px; display: -webkit-inline-flex">
+        <button style="border-radius: 3px;" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{$sort}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="{{request()->fullUrlWithQuery(['sort_by'=>'1'])}}">Đơn hàng mới</a>
+            <a class="dropdown-item" href="{{request()->fullUrlWithQuery(['sort_by'=>'2'])}}">Đơn hàng đã xác nhận</a>
+            <a class="dropdown-item" href="{{request()->fullUrlWithQuery(['sort_by'=>'3'])}}">Đơn hàng đang vận chuyển</a>
+            <a class="dropdown-item" href="{{request()->fullUrlWithQuery(['sort_by'=>'4'])}}">Đơn hàng đã giao thành công</a>
+            <a class="dropdown-item" href="{{request()->fullUrlWithQuery(['sort_by'=>'0'])}}">Đơn hàng đã hủy</a>
+        </div>
+    </div>
     <table id="datatable" class="table table-bordered dt-responsive nowrap"
            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
         <thead>
@@ -35,6 +47,8 @@
                     @elseif($order->order_status==2)
                         Đang xử lý
                     @elseif($order->order_status==3)
+                        Đang giao hàng
+                    @elseif($order->order_status==4)
                         Hoàn thành
                     @endif
                 </td>

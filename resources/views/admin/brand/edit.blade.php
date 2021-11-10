@@ -4,40 +4,24 @@
         @csrf
         @method('PUT')
         <div class="form-group">
-            <label for="category_id">Danh mục:</label>
-            <select name="category_id" class="form-control">
-                @foreach ($categorys as $cate)
-                    @if($cate->category_id==$brand->category_id)
-                        <option value="{{$cate->category_id}}">{{$cate->category_name}}</option>
-                    @endif
-                @endforeach
-                @foreach ($categorys as $cate)
-                    @if($cate->category_id!=$brand->category_id)
-                        <option value="{{$cate->category_id}}">{{$cate->category_name}}</option>
-                    @endif
-                @endforeach
-
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="brand_name">Name:</label>
+            <label for="brand_name">Tên thương hiệu:</label>
             <input type="text" class="form-control" name="brand_name" value="{{$brand->brand_name}}">
         </div>
 
         <div class="form-group">
-            <label for="brand_desc">Content:</label>
+            <label for="brand_desc">Mô tả:</label>
             <textarea class="form-control" id="contents" name="brand_desc">{{$brand->brand_desc}}</textarea>
             <script>CKEDITOR.replace('brand_desc');</script>
         </div>
         <div class="form-group">
-            <label for="brand_status">Status:</label>
+            <label for="brand_status">Trạng thái:</label>
             <select name="brand_status" class="form-control" id="brand_status">
                 @if($brand->brand_status==1)
-                    <option value="1">true</option>
-                    <option value="0">flase</option>
+                    <option value="1">Hiển thị</option>
+                    <option value="0">Ẩn</option>
                 @else
-                    <option value="0">flase</option>
-                    <option value="1">true</option>
+                    <option value="0">Ẩn</option>
+                    <option value="1">Hiển thị</option>
                 @endif
             </select>
         </div>

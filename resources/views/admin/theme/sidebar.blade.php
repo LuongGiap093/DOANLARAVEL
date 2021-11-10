@@ -85,6 +85,7 @@
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
                         <li><a href="{{route('customer.index')}}">Thành viên</a></li>
+                        <li><a href="{{route('contact.index')}}">Form liên hệ</a></li>
                     </ul>
                 </li>
 
@@ -102,13 +103,7 @@
 {{--                        --}}{{--                        <span class="menu-arrow"></span>--}}
 {{--                    </a>--}}
                 </li>
-                <li>
-                    <a href="{{route('contact.index')}}" class="waves-effect">
-                        <i class="ion-ios-document"></i>
-                        <span>Form liên hệ</span>
-                        {{--                        <span class="menu-arrow"></span>--}}
-                    </a>
-                </li>
+
 
 
             </ul>

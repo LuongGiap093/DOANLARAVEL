@@ -34,6 +34,7 @@ class AccountCustomerController extends Controller
         $cate = Category::orderby('category_position', 'asc')
             ->join('product', 'category.category_id', '=', 'product.idcat')
             ->join('brands', 'product.brand_id', '=', 'brands.brand_id')
+            ->whereBetween('category_position',[1,10])
             ->get();
         if (Auth::guard('account_customer')->check()) {
             return redirect()->route('shopping.home');
@@ -142,6 +143,7 @@ class AccountCustomerController extends Controller
             $cate = Category::orderby('category_position', 'asc')
                 ->join('product', 'category.category_id', '=', 'product.idcat')
                 ->join('brands', 'product.brand_id', '=', 'brands.brand_id')
+                ->whereBetween('category_position',[1,10])
                 ->get();
             $accountcustomer = AccountCustomer::all();
             $wishlists = Wishlist::where('customer_id', Auth::guard('account_customer')->id())->get();
@@ -177,6 +179,7 @@ class AccountCustomerController extends Controller
         $cate = Category::orderby('category_position', 'asc')
             ->join('product', 'category.category_id', '=', 'product.idcat')
             ->join('brands', 'product.brand_id', '=', 'brands.brand_id')
+            ->whereBetween('category_position',[1,10])
             ->get();
         if (Auth::guard('account_customer')->check()) {
             return redirect()->route('shopping.home');
@@ -247,6 +250,7 @@ class AccountCustomerController extends Controller
         $cate = Category::orderby('category_position', 'asc')
             ->join('product', 'category.category_id', '=', 'product.idcat')
             ->join('brands', 'product.brand_id', '=', 'brands.brand_id')
+            ->whereBetween('category_position',[1,10])
             ->get();
         if($customer->forgot ===$forgot)
         {
@@ -266,6 +270,7 @@ class AccountCustomerController extends Controller
             $cate = Category::orderby('category_position', 'asc')
                 ->join('product', 'category.category_id', '=', 'product.idcat')
                 ->join('brands', 'product.brand_id', '=', 'brands.brand_id')
+                ->whereBetween('category_position',[1,10])
                 ->get();
             $wishlists = Wishlist::where('customer_id', Auth::guard('account_customer')->id())->get();
             return view('user.page.account_customer.change_pass', compact('logos', 'cate', 'categorys','wishlists'));

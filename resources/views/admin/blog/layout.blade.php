@@ -43,14 +43,10 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box">
-                            <h2 class="page-title" style="font-size: 20px">Quản Lý Bài Viết</h2>
-{{--                            <div class="page-title-right">--}}
-{{--                                <ol class="breadcrumb p-0 m-0">--}}
-{{--                                    <li class="breadcrumb-item"><a href="#">Velonic</a></li>--}}
-{{--                                    <li class="breadcrumb-item"><a href="#">Tables</a></li>--}}
-{{--                                    <li class="breadcrumb-item active">Data Table</li>--}}
-{{--                                </ol>--}}
-{{--                            </div>--}}
+
+                            <div class="page-title-right">
+
+                            </div>
                             <div class="clearfix"></div>
                         </div>
                     </div>
@@ -61,7 +57,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body table-responsive">
-                                <h4 class="m-t-0 header-title mb-4" style="font-size: 18px"><b>Tin Tức</b></h4>
+                                <h4 class="m-t-0 header-title mb-4" style="font-size: 18px"><b>QUẢN LÝ TIN TỨC</b></h4>
                                 <div class="btn-group" role="group" aria-label="Basic example">
                                     <a href="{{ route('blog.index') }}" class="btn btn-primary">Quản
                                         lý</a>

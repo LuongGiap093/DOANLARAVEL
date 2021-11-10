@@ -27,6 +27,7 @@ class BlogController extends Controller
         $cate=Category::orderby('category_position','asc')
             ->join('product','category.category_id','=','product.idcat')
             ->join('brands','product.brand_id','=','brands.brand_id')
+            ->whereBetween('category_position',[1,10])
             ->get();
         $product_tag=Product::where('status','<>',0)->orderby('view_number','desc')->limit(8)->get();
 
@@ -54,6 +55,7 @@ class BlogController extends Controller
         $cate=Category::orderby('category_position','asc')
             ->join('product','category.category_id','=','product.idcat')
             ->join('brands','product.brand_id','=','brands.brand_id')
+            ->whereBetween('category_position',[1,10])
             ->get();
         if (Auth::guard('account_customer')->check()) {
             $wishlists = Wishlist::where('customer_id', Auth::guard('account_customer')->id())->get();

@@ -2,7 +2,7 @@
     <div class="head"><i class="icon fa fa-align-justify fa-fw"></i>Danh mục sản phẩm</div>
     <nav class="yamm megamenu-horizontal">
         <ul class="nav">
-            @foreach($cate->unique('category_id') as $category)
+            @foreach($cate->unique('category_id') as $key => $category)
                 <li class="dropdown menu-item">
                     <a href="" class="dropdown-toggle"
                        data-toggle="dropdown">

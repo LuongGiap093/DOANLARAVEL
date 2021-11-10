@@ -6,9 +6,7 @@
             var ma_id = $(this).val();// this lấy giá trị value của option
             var _token = $('input[name="_token"]').val();// gửi bằng form thì phải có token
             var result = '';
-            // alert(action);
-            // alert(matp);
-            // alert(_token);
+
             if (action == 'city') {
                 result = 'province';
             } else {

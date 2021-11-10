@@ -40,7 +40,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box">
-                            <h4 class="page-title">Quản lý tài khoản</h4>
+
 {{--                            <div class="page-title-right">--}}
 {{--                                <ol class="breadcrumb p-0 m-0">--}}
 {{--                                    <li class="breadcrumb-item"><a href="#">Velonic</a></li>--}}

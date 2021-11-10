@@ -31,6 +31,7 @@ class ProductController extends Controller
         $cate=Category::orderby('category_position','asc')
             ->join('product','category.category_id','=','product.idcat')
             ->join('brands','product.brand_id','=','brands.brand_id')
+            ->whereBetween('category_position',[1,10])
             ->get();
         $product_tag=Product::where('status','<>',0)->orderby('view_number','desc')->limit(8)->get();
         if (Auth::guard('account_customer')->check()) {
@@ -48,6 +49,7 @@ class ProductController extends Controller
         $cate=Category::orderby('category_position','asc')
             ->join('product','category.category_id','=','product.idcat')
             ->join('brands','product.brand_id','=','brands.brand_id')
+            ->whereBetween('category_position',[1,10])
             ->get();
         $product_tag=Product::where('status','<>',0)->orderby('view_number','desc')->limit(8)->get();
         if (Auth::guard('account_customer')->check()) {
@@ -128,6 +130,7 @@ class ProductController extends Controller
                     $products = DB::table('product')
                         ->where('status', '<>', 0)->whereBetween('price',$filter)
                         ->where('keywords', 'like', '%' . $request->search_key . '%')
+                        ->orderby('id','desc')
                         ->paginate(9)->appends(request()->query());
                 }
             }else{
@@ -136,6 +139,7 @@ class ProductController extends Controller
                     ->where('status', '<>', 0)
                     ->whereBetween('price',$filter)
                     ->where('keywords', 'like', '%' . $request->search_key . '%')
+                    ->orderby('id','desc')
                     ->paginate(9)->appends(request()->query());}
             if ($products == NULL) {
                 return abort(404);
@@ -148,6 +152,7 @@ class ProductController extends Controller
                 ->where('status', '<>', 0)
                 ->whereBetween('price',$filter)
                 ->where('keywords', 'like', '%' . $request->search_key . '%')
+                ->orderby('id','desc')
                 ->paginate(9)->appends(request()->query());
             return view('user.page.product_page.index', compact('name_page','product_tag','products','wishlists','sort','cate','logos','categorys','brands'));
         }
@@ -158,6 +163,7 @@ class ProductController extends Controller
         $cate=Category::orderby('category_position','asc')
             ->join('product','category.category_id','=','product.idcat')
             ->join('brands','product.brand_id','=','brands.brand_id')
+            ->whereBetween('category_position',[1,10])
             ->get();
         if (Auth::guard('account_customer')->check()) {
             $wishlists = Wishlist::where('customer_id', Auth::guard('account_customer')->id())->get();
@@ -221,11 +227,14 @@ class ProductController extends Controller
             }else{
                 $sort='Sắp xếp mặc định';
                 $products = DB::table('product')->where('status','<>',0)->whereBetween('price',$filter)
+                    ->orderby('id','desc')
                     ->where('brand_id', $id)->paginate(9);
             }
         }else{
             $sort='Sắp xếp mặc định';
-            $products = DB::table('product')->where('status','<>',0)->whereBetween('price',$filter)->where('brand_id', $id)->paginate(9);
+            $products = DB::table('product')->where('status','<>',0)->whereBetween('price',$filter)
+                ->orderby('id','desc')
+                ->where('brand_id', $id)->paginate(9);
             if ($products == NULL) {
                 return abort(404);
             }
@@ -238,6 +247,7 @@ class ProductController extends Controller
         $cate=Category::orderby('category_position','asc')
             ->join('product','category.category_id','=','product.idcat')
             ->join('brands','product.brand_id','=','brands.brand_id')
+            ->whereBetween('category_position',[1,10])
             ->get();
         $cate_name=Category::find($id);
         $name_page=$cate_name->category_name;
@@ -301,11 +311,13 @@ class ProductController extends Controller
             }else{
                 $sort='Sắp xếp mặc định';
                 $products = DB::table('product')->where('status','<>',0)->whereBetween('price',$filter)
+                    ->orderby('id','desc')
                     ->where('idcat', $id)->paginate(9);
             }
         }else{
             $sort='Sắp xếp mặc định';
             $products = DB::table('product')->where('status','<>',0)->whereBetween('price',$filter)
+                ->orderby('id','desc')
                 ->where('idcat', $id)->paginate(9);
             if ($products == NULL) {
                 return abort(404);
@@ -321,6 +333,7 @@ class ProductController extends Controller
         $cate=Category::orderby('category_position','asc')
             ->join('product','category.category_id','=','product.idcat')
             ->join('brands','product.brand_id','=','brands.brand_id')
+            ->whereBetween('category_position',[1,10])
             ->get();
         if (Auth::guard('account_customer')->check()) {
             $wishlists = Wishlist::where('customer_id', Auth::guard('account_customer')->id())->get();
@@ -341,7 +354,7 @@ class ProductController extends Controller
         $brand_id=$products->brand_id;
         $brand=Brand::find($brand_id);
         $category_id=$products->idcat;
-        $related_product=Product::where('idcat',$category_id)->where('brand_id',$brand_id)->whereNotIn('id',[$id])->get();//Lấy ra tất cả sp liên quan
+        $related_product=Product::where('idcat',$category_id)->where('brand_id',$brand_id)->whereNotIn('id',[$id])->orderby('id','desc')->get();//Lấy ra tất cả sp liên quan
 
         $comments=Comment::where('product_id',$id)->join('account_customers','comment.customer_id','=','account_customers.id')->get();//dùng để lấy tên account
         $comment=Comment::where('product_id',$id)->get();//get tất cả cmt của $id

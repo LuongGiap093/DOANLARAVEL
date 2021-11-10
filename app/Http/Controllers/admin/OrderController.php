@@ -30,13 +30,41 @@ class OrderController extends Controller
         $this->viewprefix='admin.order.';
         $this->index='order.index';
     }
-    public function index()
+    public function index(Request $request)
     {
         $customers = Shipping::all();
-        $orders = Order::where('order_status','<>',0)
-            ->join('shipping','order.shipping_id','=','shipping.shipping_id')->get();
+
         $order_details = Order_Details::all();
-        return view($this->viewprefix.'index', compact('orders','order_details','customers'));
+        if(isset($_GET['sort_by'])){
+            $sort_by = $_GET['sort_by'];
+            if($sort_by==0){
+                $sort='Đơn hàng đã hủy';
+                $orders = Order::where('order_status','=',0)
+                    ->join('shipping','order.shipping_id','=','shipping.shipping_id')->get();
+            }elseif ($sort_by==2){
+                $sort='Đơn hàng đã xác nhận';
+                $orders = Order::where('order_status','=',2)
+                    ->join('shipping','order.shipping_id','=','shipping.shipping_id')->get();
+            }elseif ($sort_by==3){
+                $sort='Đơn hàng đang vận chuyển';
+                $orders = Order::where('order_status','=',3)
+                    ->join('shipping','order.shipping_id','=','shipping.shipping_id')->get();
+            }elseif ($sort_by==4){
+                $sort='Đơn hàng đã giao thành công';
+                $orders = Order::where('order_status','=',4)
+                    ->join('shipping','order.shipping_id','=','shipping.shipping_id')->get();
+            }else{
+                $sort='Đơn hàng mới';
+                $orders = Order::where('order_status','=',1)
+                    ->join('shipping','order.shipping_id','=','shipping.shipping_id')->get();
+            }
+        }else{
+            $sort='Đơn hàng mới';
+            $orders = Order::where('order_status','=',1)
+                ->join('shipping','order.shipping_id','=','shipping.shipping_id')->get();
+
+        }
+        return view($this->viewprefix.'index', compact('sort','orders','order_details','customers'));
     }
 
     public function view_order_detail($order_id){
@@ -75,6 +103,7 @@ class OrderController extends Controller
     public function create()
     {
         //
+        return redirect()->back();
     }
 
     /**
@@ -86,6 +115,7 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         //
+        return redirect()->back();
     }
 
     /**
@@ -97,6 +127,7 @@ class OrderController extends Controller
     public function show(Order $order)
     {
         //
+        return redirect()->back();
     }
 
     /**
@@ -107,7 +138,7 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-
+        return redirect()->back();
     }
 
     /**
@@ -119,15 +150,7 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        $order->update(['order_status'	=>	0]);
-//        $order->order_status = 0;
-//
-//       if($order->save())
-//            Session::flash('message', 'successfully!');
-//        else
-//            Session::flash('message', 'Failure!');
-        return redirect()->route('order.index');
-        //
+        return redirect()->back();
     }
 
     /**
@@ -138,14 +161,14 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        if($order->delete())
-        Session::flash('message', 'successfully!');
-    else
-        Session::flash('message', 'Failure!');
-    return redirect()->route('order.index');
+        return redirect()->back();
     }
     public function changestatusorder($order_id) {
         DB::table('order')->where('order_id',$order_id)->update(['order_status'=>0]);
         return back()->with('message','Xóa đơn hàng thành công!');
+    }
+    public function changestatusorder_detail(Request $request) {
+        $data=$request->all();
+        DB::table('order')->where('order_id',$data['order_id'])->update(['order_status'=>$data['status']]);
     }
 }

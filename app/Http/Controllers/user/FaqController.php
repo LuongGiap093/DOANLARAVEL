@@ -25,6 +25,7 @@ class FaqController extends Controller {
       $cate=Category::orderby('category_position','asc')
           ->join('product','category.category_id','=','product.idcat')
           ->join('brands','product.brand_id','=','brands.brand_id')
+          ->whereBetween('category_position',[1,10])
           ->get();
       $faqs=Faq::where('status','=',1)->get();
       if (Auth::guard('account_customer')->check()) {

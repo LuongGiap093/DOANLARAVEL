@@ -39,7 +39,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box">
-                            <h4 class="page-title">Quản lý bài viết</h4>
+
                             <div class="clearfix"></div>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                             <div class="card-body table-responsive">
                                 <h4 class="m-t-0 header-title mb-4"><b>Câu hỏi thường gặp</b></h4>
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a href="{{ url(Route::current()->uri()) }}" class="btn btn-primary">Quản lý</a>
+                                    <a href="{{route('faq.index')}}" class="btn btn-primary">Quản lý</a>
                                     <a href="{{route('faq.create')}}" class="btn btn-success">Thêm mới</a>
                                 </div>
                                 @yield('content')

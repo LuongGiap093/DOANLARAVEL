@@ -4,7 +4,7 @@
     @csrf
     @method('PUT')
     <div class="form-group">
-     <label for="name">Name:</label>
+     <label for="name">Tên danh mục:</label>
      <input type="text" class="form-control" name="name" value="{{$category->category_name}}">
    </div>
     <div class="form-group">
@@ -12,19 +12,23 @@
         <input type="text" class="form-control" name="icon" value="{{$category->category_icon}}">
     </div>
   <div class="form-group">
-    <label for="content">Content:</label>
+    <label for="content">Mô tả:</label>
     <textarea class="form-control" id="contents" name="category_content">{{$category->category_content}}</textarea>
     <script>CKEDITOR.replace('contents');</script>
   </div>
     <div class="form-group">
+        <label for="position">Thứ tự:</label>
+        <input type="number" class="form-control" name="position" value="{{$category->category_position}}">
+    </div>
+    <div class="form-group">
         <label for="status">Trạng thái:</label>
         <select name="status" class="form-control" id="status">
             @if($category->category_status==1)
-                <option value="1">true</option>
-                <option value="0">flase</option>
+                <option value="1">Hiển thị</option>
+                <option value="0">Ẩn</option>
             @else
-                <option value="0">flase</option>
-                <option value="1">true</option>
+                <option value="0">Ẩn</option>
+                <option value="1">Hiển thị</option>
             @endif
         </select>
     </div>
