@@ -81,10 +81,10 @@
                                     <div class="info-box">
                                         <div class="row">
                                             <div class="col-xs-12">
-                                                <h4 class="info-box-heading green">MIỄN PHÍ VẬN CHUYỂN</h4>
+                                                <h4 class="info-box-heading green">VẬN CHUYỂN SIÊU TỐC</h4>
                                             </div>
                                         </div>
-                                        <h6 class="text">Giao hàng cho các đơn đặt hàng trên 10 triệu đồng</h6>
+                                        <h6 class="text">Giao hàng cực nhanh tên toàn quốc</h6>
                                     </div>
                                 </div>
                                 <!-- .col -->

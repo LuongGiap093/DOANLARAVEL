@@ -16,14 +16,25 @@
                     <ul class="dropdown-menu mega-menu" style="padding: 0px; min-width: 178%;">
                         <li class="yamm-content">
                             <div class="row">
-                                @foreach($cate->unique('brand_id')->where('idcat',$category->category_id) as $brand)
-                                        <div class="col-sm-12 col-md-3">
-                                            <ul class="links list-unstyled">
+                                <?php
+                                $list_brand = array();
+                                ?>
+                                @foreach($cate->where('idcat',$category->category_id) as $brand)
+                                        <?php
+                                        if(in_array($brand->brand_id, $list_brand)){
+
+                                        }else{
+                                            $list_brand[]=$brand->brand_id;
+                                            echo "<div class='col-sm-12 col-md-3'>
+                                            <ul class='links list-unstyled'>
                                                 <li>
-                                                    <a href="{{route('product.show-brand',$brand->brand_id)}}">{{$brand->brand_name}}</a>
+                                                    <a href='".route('product.show-brand',$brand->id)."'>".$brand->brand_name."</a>
                                                 </li>
                                             </ul>
-                                        </div>
+                                        </div>";
+                                        }
+                                        ?>
+
                                 @endforeach
                                 <div class="col-sm-12 col-md-3">
                                     <ul class="links list-unstyled">

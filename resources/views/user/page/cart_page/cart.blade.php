@@ -106,9 +106,9 @@
                             <tr>
                                 <td>
                                     <div class="cart-checkout-btn pull-right" style="width: 100%;text-align: center;">
-                                        <button type="submit" class="btn btn-primary checkout-btn">
+                                        <button type="submit" class="btn btn-primary checkout-btn" style="background: #108bea;">
                                             <a href="{{route('shopping.checkout-page')}}"
-                                               style="color: white;padding: 13px 15px;">THỦ TỤC THANH TOÁN</a>
+                                               style="color: white;padding: 13px 15px;">THỦ TỤC ĐẶT HÀNG</a>
                                         </button>
                                     </div>
                                 </td>

@@ -49,10 +49,11 @@ class DashboardController extends Controller {
     //         dump($users);
     $abc = [];
       $customers = Shipping::all();
-    $account = AccountCustomer::all();
+    $account = AccountCustomer::where('status','=',1)->get();
     $count = count($account);
-    $order = Order::all();
-    $order_detail = Order_Details::all();
+    $order = Order::where('order_status','=',4)->get();
+    $order_detail = Order_Details::join('order', 'order.order_id', '=', 'order_details.order_id')
+    ->where('order_status','=',4)->get();
     $quantity = [];
     foreach ($order_detail as $count_quantity) {
       $quantity[] = $count_quantity->quantity;
