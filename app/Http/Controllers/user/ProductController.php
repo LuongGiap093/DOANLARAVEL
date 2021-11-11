@@ -171,7 +171,10 @@ class ProductController extends Controller
             $wishlists=null;
         }
         $product_tag=Product::where('status','<>',0)->orderby('view_number','desc')->limit(8)->get();
-        $brand_name=Brand::find($id);
+        $product_id=Product::find($id);
+        $idcat=$product_id->idcat;
+        $brand_id=$product_id->brand_id;
+        $brand_name=Brand::find($brand_id);
         $name_page=$brand_name->brand_name;
         if(isset($_GET['price'])){
             $price =$_GET['price'];
@@ -205,36 +208,36 @@ class ProductController extends Controller
             $sort_by =$_GET['sort_by'];
             if($sort_by=='giam_dan'){
                 $sort='Giá cao đến thấp';
-                $products = Product::where('brand_id', $id)->where('status','<>',0)->whereBetween('price',$filter)
+                $products = Product::where('brand_id', $brand_id)->where('idcat',$idcat)->where('status','<>',0)->whereBetween('price',$filter)
                     ->orderby('price','desc')->paginate(9)->appends(request()->query());
             }elseif ($sort_by=='tang_dan'){
                 $sort='Giá thấp đến cao';
-                $products = Product::where('brand_id', $id)->where('status','<>',0)->whereBetween('price',$filter)
+                $products = Product::where('brand_id', $brand_id)->where('idcat',$idcat)->where('status','<>',0)->whereBetween('price',$filter)
                     ->orderby('price','asc')->paginate(9)->appends(request()->query());
             }elseif ($sort_by=='kytu_az'){
                 $sort='Ký tự từ A > Z';
-                $products = Product::where('brand_id', $id)->where('status','<>',0)->whereBetween('price',$filter)
+                $products = Product::where('brand_id', $brand_id)->where('idcat',$idcat)->where('status','<>',0)->whereBetween('price',$filter)
                     ->orderby('name','asc')->paginate(9)->appends(request()->query());
             }elseif ($sort_by=='kytu_za'){
                 $sort='Ký tự từ Z > A';
-                $products = Product::where('brand_id', $id)->where('status','<>',0)->whereBetween('price',$filter)
+                $products = Product::where('brand_id', $brand_id)->where('idcat',$idcat)->where('status','<>',0)->whereBetween('price',$filter)
                     ->orderby('name','desc')->paginate(9)->appends(request()->query());
             }
             elseif ($sort_by=='pho_bien'){
                 $sort='Mức độ phổ biến';
-                $products = Product::where('brand_id', $id)->where('status','<>',0)->whereBetween('price',$filter)
+                $products = Product::where('brand_id', $brand_id)->where('idcat',$idcat)->where('status','<>',0)->whereBetween('price',$filter)
                     ->orderby('view_number','desc')->paginate(9)->appends(request()->query());
             }else{
                 $sort='Sắp xếp mặc định';
                 $products = DB::table('product')->where('status','<>',0)->whereBetween('price',$filter)
                     ->orderby('id','desc')
-                    ->where('brand_id', $id)->paginate(9);
+                    ->where('brand_id', $brand_id)->where('idcat',$idcat)->paginate(9);
             }
         }else{
             $sort='Sắp xếp mặc định';
             $products = DB::table('product')->where('status','<>',0)->whereBetween('price',$filter)
                 ->orderby('id','desc')
-                ->where('brand_id', $id)->paginate(9);
+                ->where('brand_id', $brand_id)->where('idcat',$idcat)->paginate(9);
             if ($products == NULL) {
                 return abort(404);
             }

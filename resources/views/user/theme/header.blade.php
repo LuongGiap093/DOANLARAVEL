@@ -274,10 +274,21 @@
                                                                     style="padding:0px">{{$category->category_name}}</a>
                                                             </h2>
                                                             <ul class="links">
-                                                                @foreach($cate->unique('brand_id')->where('idcat',$category->category_id) as $brand)
-                                                                    <li>
-                                                                        <a href="{{route('product.show-brand',$brand->brand_id)}}">{{$brand->brand_name}}</a>
-                                                                    </li>
+                                                                <?php
+                                                                $list_brand = array();
+                                                                ?>
+
+                                                                @foreach($cate->where('idcat',$category->category_id) as $brand)
+                                                                        <?php
+                                                                        if(in_array($brand->brand_id, $list_brand)){
+
+                                                                        }else{
+                                                                            $list_brand[]=$brand->brand_id;
+                                                                            echo "<li>
+                                                                            <a href='".route('product.show-brand',$brand->id)."'>".$brand->brand_name."</a>
+                                                                        </li>";
+                                                                        }
+                                                                        ?>
                                                                 @endforeach
                                                             </ul>
                                                         </div>
