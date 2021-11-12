@@ -121,8 +121,9 @@ Route::get('panel/category/productlist/{id}','admin\CategoryController@productli
 Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::get('/', 'HomeController@index')->name('shopping.home');
 
-//    Route::get('thong-tin-tai-khoan','AccountCustomerController@profiles')->name('customer.profiles');
-//    Route::get('create-profiles','UserController@create_profiles')->name('create-profiles');
+    Route::get('thong-tin-tai-khoan','AccountCustomerController@profiles')->name('customer.profiles');
+    Route::get('track-order','UserController@profiless')->name('customer.createprofiles');
+    Route::post('cap-nhat-ho-so','AccountCustomerController@create_profiles')->name('customer.create-profiles');
     Route::get('dang-ky-dang-nhap', 'AccountCustomerController@getLogin')->name('shopping.login');
     Route::post('dang-ky','AccountCustomerController@postadd')->name('customer.postadd');
     Route::get('kich-hoat-tai-khoan/{customer}/{token}','AccountCustomerController@actived')->name('customer.actived');

@@ -16,7 +16,7 @@ class CreateOrderTable extends Migration
         Schema::create('order', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->Increments('order_id')->unsigned();
-            $table->float('order_total');
+            $table->string('order_total');
             $table->string('order_payment');
             $table->integer('order_status')->default(0);
             $table->timestamps();

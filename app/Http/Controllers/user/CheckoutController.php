@@ -30,7 +30,6 @@ class CheckoutController extends Controller
         $cate=Category::orderby('category_position','asc')
             ->join('product','category.category_id','=','product.idcat')
             ->join('brands','product.brand_id','=','brands.brand_id')
-            ->whereBetween('category_position',[1,10])
             ->get();
         $brands=Brand::all();
         $city=City::orderby('matp','ASC')->get();
@@ -129,7 +128,6 @@ class CheckoutController extends Controller
 //                        Session::put('address',$data['address']);
 //                        Session::put('note',$data['note']);
                         Session::save();
-                        dump(Session::get('shipping'));
                     }
                     Session::save();
                 }
@@ -155,7 +153,11 @@ class CheckoutController extends Controller
             $shipping->customer_note = $fee['note'];
         }
         if($shipping->save()){
-            Session::forget('shipping');
+            if(Auth::guard('account_customer')->check()){
+
+            }else{
+                Session::forget('shipping');
+            }
 
             $shipping_id=$shipping->shipping_id;
             date_default_timezone_set('Asia/Ho_Chi_Minh');
@@ -180,8 +182,17 @@ class CheckoutController extends Controller
             $order->coupon_id=$coupon_id;
             $order->shipping_id=$shipping_id;
             $order->order_status='1';
+            if(Auth::guard('account_customer')->check()){
+                $order->customer_id=Auth::guard('account_customer')->id();
+            }else{
+                $order->customer_id=null;
+            }
             if($order->save()){
-                Session::forget('fee');
+                if(Auth::guard('account_customer')->check()){
+
+                }else{
+                    Session::forget('fee');
+                }
                 Session::forget('coupon');
                 $orders=Order::where('shipping_id','=',$shipping_id)->first();
                 foreach (Session::get('Cart')->products as $value) {
@@ -203,7 +214,6 @@ class CheckoutController extends Controller
             }
         }
         Session::forget('Cart');
-
     }
 
     public function thanh_cong()
@@ -217,7 +227,6 @@ class CheckoutController extends Controller
             $cate = Category::orderby('category_position', 'asc')
                 ->join('product', 'category.category_id', '=', 'product.idcat')
                 ->join('brands', 'product.brand_id', '=', 'brands.brand_id')
-                ->whereBetween('category_position',[1,10])
                 ->get();
             if (Auth::guard('account_customer')->check()) {
                 $wishlists = Wishlist::where('customer_id', Auth::guard('account_customer')->id())->get();

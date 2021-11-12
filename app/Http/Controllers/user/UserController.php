@@ -22,9 +22,11 @@ use App\Models\Order;
 use App\Models\Shipping;
 use App\Models\Collection;
 use App\Models\Gallery;
+use App\Models\Wishlist;
 use Illuminate\Support\Carbon;
 use Mail;
 use DB;
+use Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -353,6 +355,22 @@ class UserController extends Controller
 
             $request->Session()->put('Cart', $newCart);
         }
+    }
+    public function profiless()
+    {
+        $logos = Logo::first();
+        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->limit(4)->get();
+        $cate=Category::orderby('category_position','asc')
+            ->join('product','category.category_id','=','product.idcat')
+            ->join('brands','product.brand_id','=','brands.brand_id')
+            ->whereBetween('category_position',[1,10])
+            ->get();
+        if (Auth::guard('account_customer')->check()) {
+            $wishlists = Wishlist::where('customer_id', Auth::guard('account_customer')->id())->get();
+        }else{
+            $wishlists=null;
+        }
+        return view('user.page.account_customer.track_order',compact('logos','categorys','cate','wishlists'));
     }
 
 }

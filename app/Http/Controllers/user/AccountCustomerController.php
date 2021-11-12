@@ -1,10 +1,16 @@
 <?php
 namespace App\Http\Controllers\user;
 
+use App\Classes\Helper;
 use App\Models\AccountCustomer;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\City;
+use App\Models\Feeship;
 use App\Models\Logo;
+use App\Models\Order;
+use App\Models\Province;
+use App\Models\Wards;
 use App\Models\Wishlist;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -123,6 +129,53 @@ class AccountCustomerController extends Controller
                 Auth::guard('account_customer')->logout();
                 return redirect()->back()->with('status', 'Tài khoản chưa được kích hoạt.');
             }
+
+
+            $customer=AccountCustomer::where('id',Auth::guard('account_customer')->id())->first();
+            if($customer->city!=null&&$customer->province!=null&&$customer->wards!=null&&$customer->address!=null){
+                $feeship=Feeship::where('fee_matp',$customer->city)->where('fee_maqh',$customer->province)->where('fee_xaid',$customer->wards)->get();
+                if($feeship){
+                    $count_feeship=$feeship->count();
+                    if($count_feeship>0){
+                        foreach ($feeship as $Key=>$fee){
+                            Session::put('fee',$fee->fee_feeship);
+                            Session::save();
+                            if(Session::get('fee')){
+                                $shipping[]=array('fee_matp'=>$customer->city,
+                                    'fee_maqh'=>$customer->province,
+                                    'fee_xaid'=>$customer->wards,
+                                    'name'=>$customer->name,
+                                    'phone'=>$customer->phone,
+                                    'email'=>$customer->email,
+                                    'address'=>$customer->address,
+                                    'note'=>'');
+                                Session::put('shipping',$shipping);
+                                Session::save();
+                            }
+                        }
+                    }else{
+                        $shipping[]=array('fee_matp'=>$customer->city,
+                            'fee_maqh'=>$customer->province,
+                            'fee_xaid'=>$customer->wards,
+                            'name'=>$customer->name,
+                            'phone'=>$customer->phone,
+                            'email'=>$customer->email,
+                            'address'=>$customer->address,
+                            'note'=>'');
+                        Session::put('fee',50000);
+                        if(Session::get('fee')){
+                            Session::put('shipping',$shipping);
+                            Session::save();
+                        }
+                        Session::save();
+                    }
+                }
+            }else{
+//                Session::forget('shipping');
+//                Session::forget('fee');
+            }
+
+
             return redirect()->back()->with('status', 'Bạn đã đăng nhập tài khoản thành công');
         }else {
             return redirect()->back()->with('status', 'Email hoặc Mật khẩu không chính xác');
@@ -145,12 +198,150 @@ class AccountCustomerController extends Controller
                 ->join('brands', 'product.brand_id', '=', 'brands.brand_id')
                 ->whereBetween('category_position',[1,10])
                 ->get();
-            $accountcustomer = AccountCustomer::all();
+            $accountcustomer = AccountCustomer::where('id','=',Auth::guard('account_customer')->id())->first();
+
+            $order=Order::where('customer_id','=',Auth::guard('account_customer')->id())->get();
+
             $wishlists = Wishlist::where('customer_id', Auth::guard('account_customer')->id())->get();
-            return view('user.page.profiles', compact('wishlists', 'accountcustomer', 'logos', 'categorys', 'cate'));
+            $city=City::orderby('matp','ASC')->get();
+            if($accountcustomer->city!=null){
+                $x_city=City::where('matp',$accountcustomer->city)->first();
+                $name_city=$x_city->name_city;
+                $x_province=Province::where('maqh',$accountcustomer->province)->first();
+                $name_province=$x_province->name_quanhuyen;
+                $x_wards=Wards::where('xaid',$accountcustomer->wards)->first();
+                $name_wards=$x_wards->name_xaphuong;
+                $province=Province::where('matp',$accountcustomer->city)->get();
+                $wards=Wards::where('maqh',$accountcustomer->province)->get();
+            }else{
+                $name_city=null;
+                $name_province=null;
+                $name_wards=null;
+                $province=null;
+                $wards=null;
+            }
+            return view('user.page.account_customer.profiles', compact('order','province','wards','name_city','name_province','name_wards','city','wishlists', 'accountcustomer', 'logos', 'categorys', 'cate'));
         } else {
             return redirect()->route('shopping.login');
         }
+    }
+
+    public function create_profiles(Request $request){
+        if (Auth::guard('account_customer')->check()) {
+            $customer=AccountCustomer::where('id','=',Auth::guard('account_customer')->id())->first();
+            if($request->image===null){
+                $customer->image=$request->acc_image;
+                $customer->name=$request->name;
+                $customer->email=$request->email;
+                $customer->phone=$request->phone;
+                $customer->address=$request->address;
+                $customer->city=$request->city;
+                $customer->province=$request->province;
+                $customer->wards=$request->wards;
+                if ($customer->save()) {
+                    $feeship=Feeship::where('fee_matp',$customer->city)->where('fee_maqh',$customer->province)->where('fee_xaid',$customer->wards)->get();
+                    if($feeship){
+                        $count_feeship=$feeship->count();
+                        if($count_feeship>0){
+                            foreach ($feeship as $Key=>$fee){
+                                Session::put('fee',$fee->fee_feeship);
+                                Session::save();
+                                if(Session::get('fee')){
+                                    $shipping[]=array('fee_matp'=>$customer->city,
+                                        'fee_maqh'=>$customer->province,
+                                        'fee_xaid'=>$customer->wards,
+                                        'name'=>$customer->name,
+                                        'phone'=>$customer->phone,
+                                        'email'=>$customer->email,
+                                        'address'=>$customer->address,
+                                        'note'=>'');
+                                    Session::put('shipping',$shipping);
+                                    Session::save();
+                                }
+                            }
+                        }else{
+                            $shipping[]=array('fee_matp'=>$customer->city,
+                                'fee_maqh'=>$customer->province,
+                                'fee_xaid'=>$customer->wards,
+                                'name'=>$customer->name,
+                                'phone'=>$customer->phone,
+                                'email'=>$customer->email,
+                                'address'=>$customer->address,
+                                'note'=>'');
+                            Session::put('fee',50000);
+                            if(Session::get('fee')){
+                                Session::put('shipping',$shipping);
+                                Session::save();
+                            }
+                            Session::save();
+                        }
+                    }
+                    return redirect()->back()->with('message', 'Cập nhật thành công!');
+                } else {
+                    return redirect()->back()->with('error', 'Cập nhật thất bại!');
+                }
+            }else{
+                $data = $request->validate([
+                    'image' => 'required',
+                    'name'=> 'required',
+                    'email'=> 'required',
+                    'phone'=>'required',
+                    'city'=>'',
+                    'province'=>'',
+                    'wards'=>'',
+                    'address'=>'',
+                ], [
+                    'image.required' => 'Hình ảnh không được để trống',
+                ]);
+                $data['image']= Helper::imageUpload($request);
+                if($customer->update($data)){
+                    $feeship=Feeship::where('fee_matp',$customer->city)->where('fee_maqh',$customer->province)->where('fee_xaid',$customer->wards)->get();
+                    if($feeship){
+                        $count_feeship=$feeship->count();
+                        if($count_feeship>0){
+                            foreach ($feeship as $Key=>$fee){
+                                Session::put('fee',$fee->fee_feeship);
+                                Session::save();
+                                if(Session::get('fee')){
+                                    $shipping[]=array('fee_matp'=>$customer->city,
+                                        'fee_maqh'=>$customer->province,
+                                        'fee_xaid'=>$customer->wards,
+                                        'name'=>$customer->name,
+                                        'phone'=>$customer->phone,
+                                        'email'=>$customer->email,
+                                        'address'=>$customer->address,
+                                        'note'=>'');
+                                    Session::put('shipping',$shipping);
+                                    Session::save();
+                                }
+                            }
+                        }else{
+                            $shipping[]=array('fee_matp'=>$customer->city,
+                                'fee_maqh'=>$customer->province,
+                                'fee_xaid'=>$customer->wards,
+                                'name'=>$customer->name,
+                                'phone'=>$customer->phone,
+                                'email'=>$customer->email,
+                                'address'=>$customer->address,
+                                'note'=>'');
+                            Session::put('fee',50000);
+                            if(Session::get('fee')){
+                                Session::put('shipping',$shipping);
+                                Session::save();
+                            }
+                            Session::save();
+                        }
+                    }
+                    return redirect()->back()->with('message', 'Cập nhật thành công!');
+                } else {
+                    return redirect()->back()->with('error', 'Cập nhật thất bại!');
+                }
+            }
+
+        }else{
+            return redirect()->route('shopping.login');
+        }
+
     }
 
     public function actived(AccountCustomer $customer,$token)

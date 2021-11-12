@@ -7,9 +7,9 @@
                 <div class="cnt-account">
                     <ul class="list-unstyled">
                         @if(Auth::guard('account_customer')->check())
-{{--                            <li><a class="login-trigger" style="padding: 0px 5px" href="{{route('customer.profiles')}}"><i--}}
-{{--                                        class="icon fa fa-user"></i>Tài khoản</a>--}}
-{{--                            </li>--}}
+                            <li><a class="login-trigger" style="padding: 0px 5px" href="{{route('customer.profiles')}}"><i
+                                        class="icon fa fa-user"></i>Tài khoản</a>
+                            </li>
 {{--                            <li><a class="login-trigger" style="padding: 0px 5px"--}}
 {{--                                   href="{{route('shopping.showWishlist')}}"><i class="icon fa fa-heart"></i>Yêu--}}
 {{--                                    thích</a></li>--}}
@@ -82,7 +82,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-4" style="padding-top: 8px;display: -webkit-inline-box;">
                     @if(Auth::guard('account_customer')->check())
                         <div class="col-ms-6" style="width: 60%;">
-                            <a class="porto-sicon-box-link">
+                            <a class="porto-sicon-box-link" href="{{route('customer.profiles')}}">
                                 <div class="porto-sicon-box mb-0 style_1 default-icon"
                                      style="display: -webkit-inline-box;">
                                     <div class="porto-sicon-default">

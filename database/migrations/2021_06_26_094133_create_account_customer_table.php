@@ -20,7 +20,12 @@ class CreateAccountCustomerTable extends Migration
           $table->string('email')->unique();
           $table->timestamp('email_verified_at')->nullable();
           $table->string('password');
+          $table->string('image')->nullable();
           $table->string('phone')->nullable();
+            $table->string('address')->nullable();
+            $table->integer('wards')->nullable();
+            $table->integer('province')->nullable();
+            $table->integer('city')->nullable();
           $table->rememberToken();
             $table->string('token')->nullable();
             $table->string('forgot')->nullable();
