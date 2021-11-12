@@ -20,6 +20,7 @@ class CreateFaqTable extends Migration
           $table->string('faq_title')->nullable();
           $table->longText('faq_description')->nullable();
           $table->timestamps();
+            $table->integer('status')->default(0);
         });
     }
 

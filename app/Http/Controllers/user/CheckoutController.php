@@ -203,6 +203,7 @@ class CheckoutController extends Controller
             }
         }
         Session::forget('Cart');
+
     }
 
     public function thanh_cong()

@@ -14,13 +14,17 @@ class CreateAccountCustomerTable extends Migration
     public function up()
     {
         Schema::create('account_customers', function (Blueprint $table) {
-          $table->increments('id');
+            $table->engine = "InnoDB";
+          $table->Increments('id')->unsigned();
           $table->string('name');
           $table->string('email')->unique();
           $table->timestamp('email_verified_at')->nullable();
           $table->string('password');
           $table->string('phone')->nullable();
           $table->rememberToken();
+            $table->string('token')->nullable();
+            $table->string('forgot')->nullable();
+            $table->integer('status')->nullable()->default(0);
           $table->timestamps();
         });
     }

@@ -54,8 +54,12 @@
                 <div class="col-xs-12 col-sm-12 col-md-3 logo-holder" style="margin-top: 8px">
                     <!-- ============================================================= LOGO ============================================================= -->
                     <div class="logo">
-                        <a href="{{route('shopping.home')}}"> <img style="max-height: 46px; max-width: 200px" src="{{asset('public/images/'. $logos->logo_image)}}"
-                                                                   alt="logo"></a>
+                        <a href="{{route('shopping.home')}}">
+                            @if(isset($logos))
+                            <img style="max-height: 46px; max-width: 200px" src="{{asset('public/images/'. $logos->logo_image)}}"alt="logo">
+                            @else
+                            @endif
+                        </a>
                     </div>
                     <!-- ============================================================= LOGO : END ============================================================= -->
                 </div>

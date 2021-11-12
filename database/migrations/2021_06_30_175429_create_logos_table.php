@@ -17,7 +17,7 @@ class CreateLogosTable extends Migration
             $table->engine = "InnoDB";
             $table->Increments('logo_id')->unsigned();
             $table->string('logo_image');
-            $table->integer('logo_status')->nullable();
+            $table->integer('logo_status')->nullable()->default(0);
             $table->timestamps();
         });
     }

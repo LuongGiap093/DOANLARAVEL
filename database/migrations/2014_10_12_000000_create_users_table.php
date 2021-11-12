@@ -17,11 +17,19 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('description');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->tinyInteger('level')->default(0);
+            $table->tinyInteger('status')->default(0);
             $table->rememberToken();
             $table->timestamps();
+            $table->string('image')->nullable();
+            $table->longText('title')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('address')->nullable();
+            $table->string('contact')->nullable();
+            $table->string('background_image')->nullable();
+            $table->longText('description')->nullable();
         });
 //        DB::table('users')->insert([
 //            'name' => 'admin',

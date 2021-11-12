@@ -21,7 +21,9 @@ class CreateBlogTable extends Migration
           $table->string('blog_author')->nullable();
           $table->dateTime('blog_time')->nullable();
           $table->longText('blog_description')->nullable();
+            $table->integer('view')->nullable()->default(0);
           $table->timestamps();
+            $table->integer('status')->default(0);
         });
     }
 

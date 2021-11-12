@@ -5,7 +5,7 @@
 <meta name="keywords" content="MediaCenter, Template, eCommerce">
 <meta name="robots" content="all">
 <title>TLmobile</title>
-<link href="{{asset('public/images/'. $logos->logo_image)}}" rel="shortcut icon" type="image/x-icon" />
+<link href="{{asset('public/images/logo.png')}}" rel="shortcut icon" type="image/x-icon" />
 <link rel="stylesheet" href="{!! asset('public\frontend\assets\css\bootstrap.min.css') !!}">
 <link rel="stylesheet" href="{!! asset('public\frontend\assets\css\main.css') !!}">
 <link rel="stylesheet" href="{!! asset('public\frontend\assets\css\blue.css') !!}">

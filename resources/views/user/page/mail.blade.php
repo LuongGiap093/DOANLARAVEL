@@ -1,13 +1,3 @@
-<h2>Hello</h2> <br><br>
+INSERT INTO `comment` (`comment_id`, `product_id`, `comment_content`, `create_date`, `comment_status`, `star`, `customer_id`) VALUES
+(1, 12, 'test comment', '2021-11-03 14:01:53', 1, '5', 56),
 
-You have got an email from : {{ $contacts_name }} <br><br>
-
-User details: <br><br>
-
-Name: {{ $contacts_name }} <br>
-Email: {{ $contacts_email }} <br>
-Phone: {{ $contacts_title }} <br>
-Subject: {{ $contacts_comment }} <br>
-
-
-Thanks

@@ -18,11 +18,10 @@ class CreateCommentTable extends Migration
             $table->Increments('comment_id')->unsigned();
             $table->integer('product_id')->unsigned();
             $table->foreign('product_id')->references('id')->on('product');
-//            $table->integer('customers_id')->unsigned();
-//            $table->foreign('customers_id')->references('id')->on('account_customers');
             $table->text('comment_content');
             $table->dateTime('create_date');
             $table->integer('comment_status')->default(0);
+            $table->string('star');
         });
     }
 
