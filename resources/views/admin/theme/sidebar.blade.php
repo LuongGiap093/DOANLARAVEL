@@ -61,6 +61,7 @@
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
                         <li><a href="{{route('order.index')}}">Đơn hàng</a></li>
+                        <li><a href="{{route('cancel.index')}}">Yêu cầu hủy đơn</a></li>
                         <li><a href="{{route('coupon.index')}}">Voucher giảm giá</a></li>
                         <li><a href="{{route('delivery.index')}}">Phí vận chuyển</a></li>
                     </ul>

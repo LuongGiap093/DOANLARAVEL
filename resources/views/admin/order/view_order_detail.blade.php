@@ -5,7 +5,7 @@
 {{--            <h4 class="text-right"><img src="assets\images\logo-dark.png" height="18" alt="moltran"></h4>--}}
         </div>
         <div class="float-right">
-            <h5>Mã hóa đơn: HDBH{{$ord_id}}
+            <h5>Mã hóa đơn: #HDBH{{$ord_id}}
             </h5>
         </div>
     </div>

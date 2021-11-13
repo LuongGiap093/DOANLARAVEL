@@ -223,13 +223,13 @@ class OrderController extends Controller
                 )
             );
             if (!$mail->Send()) {
-                return redirect()->back()->with('error','Chúng tôi không thể gửi email xác minh cho bạn được.');
+                return redirect()->back()->with('error','Gửi email thất bại.');
 //
             } else {
-                return redirect()->back()->with('success','Làm ơn click vào đường link chúng tôi đã gửi qua email của bạn để xác minh danh tính!');
+                return redirect()->back()->with('success','Cập nhật trạng thái đơn hàng thành công!');
             }
         }catch (Exception $e) {
-            return redirect()->back()->with('error','Đã có lỗi xảy ra! Đăng ký không thành công');
+            return redirect()->back()->with('error','Đã có lỗi xảy ra! Gửi email thất bại');
         }
     }
 }

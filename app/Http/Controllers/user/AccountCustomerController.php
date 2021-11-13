@@ -185,6 +185,7 @@ class AccountCustomerController extends Controller
     public function getLogout()
     {
         Auth::guard('account_customer')->logout();
+        Session::flush();
         return redirect()->back()->with('status', 'Bạn đã đăng xuất thành công');
     }
 
@@ -410,7 +411,7 @@ class AccountCustomerController extends Controller
 
                 $mail->addAddress($to, $to_name); //mail và tên người nhận
                 $mail->isHTML(true);  // Set email format to HTML
-                $mail->Subject = "Mail xác nhận đăng ký tài khoản thành viên trên TLmobile";
+                $mail->Subject = "Xác thực email tài khoản thành viên trên TLmobile";
                 $cus_id=$accountcustomer->id;
                 $noidungthu = "<p style='display: contents;'>Xin chào, </p> <b>".$to_name."</b><br><p>Hãy click vào link bên dưới để tiếng hành đổi lại mật khẩu của bạn.</p>
                                                 <a href='".route('customer.activedforgot',['customer'=>$cus_id,'forgot'=>$forgot_pass])."'>".route('customer.activedforgot',['customer'=>$cus_id,'forgot'=>$forgot_pass])."</a><br><p>Xin cảm ơn!</p>";

@@ -15,7 +15,7 @@
         <div class="container" style="margin-bottom: 30px">
             <div class="row " style="padding: 0px 20px;">
                 <div class="shopping-cart">
-                    <div class="shopping-cart-table ">
+                    <div class="shopping-cart-table " style="overflow: auto;max-height: 376px;">
                         <div class="table-responsive">
                             @if(Session::has('Cart') != null)
                                 <table class="table">

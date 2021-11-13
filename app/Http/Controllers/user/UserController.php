@@ -23,6 +23,7 @@ use App\Models\Shipping;
 use App\Models\Collection;
 use App\Models\Gallery;
 use App\Models\Wishlist;
+use App\Models\Cancle_Order;
 use Illuminate\Support\Carbon;
 use Mail;
 use DB;
@@ -368,13 +369,42 @@ class UserController extends Controller
                 ->get();
                 $wishlists = Wishlist::where('customer_id', Auth::guard('account_customer')->id())->get();
 
-            $order=Order::where('customer_id','=',Auth::guard('account_customer')->id())->get();
+            $order=Order::where('customer_id','=',Auth::guard('account_customer')->id())->where('order_status','<>',0)->get();
             $order_detail=Order_Details::join('product','order_details.id','=','product.id')->get();
             $shipping=Shipping::get();
             $coupon=Coupon::get();
             return view('user.page.account_customer.track_order',compact('coupon','shipping','order_detail','order','logos','categorys','cate','wishlists'));
         }else{
             return redirect()->route('shopping.login');
+        }
+    }
+
+    public function cancel_order(Request $request){
+        if (Auth::guard('account_customer')->check()) {
+
+            $request->validate([
+                'customer_id' => 'required',
+                'order_id' => 'required',
+                'cancel_content' => 'required',
+            ]);
+            $check_cancel=Cancle_Order::where('customer_id','=',$request->customer_id)->where('order_id','=',$request->order_id)->first();
+            if(isset($check_cancel)){
+                return redirect()->back()->with('error','Yêu cầu hủy đơn hàng của bạn đã tồn tại!');
+            }else{
+                $cancel=new Cancle_Order();
+                $cancel->customer_id=$request->customer_id;
+                $cancel->order_id=$request->order_id;
+                $cancel->content=$request->cancel_content;
+                $cancel->status=1;
+                if($cancel->save()){
+                    return redirect()->back()->with('message','Gửi yêu cầu hủy đơn hàng thành công!');
+                }else{
+                    return redirect()->back()->with('error','Gửi yêu cầu hủy đơn hàng thất bại!');
+                }
+            }
+
+        }else{
+            return redirect()->back();
         }
     }
 

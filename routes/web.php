@@ -64,8 +64,10 @@ Route::resource('panel/logo',admin\LogoController::class);
 Route::resource('panel/dashboard',admin\DashboardController::class);
 Route::resource('panel/empcategory',admin\EmpcategoryController::class);
 Route::resource('panel/employee',admin\EmployeeController::class);
+Route::resource('panel/cancel', admin\CancelController::class);
 Route::resource('panel/about', admin\AboutController::class);
 Route::get('panel/dieu-khoan', 'admin\AboutController@dieukhoan')->name('admin.dieukhoan');
+Route::get('panel/cancel/cancel-order/{cancel_id}', 'admin\CancelController@cancel')->name('admin.cancel-order');
 
 
 
@@ -123,6 +125,8 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function () {
 
     Route::get('thong-tin-tai-khoan','AccountCustomerController@profiles')->name('customer.profiles');
     Route::get('thong-tin-don-dat-hang','UserController@profiless')->name('customer.track-order');
+    Route::post('yeu-cau-huy-don-hang','UserController@cancel_order')->name('customer.cancel-order');
+
     Route::post('cap-nhat-ho-so','AccountCustomerController@create_profiles')->name('customer.create-profiles');
     Route::get('dang-ky-dang-nhap', 'AccountCustomerController@getLogin')->name('shopping.login');
     Route::post('dang-ky','AccountCustomerController@postadd')->name('customer.postadd');

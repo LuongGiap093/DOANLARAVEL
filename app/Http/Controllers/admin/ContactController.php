@@ -38,7 +38,7 @@ class ContactController extends Controller
             Session::flash('message', 'successfully!');
         else
             Session::flash('message', 'Failure!');
-        return redirect()->route('contact.index')->with('success', 'Xóa Thành công');;
+        return redirect()->route('contact.index')->with('success', 'Xóa Thành công');
     }
 
 
