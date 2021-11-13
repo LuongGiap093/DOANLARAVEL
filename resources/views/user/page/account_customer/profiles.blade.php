@@ -79,9 +79,9 @@
 
                     <ul class="nav nav-pills nav-stacked">
                         <li class="active"><a> <i class="fa fa-user"></i> Hồ sơ</a></li>
-                        {{--                        <li><a href="#"> <i class="fa fa-calendar"></i> Recent Activity <span--}}
-                        {{--                                    class="label label-warning pull-right r-activity">9</span></a></li>--}}
                         <li><a id="myBtn" href="javascript:"> <i class="fa fa-edit"></i> Chỉnh sửa hồ sơ</a></li>
+                        <li><a href="{{route('customer.track-order')}}"> <i class="fa fa-calendar"></i> Đơn đặt hàng <span
+                                    class="label label-warning pull-right r-activity">{{$order->count()}}</span></a></li>
                         <div id="myModal" class="modal">
                             <!-- Modal content -->
                             <div class="modal-content">

@@ -358,19 +358,24 @@ class UserController extends Controller
     }
     public function profiless()
     {
-        $logos = Logo::first();
-        $categorys=Category::where('category_status',1)->orderby('category_position','asc')->limit(4)->get();
-        $cate=Category::orderby('category_position','asc')
-            ->join('product','category.category_id','=','product.idcat')
-            ->join('brands','product.brand_id','=','brands.brand_id')
-            ->whereBetween('category_position',[1,10])
-            ->get();
         if (Auth::guard('account_customer')->check()) {
-            $wishlists = Wishlist::where('customer_id', Auth::guard('account_customer')->id())->get();
+            $logos = Logo::first();
+            $categorys=Category::where('category_status',1)->orderby('category_position','asc')->limit(4)->get();
+            $cate=Category::orderby('category_position','asc')
+                ->join('product','category.category_id','=','product.idcat')
+                ->join('brands','product.brand_id','=','brands.brand_id')
+                ->whereBetween('category_position',[1,10])
+                ->get();
+                $wishlists = Wishlist::where('customer_id', Auth::guard('account_customer')->id())->get();
+
+            $order=Order::where('customer_id','=',Auth::guard('account_customer')->id())->get();
+            $order_detail=Order_Details::join('product','order_details.id','=','product.id')->get();
+            $shipping=Shipping::get();
+            $coupon=Coupon::get();
+            return view('user.page.account_customer.track_order',compact('coupon','shipping','order_detail','order','logos','categorys','cate','wishlists'));
         }else{
-            $wishlists=null;
+            return redirect()->route('shopping.login');
         }
-        return view('user.page.account_customer.track_order',compact('logos','categorys','cate','wishlists'));
     }
 
 }

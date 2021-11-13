@@ -122,7 +122,7 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function () {
     Route::get('/', 'HomeController@index')->name('shopping.home');
 
     Route::get('thong-tin-tai-khoan','AccountCustomerController@profiles')->name('customer.profiles');
-    Route::get('track-order','UserController@profiless')->name('customer.createprofiles');
+    Route::get('thong-tin-don-dat-hang','UserController@profiless')->name('customer.track-order');
     Route::post('cap-nhat-ho-so','AccountCustomerController@create_profiles')->name('customer.create-profiles');
     Route::get('dang-ky-dang-nhap', 'AccountCustomerController@getLogin')->name('shopping.login');
     Route::post('dang-ky','AccountCustomerController@postadd')->name('customer.postadd');

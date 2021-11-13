@@ -32,6 +32,7 @@
 {{--    window.onload = fadeOut();--}}
 {{--</script>--}}
 @yield('scripts')
+{{--back to top--}}
 @include('user.page.cart_page.scripts_cart')
 @include('user.page.wishlist_page.scripts_wishlist')
 <script src="{!! asset('public\frontend\assets\js\jquery-1.11.1.min.js') !!}"></script>
@@ -72,6 +73,8 @@
 @include('user.page.checkout_page.scripts_checkout')
 @include('user.page.checkout_page.scripts_coupon')
 
+
+
 <script type="text/javascript">
     //show product gallery
     $(document).ready(function() {
@@ -92,24 +95,6 @@
     });
 </script>
 
-{{--back to top--}}
-<a id="button"></a>
-<script type="text/javascript">
-    var btn = $('#button');
-
-    $(window).scroll(function() {
-        if ($(window).scrollTop() > 300) {
-            btn.addClass('show');
-        } else {
-            btn.removeClass('show');
-        }
-    });
-
-    btn.on('click', function(e) {
-        e.preventDefault();
-        $('html, body').animate({scrollTop:0}, '300');
-    });
-</script>
 
 <script>
     // banner slide
@@ -413,6 +398,29 @@
     }
 </script>
 
+<a id="button"></a>
+<script type="text/javascript">
+    var btn = $('#button');
+
+    $(window).scroll(function() {
+        if ($(window).scrollTop() > 300) {
+            btn.addClass('show');
+        } else {
+            btn.removeClass('show');
+        }
+    });
+
+    btn.on('click', function(e) {
+        e.preventDefault();
+        $('html, body').animate({scrollTop:0}, '300');
+    });
+</script>
+
+<SCRIPT>
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+    })
+</SCRIPT>
 </body>
 
 </html>
