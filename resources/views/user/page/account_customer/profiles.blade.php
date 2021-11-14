@@ -81,7 +81,7 @@
                         <li class="active"><a> <i class="fa fa-user"></i> Hồ sơ</a></li>
                         <li><a id="myBtn" href="javascript:"> <i class="fa fa-edit"></i> Chỉnh sửa hồ sơ</a></li>
                         <li><a href="{{route('customer.track-order')}}"> <i class="fa fa-calendar"></i> Đơn đặt hàng <span
-                                    class="label label-warning pull-right r-activity">{{$order->count()}}</span></a></li>
+                                    class="label label-warning pull-right r-activity">{{$order->where('order_status','<>',0)->count()}}</span></a></li>
                         @include('user.page.account_customer.create_profiles')
                     </ul>
                 </div>

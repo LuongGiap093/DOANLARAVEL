@@ -25,6 +25,7 @@ class Product extends Model
         'view_number',
         'collection_id',
         'status_product',
+        'qty_inventory',
     ];
     protected $primaryKey = 'id';
     public function category()
@@ -35,10 +36,7 @@ class Product extends Model
     {
         return $this->belongsTo('App\Models\Brand', 'brand_id', 'id');
     }
-    public function collection()
-    {
-        return $this->belongsTo('App\Models\Collection', 'collection_id', 'id');
-    }
+
     public function order_details()
     {
         return $this->hasMany('App\Models\Order_Details', 'id');
@@ -51,7 +49,7 @@ class Product extends Model
     public function wishlist(){
     return $this->hasMany(Wishlist::class);
     }
-    public function comparison(){
-        return $this->hasMany(Comparison::class);
+    public function import(){
+        return $this->hasMany(Import::class);
     }
 }

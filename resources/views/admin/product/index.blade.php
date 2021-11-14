@@ -47,16 +47,12 @@
                                     <td>{{number_format($product->discount)}} VNĐ</td>
                                 </tr>
                                 <tr>
-                                    <th>Nội dung : </th>
-                                    <td>{!! $product->content  !!}</td>
-                                </tr>
-                                <tr>
-                                    <th>Chi tiết sản phẩm : </th>
-                                    <td>{!! $product->describe !!}</td>
-                                </tr>
-                                <tr>
                                     <th>Lượt xem : </th>
                                     <td>{{$product->view_number}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Số lượng tồn : </th>
+                                    <td>{{$product->qty_inventory}}</td>
                                 </tr>
                                 <tr>
                                     <th>Trạng thái : </th>
@@ -83,6 +79,9 @@
             </div>
         </div>
     @endforeach
+    @foreach($products as $product)
+    @include('admin.product.model_import')
+    @endforeach
     <div style="padding: 20px;border: 1px solid #eaeaea;">
     <table id="datatable" class="table table-bordered dt-responsive nowrap"
            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
@@ -94,6 +93,7 @@
         <th>Giảm giá</th>
         <th>Trạng thái</th>
         <th>Xem chi tiết</th>
+        <th>Nhập</th>
         <th>sửa</th>
         <th>Xóa</th>
 
@@ -117,6 +117,9 @@
                 @endif
                 <td>
                     <button class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal{{$product->id}}"><i class="fa fa-eye"></i></button>
+                </td>
+                <td>
+                    <button class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal{{$product->id+10000}}"><i class="fa fa-file-import"></i></button>
                 </td>
                 <td><a href="{{route('product.edit', $product->id)}}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                 </td>

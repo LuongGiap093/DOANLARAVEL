@@ -40,6 +40,8 @@
                             <option value='4'>Hoàn thành</option>
                         @elseif($order->order_status==4)
                             <option value='4'>Đã hoàn thành</option>
+                        @elseif($order->order_status==5)
+                            <option value='5'>Đơn hàng lỗi</option>
                         @endif
                     </select>
                 </p>

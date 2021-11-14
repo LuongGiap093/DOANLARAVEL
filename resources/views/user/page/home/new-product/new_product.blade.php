@@ -28,10 +28,17 @@
                                         <div class="products">
                                             <div class="product">
                                                 <div class="product-image" style="border: 1px solid #e0e4f6;padding: 10px;">
-                                                    <div class="image"><a
-                                                            href="{{route('product.viewProduct', $product->id)}}"><img
+                                                    <div class="image">
+                                                        <a href="{{route('product.viewProduct', $product->id)}}"><img
                                                                 src="{{asset('public/images/'. $product->image)}}"
-                                                                alt=""></a></div>
+                                                                alt=""></a>
+                                                        @if($product->qty_inventory==0)
+                                                            <div style="position: absolute; top: 2em; right: 3em; width: 60%; background-color: #fff0;">
+                                                                <img src="{{asset('public/images/hethang.png')}}">
+                                                            </div>
+                                                        @else
+                                                        @endif
+                                                    </div>
                                                     <!-- /.image -->
 
                                                     @if(($product->discount*100)/$product->price <=0)
@@ -71,6 +78,8 @@
 
                                                 </div>
                                                 <!-- /.product-info -->
+                                                @if($product->qty_inventory==0)
+                                                @else
                                                 <div class="cart clearfix animate-effect">
                                                     <div class="action">
                                                         <ul class="list-unstyled">
@@ -120,6 +129,7 @@
                                                     </div>
                                                     <!-- /.action -->
                                                 </div>
+                                            @endif
                                                 <!-- /.cart -->
                                             </div>
                                             <!-- /.product -->
@@ -150,7 +160,14 @@
                                                     <div class="image"><a
                                                             href="{{route('product.viewProduct', $product->id)}}"><img
                                                                 src="{{asset('public/images/'. $product->image)}}"
-                                                                alt=""></a></div>
+                                                                alt=""></a>
+                                                        @if($product->qty_inventory==0)
+                                                            <div style="position: absolute; top: 2em; right: 3em; width: 60%; background-color: #fff0;">
+                                                                <img src="{{asset('public/images/hethang.png')}}">
+                                                            </div>
+                                                        @else
+                                                        @endif
+                                                    </div>
                                                     <!-- /.image -->
 
                                                     @if(($product->discount*100)/$product->price <=0)
@@ -186,6 +203,8 @@
 
                                                 </div>
                                                 <!-- /.product-info -->
+                                                @if($product->qty_inventory==0)
+                                                @else
                                                 <div class="cart clearfix animate-effect">
                                                     <div class="action">
                                                         <ul class="list-unstyled">
@@ -236,6 +255,7 @@
                                                     <!-- /.action -->
                                                 </div>
                                                 <!-- /.cart -->
+                                                @endif
                                             </div>
                                             <!-- /.product -->
 

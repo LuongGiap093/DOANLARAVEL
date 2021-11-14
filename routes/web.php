@@ -66,6 +66,7 @@ Route::resource('panel/empcategory',admin\EmpcategoryController::class);
 Route::resource('panel/employee',admin\EmployeeController::class);
 Route::resource('panel/cancel', admin\CancelController::class);
 Route::resource('panel/about', admin\AboutController::class);
+Route::resource('panel/import', admin\ImportController::class);
 Route::get('panel/dieu-khoan', 'admin\AboutController@dieukhoan')->name('admin.dieukhoan');
 Route::get('panel/cancel/cancel-order/{cancel_id}', 'admin\CancelController@cancel')->name('admin.cancel-order');
 

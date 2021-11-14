@@ -46,11 +46,19 @@
         </div>
 
         <div class="form-group">
-            <label for="price">Đơn giá:</label>
+            <label for="import_price">Đơn giá nhập:</label>
+            <input type="text" class="form-control" name="import_price">
+        </div>
+        <div class="form-group">
+            <label for="import_qty">Số lượng nhập:</label>
+            <input type="text" class="form-control" name="import_qty">
+        </div>
+        <div class="form-group">
+            <label for="price">Đơn giá bán:</label>
             <input type="text" class="form-control" name="price">
         </div>
         <div class="form-group">
-            <label for="discount">Giamr giá:</label>
+            <label for="discount">Giảm giá:</label>
             <input type="text" class="form-control" name="discount">
         </div>
         <div class="form-group">
@@ -78,7 +86,6 @@
                 <option value='3'>Sản phẩm Big sale</option>
             </select>
         </div>
-
         <button class="btn btn-primary" name="btn_product" type="submit">Thực Hiện</button>
     </form>
     </div>

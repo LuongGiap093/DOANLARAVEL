@@ -87,7 +87,7 @@
                                             <div class="col-sm-12">
                                                 <div class="stock-box">
                                                         <span class="label">Thương hiệu:
-                                                            <a class="value" href="{{route('product.show-brand',$brand->brand_id)}}" style="background: aliceblue;border: 1px solid #e0e0e0;border-radius: 2px;padding: 0px 15px;font-weight: 600;color: #288ad6;">{!! $brand->brand_name !!}</a>
+                                                            <a class="value" href="{{route('product.show-brand',$products->id)}}" style="background: aliceblue;border: 1px solid #e0e0e0;border-radius: 2px;padding: 0px 15px;font-weight: 600;color: #288ad6;">{!! $brand->brand_name !!}</a>
                                                         </span>
                                                 </div>
                                             </div>
@@ -105,28 +105,39 @@
                                     <div class="price-container info-container m-t-20"
                                          style="padding: 0px;border-bottom: none">
                                         <div class="row">
-                                            <div class="col-sm-9">
+                                            <div class="col-sm-12">
                                                 <div class="price-box">
-                                                    <span class="price" style="padding: 0px 50px 0px 0px;">{{ number_format($products->price - $products->discount,'0',',','.') }} VNĐ</span>
+                                                    <span class="price" style="padding: 0px 15px 0px 0px;">{{ number_format($products->price - $products->discount,'0',',','.') }} VNĐ</span>
+                                                    @if(($products->discount*100)/$products->price >0)
+                                                    <span class="price-before-discount" style="text-decoration: line-through;color: #d3d3d3;font-weight: 400;line-height: 30px;font-size: 15px;">{{ number_format($products->price,'0',',','.') }}VNĐ</span>
+                                                    <span style="position: absolute;top: 10px">-{{ number_format(($products->discount*100)/$products->price) }}%</span>
+                                                    @else
+                                                    @endif
                                                 </div>
                                             </div>
 
-                                            <div class="col-sm-3" style="text-align: right; padding-left: 0px;">
-                                                <div class="favorite-button m-t-10">
+{{--                                            <div class="col-sm-3" style="text-align: right; padding-left: 0px;">--}}
+{{--                                                <div class="favorite-button m-t-10">--}}
 
-                                                </div>
-                                            </div>
+{{--                                                </div>--}}
+{{--                                            </div>--}}
 
                                         </div><!-- /.row -->
                                     </div><!-- /.price-container -->
 
                                     <div class="quantity-container info-container" style="padding: 5px 0px">
                                         <div class="row" style="display: flex;">
+                                            @if($products->qty_inventory==0)
+                                                <div class="col-sm-6">
+                                                    <h2 style="margin: 0px;font-weight: 900;color: #ff7878;">HẾT HÀNG</h2>
+                                                </div>
+                                            @else
                                             <div class="col-sm-6">
                                                 <a href="javascripts:" onclick="AddCart({{$products->id}})"
                                                    class="btn btn-primary"><i
                                                         class="fa fa-shopping-cart inner-right-vs"></i> Thêm vào giỏ hàng</a>
                                             </div>
+                                            @endif
                                             <div class="col-sm-6" style="padding: 0px;">
                                                 <p class="prod-actions" style="margin: 0px;">
                                                     @if (Auth::guard('account_customer')->check())
@@ -428,9 +439,21 @@
                                                     <a href="{{route('product.viewProduct', $product->id)}}"><img
                                                             src="{{asset('public/images/'. $product->image)}}"
                                                             alt=""></a>
+                                                    @if($product->qty_inventory==0)
+                                                    <div style="position: absolute; top: 2em; right: 3em; width: 60%; background-color: #fff0;">
+                                                        <img src="{{asset('public/images/hethang.png')}}">
+                                                    </div>
+                                                    @else
+                                                    @endif
                                                 </div><!-- /.image -->
 
-                                                <div class="tag sale"><span>sale</span></div>
+                                                @if(($product->discount*100)/$product->price <=0)
+                                                    <div class="tag new"><span>new</span></div>
+                                                @elseif(($product->discount*100)/$product->price > 20)
+                                                    <div class="tag hot"><span>Hot</span></div>
+                                                @else
+                                                    <div class="tag sale"><span>Sale</span></div>
+                                                @endif
                                             </div><!-- /.product-image -->
 
 
@@ -447,12 +470,20 @@
                                                 @for($i=1;$i<=5-$avg_star;$i++)
                                                     <span class="fa fa-star"></span>
                                                 @endfor
-                                                <div class="description"></div>
+                                                @if($product->discount>0)
+                                                    <div class="product-price">Giảm:
+                                                        <span class="price-before-discount">{{ number_format($product->price,'0',',','.') }}đ</span>
+                                                        <span style="position: absolute;">-{{ number_format(($product->discount*100)/$product->price) }}%</span>
+                                                    </div>
+                                                @else
+                                                @endif
                                                 <div class="product-price">
                                                     <span class="price">{{ number_format($product->price - $product->discount) }} VNĐ</span>
                                                 </div><!-- /.product-price -->
 
                                             </div><!-- /.product-info -->
+                                            @if($product->qty_inventory==0)
+                                            @else
                                             <div class="cart clearfix animate-effect">
                                                 <div class="action">
                                                     <ul class="list-unstyled">
@@ -486,6 +517,7 @@
                                                     </ul>
                                                 </div><!-- /.action -->
                                             </div><!-- /.cart -->
+                                            @endif
                                         </div><!-- /.product -->
 
                                     </div><!-- /.products -->

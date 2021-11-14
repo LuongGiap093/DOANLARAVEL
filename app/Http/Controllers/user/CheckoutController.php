@@ -9,6 +9,7 @@ use App\Models\City;
 use App\Models\Coupon;
 use App\Models\Feeship;
 use App\Models\Logo;
+use App\Models\Product;
 use App\Models\Province;
 use App\Models\Wards;
 use App\Models\Shipping;
@@ -203,6 +204,13 @@ class CheckoutController extends Controller
                     $order_details->unit_price = $value['productInfo']->price - $value['productInfo']->discount;
                     $order_details->total_price = $value['quanty']*($value['productInfo']->price - $value['productInfo']->discount);
                     $order_details->save();
+                    $pro=Product::where('id','=',$value['productInfo']->id)->first();
+                    if($pro->qty_inventory>0&&$pro->qty_inventory>=$value['quanty']){
+                        $pro->update(['qty_inventory'=>$pro->qty_inventory-$value['quanty']]);
+                    }else{
+                        Order::where('order_id','=',$orders->order_id)->update(['order_status'=>5]);
+                    }
+
                 }
                 if($coupon_id!=null){
                     $cou=Coupon::where('coupon_id',$coupon_id)->first();

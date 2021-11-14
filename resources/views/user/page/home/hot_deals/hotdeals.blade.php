@@ -9,6 +9,12 @@
                             <a href="{{route('product.viewProduct', $product->id)}}">
                                 <img src="{!!asset('public/images/'. $product->image)!!}" alt="">
                             </a>
+                            @if($product->qty_inventory==0)
+                                <div style="position: absolute; top: 4em; right: 4em; width: 60%; background-color: #fff0;">
+                                    <img src="{{asset('public/images/hethang.png')}}">
+                                </div>
+                            @else
+                            @endif
                         </div>
                         <div class="sale-offer-tag"><span>Đến<br>
                             {{ number_format(($product->discount*100)/$product->price) }}%</span>
@@ -56,6 +62,8 @@
                     </div>
                     <!-- /.product-info -->
 
+                    @if($product->qty_inventory==0)
+                    @else
                     <div class="cart clearfix animate-effect">
                         <div class="action">
                             <div class="add-cart-button btn-group" style="width: 100%;">
@@ -72,6 +80,7 @@
                         </div>
                         <!-- /.action -->
                     </div>
+                @endif
                     <!-- /.cart -->
                 </div>
             </div>

@@ -7,8 +7,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Category;
 
+use App\Models\Import;
 use App\Models\Product;
 use App\Models\Gallery;
+
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use PHPMailer\PHPMailer\Exception;
 use Session;
@@ -36,8 +39,9 @@ class ProductController extends Controller
     {
         $categorys = Category::all();
         $products = Product::where('status','<>','0')->orderby('id','desc')->get();
+        $import=Import::get();
 
-        return view($this->viewprefix.'index', compact('products', 'categorys'));
+        return view($this->viewprefix.'index', compact('products', 'categorys','import'));
 
     }
 
@@ -83,8 +87,27 @@ class ProductController extends Controller
         }
         $product->link = $request->link;
         $product->view_number=0;
+        if($request->import_qty===null){
+            $product->qty_inventory=0;
+        }else{
+            $product->qty_inventory=$request->import_qty;
+        }
         if ($product->save()) {
-            Session::flash('message', 'Thêm sản phẩm thành công!');
+            if($request->import_qty!=null&&$request->import_price!=null&&$request->import_price>0&&$request->import_price<$request->price){
+                $import=new Import();
+                $import->product_id=$product->id;
+                $import->import_qty=$request->import_qty;
+                $import->import_price=$request->import_price;
+                $import->total_import=$request->import_price * $request->import_qty;
+                $import->import_status=1;
+                if($import->save()){
+                    Session::flash('message', 'Thêm sản phẩm thành công! && Tạo phiếu nhập thành công!');
+                }else{
+                    Session::flash('message', 'Thêm sản phẩm thành công! && Tạo phiếu nhập thất bại!');
+                }
+            }else{
+                Session::flash('message', 'Thêm sản phẩm thành công! && Tạo phiếu nhập thất bại!');
+            }
         } else {
             Session::flash('message', 'Thêm thất bại!');
             return redirect()->route('product.index');
@@ -195,6 +218,9 @@ class ProductController extends Controller
                 $product->keywords = $request->keywords;
             }
             $product->link = $request->link;
+            $product->view_number = $request->view_number;
+            $product->qty_inventory = $request->qty_inventory;
+
             if ($product->save()) {
                 return redirect()->route('product.index')->with('message', 'Sửa thành công!');
             } else {
@@ -206,14 +232,16 @@ class ProductController extends Controller
                 'name' => 'required',
                 'image' => 'required',
                 'price' => 'required',
-                'discount' => 'required',
-                'product_content' => 'required',
-                'describe' => 'required',
-                'link' => 'required',
+                'discount' => '',
+                'product_content' => '',
+                'describe' => '',
+                'link' => '',
                 'status' => 'required',
                 'idcat' => 'required',
                 'brand_id' => 'required',
-                'keywords' => 'required',
+                'keywords' => '',
+                'view_number' => '',
+                'qty_inventory' => '',
             ]);
 
             $data['image'] = $this->imageUpload($request);

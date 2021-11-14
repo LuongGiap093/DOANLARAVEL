@@ -57,7 +57,11 @@ class OrderController extends Controller
                 $sort='Đơn hàng đã giao thành công';
                 $orders = Order::where('order_status','=',4)
                     ->join('shipping','order.shipping_id','=','shipping.shipping_id')->get();
-            }else{
+            }elseif ($sort_by==5){
+                $sort='Đơn hàng vượt số lượng tồn';
+                $orders = Order::where('order_status','=',5)
+                    ->join('shipping','order.shipping_id','=','shipping.shipping_id')->get();
+            } else{
                 $sort='Đơn hàng mới';
                 $orders = Order::where('order_status','=',1)
                     ->join('shipping','order.shipping_id','=','shipping.shipping_id')->get();
@@ -68,7 +72,8 @@ class OrderController extends Controller
                 ->join('shipping','order.shipping_id','=','shipping.shipping_id')->get();
 
         }
-        return view($this->viewprefix.'index', compact('sort','orders','order_details','customers'));
+        $odr=Order::get();
+        return view($this->viewprefix.'index', compact('odr','sort','orders','order_details','customers'));
     }
 
     public function view_order_detail($order_id){
@@ -169,7 +174,7 @@ class OrderController extends Controller
     }
     public function changestatusorder($order_id) {
         DB::table('order')->where('order_id',$order_id)->update(['order_status'=>0]);
-        return back()->with('message','Xóa đơn hàng thành công!');
+        return back()->with('message','Hủy đơn hàng thành công!');
     }
     public function changestatusorder_detail(Request $request) {
         $data=$request->all();

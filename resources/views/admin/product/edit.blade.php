@@ -85,6 +85,14 @@
             <input type="text" class="form-control" name="link" value="{{$product->link}}">
         </div>
         <div class="form-group">
+            <label for="view_number">Lượt xem:</label>
+            <input type="text" class="form-control" name="view_number" value="{{$product->view_number}}">
+        </div>
+        <div class="form-group">
+            <label for="qty_inventory">Số lượng tồn:</label>
+            <input type="text" class="form-control" name="qty_inventory" value="{{$product->qty_inventory}}">
+        </div>
+        <div class="form-group">
             <label for="status">Tình trạng sản phẩm:</label>
             <select name="status" class="form-control" id="status">
                 @if($product->status==1)
@@ -110,13 +118,7 @@
                 @endif
             </select>
         </div>
-{{--        <div class="form-group">--}}
-{{--            <label for="exampleInputPassword1">Trạng thái: </label>--}}
-{{--            <select name="status_product" class="form-control input-sm m-bot15">--}}
-{{--                <option value="1">Hiển Thị</option>--}}
-{{--                <option value="0">Ẩn</option>--}}
-{{--            </select>--}}
-{{--        </div>--}}
+
         <button type="submit" name="btn_editor's" class="btn btn-primary">Thực Hiện</button>
     </form>
     </div>

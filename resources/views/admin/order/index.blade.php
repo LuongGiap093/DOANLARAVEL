@@ -7,14 +7,15 @@
     @endif
     <div class="dropdown" style="top: -8px; display: -webkit-inline-flex">
         <button style="border-radius: 3px;" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {{$sort}}
+            {{$orders->count()}} - {{$sort}}
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="{{request()->fullUrlWithQuery(['sort_by'=>'1'])}}">Đơn hàng mới</a>
-            <a class="dropdown-item" href="{{request()->fullUrlWithQuery(['sort_by'=>'2'])}}">Đơn hàng đã xác nhận</a>
-            <a class="dropdown-item" href="{{request()->fullUrlWithQuery(['sort_by'=>'3'])}}">Đơn hàng đang vận chuyển</a>
-            <a class="dropdown-item" href="{{request()->fullUrlWithQuery(['sort_by'=>'4'])}}">Đơn hàng đã giao thành công</a>
-            <a class="dropdown-item" href="{{request()->fullUrlWithQuery(['sort_by'=>'0'])}}">Đơn hàng đã hủy</a>
+            <a class="dropdown-item" href="{{request()->fullUrlWithQuery(['sort_by'=>'1'])}}">{{$odr->where('order_status','=',1)->count()}} - Đơn hàng mới</a>
+            <a class="dropdown-item" href="{{request()->fullUrlWithQuery(['sort_by'=>'2'])}}">{{$odr->where('order_status','=',2)->count()}} - Đơn hàng đã xác nhận</a>
+            <a class="dropdown-item" href="{{request()->fullUrlWithQuery(['sort_by'=>'3'])}}">{{$odr->where('order_status','=',3)->count()}} - Đơn hàng đang vận chuyển</a>
+            <a class="dropdown-item" href="{{request()->fullUrlWithQuery(['sort_by'=>'4'])}}">{{$odr->where('order_status','=',4)->count()}} - Đơn hàng đã giao thành công</a>
+            <a class="dropdown-item" href="{{request()->fullUrlWithQuery(['sort_by'=>'5'])}}">{{$odr->where('order_status','=',5)->count()}} - Đơn hàng vượt số lượng tồn</a>
+            <a class="dropdown-item" href="{{request()->fullUrlWithQuery(['sort_by'=>'0'])}}">{{$odr->where('order_status','=',0)->count()}} - Đơn hàng đã hủy</a>
         </div>
     </div>
     <table id="datatable" class="table table-bordered dt-responsive nowrap"
@@ -25,7 +26,6 @@
         <th>Tên Khách Hàng</th>
         <th>Phương thức thanh toán</th>
         <th>Tổng tiền</th>
-        <th>Trạng thái</th>
         <th>Xem chi tiết</th>
         <th>Delete</th>
         </thead>
@@ -39,19 +39,6 @@
                 </td>
                 <td>{{$order->order_payment}} </td>
                 <td>{{number_format($order->order_total)}}đ</td>
-                <td>
-                    @if($order->order_status==0)
-                        Đã hủy
-                    @elseif($order->order_status==1)
-                        Đơn mới
-                    @elseif($order->order_status==2)
-                        Đang xử lý
-                    @elseif($order->order_status==3)
-                        Đang giao hàng
-                    @elseif($order->order_status==4)
-                        Hoàn thành
-                    @endif
-                </td>
                 <td><a href="{{route('chi-tiet-hoa-don', $order->order_id)}}" class="btn btn-outline-primary"><i
                             class="fa fa-eye"></i></a></td>
                 <td><a href="{{route('order.changestatus', $order->order_id)}}" class="btn btn-danger"><i

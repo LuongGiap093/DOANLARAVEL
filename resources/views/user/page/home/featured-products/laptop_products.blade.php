@@ -9,6 +9,12 @@
                             <div class="image"><a
                                     href="{{route('product.viewProduct', $product->id)}}"><img
                                         src="{{asset('public/images/'. $product->image)}}" alt=""></a>
+                                @if($product->qty_inventory==0)
+                                    <div style="position: absolute; top: 2em; right: 3em; width: 60%; background-color: #fff0;">
+                                        <img src="{{asset('public/images/hethang.png')}}">
+                                    </div>
+                                @else
+                                @endif
                             </div>
                             <!-- /.image -->
 
@@ -51,6 +57,8 @@
 
                         </div>
                         <!-- /.product-info -->
+                        @if($product->qty_inventory==0)
+                        @else
                         <div class="cart clearfix animate-effect">
                             <div class="action">
                                 <ul class="list-unstyled">
@@ -96,6 +104,7 @@
                             </div>
                             <!-- /.action -->
                         </div>
+                    @endif
                         <!-- /.cart -->
                     </div>
                     <!-- /.product -->
