@@ -72,7 +72,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
                     </div>
 
                 </div>
@@ -90,11 +90,11 @@
         <th>Tên</th>
         <th>Thư viện ảnh</th>
         <th>Giá</th>
-        <th>Giảm giá</th>
+{{--        <th>Giảm giá</th>--}}
         <th>Trạng thái</th>
         <th>Xem chi tiết</th>
         <th>Nhập</th>
-        <th>sửa</th>
+        <th>Sửa</th>
         <th>Xóa</th>
 
         </thead>
@@ -102,10 +102,10 @@
         @foreach($products ?? '' as $product)
             <tr>
                 <td><img src="{{asset('public/images/'. $product->image)}}" width="40"/></td>
-                <td>{{$product->name}} </td>
+                <td width="400px" style="white-space: normal">{{$product->name}} </td>
                 <td><a href="{{route('add-gallery', $product->id)}}" class="btn btn-outline-primary"><i class="fas fa-image" aria-hidden="true"></i></a></td>
                 <td>{{$product->price}} </td>
-                <td>{{$product->discount}} </td>
+{{--                <td>{{$product->discount}} </td>--}}
                 @if($product->status==0)
                     <td>Hết hàng</td>
                 @elseif($product->status==1)

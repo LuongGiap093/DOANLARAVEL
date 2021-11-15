@@ -43,11 +43,11 @@ class DashboardController extends Controller {
     $topViewPage = Analytics::fetchMostVisitedPages(Period::days(28));
 
  // Order
-    $users = DB::table('order')
-      ->join('order_details', 'order.order_id', '=', 'order_details.order_id')
-      ->join('customer', 'order.customer_id', '=', 'customer.customer_id')
-      ->select('order.*', 'order_details.*', 'customer.*')
-      ->get();
+//    $users = DB::table('order')
+//      ->join('order_details', 'order.order_id', '=', 'order_details.order_id')
+//      ->join('customer', 'order.customer_id', '=', 'customer.customer_id')
+//      ->select('order.*', 'order_details.*', 'customer.*')
+//      ->get();
     //         dump($users);
     $abc = [];
     $customers = Shipping::all();
