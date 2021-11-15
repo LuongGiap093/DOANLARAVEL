@@ -13,7 +13,7 @@
         <tbody>
         @foreach($coupons as $coupon)
             <tr>
-                <td width="5%">{{$coupon->coupon_name}} </td>
+                <td width="400px" style="white-space: normal">{{$coupon->coupon_name}} </td>
                 <td>{{$coupon->coupon_code}}</td>
                 <td>{{number_format($coupon->coupon_money)}}</td>
                 <td>{{$coupon->coupon_qty}}</td>

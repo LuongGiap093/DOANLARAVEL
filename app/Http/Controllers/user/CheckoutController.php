@@ -208,6 +208,8 @@ class CheckoutController extends Controller
                     if($pro->qty_inventory>0&&$pro->qty_inventory>=$value['quanty']){
                         $pro->update(['qty_inventory'=>$pro->qty_inventory-$value['quanty']]);
                     }else{
+                        Order_Details::where('id','=',$value['productInfo']->id)->where('order_id','=',$orders->order_id)
+                            ->update(['quantity'=>0,'total_price'=>0]);
                         Order::where('order_id','=',$orders->order_id)->update(['order_status'=>5]);
                     }
 

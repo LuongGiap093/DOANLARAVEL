@@ -213,7 +213,7 @@
                                                     <span class="text" style="font-size: 14px;font-weight: 700;">Tổng tiền:</span><span class='price'>{{number_format(Session::get('Cart')->totalPrice,'0',',','.')}} VNĐ</span>
                                                 </div>
                                             </div>
-                                            <a href="{{route('shopping.checkout-page')}}" class="btn btn-upper btn-primary btn-block m-t-20" style="background: #fdd922;padding: 10px 20px;margin-top: 10px;font-weight: 900">ĐẶT HÀNG NGAY</a>
+                                            <a href="{{route('shopping.checkout-page')}}" class="btn btn-upper btn-primary btn-block m-t-20" style="color: #333333b5;background: #fdd922;padding: 10px 20px;margin-top: 10px;font-weight: 900">ĐẶT HÀNG NGAY</a>
                                             <!-- /.cart-total-->
                                     </li>
                                     @else

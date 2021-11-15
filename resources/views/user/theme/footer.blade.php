@@ -98,11 +98,7 @@
                 <ul class="link">
                     <li class="fb pull-left"><a target="_blank" rel="nofollow" href="https://www.facebook.com/v.luong.giap" title="Facebook"></a></li>
                     <li class="tw pull-left"><a target="_blank" rel="nofollow" href="#" title="Twitter"></a></li>
-                    <li class="googleplus pull-left"><a target="_blank" rel="nofollow" href="#" title="GooglePlus"></a>
-                    </li>
-                    <li class="rss pull-left"><a target="_blank" rel="nofollow" href="#" title="RSS"></a></li>
-                    <li class="pintrest pull-left"><a target="_blank" rel="nofollow" href="#" title="PInterest"></a>
-                    </li>
+
                     <li class="linkedin pull-left"><a target="_blank" rel="nofollow" href="#" title="Linkedin"></a></li>
                     <li class="youtube pull-left"><a target="_blank" rel="nofollow" href="https://www.youtube.com/channel/UCCJ5ZpkH65DmZ8Ud8W7CyLA" title="Youtube"></a></li>
                 </ul>
