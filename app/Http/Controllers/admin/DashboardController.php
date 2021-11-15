@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Models\Blog;
+use App\Models\Product;
+use App\Models\User;
 use Spatie\Analytics\Period;
 use Analytics;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use App\Models\AccountCustomer;
 use App\Models\Customer;
 use App\Models\Shipping;
@@ -30,35 +34,37 @@ class DashboardController extends Controller {
 
   public function index(Request $request) {
 
-
+  // Google Analytic
     $analyticsData = Analytics::fetchTotalVisitorsAndPageViews(Period::days(28));
     $visitor = $analyticsData->pluck("visitors");
     $date_time_add = $analyticsData->pluck("date");
     $pageview = $analyticsData->pluck("pageViews");
     $topBrowers = Analytics::fetchTopBrowsers(Period::days(28));
-
     $topViewPage = Analytics::fetchMostVisitedPages(Period::days(28));
-//    dump($topViewPage);
 
-
-    $users = DB::table('order')
-      ->join('order_details', 'order.order_id', '=', 'order_details.order_id')
-      ->join('customer', 'order.customer_id', '=', 'customer.customer_id')
-      ->select('order.*', 'order_details.*', 'customer.*')
-      ->get();
+ // Order
+//    $users = DB::table('order')
+//      ->join('order_details', 'order.order_id', '=', 'order_details.order_id')
+//      ->join('customer', 'order.customer_id', '=', 'customer.customer_id')
+//      ->select('order.*', 'order_details.*', 'customer.*')
+//      ->get();
     //         dump($users);
     $abc = [];
-      $customers = Shipping::all();
+    $customers = Shipping::all();
     $account = AccountCustomer::where('status','=',1)->get();
     $count = count($account);
     $order = Order::where('order_status','=',4)->get();
-    $order_detail = Order_Details::join('order', 'order.order_id', '=', 'order_details.order_id')
+    $order_detail = Order_Details::join('order', 'order.order_id', '=', 'order_details.order_id')->join('product', 'order_details.id', '=', 'product.id')
     ->where('order_status','=',4)->get();
+//    dump($order_detail);
+
     $quantity = [];
     foreach ($order_detail as $count_quantity) {
       $quantity[] = $count_quantity->quantity;
     }
     $total_quantity = array_sum($quantity);
+
+
 
     $count_order = count($order);
     $aa = [];
@@ -66,9 +72,79 @@ class DashboardController extends Controller {
       $aa[] = $count_item->order_total;
     }
     $total_order_money = array_sum($aa);
-    //          $total_order_money = count($a);
+
+   // Pie Chart
+    $pie_order_0 = Order::where('order_status','=',0)->get();
+    $pie_order_1 = Order::where('order_status','=',1)->get();
+    $pie_order_2 = Order::where('order_status','=',2)->get();
+    $pie_order_3 = Order::where('order_status','=',3)->get();
+    $pie_order_4 = Order::where('order_status','=',4)->get();
+
+    $count_pie_order_0 = count($pie_order_0);
+    $count_pie_order_1 = count($pie_order_1);
+    $count_pie_order_2 = count($pie_order_2);
+    $count_pie_order_3 = count($pie_order_3);
+    $count_pie_order_4 = count($pie_order_4);
+
+    $dataPoints = array(
+      array("label"=>"Đơn đã hủy ", "y"=>$count_pie_order_0),
+      array("label"=>"Đơn hàng mới", "y"=>$count_pie_order_1),
+      array("label"=>"Đơn hàng đã xác nhận", "y"=>$count_pie_order_2),
+      array("label"=>"Đơn hàng đang vận chuyển", "y"=>$count_pie_order_3),
+      array("label"=>"Đơn hàng đã giao hàng thành công", "y"=>$count_pie_order_4),
+    );
+
+    // Top Blog
+      $blog_view = Blog::where('status','=',1)->orderBy('view','DESC')->limit(7)->get();
+    // Top product view
+      $product_top_view = Product::where('status','=',1)->orWhere('status','=',2)->orWhere('status','=',3)->orderBy('view_number','DESC')->limit(8)->get();
+    // Top Product in Orders
+//      $order_top_sale = Order::
+      $topsales = DB::table('order_details')
+        ->leftJoin('product','product.id','=','order_details.id')
+        ->leftJoin('order', 'order.order_id', '=', 'order_details.order_id')
+        ->select('product.id','product.name','order_details.id',
+          DB::raw('SUM(order_details.quantity) as total'))
+        ->where('order_status','=',4)
+        ->groupBy('product.id','order_details.id','product.name')
+        ->orderBy('total','desc')
+        ->limit(8)
+        ->get();
+
+    $users_test = Order::select('order_total', 'created_at')->where('order_status','=',4)
+      ->get()
+      ->groupBy(function ($date) {
+        return Carbon::parse($date->created_at)->format('m');
+      });
+
+    $usermcount = [];
+    $userArr = [];
+
+    foreach ($users_test as $key=> $value) {
+      $bb = [];
+      foreach ($value as $ass) {
+        $bb[] = $ass->order_total;
+      }
+      $usermcount[(int)$key - 1] = array_sum($bb);
+    }
+
+    $month = ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'];
+
+    for ($i = 0; $i <= 11; $i++) {
+      $userArr[$i]['label'] = $month[$i];
+      if (!empty($usermcount[$i])) {
+        $userArr[$i]['y'] = $usermcount[$i];
+      } else {
+        $userArr[$i]['y'] = 0;
+      }
+
+    }
+    $dataPoints_order = $userArr;
+//    dump($dataPoints1);
+
     return view($this->viewprefix . 'layout',
-      compact('count','customers', 'count_order', 'total_order_money', 'total_quantity','visitor','date_time_add','pageview','topBrowers','topViewPage'));
+      compact('count','customers', 'count_order', 'total_order_money', 'total_quantity','visitor','date_time_add','pageview'
+        ,'topBrowers','topViewPage','dataPoints','blog_view','product_top_view','order_detail','topsales','dataPoints_order'));
   }
 
   public function search_order(Request $request) {
@@ -77,12 +153,13 @@ class DashboardController extends Controller {
       $date_time_add = $analyticsData->pluck("date");
       $pageview = $analyticsData->pluck("pageViews");
       $topBrowers = Analytics::fetchTopBrowsers(Period::days(28));
-
       $topViewPage = Analytics::fetchMostVisitedPages(Period::days(28));
+
     $account = AccountCustomer::all();
     $count = count($account);
-    $order = Order::all();
-    $order_detail = Order_Details::all();
+    $order = Order::where('order_status','=',4)->get();
+    $order_detail = Order_Details::join('order', 'order.order_id', '=', 'order_details.order_id')->join('product', 'order_details.id', '=', 'product.id')
+      ->where('order_status','=',4)->get();
     $quantity = [];
     foreach ($order_detail as $count_quantity) {
       $quantity[] = $count_quantity->quantity;
@@ -94,129 +171,375 @@ class DashboardController extends Controller {
       $aa[] = $count_item->order_total;
     }
     $total_order_money = array_sum($aa);
+
+
     $st_date=$request->start_date;
     $date_start=date('d/m/Y',  strtotime($st_date));
     $st_end=$request->end_date;
     $date_end=date('d/m/Y',  strtotime($st_end));
-
     $customers = Shipping::all();
 
-    if ( isset ($request->start_date) && isset($request->end_date)) {
-      $orders = Order::select("order.*")
+    if (isset ($request->start_date) && !empty($request->start_date) && isset($request->end_date) && !empty($request->end_date)) {
+      $orders_search = Order::select("order.*")
         ->whereBetween('created_at', [
           $request->start_date . " 00:00:00",
           $request->end_date . " 23:59:59",
         ])
         ->get();
-
-
-//      foreach($orders as $item){
-//        dump($item);
+//      foreach ($orders_search as $item) {
+//        $status_item = $item->order_status;
+//        if($status_item == '0')
+//        {
+//          $pie_st_order_0[] = $item;
+//        }
+//        if($status_item == '1')
+//        {
+//          $pie_st_order_1[] = $item;
+//        }
+//        if($status_item == '2')
+//        {
+//          $pie_st_order_2[] = $item;
+//        }
+//        if($status_item == '3')
+//        {
+//          $pie_st_order_3[] = $item;
+//        }
+//        if($status_item == '4')
+//        {
+//          $pie_st_order_4[] = $item;
+//        }
 //      }
+//      if(isset($pie_st_order_0) and !empty($pie_st_order_0)) {
+//        $count_pie_st_order_0 = count($pie_st_order_0);
+//      }
+//      else
+//      {
+//        $count_pie_st_order_0 = 0;
+//      }
+//      if(isset($pie_st_order_1) and !empty($pie_st_order_1)) {
+//        $count_pie_st_order_1 = count($pie_st_order_1);
+//      }
+//      else
+//      {
+//        $count_pie_st_order_1 = 0;
+//      }
+//      if(isset($pie_st_order_2) and !empty($pie_st_order_2)) {
+//        $count_pie_st_order_2 = count($pie_st_order_2);
+//      }
+//      else
+//      {
+//        $count_pie_st_order_2 = 0;
+//      }
+//      if(isset($pie_st_order_3) and !empty($pie_st_order_3)) {
+//        $count_pie_st_order_3 = count($pie_st_order_3);
+//      }
+//      else
+//      {
+//        $count_pie_st_order_3 = 0;
+//      }
+//      if(isset($pie_st_order_4) and !empty($pie_st_order_4)) {
+//        $count_pie_st_order_4 = count($pie_st_order_4);
+//      }
+//      else
+//      {
+//        $count_pie_st_order_4 = 0;
+//
+//      }
+//      $dataPoints1 = array(
+//        array("label"=>"Đơn đã hủy", "y"=>$count_pie_st_order_0),
+//        array("label"=>"Đơn hàng mới", "y"=>$count_pie_st_order_1),
+//        array("label"=>"Đơn hàng đã xác nhận", "y"=>$count_pie_st_order_2),
+//        array("label"=>"Đơn hàng đang vận chuyển", "y"=>$count_pie_st_order_3),
+//        array("label"=>"Đơn hàng đã giao hàng thành công", "y"=>$count_pie_st_order_4),
+//      );
+      }
+
+    $pie_order_0 = Order::where('order_status','=',0)->get();
+    $pie_order_1 = Order::where('order_status','=',1)->get();
+    $pie_order_2 = Order::where('order_status','=',2)->get();
+    $pie_order_3 = Order::where('order_status','=',3)->get();
+    $pie_order_4 = Order::where('order_status','=',4)->get();
+
+    $count_pie_order_0 = count($pie_order_0);
+    $count_pie_order_1 = count($pie_order_1);
+    $count_pie_order_2 = count($pie_order_2);
+    $count_pie_order_3 = count($pie_order_3);
+    $count_pie_order_4 = count($pie_order_4);
+
+    $dataPoints = array(
+      array("label"=>"Đơn đã hủy ", "y"=>$count_pie_order_0),
+      array("label"=>"Đơn hàng mới", "y"=>$count_pie_order_1),
+      array("label"=>"Đơn hàng đã xác nhận", "y"=>$count_pie_order_2),
+      array("label"=>"Đơn hàng đang vận chuyển", "y"=>$count_pie_order_3),
+      array("label"=>"Đơn hàng đã giao hàng thành công", "y"=>$count_pie_order_4),
+    );
+
+    // Top Blog
+    $blog_view = Blog::where('status','=',1)->orderBy('view','DESC')->limit(7)->get();
+    // Top product view
+    $product_top_view = Product::where('status','=',1)->orWhere('status','=',2)->orWhere('status','=',3)->orderBy('view_number','DESC')->limit(8)->get();
+    // Top Product in Orders
+    //      $order_top_sale = Order::
+    $topsales = DB::table('order_details')
+      ->leftJoin('product','product.id','=','order_details.id')
+      ->leftJoin('order', 'order.order_id', '=', 'order_details.order_id')
+      ->select('product.id','product.name','order_details.id',
+        DB::raw('SUM(order_details.quantity) as total'))
+      ->where('order_status','=',4)
+      ->groupBy('product.id','order_details.id','product.name')
+      ->orderBy('total','desc')
+      ->limit(8)
+      ->get();
+
+
+    $users_test = Order::select('order_total', 'created_at')->where('order_status','=',4)
+      ->get()
+      ->groupBy(function ($date) {
+        return Carbon::parse($date->created_at)->format('m');
+      });
+
+    $usermcount = [];
+    $userArr = [];
+
+    foreach ($users_test as $key=> $value) {
+      $bb = [];
+      foreach ($value as $ass) {
+        $bb[] = $ass->order_total;
+      }
+      $usermcount[(int)$key - 1] = array_sum($bb);
     }
+      $month = ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'];
 
+      for ($i = 0; $i <= 11; $i++) {
+        $userArr[$i]['label'] = $month[$i];
+        if (!empty($usermcount[$i])) {
+          $userArr[$i]['y'] = $usermcount[$i];
+        } else {
+          $userArr[$i]['y'] = 0;
+        }
 
-//    dd($orders);
-    //    dump($orders);
-    return view($this->viewprefix . 'layout',
-      compact('orders', 'customers', 'count', 'count_order',
-        'total_order_money', 'total_quantity','date_start','date_end','visitor','date_time_add','pageview','topBrowers','topViewPage'));
+      }
+      $dataPoints_order = $userArr;
+
+    return view($this->viewprefix . 'search',
+      compact('orders_search', 'customers', 'count', 'count_order','dataPoints','dataPoints_order',
+        'total_order_money', 'total_quantity','date_start','date_end','visitor','date_time_add','pageview','topBrowers','topViewPage',
+        'blog_view','product_top_view','topsales'
+
+      ));
   }
 
+  public function search_line_order(Request $request) {
+    $analyticsData = Analytics::fetchTotalVisitorsAndPageViews(Period::days(28));
+    $visitor = $analyticsData->pluck("visitors");
+    $date_time_add = $analyticsData->pluck("date");
+    $pageview = $analyticsData->pluck("pageViews");
+    $topBrowers = Analytics::fetchTopBrowsers(Period::days(28));
+    $topViewPage = Analytics::fetchMostVisitedPages(Period::days(28));
+
+    $account = AccountCustomer::all();
+    $count = count($account);
+    $order = Order::where('order_status','=',4)->get();
+    $order_detail = Order_Details::join('order', 'order.order_id', '=', 'order_details.order_id')->join('product', 'order_details.id', '=', 'product.id')
+      ->where('order_status','=',4)->get();
+    $quantity = [];
+    foreach ($order_detail as $count_quantity) {
+      $quantity[] = $count_quantity->quantity;
+    }
+    $total_quantity = array_sum($quantity);
+    $count_order = count($order);
+    $aa = [];
+    foreach ($order as $count_item) {
+      $aa[] = $count_item->order_total;
+    }
+    $total_order_money = array_sum($aa);
+
+
+    $st_date=$request->start_date;
+    $date_start=date('d/m/Y',  strtotime($st_date));
+    $st_end=$request->end_date;
+    $date_end=date('d/m/Y',  strtotime($st_end));
+    $customers = Shipping::all();
+
+//    if (isset ($request->start_date) && !empty($request->start_date) && isset($request->end_date) && !empty($request->end_date)) {
+//      $orders_search = Order::select("order.*")
+//        ->whereBetween('created_at', [
+//          $request->start_date . " 00:00:00",
+//          $request->end_date . " 23:59:59",
+//        ])
+//        ->get();
+//      foreach ($orders_search as $item) {
+//        $status_item = $item->order_status;
+//        if($status_item == '0')
+//        {
+//          $pie_st_order_0[] = $item;
+//        }
+//        if($status_item == '1')
+//        {
+//          $pie_st_order_1[] = $item;
+//        }
+//        if($status_item == '2')
+//        {
+//          $pie_st_order_2[] = $item;
+//        }
+//        if($status_item == '3')
+//        {
+//          $pie_st_order_3[] = $item;
+//        }
+//        if($status_item == '4')
+//        {
+//          $pie_st_order_4[] = $item;
+//        }
+//      }
+//      if(isset($pie_st_order_0) and !empty($pie_st_order_0)) {
+//        $count_pie_st_order_0 = count($pie_st_order_0);
+//      }
+//      else
+//      {
+//        $count_pie_st_order_0 = 0;
+//      }
+//      if(isset($pie_st_order_1) and !empty($pie_st_order_1)) {
+//        $count_pie_st_order_1 = count($pie_st_order_1);
+//      }
+//      else
+//      {
+//        $count_pie_st_order_1 = 0;
+//      }
+//      if(isset($pie_st_order_2) and !empty($pie_st_order_2)) {
+//        $count_pie_st_order_2 = count($pie_st_order_2);
+//      }
+//      else
+//      {
+//        $count_pie_st_order_2 = 0;
+//      }
+//      if(isset($pie_st_order_3) and !empty($pie_st_order_3)) {
+//        $count_pie_st_order_3 = count($pie_st_order_3);
+//      }
+//      else
+//      {
+//        $count_pie_st_order_3 = 0;
+//      }
+//      if(isset($pie_st_order_4) and !empty($pie_st_order_4)) {
+//        $count_pie_st_order_4 = count($pie_st_order_4);
+//      }
+//      else
+//      {
+//        $count_pie_st_order_4 = 0;
+//
+//      }
+//      $dataPoints1 = array(
+//        array("label"=>"Đơn đã hủy", "y"=>$count_pie_st_order_0),
+//        array("label"=>"Đơn hàng mới", "y"=>$count_pie_st_order_1),
+//        array("label"=>"Đơn hàng đã xác nhận", "y"=>$count_pie_st_order_2),
+//        array("label"=>"Đơn hàng đang vận chuyển", "y"=>$count_pie_st_order_3),
+//        array("label"=>"Đơn hàng đã giao hàng thành công", "y"=>$count_pie_st_order_4),
+//      );
+//
+//      $test_ter = Order::whereYear('created_at', date('Y', strtotime('-1 year')))->get();
+//
+//      $data = DB::table('order')
+//        ->select('order_id')
+//        ->whereYear('created_at', '=', 2021)
+//        ->orderby('order_id', 'desc')
+//        ->get();
+//      dump($data);
+//
+//
+//
+//    }
+
+    $pie_order_0 = Order::where('order_status','=',0)->get();
+    $pie_order_1 = Order::where('order_status','=',1)->get();
+    $pie_order_2 = Order::where('order_status','=',2)->get();
+    $pie_order_3 = Order::where('order_status','=',3)->get();
+    $pie_order_4 = Order::where('order_status','=',4)->get();
+
+    $count_pie_order_0 = count($pie_order_0);
+    $count_pie_order_1 = count($pie_order_1);
+    $count_pie_order_2 = count($pie_order_2);
+    $count_pie_order_3 = count($pie_order_3);
+    $count_pie_order_4 = count($pie_order_4);
+
+    $dataPoints = array(
+      array("label"=>"Đơn đã hủy ", "y"=>$count_pie_order_0),
+      array("label"=>"Đơn hàng mới", "y"=>$count_pie_order_1),
+      array("label"=>"Đơn hàng đã xác nhận", "y"=>$count_pie_order_2),
+      array("label"=>"Đơn hàng đang vận chuyển", "y"=>$count_pie_order_3),
+      array("label"=>"Đơn hàng đã giao hàng thành công", "y"=>$count_pie_order_4),
+    );
+
+
+    // Top Blog
+    $blog_view = Blog::where('status','=',1)->orderBy('view','DESC')->limit(7)->get();
+    // Top product view
+    $product_top_view = Product::where('status','=',1)->orWhere('status','=',2)->orWhere('status','=',3)->orderBy('view_number','DESC')->limit(8)->get();
+    // Top Product in Orders
+    //      $order_top_sale = Order::
+    $topsales = DB::table('order_details')
+      ->leftJoin('product','product.id','=','order_details.id')
+      ->leftJoin('order', 'order.order_id', '=', 'order_details.order_id')
+      ->select('product.id','product.name','order_details.id',
+        DB::raw('SUM(order_details.quantity) as total'))
+      ->where('order_status','=',4)
+      ->groupBy('product.id','order_details.id','product.name')
+      ->orderBy('total','desc')
+      ->limit(8)
+      ->get();
+
+    if(isset($_GET['submit_chose'])){
+      if(!empty($_GET['value_year'])) {
+        $selected = $_GET['value_year'];
+      }
+    }
+          $data = DB::table('order')
+            ->select('order_total','created_at')
+            ->where('order_status','=',4)
+            ->whereYear('created_at', '=', $selected)
+            ->get();
+//    dump($data);
+
+    $users_test = Order::select('order_total', 'created_at')->where('order_status','=',4)
+      ->whereYear('created_at', '=', $selected)
+      ->get()
+      ->groupBy(function ($date) {
+        return Carbon::parse($date->created_at)->format('m');
+      });
+    //    dump($users_test);
+
+    $usermcount = [];
+    $userArr = [];
+    foreach ($users_test as $key=> $value) {
+      $bb = [];
+      foreach ($value as $ass) {
+        $bb[] = $ass->order_total;
+      }
+      $usermcount[(int)$key - 1] = array_sum($bb);
+    }
+
+    $month = ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'];
+
+    for ($i = 0; $i <= 11; $i++) {
+      $userArr[$i]['label'] = $month[$i];
+      if (!empty($usermcount[$i])) {
+        $userArr[$i]['y'] = $usermcount[$i];
+      } else {
+        $userArr[$i]['y'] = 0;
+      }
+
+    }
+
+    $dataPoints_order = $userArr;
+//    dump($dataPoints_order);
+    return view($this->viewprefix . 'search_line',
+      compact('customers', 'count', 'count_order','dataPoints_order','dataPoints',
+        'total_order_money', 'total_quantity','date_start','date_end','visitor','date_time_add','pageview','topBrowers','topViewPage',
+        'blog_view','product_top_view','topsales','selected'
+      ));
+  }
   /**
    * Show the form for creating a new resource.
    *
    * @return \Illuminate\Http\Response
    */
-  //    public function create()
-  //    {
-  //        $blogs = Blog::all();
-  //        return view($this->viewprefix.'create',compact('blogs'));
-  //    }
-  //
-  //    /**
-  //     * Store a newly created resource in storage.
-  //     *
-  //     * @param  \Illuminate\Http\Request  $request
-  //     * @return \Illuminate\Http\Response
-  //     */
-  //    public function store(Request $request)
-  //    {
-  //        $data=$request->validate([
-  //            'blog_title' => 'required',
-  //            'blog_author' => 'required',
-  //            'blog_time' => 'required',
-  //            'blog_description' => 'required',
-  //        ]);
-  //        $data['image'] = Helper::imageUpload($request);
-  //        if(Blog::create($data))
-  //            Session::flash('message', 'successfully!');
-  //        else
-  //            Session::flash('message', 'Failure!');
-  //        return redirect()->route($this->index);
-  //    }
-  //
-  //    /**
-  //     * Display the specified resource.
-  //     *
-  //     * @param  \App\Models\Slider  $Slider
-  //     * @return \Illuminate\Http\Response
-  //     */
-  //    public function show(Blog $blog)
-  //    {
-  //
-  //    }
-  //    public function edit(Blog $blog)
-  //    {
-  //        return view($this->viewprefix.'edit')->with('blog', $blog);
-  //        // return view($this->viewprefix.'edit',compact('product'));
-  //    }
-  //    public function update(Request $request, Blog $blog)
-  //    {
-  //        $data=$request->validate([
-  //          'blog_title' => 'required',
-  //          'blog_author' => 'required',
-  //          'blog_time' => 'required',
-  //          'blog_description' => 'required',
-  //        ]);
-  //        $data['image'] = Helper::imageUpload($request);
-  //        if($blog->update($data))
-  //            Session::flash('message', ' Update successfully!');
-  //        else
-  //            Session::flash('message', 'Failure!');
-  //        return redirect()->route('blog.index');
-  //    }
-  //
-  //
-  //    public function destroy(Blog $blog)
-  //    {
-  //        if($blog->delete())
-  //            Session::flash('message', 'successfully!');
-  //        else
-  //            Session::flash('message', 'Failure!');
-  //        return redirect()->route('blog.index');
-  //    }
-  //
-  //
-  //
-  //    public function productlist($id){
-  //
-  //        $products = Slider::find($id)->product;
-  //        return view('admin.Slider.productlist', compact('products'));
-  //    }
-  //
-  //    public function changestatus($id)
-  //    {
-  //        $Slider= Slider::find($id);
-  //        $Slider->Slider_status=!$Slider->Slider_status;
-  //        if($Slider->save()){
-  //            return redirect()->back();
-  //        }
-  //        else
-  //        {
-  //            return redirect(route('changestatus'));
-  //        }
-  //    }
-
 
 }

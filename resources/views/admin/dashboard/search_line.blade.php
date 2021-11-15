@@ -228,7 +228,7 @@
                                                     <a data-toggle="collapse" href="#cardCollpase2" role="button" aria-expanded="false" aria-controls="cardCollpase2"><i class="mdi mdi-minus"></i></a>
                                                     <a href="#" data-toggle="remove"><i class="mdi mdi-close"></i></a>
                                                 </div>
-                                                <h1 class="header-title mb-0">Thống kê doanh thu năm 2021 </h1>
+                                                <h1 class="header-title mb-0">Thống kê doanh thu năm {{$selected}}</h1>
                                             </div>
                                             <div id="cardCollpase2" class="collapse show">
                                                 <div class="card-body">
@@ -332,11 +332,11 @@
                                                             <tbody>
                                                             @foreach ($product_top_view as $key => $item_top_view)
                                                                 @if($item_top_view->view_number > 0)
-                                                                <tr>
-                                                                    <td>{{$key+1}}</td>
-                                                                    <td width="500px" style="white-space: normal">{{$item_top_view->name}}</td>
-                                                                    <td>{{$item_top_view->view_number}}</td>
-                                                                </tr>
+                                                                    <tr>
+                                                                        <td>{{$key+1}}</td>
+                                                                        <td width="500px" style="white-space: normal">{{$item_top_view->name}}</td>
+                                                                        <td>{{$item_top_view->view_number}}</td>
+                                                                    </tr>
                                                                 @endif
                                                             @endforeach
                                                             </tbody>
@@ -378,11 +378,11 @@
                                                             <tbody>
                                                             @foreach ($blog_view as $key => $item_blog )
                                                                 @if($item_blog->view > 0 )
-                                                                <tr>
-                                                                    <td>{{$key+1}}</td>
-                                                                    <td width="500px" style="white-space: normal">{{$item_blog->blog_title}}</td>
-                                                                    <td>{{$item_blog->view}}</td>
-                                                                </tr>
+                                                                    <tr>
+                                                                        <td>{{$key+1}}</td>
+                                                                        <td width="500px" style="white-space: normal">{{$item_blog->blog_title}}</td>
+                                                                        <td>{{$item_blog->view}}</td>
+                                                                    </tr>
                                                                 @endif
                                                             @endforeach
                                                             </tbody>
@@ -404,20 +404,20 @@
                                             <div class="card-header border-0">
                                                 <div class="d-flex justify-content-between">
                                                     <h3 class="card-title">Thống kê truy cập</h3>
-{{--                                                    <a href="javascript:void(0);">View Report</a>--}}
+                                                    {{--                                                    <a href="javascript:void(0);">View Report</a>--}}
                                                 </div>
                                             </div>
                                             <div class="card-body">
                                                 <div class="d-flex">
                                                     <p class="d-flex flex-column">
-{{--                                                        <span class="text-bold text-lg">820</span>--}}
-{{--                                                        <span>Visitors Over Time</span>--}}
+                                                        {{--                                                        <span class="text-bold text-lg">820</span>--}}
+                                                        {{--                                                        <span>Visitors Over Time</span>--}}
                                                     </p>
                                                     <p class="ml-auto d-flex flex-column text-right">
                     <span class="text-success">
 {{--                      <i class="fas fa-arrow-up"></i>--}}
                     </span>
-{{--                                                        <span class="text-muted">Since last week</span>--}}
+                                                        {{--                                                        <span class="text-muted">Since last week</span>--}}
                                                     </p>
                                                 </div>
                                                 <!-- /.d-flex -->
@@ -464,11 +464,11 @@
                                                             </thead>
                                                             <tbody>
                                                             @foreach ($topBrowers as $key => $item )
-                                                            <tr>
-                                                                <td>{{$key+1}}</td>
-                                                                <td>{{$item['browser']}}</td>
-                                                                <td>{{$item['sessions']}}</td>
-                                                            </tr>
+                                                                <tr>
+                                                                    <td>{{$key+1}}</td>
+                                                                    <td>{{$item['browser']}}</td>
+                                                                    <td>{{$item['sessions']}}</td>
+                                                                </tr>
                                                             @endforeach
                                                             </tbody>
                                                         </table>
@@ -486,9 +486,9 @@
                                         <div class="card">
                                             <div class="card-header py-3 bg-transparent">
                                                 <div class="card-widgets">
-                                                                                                        <a href="javascript:;" data-toggle="reload"><i class="mdi mdi-refresh"></i></a>
-                                                                                                        <a data-toggle="collapse" href="#cardCollpase4" role="button" aria-expanded="false" aria-controls="cardCollpase4"><i class="mdi mdi-minus"></i></a>
-                                                                                                        <a href="#" data-toggle="remove"><i class="mdi mdi-close"></i></a>
+                                                    <a href="javascript:;" data-toggle="reload"><i class="mdi mdi-refresh"></i></a>
+                                                    <a data-toggle="collapse" href="#cardCollpase4" role="button" aria-expanded="false" aria-controls="cardCollpase4"><i class="mdi mdi-minus"></i></a>
+                                                    <a href="#" data-toggle="remove"><i class="mdi mdi-close"></i></a>
                                                 </div>
                                                 <h5 class="header-title mb-0"> Trang được truy cập hàng đầu  </h5>
                                             </div>

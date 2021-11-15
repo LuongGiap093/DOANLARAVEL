@@ -43,6 +43,7 @@ Route::group(['middleware' => 'CheckAdminLogin','prefix' => 'panel/user', 'names
 
 
   Route::get('search','DashboardController@search_order')->name('order.search');
+  Route::get('search_line_order','DashboardController@search_line_order')->name('order_line.search');
 
   Route::post('logo/trang-thai','LogoController@hien_thi')->name('logo.trang-thai');
 
