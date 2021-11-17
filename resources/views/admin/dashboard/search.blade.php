@@ -114,9 +114,22 @@
                     dataPoints: <?php echo json_encode($dataPoints_order, JSON_NUMERIC_CHECK); ?>
                 }]
             });
+            var chart2 = new CanvasJS.Chart("chartContainer2", {
+                animationEnabled: true,
+                theme: "dark1",
+                axisY: {
+                    title: "Sản phẩm trong danh mục"
+                },
+                data: [{
+                    type: "column",
+                    yValueFormatString: "#,##0.## ",
+                    dataPoints: <?php echo json_encode($dataPoints_category, JSON_NUMERIC_CHECK); ?>
+                }]
+            });
 
             chart.render();
             chart1.render();
+            chart2.render();
 
 
         }
@@ -149,7 +162,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body table-responsive">
-                                <h4 class="m-t-0 header-title mb-4"><b>Doanh Thu Sản Phẩm</b></h4>
+                                <h4 class="m-t-0 header-title mb-4"><b>Thống kê TLmobile</b></h4>
                                 <div class="row">
                                     <div class="col-xl-3 col-sm-6">
                                         <div class="card bg-pink">
@@ -212,7 +225,7 @@
                                     <div class="col-xl-12">
 
                                         <div class="card">
-                                            <h4 class="header-title mb-4" style="margin-top: 10px; margin-left: 10px">Tìm kiếm doanh thu theo năm </h4>
+                                            <h4 class="header-title mb-4" style="margin-top: 10px; margin-left: 10px">Tìm kiếm doanh thu bán theo năm </h4>
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <form action="{{route('order_line.search')}}" method="get" class="mb-3" style="margin-top: 5px">
@@ -228,7 +241,7 @@
                                                     <a data-toggle="collapse" href="#cardCollpase2" role="button" aria-expanded="false" aria-controls="cardCollpase2"><i class="mdi mdi-minus"></i></a>
                                                     <a href="#" data-toggle="remove"><i class="mdi mdi-close"></i></a>
                                                 </div>
-                                                <h1 class="header-title mb-0">Thống kê doanh thu năm 2021 </h1>
+                                                <h1 class="header-title mb-0">Thống kê doanh thu bán năm 2021 </h1>
                                             </div>
                                             <div id="cardCollpase2" class="collapse show">
                                                 <div class="card-body">
@@ -238,6 +251,31 @@
                                                         </div>
                                                     </div>
 
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end card-->
+                                    </div>
+                                    <!-- Donut Chart -->
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        <div class="card">
+                                            <div class="card-header py-3 bg-transparent">
+                                                <div class="card-widgets">
+                                                    <a href="javascript:;" data-toggle="reload"><i class="mdi mdi-refresh"></i></a>
+                                                    <a data-toggle="collapse" href="#cardCollpase3" role="button" aria-expanded="false" aria-controls="cardCollpase3"><i class="mdi mdi-minus"></i></a>
+                                                    <a href="#" data-toggle="remove"><i class="mdi mdi-close"></i></a>
+                                                </div>
+                                                <h1 class="header-title mb-0">Danh mục sản phẩm  </h1>
+                                            </div>
+                                            <div id="cardCollpase3" class="collapse show">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div id="chartContainer2" style="height: 370px; width: 100%; "></div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

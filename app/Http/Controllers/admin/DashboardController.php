@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Models\Blog;
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
 use Spatie\Analytics\Period;
@@ -142,9 +143,35 @@ class DashboardController extends Controller {
     $dataPoints_order = $userArr;
 //    dump($dataPoints1);
 
+//    $category_product = Category::all();
+
+    $categorymcount = [];
+    $cateArr = [];
+    $category_product = Category::join('product', 'product.idcat', '=', 'category.category_id')->where('category_status','=',1)->where('status','!=',0)->get()->groupBy('category_id');
+//    dump($category_product);
+    $count_name_cate = count($category_product);
+    $arr_cate_name = [];
+    foreach ($category_product as $key=> $value) {
+      $categorymcount[] = count($value);
+      foreach ($value as $ass) {
+        $cate_name = $ass->category_name;
+      }
+      $arr_cate_name[] = $cate_name;
+    }
+     $name_category_column = $arr_cate_name;
+    for ($i = 0; $i <= $count_name_cate - 1; $i++) {
+      $cateArr[$i]['label'] = $arr_cate_name[$i];
+      if (!empty($categorymcount[$i])) {
+        $cateArr[$i]['y'] = $categorymcount[$i];
+      } else {
+        $cateArr[$i]['y'] = 0;
+      }
+    }
+    $dataPoints_category = $cateArr;
     return view($this->viewprefix . 'layout',
       compact('count','customers', 'count_order', 'total_order_money', 'total_quantity','visitor','date_time_add','pageview'
-        ,'topBrowers','topViewPage','dataPoints','blog_view','product_top_view','order_detail','topsales','dataPoints_order'));
+        ,'topBrowers','topViewPage','dataPoints','blog_view','product_top_view','order_detail','topsales','dataPoints_order','dataPoints_category'
+      ));
   }
 
   public function search_order(Request $request) {
@@ -321,10 +348,33 @@ class DashboardController extends Controller {
       }
       $dataPoints_order = $userArr;
 
+    $categorymcount = [];
+    $cateArr = [];
+    $category_product = Category::join('product', 'product.idcat', '=', 'category.category_id')->where('category_status','=',1)->where('status','!=',0)->get()->groupBy('category_id');
+    $count_name_cate = count($category_product);
+    $arr_cate_name = [];
+    foreach ($category_product as $key=> $value) {
+      $categorymcount[] = count($value);
+      foreach ($value as $ass) {
+        $cate_name = $ass->category_name;
+      }
+      $arr_cate_name[] = $cate_name;
+    }
+    $name_category_column = $arr_cate_name;
+    for ($i = 0; $i <= $count_name_cate - 1; $i++) {
+      $cateArr[$i]['label'] = $arr_cate_name[$i];
+      if (!empty($categorymcount[$i])) {
+        $cateArr[$i]['y'] = $categorymcount[$i];
+      } else {
+        $cateArr[$i]['y'] = 0;
+      }
+    }
+    $dataPoints_category = $cateArr;
+
     return view($this->viewprefix . 'search',
       compact('orders_search', 'customers', 'count', 'count_order','dataPoints','dataPoints_order',
         'total_order_money', 'total_quantity','date_start','date_end','visitor','date_time_add','pageview','topBrowers','topViewPage',
-        'blog_view','product_top_view','topsales'
+        'blog_view','product_top_view','topsales','dataPoints_category'
 
       ));
   }
@@ -529,11 +579,36 @@ class DashboardController extends Controller {
     }
 
     $dataPoints_order = $userArr;
+
+    $categorymcount = [];
+    $cateArr = [];
+    $category_product = Category::join('product', 'product.idcat', '=', 'category.category_id')->where('category_status','=',1)->where('status','!=',0)->get()->groupBy('category_id');
+    $count_name_cate = count($category_product);
+    $arr_cate_name = [];
+    foreach ($category_product as $key=> $value) {
+      $categorymcount[] = count($value);
+      foreach ($value as $ass) {
+        $cate_name = $ass->category_name;
+      }
+      $arr_cate_name[] = $cate_name;
+    }
+    $name_category_column = $arr_cate_name;
+    for ($i = 0; $i <= $count_name_cate - 1; $i++) {
+      $cateArr[$i]['label'] = $arr_cate_name[$i];
+      if (!empty($categorymcount[$i])) {
+        $cateArr[$i]['y'] = $categorymcount[$i];
+      } else {
+        $cateArr[$i]['y'] = 0;
+      }
+    }
+    $dataPoints_category = $cateArr;
+
+
 //    dump($dataPoints_order);
     return view($this->viewprefix . 'search_line',
       compact('customers', 'count', 'count_order','dataPoints_order','dataPoints',
         'total_order_money', 'total_quantity','date_start','date_end','visitor','date_time_add','pageview','topBrowers','topViewPage',
-        'blog_view','product_top_view','topsales','selected'
+        'blog_view','product_top_view','topsales','selected','dataPoints_category'
       ));
   }
   /**
