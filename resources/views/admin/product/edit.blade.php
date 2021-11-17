@@ -97,21 +97,21 @@
             <select name="status" class="form-control" id="status">
                 @if($product->status==1)
                     <option value='1'>Sản phẩm mới</option>
-                    <option value='0'>Hết hàng</option>
+                    <option value='0'>Ẩn</option>
                     <option value='2'>Sản phẩm nổi bậc</option>
                     <option value='3'>Sản phẩm Big sale</option>
                 @elseif($product->status==2)
                     <option value='2'>Sản phẩm nổi bậc</option>
                     <option value='1'>Sản phẩm mới</option>
-                    <option value='0'>Hết hàng</option>
+                    <option value='0'>Ẩn</option>
                     <option value='3'>Sản phẩm Big sale</option>
                 @elseif($product->status==3)
                     <option value='3'>Sản phẩm Big sale</option>
                     <option value='1'>Sản phẩm mới</option>
-                    <option value='0'>Hết hàng</option>
+                    <option value='0'>Ẩn</option>
                     <option value='2'>Sản phẩm nổi bậc</option>
                 @else
-                    <option value='0'>Hết hàng</option>
+                    <option value='0'>Ẩn</option>
                     <option value='1'>Sản phẩm mới</option>
                     <option value='2'>Sản phẩm nổi bậc</option>
                     <option value='3'>Sản phẩm Big sale</option>

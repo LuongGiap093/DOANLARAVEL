@@ -53,6 +53,7 @@ Route::resource('panel/product', admin\ProductController::class);
 Route::resource('panel/category', admin\CategoryController::class);
 Route::resource('panel/customer', admin\AccountcustomerController::class);
 Route::resource('panel/order', admin\OrderController::class);
+Route::get('panel/delete/{order_id}', 'admin\OrderController@delete_order')->name('admin.delete');
 Route::resource('panel/slider', admin\SliderController::class);
 Route::resource('panel/blog', admin\BlogController::class);
 Route::resource('panel/faq', admin\FaqController::class);

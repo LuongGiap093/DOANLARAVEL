@@ -32,7 +32,7 @@
             <tr>
                 <td>{{$imp->import_id}} </td>
                 <td>{{date('d-m-Y',strtotime($imp->created_at))}}</td>
-                <td>
+                <td width="400px" style="white-space: normal">
                     {{$imp->name}}
                 </td>
                 <td>{{$imp->import_qty}} </td>

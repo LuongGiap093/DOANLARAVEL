@@ -132,7 +132,7 @@ class ImportController extends Controller
             }
         }
         else
-            Session::flash('message', 'Xóa thất bại!');
+            Session::flash('message', 'Cập nhật thất bại!');
         return redirect()->route('import.index');
 
     }

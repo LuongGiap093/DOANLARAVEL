@@ -47,7 +47,7 @@
                         // alertify.success('Tính phí Thành Công!');
                         swal({
                             title: "",
-                            text: "Tính phí thành công!",
+                            text: "Cập nhật thông tin thành công!",
                             icon: "success",
                         });
                         location.reload();

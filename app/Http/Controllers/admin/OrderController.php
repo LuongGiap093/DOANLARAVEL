@@ -168,13 +168,41 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    public function destroy($order_id)
     {
-        return redirect()->back();
+    }
+    public function delete_order($order_id){
+        $order=Order::where('order_id','=',$order_id)->first();
+        if($order->order_status===5) {
+            $detail = Order_Details::where('order_id', '=', $order->order_id)->get();
+            foreach ($detail as $ord_del) {
+                $product = Product::where('id', '=', $ord_del->id)->first();
+                if ($ord_del->quantity === 0) {
+                    $ord_del->delete();
+                } else {
+                    $product->update(['qty_inventory' => $product->qty_inventory + $ord_del->quantity]);
+                    $ord_del->delete();
+                }
+            }
+            $ship=$order->shipping_id;
+            if(Order::where('order_id','=',$order_id)->delete()){
+                Shipping::where('shipping_id','=',$ship)->delete();
+            }
+
+            return redirect()->back()->with('message','Xóa thành công!');
+        }
     }
     public function changestatusorder($order_id) {
-        DB::table('order')->where('order_id',$order_id)->update(['order_status'=>0]);
-        return back()->with('message','Hủy đơn hàng thành công!');
+        if(DB::table('order')->where('order_id',$order_id)->update(['order_status'=>0])){
+            $detail=Order_Details::where('order_id','=',$order_id)->get();
+            foreach ($detail as $ord_del){
+                $product = Product::where('id', '=', $ord_del->id)->first();
+                $product->update(['qty_inventory' => $product->qty_inventory + $ord_del->quantity]);
+            }
+            return back()->with('message','Hủy đơn hàng thành công!');
+        }else{
+            return back()->with('message','Hủy đơn hàng không thành công!');
+        }
     }
     public function changestatusorder_detail(Request $request) {
         $data=$request->all();

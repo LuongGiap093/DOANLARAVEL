@@ -140,6 +140,8 @@
                                                             <span>{{$key+1}}</span>MÃ HÓA ĐƠN: #HDBH{{$ord->order_id}} <i style="color: #0ba011;margin-left: 10px;font-size: 20px;" class="icon fa fa-truck"></i>
                                                         @elseif($ord->order_status==4)
                                                             <span>{{$key+1}}</span>MÃ HÓA ĐƠN: #HDBH{{$ord->order_id}} <i style="color: #0ba011;margin-left: 10px;font-size: 20px;" class="icon fa fa-check"></i>
+                                                        @elseif($ord->order_status==5)
+                                                            <span>{{$key+1}}</span>MÃ HÓA ĐƠN: #HDBH{{$ord->order_id}} <i style="color: #0ba011;margin-left: 10px;font-size: 20px;" class="icon fa fa-close"></i>
                                                         @endif
                                                     </a>
                                                 </h4>
@@ -181,12 +183,14 @@
                                                                             <span class="label label-success">Đang vận chuyển</span>
                                                                         @elseif($ord->order_status==4)
                                                                             <span class="label label-success">Đã hoàn thành</span>
+                                                                        @elseif($ord->order_status==5)
+                                                                            <span class="label label-success">Đơn hàng lỗi</span>
                                                                         @else
                                                                         @endif
                                                                     </li>
                                                                     <li class="list-group-item">Xem chi tiết đơn hàng tại đây: <a class="label label-success" data-toggle="modal" data-target="#exampleModalCenter{{$key+1}}">click để xem chi tiết</a></li>
                                                                 </ul>
-                                                                @if($ord->order_status==3||$ord->order_status==4)
+                                                                @if($ord->order_status==3||$ord->order_status==4||$ord->order_status==5)
                                                                 @else
                                                                     <div class="form-horizontal">
                                                                         <form action="{{route('customer.cancel-order')}}" method="POST">

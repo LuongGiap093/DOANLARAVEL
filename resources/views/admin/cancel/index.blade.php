@@ -1,5 +1,18 @@
 @extends('admin.cancel.layout')
 @section('content')
+    <div class="dropdown" style="top: -8px; display: -webkit-inline-flex">
+        <button style="border-radius: 3px;" class="btn btn-secondary dropdown-toggle" type="button"
+                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{$cancel_order->count()}} - {{$sort}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item"
+               href="{{request()->fullUrlWithQuery(['sort_by'=>'0'])}}">{{$can->where('status','=',0)->count()}} - Yêu cầu đã duyệt</a>
+            <a class="dropdown-item"
+               href="{{request()->fullUrlWithQuery(['sort_by'=>'1'])}}">{{$can->where('status','=',1)->count()}} -
+                Yêu cầu mới</a>
+        </div>
+    </div>
     <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
         @if(Session::has('success'))
             <div class="alert alert-success">

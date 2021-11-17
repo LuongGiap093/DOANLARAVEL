@@ -123,7 +123,7 @@
                                                             <button type="button" name="calculate_order"
                                                                     class="calculate_delivery"
                                                                     style="width: 100%;display: block;border: none;transition: all 0.2s;font-weight: 600;background: #157ed2;padding: 10px 34px;color: #ffffff;letter-spacing: 0.01em;cursor: pointer;text-transform: uppercase;letter-spacing: 1px;font-size: 14px;">
-                                                                Tính phí vận chuyển
+                                                                Cập nhật thông tin
                                                             </button>
                                                         </div>
                                                     </div>
@@ -195,7 +195,7 @@
                                                             <button type="button" name="calculate_order"
                                                                     class="calculate_delivery"
                                                                     style="width: 100%;display: block;border: none;transition: all 0.2s;font-weight: 600;background: #157ed2;padding: 10px 34px;color: #ffffff;letter-spacing: 0.01em;cursor: pointer;text-transform: uppercase;letter-spacing: 1px;font-size: 14px;">
-                                                                Tính phí vận chuyển
+                                                                Cập nhật thông tin
                                                             </button>
                                                         </div>
                                                     </div>

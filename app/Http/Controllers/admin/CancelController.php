@@ -4,6 +4,8 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\Order_Details;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\Cancle_Order;
 use App\Models\AccountCustomer;
@@ -29,9 +31,22 @@ class CancelController extends Controller
     public function index()
     {
         //
-        $cancel_order = Cancle_Order::orderby('cancel_id','desc')->get();
+        $can=Cancle_Order::get();
         $customer=AccountCustomer::get();
-        return view($this->viewprefix.'index' ,compact('cancel_order','customer'));
+        if(isset($_GET['sort_by'])){
+            $sort_by = $_GET['sort_by'];
+            if($sort_by==0){
+                $sort='Yêu cầu đã duyệt';
+                $cancel_order = Cancle_Order::where('status','=',0)->orderby('cancel_id','desc')->get();
+            } else{
+                $sort='Yêu cầu mới';
+                $cancel_order = Cancle_Order::where('status','=',1)->orderby('cancel_id','desc')->get();
+            }
+        }else{
+            $sort='Yêu cầu mới';
+            $cancel_order = Cancle_Order::where('status','=',1)->orderby('cancel_id','desc')->get();
+        }
+        return view($this->viewprefix.'index' ,compact('can','sort','cancel_order','customer'));
     }
 
     /**
@@ -116,6 +131,12 @@ class CancelController extends Controller
         if($order->order_status<3)
         {
             if(Order::where('order_id','=',$cancel_order->order_id)->update(['order_status'=>0])){
+                $detail=Order_Details::where('order_id','=',$cancel_order->order_id)->get();
+                foreach ($detail as $ord_del){
+                    $product = Product::where('id', '=', $ord_del->id)->first();
+                    $product->update(['qty_inventory' => $product->qty_inventory + $ord_del->quantity]);
+                }
+
                 Session::flash('success', 'Hủy đơn thành công!');
 
                 require "app/PHPMailer-master/src/PHPMailer.php";  //nhúng thư viện vào để dùng, sửa lại đường dẫn cho đúng nếu bạn lưu vào chỗ khác
