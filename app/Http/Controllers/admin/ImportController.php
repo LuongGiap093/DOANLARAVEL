@@ -5,8 +5,12 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Import;
 use App\Models\Product;
+use App\Models\Order;
+use App\Models\Order_Details;
 use Illuminate\Http\Request;
 use Session;
+use Carbon\Carbon;
+use DB;
 
 class ImportController extends Controller
 {
@@ -157,5 +161,31 @@ class ImportController extends Controller
             Session::flash('message', 'Xóa thất bại!');
         return redirect()->route('import.index');
         //
+    }
+
+    public function thong_ke(){
+        $monthnow = Carbon::now('Asia/Ho_Chi_Minh')->month;
+        $yearnow = Carbon::now('Asia/Ho_Chi_Minh')->year;
+        $product=Product::where('status','<>',0)->count();
+        $import=Import::join('product','product.id','=','import.product_id')
+            ->whereMonth('import.created_at', $monthnow)->whereyear('import.created_at', $yearnow)->get();
+        $order=Product::join('order_details','order_details.id','product.id')
+            ->join('order','order.order_id','order_details.order_id')
+            ->where('order_status','<>',0)->where('order_status','<>',5)
+            ->get();
+
+        return view('admin.dashboard_import.layout',compact('order','product','import'));
+    }
+
+    public function search_thong_ke(Request $request){
+        $product=Product::where('status','<>',0)->count();
+        $import=Import::join('product','product.id','=','import.product_id')
+            ->whereMonth('import.created_at', $request->value_month+1)->whereyear('import.created_at', $request->value_year)->get();
+        $order=Product::join('order_details','order_details.id','product.id')
+            ->join('order','order.order_id','order_details.order_id')
+            ->where('order_status','<>',0)->where('order_status','<>',5)
+            ->get();
+
+        return view('admin.dashboard_import.layout',compact('order','product','import'));
     }
 }

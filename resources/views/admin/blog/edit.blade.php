@@ -1,6 +1,15 @@
 @extends('admin.blog.layout')
 @section('content')
 <form action="{{route('blog.update', $blog->blog_id)}}" method="POST" enctype="multipart/form-data">
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     @csrf
     @method('PUT')
     <div class="form-group">

@@ -1,6 +1,15 @@
 @extends('admin.blog.layout')
 @section('content')
     <form action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         {{ csrf_field() }}
         <div class="form-group">
             <label for="image">Hình ảnh:</label>

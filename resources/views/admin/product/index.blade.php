@@ -66,13 +66,18 @@
                                         <td>Big Sale</td>
                                     @endif
                                 </tr>
+
+                                <tr>
+                                    <th>Link video : </th>
+                                    <td>{{$product->link}}</td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
                     </div>
 
                 </div>

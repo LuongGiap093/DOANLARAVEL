@@ -25,6 +25,7 @@
                         <li><a href="{{route('brand.index')}}">Thương hiệu sản phẩm</a></li>
                         <li><a href="{{route('category.index')}}">Danh mục sản phẩm</a></li>
                         <li><a href="{{route('import.index')}}">Quản lý nhập hàng</a></li>
+                        <li><a href="{{route('admin.thong-ke')}}">Thống kê nhập hàng</a></li>
                     </ul>
                 </li>
 

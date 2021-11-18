@@ -345,6 +345,9 @@ class ProductController extends Controller
         }
         $product_tag=Product::where('status','<>',0)->orderby('view_number','desc')->limit(8)->get();
         $products = Product::find($id);
+          $url = $products->link;
+          preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match);
+          $youtube_id = $match[1];
         $view=$products->view_number;
         $products->update(['view_number' => $view+1]);
         $gallerys=DB::table('gallery')->where('product_id','=',$id)->get();
@@ -366,7 +369,7 @@ class ProductController extends Controller
         $star=round($avgstar);//Làm tròn số
         $avgs=round($avgstar,1);//Làm tròn số
         $datenow=Carbon::now()->day;//Lấy ngày hiện tại
-        return view('user.page.product_detail_page.view-product', compact('product_tag','comment','member','wishlists','avgs','star','countcmt','datenow','comments','cate','brand','hot_deals','logos','categorys','gallerys','products','related_product','employee','empcategory'));
+        return view('user.page.product_detail_page.view-product', compact('product_tag','comment','member','wishlists','avgs','star','countcmt','datenow','comments','cate','brand','hot_deals','logos','categorys','gallerys','products','related_product','employee','empcategory','youtube_id'));
 
     }
 }

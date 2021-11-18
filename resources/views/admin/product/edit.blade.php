@@ -46,7 +46,7 @@
         </div>
         <div class="form-group">
             <label for="name">Tên sản phẩm:</label>
-            <input type="text" class="form-control" name="name" value="{{$product->name}}">
+            <input type="text" class="form-control" name="name" value="{{$product->name}}" required="required">
         </div>
         <div class="form-group">
             <label for="image">Hình ảnh sản phẩm:</label>

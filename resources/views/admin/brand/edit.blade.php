@@ -1,11 +1,20 @@
 @extends('admin.brand.layout')
 @section('content')
     <form action="{{route('brand.update', $brand->brand_id)}}" method="POST" enctype="multipart/form-data">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         @csrf
         @method('PUT')
         <div class="form-group">
             <label for="brand_name">Tên thương hiệu:</label>
-            <input type="text" class="form-control" name="brand_name" value="{{$brand->brand_name}}">
+            <input type="text" class="form-control" name="brand_name" value="{{$brand->brand_name}}" required="required">
         </div>
 
         <div class="form-group">

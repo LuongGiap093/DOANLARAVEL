@@ -58,6 +58,7 @@ class EmployeeController extends Controller
         'idcat' => 'required',
         'status'=> 'required',
       ]);
+
       $data['image'] = Helper::imageUpload($request);
       if(Employee::create( $data))
         Session::flash('message', 'successfully!');

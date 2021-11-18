@@ -1,6 +1,15 @@
 @extends('admin.faq.layout')
 @section('content')
 <form action="{{route('faq.update', $faq->faq_id)}}" method="POST" enctype="multipart/form-data">
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     @csrf
     @method('PUT')
 {{--    <div class="form-group">--}}

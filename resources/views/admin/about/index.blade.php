@@ -12,8 +12,11 @@
     @endif
     @if($count>0)
     <form action="{{route('about.update', $about->about_id)}}" method="POST" enctype="multipart/form-data">
+
         @csrf
         @method('PUT')
+
+
         <div class="form-group">
             <label for="image">Hình ảnh:</label>
             <input type="file" class="form-control" name="image" value=""/>
@@ -24,7 +27,7 @@
         </div>
         <div class="form-group">
             <label for="about_title">Tiêu đề:</label>
-            <input type="text" class="form-control" name="about_title" value="{{$about->about_title}}">
+            <input type="text" class="form-control" name="about_title" value="{{$about->about_title}}" required="required">
         </div>
         <div class="form-group">
             <label for="about_description">Nội dung:</label>

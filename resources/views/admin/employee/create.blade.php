@@ -3,10 +3,18 @@
     <form action="{{ route('employee.store') }}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
 
-
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="form-group">
             <label for="name">Tên Nhân Viên: </label>
-            <input type="text" class="form-control" name="name">
+            <input type="text" class="form-control" name="name" >
         </div>
         <div class="form-group">
             <label for="idcat">Danh mục:</label>
